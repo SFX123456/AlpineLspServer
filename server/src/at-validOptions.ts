@@ -1,6 +1,6 @@
 import {Range} from "./methods/textDocument/completion";
 
-export type CompletionItemKind = 1 | 2 | 3 | 6 |  15
+export type CompletionItemKind = 1 | 2 | 15
 
 
 export interface CompletionItem {
@@ -17,15 +17,11 @@ export interface textEdit {
     newText: string
 }
 
-export const xoptions : CompletionItem[] = [
-    {
-        label: 'x-data=\"{${1:foo} : ${2:bar}}\"',
-        kind: 15,
-        insertTextFormat : 2,
+export const magicObjects = ['$el', '$refs', '$store', '$watch', '$dispatch', '$nextTick', '$root', '$data', '$id']
 
-    },
+export const atoptions : CompletionItem[] = [
     {
-        label: 'x-init=\"${1:foo} \"',
+        label: '@click=" ${1:foo} "',
         kind: 15,
         insertTextFormat : 2,
 

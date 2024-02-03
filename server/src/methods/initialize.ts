@@ -14,7 +14,10 @@ interface InitializeResult
 export const initialize = (message : RequestMessage) : InitializeResult => {
     return {
         capabilities : {
-            completionProvider: {},
+            completionProvider: {
+                triggerCharacters: ['@', 'x', '\"']
+            },
+            resolveProvider: true,
             textDocumentSync: 1,
             hoverProvider: {
 

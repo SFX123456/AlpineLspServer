@@ -12,6 +12,7 @@
     "url": "REPLACE_ME"
   },
   "dependencies": {
+    "alpinejs": "^3.13.5",
     "cheerio": "^1.0.0-rc.12",
     "vscode-languageserver": "^8.1.0",
     "vscode-languageserver-textdocument": "^1.0.8"
