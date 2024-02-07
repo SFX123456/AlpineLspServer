@@ -5,8 +5,11 @@ import {completion} from "./methods/textDocument/completion";
 import {didChange} from "./methods/textDocument/didChange";
 import {hoverRequest} from "./methods/textDocument/hover";
 import {didOpen} from "./methods/textDocument/didOpen";
+import {semantic} from "./methods/textDocument/semantic";
+import {childProcess} from "./typescriptLsp/spawnProcess";
 
 log.write("data")
+
 export interface RequestMessage{
     id: number | string;
     method: string;
@@ -18,7 +21,8 @@ const methodLookUp : Record<string, RequestMethod> = {
     'textDocument/completion' : completion,
     'textDocument/didChange': didChange,
     'textDocument/hover': hoverRequest,
-    'textDocument/didOpen': didOpen
+    'textDocument/didOpen': didOpen,
+    'textDocument/semanticTokens/full' : semantic
 }
 const respond = (id : number, serverResponse : unknown) => {
     if (!serverResponse) return
