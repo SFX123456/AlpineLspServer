@@ -1,0 +1,16 @@
+
+<div x-data="{foo : bar}"  x-data="
+{test : true,
+ toggle() {this.open = !this.open}}
+" 
+
+x-init="  "
+ >
+private 
+<div @click=" " >
+    <div @click=" >
+
+    </div>
+
+</div>
+</div>
