@@ -58,7 +58,7 @@ export const requestingMethods = (uri: string, method : validMethods, additional
     {
          fs.writeFileSync(filePath, fullText)
         //fs.close(x,null )
-        filePathUri = 'file:///e%3A/fsd/test/index.ts'
+        //filePathUri = 'file:///e%3A/fsd/test/index.ts'
         Log.writeLspServer('completion on requestingmethods called')
         const indexLastWord = fullText.lastIndexOf(lastWord)
         request(null, 'textDocument/didOpen', {
@@ -139,7 +139,6 @@ export function createFakeTsFile(path: string, uri: string)
     Log.writeLspServer('creating file ' + uri)
     filePathUri = uri + "/" + 'temp.ts'
     filePath = path + '/' + 'temp.ts'
-    Log.writeLspServer('failed fileopathuri ' + filePathUri)
         fs.writeFileSync(filePath, '');
     request(null, 'textDocument/didOpen', {
         textDocument: {
