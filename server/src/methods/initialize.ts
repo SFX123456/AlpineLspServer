@@ -1,4 +1,6 @@
 import {RequestMessage} from "../server";
+import {initializeTypescriptServer} from "../StartTypescriptServer";
+import {InitializeParams} from "../ClientTypes";
 
 type ServerCapabilities = Record<string, unknown>
 
@@ -12,6 +14,9 @@ interface InitializeResult
 }
 
 export const initialize = (message : RequestMessage) : InitializeResult => {
+    const initializeParams = message as unknown as InitializeParams
+
+    initializeTypescriptServer(message)
     return {
         capabilities : {
             completionProvider: {

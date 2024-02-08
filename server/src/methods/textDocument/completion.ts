@@ -6,8 +6,8 @@ import {CompletionItem, xoptions} from "../../x-validOptions";
 import {getLastWord} from "../../analyzeFile";
 import {findAccordingRow, getParentAndOwnVariables} from "../../cheerioFn";
 import Log from "../../log";
-import {boolean, func} from "vscode-languageserver/lib/common/utils/is";
 import {atoptions, magicObjects} from "../../at-validOptions";
+import {requestingMethods} from "../../StartTypescriptServer";
 //add alpine data
 export interface textDocument {
     textDocument: TextDocumentItem,
@@ -30,7 +30,7 @@ export interface Range {
 
 type completionResponse = (line: number, char: number, uri? : string, lastWord? : string) => CompletionList | null
 
-const completionVar : completionResponse = (line : number, char, uri, lastWord ) : CompletionList | null => {
+const completionVar : completionResponse = (line : number, char, uri : string | undefined, lastWord : string | undefined) : CompletionList | null => {
     const htmpPage = allHtml.get(uri!)
     const node = findAccordingRow(line, htmpPage!)
     if (!node){
@@ -39,10 +39,16 @@ const completionVar : completionResponse = (line : number, char, uri, lastWord )
     }
 
     Log.write(node[0].attribs)
-    const optionsStr = []
+    const optionsStr : string[] = []
     optionsStr.push(...magicObjects)
     optionsStr.push(...getParentAndOwnVariables(node))
+    const stringToParse = getFunctionStr(line,  char, allFiles.get(uri!)!.split("\n")[line])
+    Log.writeLspServer('string to parse ' + stringToParse)
+    const res = requestingMethods(uri!, 'completion', optionsStr, stringToParse, lastWord!)
+    if (res)
+    {
 
+    }
     Log.write('length of wariabelist ' + optionsStr.length)
     const options : CompletionItem[] = optionsStr.map(x => {
         if (x.indexOf('(') != -1) return {
@@ -66,6 +72,17 @@ const completionVar : completionResponse = (line : number, char, uri, lastWord )
         options
 
     }
+}
+
+function getFunctionStr(line: number, char: number , text: string)
+{
+
+    const cutLine = text.substring(0, char)
+    const indexEnd = text.substring(char).match(/(?<!\\)"/)!.index
+    Log.writeLspServer('found ending at index '+ indexEnd)
+    let indexLastOccurenceSame = cutLine.lastIndexOf('="')
+
+    return text.substring(indexLastOccurenceSame + 2, indexEnd! + char)
 }
 
 

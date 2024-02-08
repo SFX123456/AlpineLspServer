@@ -6,9 +6,12 @@ import {didChange} from "./methods/textDocument/didChange";
 import {hoverRequest} from "./methods/textDocument/hover";
 import {didOpen} from "./methods/textDocument/didOpen";
 import {semantic} from "./methods/textDocument/semantic";
-import {childProcess} from "./typescriptLsp/spawnProcess";
+import Log from "./log";
+import {initializeMethodReaction} from "./MethodsLspClient/RequestInitialized";
 
 log.write("data")
+
+
 
 export interface RequestMessage{
     id: number | string;
@@ -24,6 +27,8 @@ const methodLookUp : Record<string, RequestMethod> = {
     'textDocument/didOpen': didOpen,
     'textDocument/semanticTokens/full' : semantic
 }
+
+
 const respond = (id : number, serverResponse : unknown) => {
     if (!serverResponse) return
     const message = JSON.stringify({id,result:  serverResponse})
@@ -32,6 +37,9 @@ const respond = (id : number, serverResponse : unknown) => {
     process.stdout.write(header + message)
 
 }
+
+
+
 let buffer = ''
 process.stdin.on('data', (chunk) => {
     buffer += chunk;
