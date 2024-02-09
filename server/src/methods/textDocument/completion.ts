@@ -30,6 +30,12 @@ export interface Range {
 
 type completionResponse = (line: number, char: number, uri? : string, lastWord? : string) => CompletionList | null
 
+interface completionResponseType {
+    id: number,
+    result: object
+}
+
+
 const completionVar : completionResponse = (line : number, char, uri : string | undefined, lastWord : string | undefined) : CompletionList | null => {
     const htmpPage = allHtml.get(uri!)
     const node = findAccordingRow(line, htmpPage!)
@@ -39,15 +45,24 @@ const completionVar : completionResponse = (line : number, char, uri : string | 
     }
 
     Log.write(node[0].attribs)
-    const optionsStr : string[] = []
+    let optionsStr : string[] = []
     optionsStr.push(...magicObjects)
     optionsStr.push(...getParentAndOwnVariables(node))
     const stringToParse = getFunctionStr(line,  char, allFiles.get(uri!)!.split("\n")[line])
     Log.writeLspServer('string to parse ' + stringToParse)
     const res = requestingMethods(uri!, 'completion', optionsStr, stringToParse, lastWord!)
+    Log.writeLspServer('completion got following res')
+    Log.writeLspServer(res)
     if (res)
     {
-
+        const message = res as completionResponseType
+        // @ts-ignore
+        const items = message.result.items
+        const arrAnswers = JSON.parse(items)
+        return {
+            isIncomplete : false,
+            items: arrAnswers
+        }
     }
     Log.write('length of wariabelist ' + optionsStr.length)
     const options : CompletionItem[] = optionsStr.map(x => {
