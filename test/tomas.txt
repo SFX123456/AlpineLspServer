@@ -4,7 +4,7 @@
  toggle() {this.open = !this.open}}
 " 
 
-x-init="  "
+x-init=" con "
  >
 private 
 <div @click=" " >
