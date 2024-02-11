@@ -21,14 +21,14 @@ export const initialize = async (message : RequestMessage) : Promise<InitializeR
     return {
         capabilities : {
             completionProvider: {
-                triggerCharacters: ['@', 'x', '\"', 'c', '$']
+                triggerCharacters: ['@', 'x', '\"', 'c', '$', '.']
             },
             resolveProvider: true,
             textDocumentSync: 1,
             hoverProvider: {
 
             },
-            /*
+
             semanticTokensProvider: {
                 legend: {
                     tokenTypes: ['property', 'type', 'class'],
@@ -38,7 +38,7 @@ export const initialize = async (message : RequestMessage) : Promise<InitializeR
                 documentSelector: null
             }
 
-             */
+
         },
         serverInfo: {
             name: "alpinelspServer",

@@ -69,14 +69,21 @@ const completionVar : completionResponse = async (line : number, character : num
     if (res)
     {
         const message = res as completionResponseType
+        try {
 
-        //@ts-ignore
-        const items = message.result.items
-        Log.writeLspServer('search for')
-        Log.writeLspServer(items)
-        return {
-            isIncomplete : false,
-            items: items
+            //@ts-ignore
+            const items = message.result.items
+            Log.writeLspServer('search for')
+            Log.writeLspServer(items)
+            return {
+                isIncomplete : true,
+                items: items
+            }
+        }
+        catch (e)
+        {
+            Log.writeLspServer('error here')
+           Log.writeLspServer(e)
         }
 
 
@@ -137,9 +144,6 @@ const tableCompletion : Record<string, completionResponse> = {
 
 export const completion = async (message : RequestMessage) : Promise<CompletionList | null> => {
 
-
-
-
     Log.writeLspServer('1. completion called')
     const textDocument = message.params as textDocument
 
@@ -178,16 +182,17 @@ function isInsideElement(line : number , char : number, uri: string): boolean {
     const arr = allFiles.get(uri)!.split('\n')
     let goUp = 0;
     let startTag = startPattern.exec(arr[line])
-    while (!startTag && goUp < 200 && line - goUp >= 0)
+    while (!startTag && goUp < 200 && line - goUp > 0)
     {
         goUp++;
+        if (line - goUp == 0)
         startTag = startPattern.exec(arr[line - goUp])
     }
     if (!startTag) return false
     Log.write({openTag: line - goUp})
     let endTag = endPattern.exec(arr[line - goUp])
     let i = 0;
-    while (!endTag && i < 200 && line - goUp + i < arr.length)
+    while (!endTag && i < 200 && line - goUp + i < arr.length - 1)
     {
         i++;
         endTag = endPattern.exec(arr[line - goUp + i])
@@ -223,11 +228,12 @@ function isInsideParenthesis(line : number , char : number, uri: string): boolea
     const arr = allFiles.get(uri)!.split('\n')
     let goUp = 0;
     let startTag = startPattern.exec(arr[line])
-    while (!startTag && goUp < 200)
+    while (!startTag && goUp < 200 && line - goUp > 0)
     {
         goUp++;
         startTag = startPattern.exec(arr[line - goUp])
     }
+    if (!startTag) return false
     let openingiIndex = arr[line - goUp].lastIndexOf('="') + 2
     let endTag = endPattern.exec(arr[line - goUp])
     if (endTag)
@@ -239,11 +245,12 @@ function isInsideParenthesis(line : number , char : number, uri: string): boolea
     }
 
     let i = 0;
-    while (!endTag && i < 200)
+    while (!endTag && i < 200 && line - goUp + i < arr.length - 1)
     {
         i++;
         endTag = endPattern.exec(arr[line - goUp + i])
     }
+    if (!endTag) return false
     return line - goUp + i >= line
         && line - goUp <= line
         && ( startTag!.index + 2 < char || goUp != 0 )

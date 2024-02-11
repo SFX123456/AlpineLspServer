@@ -36,7 +36,7 @@ function detectAlpineCharacters(uri: string) : number[]
 {
     const lines = allFiles.get(uri)!.split('\n')
 // Regular expression with the global flag
-    const regExpx = /x-[a-zA-Z]+="/g;
+    const regExpx = /x-[a-zA-Z]+="|(?<![\\=])"/g;
 
     let match : any;
     const output : number[] = []

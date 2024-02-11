@@ -18,7 +18,7 @@ let filePathUri = ''
 
 const requestedMethods = new Map<number, string>
 
-export const request = async (id : Boolean,method: string, clientRequest : unknown) : Promise<object | void> => {
+export const request = async (id : Boolean,method: string, clientRequest : unknown) : Promise<object | null> => {
 
         Log.writeLspServer('request method called with method ' + method)
 
@@ -48,17 +48,18 @@ export const request = async (id : Boolean,method: string, clientRequest : unkno
             return (await listenToAnswer(requestId))
         }
 
-        return
+        return null
 
 }
 type validMethods = 'completion' | 'hover'
 let version = 2
-export const requestingMethods = async (method : validMethods, content : string, line: number, character: number) : Promise<object | void> =>  {
+export const requestingMethods = async (method : validMethods, content : string, line: number, character: number) : Promise<object | null> =>  {
 
     if (method == 'completion')
     {
         filePathUri = ''
         Log.writeLspServer('completion on requestingmethods called')
+        /*
         await request(false, 'textDocument/didOpen', {
             textDocument: {
                 uri: filePathUri,
@@ -67,6 +68,8 @@ export const requestingMethods = async (method : validMethods, content : string,
                 text: content
             }
         })
+
+         */
         Log.writeLspServer('trsing to give it out')
 
         await request(false, 'textDocument/didChange', {
@@ -93,7 +96,7 @@ export const requestingMethods = async (method : validMethods, content : string,
         })
 
     }
-    return
+    return null
 }
 
 
@@ -164,6 +167,15 @@ export const initializeTypescriptServer = async (receivedInitializedMessage : ob
     await request(true, 'initialize', receivedInitializedParams)
     await request(false, 'initialized', {})
     Log.writeLspServer('initialized lsp server with params ' + JSON.stringify(receivedInitializedParams))
+    await request(false, 'textDocument/didOpen', {
+        textDocument: {
+            uri: '',
+            languageId:"javascript",
+            version:version,
+            text: ''
+        }
+    })
+    Log.writeLspServer('opened document ')
 }
 
 function getLastWord(wholeLine : string, character : number): string {

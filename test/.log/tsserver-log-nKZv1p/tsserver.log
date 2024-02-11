@@ -1,9 +1,9 @@
-Info 0    [01:04:09.442] Starting TS Server
-Info 1    [01:04:09.445] Version: 5.3.3
-Info 2    [01:04:09.445] Arguments: C:\Program Files\nodejs\node.exe e:\Coding\LSP\Final\AlpineLsp\test\node_modules\typescript\lib\tsserver.js --serverMode partialSemantic --useInferredProjectPerProjectRoot --disableAutomaticTypingAcquisition --cancellationPipeName C:\Users\Nico\AppData\Local\Temp\4bffdf80dfe919bb280ea179f35341ed\tscancellation* --logVerbosity verbose --logFile e:\Coding\LSP\Final\AlpineLsp\test\.log\tsserver-log-8xDq5b\tsserver.log --locale en --validateDefaultNpmLocation --useNodeIpc
-Info 3    [01:04:09.445] Platform: win32 NodeVersion: v20.11.0 CaseSensitive: false
-Info 4    [01:04:09.445] ServerMode: 1 hasUnknownServerMode: undefined
-Info 5    [01:04:09.460] request:
+Info 0    [15:42:06.190] Starting TS Server
+Info 1    [15:42:06.191] Version: 5.3.3
+Info 2    [15:42:06.191] Arguments: C:\Program Files\nodejs\node.exe e:\Coding\LSP\Final\AlpineLsp\test\node_modules\typescript\lib\tsserver.js --serverMode partialSemantic --useInferredProjectPerProjectRoot --disableAutomaticTypingAcquisition --cancellationPipeName C:\Users\Nico\AppData\Local\Temp\ecb17ce574acdb02c85be899620d7b1c\tscancellation* --logVerbosity verbose --logFile e:\Coding\LSP\Final\AlpineLsp\test\.log\tsserver-log-nKZv1p\tsserver.log --locale en --validateDefaultNpmLocation --useNodeIpc
+Info 3    [15:42:06.191] Platform: win32 NodeVersion: v20.11.0 CaseSensitive: false
+Info 4    [15:42:06.191] ServerMode: 1 hasUnknownServerMode: undefined
+Info 5    [15:42:06.204] request:
     {
       "seq": 0,
       "type": "request",
@@ -55,7 +55,7 @@ Info 5    [01:04:09.460] request:
         }
       }
     }
-Info 6    [01:04:09.461] Format host information updated
-Info 7    [01:04:09.461] response:
+Info 6    [15:42:06.204] Format host information updated
+Info 7    [15:42:06.204] response:
     {"seq":0,"type":"response","command":"configure","request_seq":0,"success":true}
-Perf 8    [01:04:09.462] 0::configure: async elapsed time (in milliseconds) 1.5528
+Perf 8    [15:42:06.205] 0::configure: async elapsed time (in milliseconds) 1.4140

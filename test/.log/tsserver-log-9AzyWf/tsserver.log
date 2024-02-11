@@ -1,9 +1,10 @@
-Info 0    [01:04:09.442] Starting TS Server
-Info 1    [01:04:09.445] Version: 5.3.3
-Info 2    [01:04:09.445] Arguments: C:\Program Files\nodejs\node.exe e:\Coding\LSP\Final\AlpineLsp\test\node_modules\typescript\lib\tsserver.js --serverMode partialSemantic --useInferredProjectPerProjectRoot --disableAutomaticTypingAcquisition --cancellationPipeName C:\Users\Nico\AppData\Local\Temp\4bffdf80dfe919bb280ea179f35341ed\tscancellation* --logVerbosity verbose --logFile e:\Coding\LSP\Final\AlpineLsp\test\.log\tsserver-log-8xDq5b\tsserver.log --locale en --validateDefaultNpmLocation --useNodeIpc
-Info 3    [01:04:09.445] Platform: win32 NodeVersion: v20.11.0 CaseSensitive: false
-Info 4    [01:04:09.445] ServerMode: 1 hasUnknownServerMode: undefined
-Info 5    [01:04:09.460] request:
+Info 0    [15:42:10.803] Starting TS Server
+Info 1    [15:42:10.805] Version: 5.3.3
+Info 2    [15:42:10.805] Arguments: C:\Program Files\nodejs\node.exe e:\Coding\LSP\Final\AlpineLsp\test\node_modules\typescript\lib\tsserver.js --useInferredProjectPerProjectRoot --cancellationPipeName C:\Users\Nico\AppData\Local\Temp\9e34812f3bc0f3fc252b9b3b9453b2d4\tscancellation* --logVerbosity verbose --logFile e:\Coding\LSP\Final\AlpineLsp\test\.log\tsserver-log-9AzyWf\tsserver.log --locale en --validateDefaultNpmLocation --useNodeIpc
+Info 3    [15:42:10.805] Platform: win32 NodeVersion: v20.11.0 CaseSensitive: false
+Info 4    [15:42:10.805] ServerMode: undefined hasUnknownServerMode: undefined
+Info 5    [15:42:10.813] Binding...
+Info 6    [15:42:10.826] request:
     {
       "seq": 0,
       "type": "request",
@@ -55,7 +56,34 @@ Info 5    [01:04:09.460] request:
         }
       }
     }
-Info 6    [01:04:09.461] Format host information updated
-Info 7    [01:04:09.461] response:
+Info 7    [15:42:10.827] Format host information updated
+Info 8    [15:42:10.827] response:
     {"seq":0,"type":"response","command":"configure","request_seq":0,"success":true}
-Perf 8    [01:04:09.462] 0::configure: async elapsed time (in milliseconds) 1.5528
+Perf 9    [15:42:10.828] 0::configure: async elapsed time (in milliseconds) 2.0193
+Info 10   [15:42:10.829] request:
+    {
+      "seq": 1,
+      "type": "request",
+      "command": "compilerOptionsForInferredProjects",
+      "arguments": {
+        "options": {
+          "module": "ESNext",
+          "moduleResolution": "Node",
+          "target": "ES2020",
+          "jsx": "React",
+          "allowImportingTsExtensions": true,
+          "strictNullChecks": true,
+          "strictFunctionTypes": true,
+          "sourceMap": true,
+          "allowJs": true,
+          "allowNonTsExtensions": true,
+          "allowSyntheticDefaultImports": true,
+          "resolveJsonModule": true
+        }
+      }
+    }
+Perf 11   [15:42:10.829] 1::compilerOptionsForInferredProjects: elapsed time (in milliseconds) 0.5757
+Info 12   [15:42:10.829] response:
+    {"seq":0,"type":"response","command":"compilerOptionsForInferredProjects","request_seq":1,"success":true,"body":true}
+Info 13   [15:42:10.830] event:
+    {"seq":0,"type":"event","event":"typingsInstallerPid","body":{"pid":12392}}
