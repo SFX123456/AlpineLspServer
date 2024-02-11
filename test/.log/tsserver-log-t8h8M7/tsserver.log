@@ -1,0 +1,112 @@
+Info 0    [20:37:42.025] Starting TS Server
+Info 1    [20:37:42.027] Version: 5.3.3
+Info 2    [20:37:42.027] Arguments: C:\Program Files\nodejs\node.exe e:\Coding\LSP\Final\AlpineLsp\test\node_modules\typescript\lib\tsserver.js --useInferredProjectPerProjectRoot --cancellationPipeName C:\Users\Nico\AppData\Local\Temp\73441492cc900d410879cc8142bb99dd\tscancellation* --logVerbosity verbose --logFile e:\Coding\LSP\Final\AlpineLsp\test\.log\tsserver-log-t8h8M7\tsserver.log --locale en --validateDefaultNpmLocation --useNodeIpc
+Info 3    [20:37:42.027] Platform: win32 NodeVersion: v20.11.0 CaseSensitive: false
+Info 4    [20:37:42.027] ServerMode: undefined hasUnknownServerMode: undefined
+Info 5    [20:37:42.034] Binding...
+Info 6    [20:37:42.049] request:
+    {
+      "seq": 0,
+      "type": "request",
+      "command": "configure",
+      "arguments": {
+        "formatOptions": {
+          "newLineCharacter": "\n"
+        },
+        "preferences": {
+          "allowIncompleteCompletions": true,
+          "allowRenameOfImportPath": true,
+          "allowTextChangesInNewFiles": true,
+          "disableLineTextInReferences": true,
+          "disableSuggestions": false,
+          "displayPartsForJSDoc": true,
+          "excludeLibrarySymbolsInNavTo": true,
+          "generateReturnInDocTemplate": true,
+          "importModuleSpecifierEnding": "auto",
+          "importModuleSpecifierPreference": "shortest",
+          "includeAutomaticOptionalChainCompletions": true,
+          "includeCompletionsForImportStatements": true,
+          "includeCompletionsForModuleExports": true,
+          "includeCompletionsWithClassMemberSnippets": true,
+          "includeCompletionsWithInsertText": true,
+          "includeCompletionsWithObjectLiteralMethodSnippets": true,
+          "includeCompletionsWithSnippetText": true,
+          "includeInlayEnumMemberValueHints": false,
+          "includeInlayFunctionLikeReturnTypeHints": false,
+          "includeInlayFunctionParameterTypeHints": false,
+          "includeInlayParameterNameHints": "none",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": false,
+          "includeInlayVariableTypeHints": false,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includePackageJsonAutoImports": "auto",
+          "interactiveInlayHints": true,
+          "jsxAttributeCompletionStyle": "auto",
+          "lazyConfiguredProjectsFromExternalProject": false,
+          "organizeImportsAccentCollation": true,
+          "organizeImportsCaseFirst": false,
+          "organizeImportsCollation": "ordinal",
+          "organizeImportsCollationLocale": "en",
+          "organizeImportsIgnoreCase": "auto",
+          "organizeImportsNumericCollation": false,
+          "providePrefixAndSuffixTextForRename": true,
+          "provideRefactorNotApplicableReason": true,
+          "quotePreference": "auto",
+          "useLabelDetailsInCompletionEntries": true
+        }
+      }
+    }
+Info 7    [20:37:42.049] Format host information updated
+Info 8    [20:37:42.050] response:
+    {"seq":0,"type":"response","command":"configure","request_seq":0,"success":true}
+Perf 9    [20:37:42.050] 0::configure: async elapsed time (in milliseconds) 1.3427
+Info 10   [20:37:42.050] request:
+    {
+      "seq": 1,
+      "type": "request",
+      "command": "compilerOptionsForInferredProjects",
+      "arguments": {
+        "options": {
+          "module": "ESNext",
+          "moduleResolution": "Node",
+          "target": "ES2020",
+          "jsx": "React",
+          "allowImportingTsExtensions": true,
+          "strictNullChecks": true,
+          "strictFunctionTypes": true,
+          "sourceMap": true,
+          "allowJs": true,
+          "allowNonTsExtensions": true,
+          "allowSyntheticDefaultImports": true,
+          "resolveJsonModule": true
+        }
+      }
+    }
+Perf 11   [20:37:42.051] 1::compilerOptionsForInferredProjects: elapsed time (in milliseconds) 0.4783
+Info 12   [20:37:42.051] response:
+    {"seq":0,"type":"response","command":"compilerOptionsForInferredProjects","request_seq":1,"success":true,"body":true}
+Info 13   [20:37:42.051] event:
+    {"seq":0,"type":"event","event":"typingsInstallerPid","body":{"pid":28304}}
+Info 14   [20:37:46.214] request:
+    {
+      "seq": 2,
+      "type": "request",
+      "command": "open",
+      "arguments": {
+        "file": "\\",
+        "fileContent": "let $el; let $refs; let $store; let $watch; let $dispatch; let $nextTick; let $root; let $data; let $id; let foo; co ",
+        "scriptKindName": "JS"
+      }
+    }
+Info 15   [20:37:46.215] Search path: /
+Info 16   [20:37:46.215] For info: / :: No config files found.
+Info 17   [20:37:46.220] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 18   [20:37:46.234] DirectoryWatcher:: Added:: WatchInfo: e:/coding/lsp/final/alpinelsp/test/node_modules 1 undefined WatchType: node_modules for closed script infos and package.jsons affecting module specifier cache
+Info 19   [20:37:46.234] e for path e:/coding/lsp/final/alpinelsp/test/node_modules not found in cache...
+Info 20   [20:37:46.234] Starting C:\Program Files\nodejs\node.exe with args:
+    [
+      "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/watchGuard.js",
+      "e:/coding/lsp/final/alpinelsp/test/node_modules"
+    ]
+Info 21   [20:37:46.296] WatchGuard for path e:/coding/lsp/final/alpinelsp/test/node_modules returned: OK
+Info 22   [20:37:46.297] Elapsed:: 63.39800000000014ms DirectoryWatcher:: Added:: WatchInfo: e:/coding/lsp/final/alpinelsp/test/node_modules 1 undefined WatchType: node_modules for closed script infos and package.jsons affecting module specifier cache

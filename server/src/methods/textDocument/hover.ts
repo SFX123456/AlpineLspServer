@@ -5,7 +5,7 @@ import log from "../../log";
 interface HoverResult {
     contents: string
 }
-export const hoverRequest = (message: RequestMessage) : HoverResult  => {
+export const hoverRequest = async (message: RequestMessage) : Promise<HoverResult>  => {
     const textDocument = message.params as textDocument
     const lastWord = getLastWord(textDocument)
     if (lastWord === 'x-cloak')

@@ -7,7 +7,7 @@ import {hoverRequest} from "./methods/textDocument/hover";
 import {didOpen} from "./methods/textDocument/didOpen";
 import {semantic} from "./methods/textDocument/semantic";
 import Log from "./log";
-import {initializeMethodReaction} from "./MethodsLspClient/RequestInitialized";
+
 
 log.write("data")
 
@@ -18,31 +18,34 @@ export interface RequestMessage{
     method: string;
     params? : unknown[] | object
 }
-type RequestMethod = (message : RequestMessage) => unknown | null;
+type RequestMethod = (message : RequestMessage) => Promise<unknown | null>;
 const methodLookUp : Record<string, RequestMethod> = {
     initialize,
     'textDocument/completion' : completion,
     'textDocument/didChange': didChange,
     'textDocument/hover': hoverRequest,
     'textDocument/didOpen': didOpen,
-    'textDocument/semanticTokens/full' : semantic
+    //'textDocument/semanticTokens/full' : semantic
 }
 
 
-const respond = (id : number, serverResponse : unknown) => {
-    if (!serverResponse) return
-    const message = JSON.stringify({id,result:  serverResponse})
+const respond = async (id : number, fn : Function, params: unknown) => {
+    const res = await fn(params)
+    if (!res) return
+    const message = JSON.stringify({id,result:  res})
     const headerLength = Buffer.byteLength(message, "utf-8")
     const header = `Content-Length: ${headerLength}\r\n\r\n`
+    Log.writeLspServer('responding with ' + header + message)
     process.stdout.write(header + message)
 
 }
 
-
+let initializeMethod = true
 
 let buffer = ''
-process.stdin.on('data', (chunk) => {
+process.stdin.on('data', async (chunk) => {
     buffer += chunk;
+    Log.write(buffer)
     while (true)
     {
         const match = buffer.match(/Content-Length: (\d+)\r\n/)
@@ -53,9 +56,21 @@ process.stdin.on('data', (chunk) => {
         const rawMessage = buffer.slice(messageStart, messageStart + contentLength)
         const message = JSON.parse(rawMessage)
         const method = methodLookUp[message.method]
+
+        Log.write(message)
         if (method)
         {
-            respond(message.id, method(message))
+            if (initializeMethod)
+            {
+                Log.writeLspServer('got initilaize method')
+                await respond(message.id, method, message)
+                initializeMethod = false
+            }
+            else
+            {
+
+                await respond(message.id, method, message)
+            }
         }
 
         log.write({id: message.id, method: message.method, params : message.params})

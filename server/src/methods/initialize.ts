@@ -1,6 +1,7 @@
 import {RequestMessage} from "../server";
 import {initializeTypescriptServer} from "../StartTypescriptServer";
 import {InitializeParams} from "../ClientTypes";
+import Log from "../log";
 
 type ServerCapabilities = Record<string, unknown>
 
@@ -13,20 +14,21 @@ interface InitializeResult
     }
 }
 
-export const initialize = (message : RequestMessage) : InitializeResult => {
+export const initialize = async (message : RequestMessage) : Promise<InitializeResult> => {
     const initializeParams = message as unknown as InitializeParams
-
-    initializeTypescriptServer(message)
+    Log.writeLspServer('initialized methjod callled once')
+    await initializeTypescriptServer(message)
     return {
         capabilities : {
             completionProvider: {
-                triggerCharacters: ['@', 'x', '\"']
+                triggerCharacters: ['@', 'x', '\"', 'c', '$']
             },
             resolveProvider: true,
             textDocumentSync: 1,
             hoverProvider: {
 
             },
+            /*
             semanticTokensProvider: {
                 legend: {
                     tokenTypes: ['property', 'type', 'class'],
@@ -35,6 +37,8 @@ export const initialize = (message : RequestMessage) : InitializeResult => {
                 full: true,
                 documentSelector: null
             }
+
+             */
         },
         serverInfo: {
             name: "alpinelspServer",

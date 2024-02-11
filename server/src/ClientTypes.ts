@@ -22,3 +22,11 @@ export interface InitializeParams {
     workspaceFolders?: unknown;
 }
 
+export interface Position {
+
+    line: number;
+
+    character: number;
+}
+
+

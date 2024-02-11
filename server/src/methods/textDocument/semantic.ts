@@ -20,7 +20,7 @@ const tokenModifiers = ['private', 'static']
 interface semanticResponse  {
     data: number[]
 }
-export const semantic : any = (message : RequestMessage ) : semanticResponse => {
+export const semantic = async (message : RequestMessage ) : Promise<semanticResponse> => {
     log.write('should give semantic')
 
     const textDocument = message.params as textDocument

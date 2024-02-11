@@ -4,6 +4,8 @@ import log from "./log";
 import {initializeMethodReaction} from "./MethodsLspClient/RequestInitialized";
 import {InitializeParams} from "./ClientTypes";
 import * as fs from "fs";
+import {data} from "cheerio/lib/api/attributes";
+import {allFiles} from "./allFiles";
 
 let  childProcess : ChildProcessWithoutNullStreams;
 const command = "typescript-language-server.cmd"
@@ -16,14 +18,11 @@ let filePathUri = ''
 
 const requestedMethods = new Map<number, string>
 
-export const request = (id : Boolean,method: string, clientRequest : unknown) : object | void=> {
+export const request = async (id : Boolean,method: string, clientRequest : unknown) : Promise<object | void> => {
 
         Log.writeLspServer('request method called with method ' + method)
-        if (!clientRequest)
-        {
-            //Log.write("was empty " + JSON.stringify(clientRequest))
-            return
-        }
+
+
         let message = ''
         if (id)
         {
@@ -41,9 +40,12 @@ export const request = (id : Boolean,method: string, clientRequest : unknown) : 
         const header = `Content-Length: ${headerLength}\r\n\r\n`
         childProcess.stdin.write(header + message)
         log.writeLspServer('Sending ' + header + message)
-
+        if (id)
+        {
+            Log.writeLspServer('is called once per id ' + requestId)
+        }
         if (id) {
-            return listenToAnswer(requestId)
+            return (await listenToAnswer(requestId))
         }
 
         return
@@ -51,43 +53,42 @@ export const request = (id : Boolean,method: string, clientRequest : unknown) : 
 }
 type validMethods = 'completion' | 'hover'
 let version = 2
-export const requestingMethods = (uri: string, method : validMethods, additionalVar : string[], content : string, lastWord : string) : object | void=> {
-    let fullText = createFullFakeFileContent(content, additionalVar)
-    //first line all variables
+export const requestingMethods = async (method : validMethods, content : string, line: number, character: number) : Promise<object | void> =>  {
+
     if (method == 'completion')
     {
-         //fs.writeFileSync(filePath, fullText)
-        //fs.close(x,null )
-        //fullText = 'cons'
         filePathUri = ''
         Log.writeLspServer('completion on requestingmethods called')
-        const indexLastWord = fullText.lastIndexOf(lastWord)
-        request(false, 'textDocument/didOpen', {
+        await request(false, 'textDocument/didOpen', {
             textDocument: {
                 uri: filePathUri,
                 languageId:"javascript",
                 version:version,
-                text: fullText
+                text: content
             }
         })
         Log.writeLspServer('trsing to give it out')
-        //Log.writeLspServer('is on line ' + (indexLastWord + lastWord.length))
-        //Log.writeLspServer('is on line ' + fullText[indexLastWord + lastWord.length - 1])
-        request(false, 'textDocument/didChange', {
+
+        await request(false, 'textDocument/didChange', {
             textDocument : {
                 uri: filePathUri,
                 version: version
             },
             contentChanges: [
                 {
-                    text: fullText
+                    text: content
                 }
             ]
         })
+        Log.writeLspServer(content.split('\n')[line])
+        Log.writeLspServer(character.toString())
+        let lastWord = getLastWord(content.split('\n')[line], character)
+        Log.writeLspServer('lastWord here')
+        Log.writeLspServer(lastWord)
         //version++;
         return request(true, 'textDocument/completion', {
             textDocument: {uri : filePathUri},
-            position:{line:0,character:fullText.length},
+            position:{line,character: character},
             context:{"triggerKind":1}
         })
 
@@ -96,96 +97,61 @@ export const requestingMethods = (uri: string, method : validMethods, additional
 }
 
 
-function listenToAnswer(id: number): object
+async function listenToAnswer(id: number): Promise<object>
 {
-    let output : object | null = null
-    let buffer = ''
-    let run = true
-    const prom : Promise<number> =  new Promise(resolve => {
-        Log.writeLspServer('waiting for answer')
-        childProcess.stdout.on('data', (data) => {
+    return  new Promise(resolve => {
+
+        let buffer = ''
+        const onData = (data : string) => {
             buffer += data
-            Log.writeLspServer(buffer)
-            //console.log(data.toString())
-            while (output == null) {
+            //Log.writeLspServer(buffer)
+            while (true) {
                 const match = buffer.match(/Content-Length: (\d+)\r\n/)
                 if (!match) break;
                 const contentLength = parseInt(match[1], 10)
                 const messageStart = buffer.indexOf('\r\n\r\n') + 4
                 if (buffer.length < messageStart + contentLength) break
-                run = false
                 const rawMessage = buffer.slice(messageStart, messageStart + contentLength)
-                const message = JSON.parse(rawMessage)
-                if (message.id === id) {
+                Log.write(buffer)
+                if (rawMessage.includes('id') ) {
                     Log.writeLspServer('found matchiong response')
+                    const message = JSON.parse(rawMessage)
                     Log.writeLspServer(message)
-                    output = message
-                    resolve(1)
+                    resolve(message)
+                    childProcess.stdout.off('data', onData)
+                    Log.writeLspServer('resolve did not stop it ')
+                    break
                 } else {
-                    Log.writeLspServer('differnet match')
+                    Log.writeLspServer('differnet match for id ')
+                    //Log.writeLspServer(message)
                 }
-                run = false
                 buffer = buffer.slice(messageStart + contentLength)
             }
-        });
-    })
-    prom.then(x => {
-        run = false
-    })
-    Log.writeLspServer('waiting for promise to resolve')
-   while (run)
-   {
-   }
-    Log.writeLspServer('promise resolved')
-    //@ts-ignore
-    return output
-
-}
-
-function createFullFakeFileContent(content : string, variables : string[])
-{
-    let varText = variables.map(variab => 'let ' + variab + ';').join(' ')
-    Log.writeLspServer('generated fake content ' + varText + content)
-    return varText + content;
-}
-
-
-
-export function createFakeTsFile(path: string, uri: string)
-{
-    /*
-    //file:///e%3A/fsd/test/tomas.txt
-    Log.writeLspServer('that has rto work')
-    Log.writeLspServer('creating file ' + uri)
-    filePathUri = uri + "/" + 'temp.ts'
-    filePath = path + '/' + 'temp.ts'
-        fs.writeFileSync(filePath, '');
-    request(null, 'textDocument/didOpen', {
-        textDocument: {
-            uri: filePathUri,
-            languageId:"typescript",
-            version:1,
-            text:" "
         }
+        Log.writeLspServer('waiting for answer')
+        childProcess.stdout.on('data', onData);
     })
 
-     */
+
+
 }
 
-export const initializeTypescriptServer = (receivedInitializedMessage : object) => {
+
+
+
+
+
+export const initializeTypescriptServer = async (receivedInitializedMessage : object) => {
     // @ts-ignore
     const receivedInitializedParams = receivedInitializedMessage.params as InitializeParams
     Log.writeLspServer(receivedInitializedMessage)
     childProcess = spawn(command, args);
-    createFakeTsFile(receivedInitializedParams.rootPath!, receivedInitializedParams.rootUri)
 
     childProcess.on('close', (code) => {
         Log.writeLspServer(`child process closed with code ${code}`)
-        //console.log(`child process exited with code ${code}`);
     });
 
     childProcess.on('exit', (code, signal) => {
-        //console.log(`child process exited with code ${code}, signal ${signal}`);
         Log.writeLspServer(`child process exited with code ${code}`)
     });
     receivedInitializedParams.processId = childProcess.pid!
@@ -195,7 +161,19 @@ export const initializeTypescriptServer = (receivedInitializedMessage : object) 
             logVerbosity: 'verbose'
         }
     }
-    request(true, 'initialize', receivedInitializedParams)
-    initializeMethodReaction({}  )
+    await request(true, 'initialize', receivedInitializedParams)
+    await request(false, 'initialized', {})
     Log.writeLspServer('initialized lsp server with params ' + JSON.stringify(receivedInitializedParams))
+}
+
+function getLastWord(wholeLine : string, character : number): string {
+    let spaceCharIndex = wholeLine.substring(0, character).lastIndexOf(' ')
+    let startTagIndex = wholeLine.substring(0, character).lastIndexOf('<')
+    let startIndex = Math.max(spaceCharIndex, startTagIndex)
+    let spaceCharIndexEnd = wholeLine.substring(character).indexOf(' ')
+    let endTagIndex = wholeLine.substring(character).indexOf('>');
+    if (endTagIndex == -1) endTagIndex = 900
+    if (spaceCharIndexEnd == -1) spaceCharIndexEnd = 900
+    let endIndex = Math.min(spaceCharIndexEnd, endTagIndex, wholeLine.length - character)
+    return wholeLine.substring(startIndex + 1, endIndex + character)
 }

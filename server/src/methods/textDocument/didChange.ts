@@ -23,7 +23,7 @@ export interface TextDocumentItem {
 
 
 
-export const didChange = (message : RequestMessage): null => {
+export const didChange = async (message : RequestMessage): Promise<null> => {
     const params = message.params as textDocument
     saveCheerioFile(params.contentChanges[0].text, params.textDocument.uri)
         allFiles.set(params.textDocument.uri, params.contentChanges[0].text)
