@@ -1,5 +1,0 @@
-Info 0    [22:18:18.112] Starting TS Server
-Info 1    [22:18:18.113] Version: 5.3.3
-Info 2    [22:18:18.113] Arguments: C:\Program Files\nodejs\node.exe e:\Coding\LSP\Final\AlpineLsp\test\node_modules\typescript\lib\tsserver.js --serverMode partialSemantic --useInferredProjectPerProjectRoot --disableAutomaticTypingAcquisition --cancellationPipeName C:\Users\Nico\AppData\Local\Temp\719a53bb85643d8f876168a858e2735e\tscancellation* --logVerbosity verbose --logFile e:\Coding\LSP\Final\AlpineLsp\test\.log\tsserver-log-OGBuQO\tsserver.log --locale en --validateDefaultNpmLocation --useNodeIpc
-Info 3    [22:18:18.113] Platform: win32 NodeVersion: v20.11.0 CaseSensitive: false
-Info 4    [22:18:18.113] ServerMode: 1 hasUnknownServerMode: undefined
