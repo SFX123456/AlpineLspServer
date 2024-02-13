@@ -1,0 +1,89 @@
+Info 0    [23:15:32.812] Starting TS Server
+Info 1    [23:15:32.813] Version: 5.3.3
+Info 2    [23:15:32.813] Arguments: C:\Program Files\nodejs\node.exe e:\Coding\LSP\Final\AlpineLsp\test\node_modules\typescript\lib\tsserver.js --useInferredProjectPerProjectRoot --cancellationPipeName C:\Users\Nico\AppData\Local\Temp\1e6c365f34f2f8d597ad485061677908\tscancellation* --logVerbosity verbose --logFile e:\Coding\LSP\Final\AlpineLsp\test\.log\tsserver-log-cGTi9m\tsserver.log --locale en --validateDefaultNpmLocation --useNodeIpc
+Info 3    [23:15:32.813] Platform: win32 NodeVersion: v20.11.0 CaseSensitive: false
+Info 4    [23:15:32.813] ServerMode: undefined hasUnknownServerMode: undefined
+Info 5    [23:15:32.821] Binding...
+Info 6    [23:15:32.834] request:
+    {
+      "seq": 0,
+      "type": "request",
+      "command": "configure",
+      "arguments": {
+        "formatOptions": {
+          "newLineCharacter": "\n"
+        },
+        "preferences": {
+          "allowIncompleteCompletions": true,
+          "allowRenameOfImportPath": true,
+          "allowTextChangesInNewFiles": true,
+          "disableLineTextInReferences": true,
+          "disableSuggestions": false,
+          "displayPartsForJSDoc": true,
+          "excludeLibrarySymbolsInNavTo": true,
+          "generateReturnInDocTemplate": true,
+          "importModuleSpecifierEnding": "auto",
+          "importModuleSpecifierPreference": "shortest",
+          "includeAutomaticOptionalChainCompletions": true,
+          "includeCompletionsForImportStatements": true,
+          "includeCompletionsForModuleExports": true,
+          "includeCompletionsWithClassMemberSnippets": true,
+          "includeCompletionsWithInsertText": true,
+          "includeCompletionsWithObjectLiteralMethodSnippets": true,
+          "includeCompletionsWithSnippetText": true,
+          "includeInlayEnumMemberValueHints": false,
+          "includeInlayFunctionLikeReturnTypeHints": false,
+          "includeInlayFunctionParameterTypeHints": false,
+          "includeInlayParameterNameHints": "none",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": false,
+          "includeInlayVariableTypeHints": false,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includePackageJsonAutoImports": "auto",
+          "interactiveInlayHints": true,
+          "jsxAttributeCompletionStyle": "auto",
+          "lazyConfiguredProjectsFromExternalProject": false,
+          "organizeImportsAccentCollation": true,
+          "organizeImportsCaseFirst": false,
+          "organizeImportsCollation": "ordinal",
+          "organizeImportsCollationLocale": "en",
+          "organizeImportsIgnoreCase": "auto",
+          "organizeImportsNumericCollation": false,
+          "providePrefixAndSuffixTextForRename": true,
+          "provideRefactorNotApplicableReason": true,
+          "quotePreference": "auto",
+          "useLabelDetailsInCompletionEntries": true
+        }
+      }
+    }
+Info 7    [23:15:32.834] Format host information updated
+Info 8    [23:15:32.835] response:
+    {"seq":0,"type":"response","command":"configure","request_seq":0,"success":true}
+Perf 9    [23:15:32.835] 0::configure: async elapsed time (in milliseconds) 1.4499
+Info 10   [23:15:32.836] request:
+    {
+      "seq": 1,
+      "type": "request",
+      "command": "compilerOptionsForInferredProjects",
+      "arguments": {
+        "options": {
+          "module": "ESNext",
+          "moduleResolution": "Node",
+          "target": "ES2020",
+          "jsx": "React",
+          "allowImportingTsExtensions": true,
+          "strictNullChecks": true,
+          "strictFunctionTypes": true,
+          "sourceMap": true,
+          "allowJs": true,
+          "allowNonTsExtensions": true,
+          "allowSyntheticDefaultImports": true,
+          "resolveJsonModule": true
+        }
+      }
+    }
+Perf 11   [23:15:32.836] 1::compilerOptionsForInferredProjects: elapsed time (in milliseconds) 0.4672
+Info 12   [23:15:32.836] response:
+    {"seq":0,"type":"response","command":"compilerOptionsForInferredProjects","request_seq":1,"success":true,"body":true}
+Info 13   [23:15:32.837] event:
+    {"seq":0,"type":"event","event":"typingsInstallerPid","body":{"pid":13660}}

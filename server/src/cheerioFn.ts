@@ -4,16 +4,14 @@ import {PageHtml} from "./HtmlParsing/PageHtml";
 import log from "./log";
 import Log from "./log";
 import {Cheerio, Element} from "cheerio";
-import {func} from "vscode-languageserver/lib/common/utils/is";
 
 export function saveCheerioFile(text: string, uri : string)
 {
-    log.write('sparsing html ')
     let contentLinesOr = text.split("\n")
     let contentLines = addLineAttributes(contentLinesOr)
     const finalStr = contentLines.join('\n')
     const cheer = cheerio.load(finalStr)
-    const htmlPage = new PageHtml(cheer)
+    const htmlPage = new PageHtml(cheer, uri)
     allHtml.set(uri, htmlPage)
 }
 function addLineAttributes(contentLines : string[]) : string[]
@@ -52,9 +50,8 @@ export function findAccordingRow(row : number, htmlPage : PageHtml)
 export function getParentAndOwnVariables(node : Cheerio<Element>): string[]
 {
     const variables : string[] = []
-    let run = true;
 
-    while (run)
+    while (true)
     {
         const data = node[0].attribs["x-data"]
         Log.write("checking if line has data" + data)
@@ -70,12 +67,6 @@ export function getParentAndOwnVariables(node : Cheerio<Element>): string[]
                     .trim()
                 variables.push(key)
             })
-
-            Log.write("found something in row")
-        }
-        else
-        {
-            Log.write("found nothing in row")
         }
 
         const parentNodeArr= node.parent()
@@ -85,11 +76,15 @@ export function getParentAndOwnVariables(node : Cheerio<Element>): string[]
         }
         else
         {
-            run = false
+            break
         }
     }
     return variables;
 }
+
+
+
+
 
 
 

@@ -1,0 +1,845 @@
+Info 0    [18:11:14.415] Starting TS Server
+Info 1    [18:11:14.416] Version: 5.3.3
+Info 2    [18:11:14.416] Arguments: C:\Program Files\nodejs\node.exe e:\Coding\LSP\Final\AlpineLsp\test\node_modules\typescript\lib\tsserver.js --serverMode partialSemantic --useInferredProjectPerProjectRoot --disableAutomaticTypingAcquisition --cancellationPipeName C:\Users\Nico\AppData\Local\Temp\07c167deff44ac58d5aef50cb54e231b\tscancellation* --logVerbosity verbose --logFile e:\Coding\LSP\Final\AlpineLsp\test\.log\tsserver-log-y41AnE\tsserver.log --locale en --validateDefaultNpmLocation --useNodeIpc
+Info 3    [18:11:14.416] Platform: win32 NodeVersion: v20.11.0 CaseSensitive: false
+Info 4    [18:11:14.417] ServerMode: 1 hasUnknownServerMode: undefined
+Info 5    [18:11:14.429] request:
+    {
+      "seq": 0,
+      "type": "request",
+      "command": "configure",
+      "arguments": {
+        "formatOptions": {
+          "newLineCharacter": "\n"
+        },
+        "preferences": {
+          "allowIncompleteCompletions": true,
+          "allowRenameOfImportPath": true,
+          "allowTextChangesInNewFiles": true,
+          "disableLineTextInReferences": true,
+          "disableSuggestions": false,
+          "displayPartsForJSDoc": true,
+          "excludeLibrarySymbolsInNavTo": true,
+          "generateReturnInDocTemplate": true,
+          "importModuleSpecifierEnding": "auto",
+          "importModuleSpecifierPreference": "shortest",
+          "includeAutomaticOptionalChainCompletions": true,
+          "includeCompletionsForImportStatements": true,
+          "includeCompletionsForModuleExports": true,
+          "includeCompletionsWithClassMemberSnippets": true,
+          "includeCompletionsWithInsertText": true,
+          "includeCompletionsWithObjectLiteralMethodSnippets": true,
+          "includeCompletionsWithSnippetText": true,
+          "includeInlayEnumMemberValueHints": false,
+          "includeInlayFunctionLikeReturnTypeHints": false,
+          "includeInlayFunctionParameterTypeHints": false,
+          "includeInlayParameterNameHints": "none",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": false,
+          "includeInlayVariableTypeHints": false,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includePackageJsonAutoImports": "auto",
+          "interactiveInlayHints": true,
+          "jsxAttributeCompletionStyle": "auto",
+          "lazyConfiguredProjectsFromExternalProject": false,
+          "organizeImportsAccentCollation": true,
+          "organizeImportsCaseFirst": false,
+          "organizeImportsCollation": "ordinal",
+          "organizeImportsCollationLocale": "en",
+          "organizeImportsIgnoreCase": "auto",
+          "organizeImportsNumericCollation": false,
+          "providePrefixAndSuffixTextForRename": true,
+          "provideRefactorNotApplicableReason": true,
+          "quotePreference": "auto",
+          "useLabelDetailsInCompletionEntries": true
+        }
+      }
+    }
+Info 6    [18:11:14.429] Format host information updated
+Info 7    [18:11:14.430] response:
+    {"seq":0,"type":"response","command":"configure","request_seq":0,"success":true}
+Perf 8    [18:11:14.430] 0::configure: async elapsed time (in milliseconds) 1.2589
+Info 9    [18:11:14.430] request:
+    {
+      "seq": 1,
+      "type": "request",
+      "command": "open",
+      "arguments": {
+        "file": "\\",
+        "fileContent": "",
+        "scriptKindName": "JS"
+      }
+    }
+Info 10   [18:11:14.436] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 11   [18:11:15.163] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 1 structureChanged: true structureIsReused:: Not Elapsed: 726.7839999999999ms
+Info 12   [18:11:15.164] Project '/dev/null/inferredProject1*' (Inferred)
+Info 13   [18:11:15.165] 	Files (8)
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts
+	/
+
+
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts
+	  Default library for target 'es5'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts
+	  Library referenced via 'es5' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts
+	  Library referenced via 'dom' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts
+	  Library referenced via 'webworker.importscripts' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts
+	  Library referenced via 'scripthost' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts
+	  Library referenced via 'decorators' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts
+	  Library referenced via 'decorators.legacy' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts'
+	
+	  Root file specified for compilation
+
+Info 14   [18:11:15.166] -----------------------------------------------
+Info 15   [18:11:15.166] Project '/dev/null/inferredProject1*' (Inferred)
+Info 15   [18:11:15.166] 	Files (8)
+
+Info 15   [18:11:15.166] -----------------------------------------------
+Info 15   [18:11:15.166] Open files: 
+Info 15   [18:11:15.166] 	FileName: / ProjectRootPath: undefined
+Info 15   [18:11:15.166] 		Projects: /dev/null/inferredProject1*
+Perf 15   [18:11:15.167] 1::open: async elapsed time (in milliseconds) 736.3646
+Info 16   [18:11:16.997] request:
+    {
+      "seq": 2,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 1,
+        "endOffset": 1,
+        "insertString": "\n\n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                       \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 17   [18:11:16.998] 2::change: async elapsed time (in milliseconds) 1.9391
+Info 18   [18:11:19.391] request:
+    {
+      "seq": 3,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 512,
+        "endOffset": 134,
+        "insertString": "\n\n\n\n                      $ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nvar $el;var $refs;var $store;var $watch;var $dispatch;var $nextTick;var $root;var $data;var $id;var $justTestomg;var test; var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 19   [18:11:19.394] 3::change: async elapsed time (in milliseconds) 3.3777
+Info 20   [18:11:19.395] request:
+    {
+      "seq": 4,
+      "type": "request",
+      "command": "configure",
+      "arguments": {
+        "file": "\\",
+        "formatOptions": {
+          "newLineCharacter": "\n"
+        },
+        "preferences": {
+          "allowIncompleteCompletions": true,
+          "allowRenameOfImportPath": true,
+          "allowTextChangesInNewFiles": true,
+          "autoImportFileExcludePatterns": [],
+          "disableLineTextInReferences": true,
+          "disableSuggestions": false,
+          "displayPartsForJSDoc": true,
+          "excludeLibrarySymbolsInNavTo": true,
+          "generateReturnInDocTemplate": true,
+          "importModuleSpecifierEnding": "auto",
+          "importModuleSpecifierPreference": "shortest",
+          "includeAutomaticOptionalChainCompletions": true,
+          "includeCompletionsForImportStatements": true,
+          "includeCompletionsForModuleExports": true,
+          "includeCompletionsWithClassMemberSnippets": true,
+          "includeCompletionsWithInsertText": true,
+          "includeCompletionsWithObjectLiteralMethodSnippets": true,
+          "includeCompletionsWithSnippetText": true,
+          "includeInlayEnumMemberValueHints": false,
+          "includeInlayFunctionLikeReturnTypeHints": false,
+          "includeInlayFunctionParameterTypeHints": false,
+          "includeInlayParameterNameHints": "none",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": false,
+          "includeInlayVariableTypeHints": false,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includePackageJsonAutoImports": "auto",
+          "interactiveInlayHints": true,
+          "jsxAttributeCompletionStyle": "auto",
+          "lazyConfiguredProjectsFromExternalProject": false,
+          "organizeImportsAccentCollation": true,
+          "organizeImportsCaseFirst": false,
+          "organizeImportsCollation": "ordinal",
+          "organizeImportsCollationLocale": "en",
+          "organizeImportsIgnoreCase": "auto",
+          "organizeImportsNumericCollation": false,
+          "providePrefixAndSuffixTextForRename": true,
+          "provideRefactorNotApplicableReason": true,
+          "quotePreference": "auto",
+          "useLabelDetailsInCompletionEntries": true
+        }
+      }
+    }
+Info 21   [18:11:19.395] Host configuration update for file \
+Info 22   [18:11:19.395] response:
+    {"seq":0,"type":"response","command":"configure","request_seq":4,"success":true}
+Perf 23   [18:11:19.396] 4::configure: async elapsed time (in milliseconds) 0.7320
+Info 24   [18:11:19.684] request:
+    {
+      "seq": 5,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 505,
+        "endOffset": 256,
+        "insertString": "\n\n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $ \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 25   [18:11:19.684] 5::change: async elapsed time (in milliseconds) 0.8510
+Info 26   [18:45:20.149] request:
+    {
+      "seq": 6,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 512,
+        "endOffset": 134,
+        "insertString": "\n\n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 27   [18:45:20.150] 6::change: async elapsed time (in milliseconds) 1.2412
+Info 28   [18:45:25.863] request:
+    {
+      "seq": 7,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 514,
+        "endOffset": 134,
+        "insertString": "\n\n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 29   [18:45:25.864] 7::change: async elapsed time (in milliseconds) 0.9609
+Info 30   [18:45:26.181] request:
+    {
+      "seq": 8,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 516,
+        "endOffset": 134,
+        "insertString": "\n\n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 31   [18:45:26.181] 8::change: async elapsed time (in milliseconds) 0.5135
+Info 32   [20:13:03.214] request:
+    {
+      "seq": 9,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 518,
+        "endOffset": 134,
+        "insertString": "\n\n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 33   [20:13:03.214] 9::change: async elapsed time (in milliseconds) 0.8006
+Info 34   [20:13:08.122] request:
+    {
+      "seq": 10,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 518,
+        "endOffset": 134,
+        "insertString": "\n\n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 35   [20:13:08.123] 10::change: async elapsed time (in milliseconds) 0.5319
+Info 36   [20:13:16.801] request:
+    {
+      "seq": 11,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 518,
+        "endOffset": 134,
+        "insertString": "\n\n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 37   [20:13:16.802] 11::change: async elapsed time (in milliseconds) 0.4969
+Info 38   [20:13:17.232] request:
+    {
+      "seq": 12,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 518,
+        "endOffset": 134,
+        "insertString": "\n\n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 39   [20:13:17.232] 12::change: async elapsed time (in milliseconds) 0.4395
+Info 40   [20:13:22.283] request:
+    {
+      "seq": 13,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 518,
+        "endOffset": 134,
+        "insertString": "\n                  foo \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 41   [20:13:22.285] 13::change: async elapsed time (in milliseconds) 1.6300
+Info 42   [20:13:24.544] request:
+    {
+      "seq": 14,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 518,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 43   [20:13:24.544] 14::change: async elapsed time (in milliseconds) 0.3652
+Info 44   [20:13:45.317] request:
+    {
+      "seq": 15,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 518,
+        "endOffset": 134,
+        "insertString": "\n                  $ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nvar $el;var $refs;var $store;var $watch;var $dispatch;var $nextTick;var $root;var $data;var $id;var $justTestomg;var test; var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 45   [20:13:45.318] 15::change: async elapsed time (in milliseconds) 0.4487
+Info 46   [20:13:45.716] request:
+    {
+      "seq": 16,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 502,
+        "endOffset": 256,
+        "insertString": "\n                  $ \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 47   [20:13:45.716] 16::change: async elapsed time (in milliseconds) 0.3764
+Info 48   [20:13:52.196] request:
+    {
+      "seq": 17,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 518,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 49   [20:13:52.197] 17::change: async elapsed time (in milliseconds) 0.3525
+Info 50   [20:13:53.463] request:
+    {
+      "seq": 18,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 518,
+        "endOffset": 134,
+        "insertString": "\n                  t \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nvar $el;var $refs;var $store;var $watch;var $dispatch;var $nextTick;var $root;var $data;var $id;var $justTestomg;var test; var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 51   [20:13:53.463] 18::change: async elapsed time (in milliseconds) 0.3219
+Info 52   [20:13:53.725] request:
+    {
+      "seq": 19,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 502,
+        "endOffset": 256,
+        "insertString": "\n                  t \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 53   [20:13:53.725] 19::change: async elapsed time (in milliseconds) 0.3815
+Info 54   [20:14:01.371] request:
+    {
+      "seq": 20,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 518,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 55   [20:14:01.372] 20::change: async elapsed time (in milliseconds) 0.2955
+Info 56   [20:14:37.917] request:
+    {
+      "seq": 21,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 518,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54\r\n        \r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 57   [20:14:37.917] 21::change: async elapsed time (in milliseconds) 0.2601
+Info 58   [20:14:45.402] request:
+    {
+      "seq": 22,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 519,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54\r\n        k\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 59   [20:14:45.402] 22::change: async elapsed time (in milliseconds) 0.2593
+Info 60   [20:14:48.997] request:
+    {
+      "seq": 23,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 519,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54\r\n    \r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 61   [20:14:48.997] 23::change: async elapsed time (in milliseconds) 0.3071
+Info 62   [20:14:49.289] request:
+    {
+      "seq": 24,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 519,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54\r\n    \r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 63   [20:14:49.290] 24::change: async elapsed time (in milliseconds) 0.2783
+Info 64   [20:14:50.303] request:
+    {
+      "seq": 25,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 519,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54\r\n\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 65   [20:14:50.303] 25::change: async elapsed time (in milliseconds) 0.3578
+Info 66   [20:14:50.769] request:
+    {
+      "seq": 26,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 519,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 67   [20:14:50.769] 26::change: async elapsed time (in milliseconds) 0.2705
+Info 68   [20:14:52.356] request:
+    {
+      "seq": 27,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 518,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 69   [20:14:52.356] 27::change: async elapsed time (in milliseconds) 0.2843
+Info 70   [20:14:53.316] request:
+    {
+      "seq": 28,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 518,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54; \r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 71   [20:14:53.317] 28::change: async elapsed time (in milliseconds) 0.4857
+Info 72   [20:14:54.079] request:
+    {
+      "seq": 29,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 518,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54; k\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 73   [20:14:54.080] 29::change: async elapsed time (in milliseconds) 0.3658
+Info 74   [20:14:55.788] request:
+    {
+      "seq": 30,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 518,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54; \r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 75   [20:14:55.789] 30::change: async elapsed time (in milliseconds) 0.2471
+Info 76   [20:14:56.255] request:
+    {
+      "seq": 31,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 518,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54; \r\n        \r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 77   [20:14:56.255] 31::change: async elapsed time (in milliseconds) 0.2576
+Info 78   [20:14:57.111] request:
+    {
+      "seq": 32,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 519,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54; \r\n        k\r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 79   [20:14:57.111] 32::change: async elapsed time (in milliseconds) 0.2530
+Info 80   [20:14:57.799] request:
+    {
+      "seq": 33,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 519,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54; \r\n        \r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 81   [20:14:57.799] 33::change: async elapsed time (in milliseconds) 0.3420
+Info 82   [20:15:11.982] request:
+    {
+      "seq": 34,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 519,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54; \r\n         \r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 83   [20:15:11.982] 34::change: async elapsed time (in milliseconds) 0.3853
+Info 84   [20:47:29.256] request:
+    {
+      "seq": 35,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 519,
+        "endOffset": 134,
+        "insertString": "\n                    \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54; \r\n         \r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 85   [20:47:29.256] 35::change: async elapsed time (in milliseconds) 0.4369
+Info 86   [20:47:29.602] request:
+    {
+      "seq": 36,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 519,
+        "endOffset": 134,
+        "insertString": "\n                      \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54; \r\n         \r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 87   [20:47:29.603] 36::change: async elapsed time (in milliseconds) 0.3187
+Info 88   [20:47:31.372] request:
+    {
+      "seq": 37,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 519,
+        "endOffset": 134,
+        "insertString": "\n                        \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54; \r\n         \r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 89   [20:47:31.372] 37::change: async elapsed time (in milliseconds) 0.2162
+Info 90   [20:47:31.736] request:
+    {
+      "seq": 38,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 519,
+        "endOffset": 134,
+        "insertString": "\n                           \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54; \r\n         \r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 91   [20:47:31.736] 38::change: async elapsed time (in milliseconds) 0.2319
+Info 92   [20:47:48.017] request:
+    {
+      "seq": 39,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 519,
+        "endOffset": 134,
+        "insertString": "\n                     \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54; \r\n         \r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 93   [20:47:48.018] 39::change: async elapsed time (in milliseconds) 0.2078
+Info 94   [20:47:48.617] request:
+    {
+      "seq": 40,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 519,
+        "endOffset": 134,
+        "insertString": "\n                    \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54; \r\n         \r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 95   [20:47:48.617] 40::change: async elapsed time (in milliseconds) 0.2527
+Info 96   [20:47:49.135] request:
+    {
+      "seq": 41,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 519,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54; \r\n         \r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 97   [20:47:49.135] 41::change: async elapsed time (in milliseconds) 0.2996
+Info 98   [20:48:00.382] request:
+    {
+      "seq": 42,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 519,
+        "endOffset": 134,
+        "insertString": "\n                 c  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nvar $el;var $refs;var $store;var $watch;var $dispatch;var $nextTick;var $root;var $data;var $id;var $justTestomg;var test; var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 99   [20:48:00.382] 42::change: async elapsed time (in milliseconds) 0.2550
+Info 100  [20:48:00.677] request:
+    {
+      "seq": 43,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 502,
+        "endOffset": 256,
+        "insertString": "\n                 c  \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54; \r\n         \r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 101  [20:48:00.677] 43::change: async elapsed time (in milliseconds) 0.2864
+Info 102  [20:48:11.176] request:
+    {
+      "seq": 44,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 519,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54; \r\n         \r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 103  [20:48:11.176] 44::change: async elapsed time (in milliseconds) 0.2787
+Info 104  [20:48:14.375] request:
+    {
+      "seq": 45,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 519,
+        "endOffset": 134,
+        "insertString": "\n                 t  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nvar $el;var $refs;var $store;var $watch;var $dispatch;var $nextTick;var $root;var $data;var $id;var $justTestomg;var test; var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 105  [20:48:14.375] 45::change: async elapsed time (in milliseconds) 0.2313
+Info 106  [20:48:14.666] request:
+    {
+      "seq": 46,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 502,
+        "endOffset": 256,
+        "insertString": "\n                 t  \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54; \r\n         \r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 107  [20:48:14.666] 46::change: async elapsed time (in milliseconds) 0.2435
+Info 108  [20:48:15.897] request:
+    {
+      "seq": 47,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 519,
+        "endOffset": 134,
+        "insertString": "\n                   \n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54; \r\n         \r\n    }) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 109  [20:48:15.897] 47::change: async elapsed time (in milliseconds) 0.2015

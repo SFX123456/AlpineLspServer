@@ -1,0 +1,410 @@
+Info 0    [19:39:54.528] Starting TS Server
+Info 1    [19:39:54.530] Version: 5.3.3
+Info 2    [19:39:54.530] Arguments: C:\Program Files\nodejs\node.exe e:\Coding\LSP\Final\AlpineLsp\test\node_modules\typescript\lib\tsserver.js --serverMode partialSemantic --useInferredProjectPerProjectRoot --disableAutomaticTypingAcquisition --cancellationPipeName C:\Users\Nico\AppData\Local\Temp\58134fe0aca678bae147bc5a4fc75799\tscancellation* --logVerbosity verbose --logFile e:\Coding\LSP\Final\AlpineLsp\test\.log\tsserver-log-WXH0NE\tsserver.log --locale en --validateDefaultNpmLocation --useNodeIpc
+Info 3    [19:39:54.530] Platform: win32 NodeVersion: v20.11.0 CaseSensitive: false
+Info 4    [19:39:54.530] ServerMode: 1 hasUnknownServerMode: undefined
+Info 5    [19:39:54.543] request:
+    {
+      "seq": 0,
+      "type": "request",
+      "command": "configure",
+      "arguments": {
+        "formatOptions": {
+          "newLineCharacter": "\n"
+        },
+        "preferences": {
+          "allowIncompleteCompletions": true,
+          "allowRenameOfImportPath": true,
+          "allowTextChangesInNewFiles": true,
+          "disableLineTextInReferences": true,
+          "disableSuggestions": false,
+          "displayPartsForJSDoc": true,
+          "excludeLibrarySymbolsInNavTo": true,
+          "generateReturnInDocTemplate": true,
+          "importModuleSpecifierEnding": "auto",
+          "importModuleSpecifierPreference": "shortest",
+          "includeAutomaticOptionalChainCompletions": true,
+          "includeCompletionsForImportStatements": true,
+          "includeCompletionsForModuleExports": true,
+          "includeCompletionsWithClassMemberSnippets": true,
+          "includeCompletionsWithInsertText": true,
+          "includeCompletionsWithObjectLiteralMethodSnippets": true,
+          "includeCompletionsWithSnippetText": true,
+          "includeInlayEnumMemberValueHints": false,
+          "includeInlayFunctionLikeReturnTypeHints": false,
+          "includeInlayFunctionParameterTypeHints": false,
+          "includeInlayParameterNameHints": "none",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": false,
+          "includeInlayVariableTypeHints": false,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includePackageJsonAutoImports": "auto",
+          "interactiveInlayHints": true,
+          "jsxAttributeCompletionStyle": "auto",
+          "lazyConfiguredProjectsFromExternalProject": false,
+          "organizeImportsAccentCollation": true,
+          "organizeImportsCaseFirst": false,
+          "organizeImportsCollation": "ordinal",
+          "organizeImportsCollationLocale": "en",
+          "organizeImportsIgnoreCase": "auto",
+          "organizeImportsNumericCollation": false,
+          "providePrefixAndSuffixTextForRename": true,
+          "provideRefactorNotApplicableReason": true,
+          "quotePreference": "auto",
+          "useLabelDetailsInCompletionEntries": true
+        }
+      }
+    }
+Info 6    [19:39:54.543] Format host information updated
+Info 7    [19:39:54.544] response:
+    {"seq":0,"type":"response","command":"configure","request_seq":0,"success":true}
+Perf 8    [19:39:54.544] 0::configure: async elapsed time (in milliseconds) 1.4133
+Info 9    [19:39:54.545] request:
+    {
+      "seq": 1,
+      "type": "request",
+      "command": "open",
+      "arguments": {
+        "file": "\\",
+        "fileContent": "",
+        "scriptKindName": "JS"
+      }
+    }
+Info 10   [19:39:54.551] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 11   [19:39:55.226] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 1 structureChanged: true structureIsReused:: Not Elapsed: 674.7759000000001ms
+Info 12   [19:39:55.226] Project '/dev/null/inferredProject1*' (Inferred)
+Info 13   [19:39:55.228] 	Files (8)
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts
+	/
+
+
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts
+	  Default library for target 'es5'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts
+	  Library referenced via 'es5' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts
+	  Library referenced via 'dom' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts
+	  Library referenced via 'webworker.importscripts' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts
+	  Library referenced via 'scripthost' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts
+	  Library referenced via 'decorators' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts
+	  Library referenced via 'decorators.legacy' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts'
+	
+	  Root file specified for compilation
+
+Info 14   [19:39:55.228] -----------------------------------------------
+Info 15   [19:39:55.228] Project '/dev/null/inferredProject1*' (Inferred)
+Info 15   [19:39:55.228] 	Files (8)
+
+Info 15   [19:39:55.228] -----------------------------------------------
+Info 15   [19:39:55.228] Open files: 
+Info 15   [19:39:55.228] 	FileName: / ProjectRootPath: undefined
+Info 15   [19:39:55.229] 		Projects: /dev/null/inferredProject1*
+Perf 15   [19:39:55.229] 1::open: async elapsed time (in milliseconds) 684.0853
+Info 16   [19:40:19.505] request:
+    {
+      "seq": 2,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 1,
+        "endOffset": 1,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;\n             c \n"
+      }
+    }
+Perf 17   [19:40:19.506] 2::change: async elapsed time (in milliseconds) 0.9914
+Info 18   [19:40:19.507] request:
+    {
+      "seq": 3,
+      "type": "request",
+      "command": "configure",
+      "arguments": {
+        "file": "\\",
+        "formatOptions": {
+          "newLineCharacter": "\n"
+        },
+        "preferences": {
+          "allowIncompleteCompletions": true,
+          "allowRenameOfImportPath": true,
+          "allowTextChangesInNewFiles": true,
+          "autoImportFileExcludePatterns": [],
+          "disableLineTextInReferences": true,
+          "disableSuggestions": false,
+          "displayPartsForJSDoc": true,
+          "excludeLibrarySymbolsInNavTo": true,
+          "generateReturnInDocTemplate": true,
+          "importModuleSpecifierEnding": "auto",
+          "importModuleSpecifierPreference": "shortest",
+          "includeAutomaticOptionalChainCompletions": true,
+          "includeCompletionsForImportStatements": true,
+          "includeCompletionsForModuleExports": true,
+          "includeCompletionsWithClassMemberSnippets": true,
+          "includeCompletionsWithInsertText": true,
+          "includeCompletionsWithObjectLiteralMethodSnippets": true,
+          "includeCompletionsWithSnippetText": true,
+          "includeInlayEnumMemberValueHints": false,
+          "includeInlayFunctionLikeReturnTypeHints": false,
+          "includeInlayFunctionParameterTypeHints": false,
+          "includeInlayParameterNameHints": "none",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": false,
+          "includeInlayVariableTypeHints": false,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includePackageJsonAutoImports": "auto",
+          "interactiveInlayHints": true,
+          "jsxAttributeCompletionStyle": "auto",
+          "lazyConfiguredProjectsFromExternalProject": false,
+          "organizeImportsAccentCollation": true,
+          "organizeImportsCaseFirst": false,
+          "organizeImportsCollation": "ordinal",
+          "organizeImportsCollationLocale": "en",
+          "organizeImportsIgnoreCase": "auto",
+          "organizeImportsNumericCollation": false,
+          "providePrefixAndSuffixTextForRename": true,
+          "provideRefactorNotApplicableReason": true,
+          "quotePreference": "auto",
+          "useLabelDetailsInCompletionEntries": true
+        }
+      }
+    }
+Info 19   [19:40:19.507] Host configuration update for file \
+Info 20   [19:40:19.507] response:
+    {"seq":0,"type":"response","command":"configure","request_seq":3,"success":true}
+Perf 21   [19:40:19.507] 3::configure: async elapsed time (in milliseconds) 0.6746
+Info 22   [19:40:19.702] request:
+    {
+      "seq": 4,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 3,
+        "endOffset": 1,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;\n             co \n"
+      }
+    }
+Perf 23   [19:40:19.702] 4::change: async elapsed time (in milliseconds) 0.6188
+Info 24   [19:40:20.043] request:
+    {
+      "seq": 5,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 3,
+        "endOffset": 1,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;\n             con \n"
+      }
+    }
+Perf 25   [19:40:20.044] 5::change: async elapsed time (in milliseconds) 1.2375
+Info 26   [19:40:22.488] request:
+    {
+      "seq": 6,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 3,
+        "endOffset": 1,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;\n             console. \n"
+      }
+    }
+Perf 27   [19:40:22.488] 6::change: async elapsed time (in milliseconds) 0.2262
+Info 28   [19:40:22.742] request:
+    {
+      "seq": 7,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 3,
+        "endOffset": 1,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;\n             console.l \n"
+      }
+    }
+Perf 29   [19:40:22.742] 7::change: async elapsed time (in milliseconds) 0.4466
+Info 30   [19:40:22.958] request:
+    {
+      "seq": 8,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 3,
+        "endOffset": 1,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;\n             console.lo \n"
+      }
+    }
+Perf 31   [19:40:22.958] 8::change: async elapsed time (in milliseconds) 0.4860
+Info 32   [19:40:26.492] request:
+    {
+      "seq": 9,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 3,
+        "endOffset": 1,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;\n             console.log('t) \n"
+      }
+    }
+Perf 33   [19:40:26.492] 9::change: async elapsed time (in milliseconds) 0.2768
+Info 34   [19:40:26.538] request:
+    {
+      "seq": 10,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 3,
+        "endOffset": 1,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;\n             console.log('te) \n"
+      }
+    }
+Perf 35   [19:40:26.538] 10::change: async elapsed time (in milliseconds) 0.3699
+Info 36   [19:40:26.725] request:
+    {
+      "seq": 11,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 3,
+        "endOffset": 1,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;\n             console.log('tes) \n"
+      }
+    }
+Perf 37   [19:40:26.726] 11::change: async elapsed time (in milliseconds) 0.3672
+Info 38   [19:40:26.823] request:
+    {
+      "seq": 12,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 3,
+        "endOffset": 1,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;\n             console.log('test) \n"
+      }
+    }
+Perf 39   [19:40:26.823] 12::change: async elapsed time (in milliseconds) 0.4157
+Info 40   [19:44:25.646] request:
+    {
+      "seq": 13,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 3,
+        "endOffset": 1,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;\n\n\n               l \n"
+      }
+    }
+Perf 41   [19:44:25.646] 13::change: async elapsed time (in milliseconds) 0.4258
+Info 42   [19:44:25.756] request:
+    {
+      "seq": 14,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 5,
+        "endOffset": 1,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;\n\n\n               le \n"
+      }
+    }
+Perf 43   [19:44:25.757] 14::change: async elapsed time (in milliseconds) 0.3364
+Info 44   [19:44:25.962] request:
+    {
+      "seq": 15,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 5,
+        "endOffset": 1,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;\n\n\n               let \n"
+      }
+    }
+Perf 45   [19:44:25.962] 15::change: async elapsed time (in milliseconds) 0.4568
+Info 46   [19:44:26.301] request:
+    {
+      "seq": 16,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 5,
+        "endOffset": 1,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;\n\n\n               let t \n"
+      }
+    }
+Perf 47   [19:44:26.302] 16::change: async elapsed time (in milliseconds) 0.2394
+Info 48   [19:44:29.064] request:
+    {
+      "seq": 17,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 5,
+        "endOffset": 1,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;\n\n\n               let test; t \n"
+      }
+    }
+Perf 49   [19:44:29.064] 17::change: async elapsed time (in milliseconds) 0.2230
+Info 50   [19:44:29.184] request:
+    {
+      "seq": 18,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 5,
+        "endOffset": 1,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;\n\n\n               let test; te \n"
+      }
+    }
+Perf 51   [19:44:29.185] 18::change: async elapsed time (in milliseconds) 0.2853

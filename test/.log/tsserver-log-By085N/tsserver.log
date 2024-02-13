@@ -1,0 +1,112 @@
+Info 0    [00:28:51.028] Starting TS Server
+Info 1    [00:28:51.030] Version: 5.3.3
+Info 2    [00:28:51.030] Arguments: C:\Program Files\nodejs\node.exe e:\Coding\LSP\Final\AlpineLsp\test\node_modules\typescript\lib\tsserver.js --serverMode partialSemantic --useInferredProjectPerProjectRoot --disableAutomaticTypingAcquisition --cancellationPipeName C:\Users\Nico\AppData\Local\Temp\adb5e1aa06319a3b300ebe8ad3e0f35b\tscancellation* --logVerbosity verbose --logFile e:\Coding\LSP\Final\AlpineLsp\test\.log\tsserver-log-By085N\tsserver.log --locale en --validateDefaultNpmLocation --useNodeIpc
+Info 3    [00:28:51.030] Platform: win32 NodeVersion: v20.11.0 CaseSensitive: false
+Info 4    [00:28:51.030] ServerMode: 1 hasUnknownServerMode: undefined
+Info 5    [00:28:51.045] request:
+    {
+      "seq": 0,
+      "type": "request",
+      "command": "configure",
+      "arguments": {
+        "formatOptions": {
+          "newLineCharacter": "\n"
+        },
+        "preferences": {
+          "allowIncompleteCompletions": true,
+          "allowRenameOfImportPath": true,
+          "allowTextChangesInNewFiles": true,
+          "disableLineTextInReferences": true,
+          "disableSuggestions": false,
+          "displayPartsForJSDoc": true,
+          "excludeLibrarySymbolsInNavTo": true,
+          "generateReturnInDocTemplate": true,
+          "importModuleSpecifierEnding": "auto",
+          "importModuleSpecifierPreference": "shortest",
+          "includeAutomaticOptionalChainCompletions": true,
+          "includeCompletionsForImportStatements": true,
+          "includeCompletionsForModuleExports": true,
+          "includeCompletionsWithClassMemberSnippets": true,
+          "includeCompletionsWithInsertText": true,
+          "includeCompletionsWithObjectLiteralMethodSnippets": true,
+          "includeCompletionsWithSnippetText": true,
+          "includeInlayEnumMemberValueHints": false,
+          "includeInlayFunctionLikeReturnTypeHints": false,
+          "includeInlayFunctionParameterTypeHints": false,
+          "includeInlayParameterNameHints": "none",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": false,
+          "includeInlayVariableTypeHints": false,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includePackageJsonAutoImports": "auto",
+          "interactiveInlayHints": true,
+          "jsxAttributeCompletionStyle": "auto",
+          "lazyConfiguredProjectsFromExternalProject": false,
+          "organizeImportsAccentCollation": true,
+          "organizeImportsCaseFirst": false,
+          "organizeImportsCollation": "ordinal",
+          "organizeImportsCollationLocale": "en",
+          "organizeImportsIgnoreCase": "auto",
+          "organizeImportsNumericCollation": false,
+          "providePrefixAndSuffixTextForRename": true,
+          "provideRefactorNotApplicableReason": true,
+          "quotePreference": "auto",
+          "useLabelDetailsInCompletionEntries": true
+        }
+      }
+    }
+Info 6    [00:28:51.045] Format host information updated
+Info 7    [00:28:51.045] response:
+    {"seq":0,"type":"response","command":"configure","request_seq":0,"success":true}
+Perf 8    [00:28:51.046] 0::configure: async elapsed time (in milliseconds) 1.2635
+Info 9    [00:28:51.046] request:
+    {
+      "seq": 1,
+      "type": "request",
+      "command": "open",
+      "arguments": {
+        "file": "\\",
+        "fileContent": "",
+        "scriptKindName": "JS"
+      }
+    }
+Info 10   [00:28:51.052] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 11   [00:28:51.764] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 1 structureChanged: true structureIsReused:: Not Elapsed: 711.376ms
+Info 12   [00:28:51.764] Project '/dev/null/inferredProject1*' (Inferred)
+Info 13   [00:28:51.767] 	Files (8)
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts
+	/
+
+
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts
+	  Default library for target 'es5'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts
+	  Library referenced via 'es5' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts
+	  Library referenced via 'dom' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts
+	  Library referenced via 'webworker.importscripts' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts
+	  Library referenced via 'scripthost' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts
+	  Library referenced via 'decorators' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts
+	  Library referenced via 'decorators.legacy' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts'
+	
+	  Root file specified for compilation
+
+Info 14   [00:28:51.768] -----------------------------------------------
+Info 15   [00:28:51.769] Project '/dev/null/inferredProject1*' (Inferred)
+Info 15   [00:28:51.769] 	Files (8)
+
+Info 15   [00:28:51.769] -----------------------------------------------
+Info 15   [00:28:51.769] Open files: 
+Info 15   [00:28:51.769] 	FileName: / ProjectRootPath: undefined
+Info 15   [00:28:51.769] 		Projects: /dev/null/inferredProject1*
+Perf 15   [00:28:51.770] 1::open: async elapsed time (in milliseconds) 723.3068

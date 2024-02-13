@@ -1,0 +1,73 @@
+Info 0    [18:05:29.193] Starting TS Server
+Info 1    [18:05:29.195] Version: 5.3.3
+Info 2    [18:05:29.195] Arguments: C:\Program Files\nodejs\node.exe e:\Coding\LSP\Final\AlpineLsp\test\node_modules\typescript\lib\tsserver.js --serverMode partialSemantic --useInferredProjectPerProjectRoot --disableAutomaticTypingAcquisition --cancellationPipeName C:\Users\Nico\AppData\Local\Temp\08207c6e3f501245d8cb4b3637ecb551\tscancellation* --logVerbosity verbose --logFile e:\Coding\LSP\Final\AlpineLsp\test\.log\tsserver-log-1HwWXH\tsserver.log --locale en --validateDefaultNpmLocation --useNodeIpc
+Info 3    [18:05:29.195] Platform: win32 NodeVersion: v20.11.0 CaseSensitive: false
+Info 4    [18:05:29.195] ServerMode: 1 hasUnknownServerMode: undefined
+Info 5    [18:05:29.208] request:
+    {
+      "seq": 0,
+      "type": "request",
+      "command": "configure",
+      "arguments": {
+        "formatOptions": {
+          "newLineCharacter": "\n"
+        },
+        "preferences": {
+          "allowIncompleteCompletions": true,
+          "allowRenameOfImportPath": true,
+          "allowTextChangesInNewFiles": true,
+          "disableLineTextInReferences": true,
+          "disableSuggestions": false,
+          "displayPartsForJSDoc": true,
+          "excludeLibrarySymbolsInNavTo": true,
+          "generateReturnInDocTemplate": true,
+          "importModuleSpecifierEnding": "auto",
+          "importModuleSpecifierPreference": "shortest",
+          "includeAutomaticOptionalChainCompletions": true,
+          "includeCompletionsForImportStatements": true,
+          "includeCompletionsForModuleExports": true,
+          "includeCompletionsWithClassMemberSnippets": true,
+          "includeCompletionsWithInsertText": true,
+          "includeCompletionsWithObjectLiteralMethodSnippets": true,
+          "includeCompletionsWithSnippetText": true,
+          "includeInlayEnumMemberValueHints": false,
+          "includeInlayFunctionLikeReturnTypeHints": false,
+          "includeInlayFunctionParameterTypeHints": false,
+          "includeInlayParameterNameHints": "none",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": false,
+          "includeInlayVariableTypeHints": false,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includePackageJsonAutoImports": "auto",
+          "interactiveInlayHints": true,
+          "jsxAttributeCompletionStyle": "auto",
+          "lazyConfiguredProjectsFromExternalProject": false,
+          "organizeImportsAccentCollation": true,
+          "organizeImportsCaseFirst": false,
+          "organizeImportsCollation": "ordinal",
+          "organizeImportsCollationLocale": "en",
+          "organizeImportsIgnoreCase": "auto",
+          "organizeImportsNumericCollation": false,
+          "providePrefixAndSuffixTextForRename": true,
+          "provideRefactorNotApplicableReason": true,
+          "quotePreference": "auto",
+          "useLabelDetailsInCompletionEntries": true
+        }
+      }
+    }
+Info 6    [18:05:29.209] Format host information updated
+Info 7    [18:05:29.209] response:
+    {"seq":0,"type":"response","command":"configure","request_seq":0,"success":true}
+Perf 8    [18:05:29.209] 0::configure: async elapsed time (in milliseconds) 1.1920
+Info 9    [18:05:29.210] request:
+    {
+      "seq": 1,
+      "type": "request",
+      "command": "open",
+      "arguments": {
+        "file": "\\",
+        "fileContent": "",
+        "scriptKindName": "JS"
+      }
+    }
+Info 10   [18:05:29.215] Starting updateGraphWorker: Project: /dev/null/inferredProject1*

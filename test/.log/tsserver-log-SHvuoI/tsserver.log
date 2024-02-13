@@ -1,0 +1,172 @@
+Info 0    [00:44:02.498] Starting TS Server
+Info 1    [00:44:02.500] Version: 5.3.3
+Info 2    [00:44:02.500] Arguments: C:\Program Files\nodejs\node.exe e:\Coding\LSP\Final\AlpineLsp\test\node_modules\typescript\lib\tsserver.js --serverMode partialSemantic --useInferredProjectPerProjectRoot --disableAutomaticTypingAcquisition --cancellationPipeName C:\Users\Nico\AppData\Local\Temp\a0ff5ecc4ec2587250cb05de59bba18b\tscancellation* --logVerbosity verbose --logFile e:\Coding\LSP\Final\AlpineLsp\test\.log\tsserver-log-SHvuoI\tsserver.log --locale en --validateDefaultNpmLocation --useNodeIpc
+Info 3    [00:44:02.500] Platform: win32 NodeVersion: v20.11.0 CaseSensitive: false
+Info 4    [00:44:02.500] ServerMode: 1 hasUnknownServerMode: undefined
+Info 5    [00:44:02.520] request:
+    {
+      "seq": 0,
+      "type": "request",
+      "command": "configure",
+      "arguments": {
+        "formatOptions": {
+          "newLineCharacter": "\n"
+        },
+        "preferences": {
+          "allowIncompleteCompletions": true,
+          "allowRenameOfImportPath": true,
+          "allowTextChangesInNewFiles": true,
+          "disableLineTextInReferences": true,
+          "disableSuggestions": false,
+          "displayPartsForJSDoc": true,
+          "excludeLibrarySymbolsInNavTo": true,
+          "generateReturnInDocTemplate": true,
+          "importModuleSpecifierEnding": "auto",
+          "importModuleSpecifierPreference": "shortest",
+          "includeAutomaticOptionalChainCompletions": true,
+          "includeCompletionsForImportStatements": true,
+          "includeCompletionsForModuleExports": true,
+          "includeCompletionsWithClassMemberSnippets": true,
+          "includeCompletionsWithInsertText": true,
+          "includeCompletionsWithObjectLiteralMethodSnippets": true,
+          "includeCompletionsWithSnippetText": true,
+          "includeInlayEnumMemberValueHints": false,
+          "includeInlayFunctionLikeReturnTypeHints": false,
+          "includeInlayFunctionParameterTypeHints": false,
+          "includeInlayParameterNameHints": "none",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": false,
+          "includeInlayVariableTypeHints": false,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includePackageJsonAutoImports": "auto",
+          "interactiveInlayHints": true,
+          "jsxAttributeCompletionStyle": "auto",
+          "lazyConfiguredProjectsFromExternalProject": false,
+          "organizeImportsAccentCollation": true,
+          "organizeImportsCaseFirst": false,
+          "organizeImportsCollation": "ordinal",
+          "organizeImportsCollationLocale": "en",
+          "organizeImportsIgnoreCase": "auto",
+          "organizeImportsNumericCollation": false,
+          "providePrefixAndSuffixTextForRename": true,
+          "provideRefactorNotApplicableReason": true,
+          "quotePreference": "auto",
+          "useLabelDetailsInCompletionEntries": true
+        }
+      }
+    }
+Info 6    [00:44:02.520] Format host information updated
+Info 7    [00:44:02.521] response:
+    {"seq":0,"type":"response","command":"configure","request_seq":0,"success":true}
+Perf 8    [00:44:02.521] 0::configure: async elapsed time (in milliseconds) 1.6413
+Info 9    [00:44:02.522] request:
+    {
+      "seq": 1,
+      "type": "request",
+      "command": "open",
+      "arguments": {
+        "file": "\\",
+        "fileContent": "",
+        "scriptKindName": "JS"
+      }
+    }
+Info 10   [00:44:02.528] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 11   [00:44:03.276] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 1 structureChanged: true structureIsReused:: Not Elapsed: 747.8344ms
+Info 12   [00:44:03.276] Project '/dev/null/inferredProject1*' (Inferred)
+Info 13   [00:44:03.278] 	Files (8)
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts
+	/
+
+
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts
+	  Default library for target 'es5'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts
+	  Library referenced via 'es5' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts
+	  Library referenced via 'dom' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts
+	  Library referenced via 'webworker.importscripts' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts
+	  Library referenced via 'scripthost' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts
+	  Library referenced via 'decorators' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts
+	  Library referenced via 'decorators.legacy' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts'
+	
+	  Root file specified for compilation
+
+Info 14   [00:44:03.279] -----------------------------------------------
+Info 15   [00:44:03.279] Project '/dev/null/inferredProject1*' (Inferred)
+Info 15   [00:44:03.279] 	Files (8)
+
+Info 15   [00:44:03.279] -----------------------------------------------
+Info 15   [00:44:03.279] Open files: 
+Info 15   [00:44:03.279] 	FileName: / ProjectRootPath: undefined
+Info 15   [00:44:03.280] 		Projects: /dev/null/inferredProject1*
+Perf 15   [00:44:03.280] 1::open: async elapsed time (in milliseconds) 758.0931
+Info 16   [00:44:05.338] request:
+    {
+      "seq": 2,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 1,
+        "endOffset": 1,
+        "insertString": "\n\n\n               $dispatch('testevent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 $dispatch('customor')          $dispatch('customevent') \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 17   [00:44:05.341] 2::change: async elapsed time (in milliseconds) 2.6799
+Info 18   [00:44:07.058] request:
+    {
+      "seq": 3,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 515,
+        "endOffset": 134,
+        "insertString": "\n\n\n                $dispatch('testevent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 $dispatch('customor')          $dispatch('customevent') \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 19   [00:44:07.060] 3::change: async elapsed time (in milliseconds) 2.0010
+Info 20   [00:44:07.729] request:
+    {
+      "seq": 4,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 515,
+        "endOffset": 134,
+        "insertString": "\n\n\n                 $dispatch('testevent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 $dispatch('customor')          $dispatch('customevent') \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 21   [00:44:07.730] 4::change: async elapsed time (in milliseconds) 0.9810
+Info 22   [00:44:21.569] request:
+    {
+      "seq": 5,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 515,
+        "endOffset": 134,
+        "insertString": "\n\n\n                    foo                $dispatch('testevent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 $dispatch('customor')          $dispatch('customevent') \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 23   [00:44:21.570] 5::change: async elapsed time (in milliseconds) 0.8970

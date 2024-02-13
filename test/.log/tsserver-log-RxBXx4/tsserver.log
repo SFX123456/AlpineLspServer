@@ -1,0 +1,1649 @@
+Info 0    [15:40:12.670] Starting TS Server
+Info 1    [15:40:12.671] Version: 5.3.3
+Info 2    [15:40:12.671] Arguments: C:\Program Files\nodejs\node.exe e:\Coding\LSP\Final\AlpineLsp\test\node_modules\typescript\lib\tsserver.js --useInferredProjectPerProjectRoot --cancellationPipeName C:\Users\Nico\AppData\Local\Temp\0325dbda331fe951a547ab37dc057704\tscancellation* --logVerbosity verbose --logFile e:\Coding\LSP\Final\AlpineLsp\test\.log\tsserver-log-RxBXx4\tsserver.log --locale en --validateDefaultNpmLocation --useNodeIpc
+Info 3    [15:40:12.671] Platform: win32 NodeVersion: v20.11.0 CaseSensitive: false
+Info 4    [15:40:12.671] ServerMode: undefined hasUnknownServerMode: undefined
+Info 5    [15:40:12.680] Binding...
+Info 6    [15:40:12.695] request:
+    {
+      "seq": 0,
+      "type": "request",
+      "command": "configure",
+      "arguments": {
+        "formatOptions": {
+          "newLineCharacter": "\n"
+        },
+        "preferences": {
+          "allowIncompleteCompletions": true,
+          "allowRenameOfImportPath": true,
+          "allowTextChangesInNewFiles": true,
+          "disableLineTextInReferences": true,
+          "disableSuggestions": false,
+          "displayPartsForJSDoc": true,
+          "excludeLibrarySymbolsInNavTo": true,
+          "generateReturnInDocTemplate": true,
+          "importModuleSpecifierEnding": "auto",
+          "importModuleSpecifierPreference": "shortest",
+          "includeAutomaticOptionalChainCompletions": true,
+          "includeCompletionsForImportStatements": true,
+          "includeCompletionsForModuleExports": true,
+          "includeCompletionsWithClassMemberSnippets": true,
+          "includeCompletionsWithInsertText": true,
+          "includeCompletionsWithObjectLiteralMethodSnippets": true,
+          "includeCompletionsWithSnippetText": true,
+          "includeInlayEnumMemberValueHints": false,
+          "includeInlayFunctionLikeReturnTypeHints": false,
+          "includeInlayFunctionParameterTypeHints": false,
+          "includeInlayParameterNameHints": "none",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": false,
+          "includeInlayVariableTypeHints": false,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includePackageJsonAutoImports": "auto",
+          "interactiveInlayHints": true,
+          "jsxAttributeCompletionStyle": "auto",
+          "lazyConfiguredProjectsFromExternalProject": false,
+          "organizeImportsAccentCollation": true,
+          "organizeImportsCaseFirst": false,
+          "organizeImportsCollation": "ordinal",
+          "organizeImportsCollationLocale": "en",
+          "organizeImportsIgnoreCase": "auto",
+          "organizeImportsNumericCollation": false,
+          "providePrefixAndSuffixTextForRename": true,
+          "provideRefactorNotApplicableReason": true,
+          "quotePreference": "auto",
+          "useLabelDetailsInCompletionEntries": true
+        }
+      }
+    }
+Info 7    [15:40:12.696] Format host information updated
+Info 8    [15:40:12.696] response:
+    {"seq":0,"type":"response","command":"configure","request_seq":0,"success":true}
+Perf 9    [15:40:12.697] 0::configure: async elapsed time (in milliseconds) 2.0507
+Info 10   [15:40:12.697] request:
+    {
+      "seq": 1,
+      "type": "request",
+      "command": "compilerOptionsForInferredProjects",
+      "arguments": {
+        "options": {
+          "module": "ESNext",
+          "moduleResolution": "Node",
+          "target": "ES2020",
+          "jsx": "React",
+          "allowImportingTsExtensions": true,
+          "strictNullChecks": true,
+          "strictFunctionTypes": true,
+          "sourceMap": true,
+          "allowJs": true,
+          "allowNonTsExtensions": true,
+          "allowSyntheticDefaultImports": true,
+          "resolveJsonModule": true
+        }
+      }
+    }
+Perf 11   [15:40:12.698] 1::compilerOptionsForInferredProjects: elapsed time (in milliseconds) 0.8661
+Info 12   [15:40:12.699] response:
+    {"seq":0,"type":"response","command":"compilerOptionsForInferredProjects","request_seq":1,"success":true,"body":true}
+Info 13   [15:40:12.699] request:
+    {
+      "seq": 2,
+      "type": "request",
+      "command": "open",
+      "arguments": {
+        "file": "\\",
+        "fileContent": "",
+        "scriptKindName": "JS"
+      }
+    }
+Info 14   [15:40:12.700] Search path: /
+Info 15   [15:40:12.701] For info: / :: No config files found.
+Info 16   [15:40:12.707] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 17   [15:40:12.718] DirectoryWatcher:: Added:: WatchInfo: e:/coding/lsp/final/alpinelsp/test/node_modules 1 undefined WatchType: node_modules for closed script infos and package.jsons affecting module specifier cache
+Info 18   [15:40:12.719] e for path e:/coding/lsp/final/alpinelsp/test/node_modules not found in cache...
+Info 19   [15:40:12.719] Starting C:\Program Files\nodejs\node.exe with args:
+    [
+      "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/watchGuard.js",
+      "e:/coding/lsp/final/alpinelsp/test/node_modules"
+    ]
+Info 20   [15:40:12.809] WatchGuard for path e:/coding/lsp/final/alpinelsp/test/node_modules returned: OK
+Info 21   [15:40:12.811] Elapsed:: 92.55239999999998ms DirectoryWatcher:: Added:: WatchInfo: e:/coding/lsp/final/alpinelsp/test/node_modules 1 undefined WatchType: node_modules for closed script infos and package.jsons affecting module specifier cache
+Info 22   [15:40:13.622] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 1 structureChanged: true structureIsReused:: Not Elapsed: 914.7750999999998ms
+Info 23   [15:40:13.622] Project '/dev/null/inferredProject1*' (Inferred)
+Info 24   [15:40:13.625] 	Files (49)
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.iterable.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.core.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.collection.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.generator.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.iterable.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.promise.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.proxy.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.reflect.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.array.include.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.date.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.object.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.string.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.intl.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asyncgenerator.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.intl.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.promise.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.regexp.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.array.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.object.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.string.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.symbol.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.intl.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.bigint.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.date.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.promise.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.sharedmemory.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.string.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.intl.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.number.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.full.d.ts
+	/
+
+
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts
+	  Library referenced via 'es5' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts
+	  Library referenced via 'es2015' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.d.ts
+	  Library referenced via 'es2016' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts
+	  Library referenced via 'es2017' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts
+	  Library referenced via 'es2018' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts
+	  Library referenced via 'es2019' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts
+	  Library referenced via 'es2020' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.full.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts
+	  Library referenced via 'dom' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.full.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.iterable.d.ts
+	  Library referenced via 'dom.iterable' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.full.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts
+	  Library referenced via 'webworker.importscripts' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.full.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts
+	  Library referenced via 'scripthost' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.full.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.core.d.ts
+	  Library referenced via 'es2015.core' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.collection.d.ts
+	  Library referenced via 'es2015.collection' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.generator.d.ts
+	  Library referenced via 'es2015.generator' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.iterable.d.ts
+	  Library referenced via 'es2015.iterable' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	  Library referenced via 'es2015.iterable' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.generator.d.ts'
+	  Library referenced via 'es2015.iterable' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts'
+	  Library referenced via 'es2015.iterable' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.object.d.ts'
+	  Library referenced via 'es2015.iterable' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.string.d.ts'
+	  Library referenced via 'es2015.iterable' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.promise.d.ts
+	  Library referenced via 'es2015.promise' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.proxy.d.ts
+	  Library referenced via 'es2015.proxy' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.reflect.d.ts
+	  Library referenced via 'es2015.reflect' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.d.ts
+	  Library referenced via 'es2015.symbol' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.iterable.d.ts'
+	  Library referenced via 'es2015.symbol' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	  Library referenced via 'es2015.symbol' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts'
+	  Library referenced via 'es2015.symbol' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts'
+	  Library referenced via 'es2015.symbol' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts'
+	  Library referenced via 'es2015.symbol' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts
+	  Library referenced via 'es2015.symbol.wellknown' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	  Library referenced via 'es2015.symbol.wellknown' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.array.include.d.ts
+	  Library referenced via 'es2016.array.include' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.date.d.ts
+	  Library referenced via 'es2017.date' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.object.d.ts
+	  Library referenced via 'es2017.object' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts
+	  Library referenced via 'es2017.sharedmemory' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.string.d.ts
+	  Library referenced via 'es2017.string' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.intl.d.ts
+	  Library referenced via 'es2017.intl' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts
+	  Library referenced via 'es2017.typedarrays' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asyncgenerator.d.ts
+	  Library referenced via 'es2018.asyncgenerator' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts
+	  Library referenced via 'es2018.asynciterable' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts'
+	  Library referenced via 'es2018.asynciterable' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asyncgenerator.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.intl.d.ts
+	  Library referenced via 'es2018.intl' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts'
+	  Library referenced via 'es2018.intl' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.intl.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.promise.d.ts
+	  Library referenced via 'es2018.promise' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.regexp.d.ts
+	  Library referenced via 'es2018.regexp' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.array.d.ts
+	  Library referenced via 'es2019.array' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.object.d.ts
+	  Library referenced via 'es2019.object' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.string.d.ts
+	  Library referenced via 'es2019.string' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.symbol.d.ts
+	  Library referenced via 'es2019.symbol' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.intl.d.ts
+	  Library referenced via 'es2019.intl' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.bigint.d.ts
+	  Library referenced via 'es2020.bigint' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.date.d.ts
+	  Library referenced via 'es2020.date' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.promise.d.ts
+	  Library referenced via 'es2020.promise' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.sharedmemory.d.ts
+	  Library referenced via 'es2020.sharedmemory' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.string.d.ts
+	  Library referenced via 'es2020.string' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts
+	  Library referenced via 'es2020.symbol.wellknown' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.intl.d.ts
+	  Library referenced via 'es2020.intl' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.bigint.d.ts'
+	  Library referenced via 'es2020.intl' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.date.d.ts'
+	  Library referenced via 'es2020.intl' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.number.d.ts'
+	  Library referenced via 'es2020.intl' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.number.d.ts
+	  Library referenced via 'es2020.number' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts
+	  Library referenced via 'decorators' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts
+	  Library referenced via 'decorators.legacy' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.full.d.ts
+	  Default library for target 'es2020'
+	
+	  Root file specified for compilation
+
+Info 25   [15:40:13.626] -----------------------------------------------
+Info 26   [15:40:13.627] Scheduling throttled operation:
+    {
+      "projectName": "/dev/null/inferredProject1*",
+      "fileNames": [
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.iterable.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.core.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.collection.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.generator.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.promise.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.proxy.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.reflect.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.array.include.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.date.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.object.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.string.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asyncgenerator.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.promise.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.regexp.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.array.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.object.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.string.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.symbol.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.bigint.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.date.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.promise.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.sharedmemory.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.string.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.number.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.full.d.ts",
+        "/"
+      ],
+      "compilerOptions": {
+        "module": 99,
+        "moduleResolution": 2,
+        "target": 7,
+        "jsx": 2,
+        "allowImportingTsExtensions": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "sourceMap": true,
+        "allowJs": true,
+        "allowNonTsExtensions": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "noEmitForJsFiles": true,
+        "maxNodeModuleJsDepth": 2
+      },
+      "typeAcquisition": {
+        "enable": true,
+        "include": [],
+        "exclude": []
+      },
+      "unresolvedImports": [],
+      "projectRootPath": "/",
+      "kind": "discover"
+    }
+Info 27   [15:40:13.627] Scheduling request for: /dev/null/inferredProject1*
+Info 28   [15:40:13.629] Project '/dev/null/inferredProject1*' (Inferred)
+Info 28   [15:40:13.629] 	Files (49)
+
+Info 28   [15:40:13.630] -----------------------------------------------
+Info 28   [15:40:13.630] Open files: 
+Info 28   [15:40:13.630] 	FileName: / ProjectRootPath: undefined
+Info 28   [15:40:13.630] 		Projects: /dev/null/inferredProject1*
+Perf 28   [15:40:13.630] 2::open: async elapsed time (in milliseconds) 930.7479
+Info 29   [15:40:13.630] request:
+    {
+      "seq": 3,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 30   [15:40:13.630] 3::geterr: async elapsed time (in milliseconds) 0.6488
+Info 31   [15:40:13.631] event:
+    {"seq":0,"type":"event","event":"typingsInstallerPid","body":{"pid":29804}}
+Info 32   [15:40:13.638] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[]}}
+Info 33   [15:40:13.640] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 34   [15:40:13.641] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[]}}
+Info 35   [15:40:13.641] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":3}}
+Info 36   [15:40:13.732] Sending request:
+    {
+      "projectName": "/dev/null/inferredProject1*",
+      "fileNames": [
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.iterable.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.core.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.collection.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.generator.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.promise.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.proxy.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.reflect.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.array.include.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.date.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.object.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.string.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asyncgenerator.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.promise.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.regexp.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.array.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.object.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.string.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.symbol.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.bigint.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.date.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.promise.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.sharedmemory.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.string.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.number.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.full.d.ts",
+        "/"
+      ],
+      "compilerOptions": {
+        "module": 99,
+        "moduleResolution": 2,
+        "target": 7,
+        "jsx": 2,
+        "allowImportingTsExtensions": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "sourceMap": true,
+        "allowJs": true,
+        "allowNonTsExtensions": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "noEmitForJsFiles": true,
+        "maxNodeModuleJsDepth": 2
+      },
+      "typeAcquisition": {
+        "enable": true,
+        "include": [],
+        "exclude": []
+      },
+      "unresolvedImports": [],
+      "projectRootPath": "/",
+      "kind": "discover"
+    }
+Info 37   [15:40:15.375] request:
+    {
+      "seq": 4,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 1,
+        "endOffset": 1,
+        "insertString": "\n\n\n                console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 38   [15:40:15.376] 4::change: async elapsed time (in milliseconds) 0.7057
+Info 39   [15:40:15.377] request:
+    {
+      "seq": 5,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 180,
+        "format": "2020"
+      }
+    }
+Info 40   [15:40:15.377] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 41   [15:40:15.390] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 2 structureChanged: false structureIsReused:: Completely Elapsed: 13.166699999999764ms
+Info 42   [15:40:15.390] Different program with same set of files
+Perf 43   [15:40:15.424] 5::encodedSemanticClassifications-full: elapsed time (in milliseconds) 47.4378
+Info 44   [15:40:15.424] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":5,"success":true,"performanceData":{"updateGraphDurationMs":13.166699999999764},"body":{"spans":[19,7,2064,27,3,3088,87,3,2057,97,3,2056,101,7,3088,109,1,1793,125,7,2064,133,3,3088,160,5,2081],"endOfLineState":0}}
+Info 45   [15:40:15.683] request:
+    {
+      "seq": 6,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 46   [15:40:15.684] 6::geterr: async elapsed time (in milliseconds) 0.3138
+Info 47   [15:40:15.700] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":50},"end":{"line":4,"offset":54},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 48   [15:40:15.715] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 49   [15:40:15.717] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":7,"offset":46},"end":{"line":7,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":9,"offset":13},"end":{"line":9,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 50   [15:40:15.717] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":6}}
+Info 51   [15:40:15.841] Received response:
+    {
+      "kind": "action::watchTypingLocations",
+      "projectName": "/dev/null/inferredProject1*",
+      "files": [
+        "/bower_components",
+        "/node_modules"
+      ]
+    }
+Info 52   [15:40:15.842] DirectoryWatcher:: Added:: WatchInfo: /bower_components 1 undefined Project: /dev/null/inferredProject1* WatchType: Directory location for typing installer
+Info 53   [15:40:15.842] watchDirectory for /bower_components uses cached drive information.
+Info 54   [15:40:15.843] Elapsed:: 1.600800000000163ms DirectoryWatcher:: Added:: WatchInfo: /bower_components 1 undefined Project: /dev/null/inferredProject1* WatchType: Directory location for typing installer
+Info 55   [15:40:15.844] DirectoryWatcher:: Added:: WatchInfo: /node_modules 1 undefined Project: /dev/null/inferredProject1* WatchType: Directory location for typing installer
+Info 56   [15:40:15.844] watchDirectory for /node_modules uses cached drive information.
+Info 57   [15:40:15.844] Elapsed:: 0.2573000000002139ms DirectoryWatcher:: Added:: WatchInfo: /node_modules 1 undefined Project: /dev/null/inferredProject1* WatchType: Directory location for typing installer
+Info 58   [15:40:15.844] Received response:
+    {
+      "projectName": "/dev/null/inferredProject1*",
+      "typeAcquisition": {
+        "enable": true,
+        "include": [],
+        "exclude": []
+      },
+      "compilerOptions": {
+        "module": 99,
+        "moduleResolution": 2,
+        "target": 7,
+        "jsx": 2,
+        "allowImportingTsExtensions": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "sourceMap": true,
+        "allowJs": true,
+        "allowNonTsExtensions": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "noEmitForJsFiles": true,
+        "maxNodeModuleJsDepth": 2
+      },
+      "typings": [],
+      "unresolvedImports": [],
+      "kind": "action::set"
+    }
+Info 59   [15:40:15.845] event:
+    {"seq":0,"type":"event","event":"setTypings","body":{"projectName":"/dev/null/inferredProject1*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"module":99,"moduleResolution":2,"target":7,"jsx":2,"allowImportingTsExtensions":true,"strictNullChecks":true,"strictFunctionTypes":true,"sourceMap":true,"allowJs":true,"allowNonTsExtensions":true,"allowSyntheticDefaultImports":true,"resolveJsonModule":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typings":[],"unresolvedImports":[],"kind":"action::set"}}
+Info 60   [15:42:23.984] request:
+    {
+      "seq": 7,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 61   [15:42:23.984] 7::change: async elapsed time (in milliseconds) 0.5305
+Info 62   [15:42:23.985] request:
+    {
+      "seq": 8,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 181,
+        "format": "2020"
+      }
+    }
+Info 63   [15:42:23.985] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 64   [15:42:23.995] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 3 structureChanged: false structureIsReused:: Completely Elapsed: 10.175400000007357ms
+Info 65   [15:42:23.995] Different program with same set of files
+Perf 66   [15:42:24.001] 8::encodedSemanticClassifications-full: elapsed time (in milliseconds) 16.5819
+Info 67   [15:42:24.001] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":8,"success":true,"performanceData":{"updateGraphDurationMs":10.175400000007357},"body":{"spans":[20,7,2064,28,3,3088,88,3,2057,98,3,2056,102,7,3088,110,1,1793,126,7,2064,134,3,3088,161,5,2081],"endOfLineState":0}}
+Info 68   [15:42:24.300] request:
+    {
+      "seq": 9,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 69   [15:42:24.300] 9::geterr: async elapsed time (in milliseconds) 0.5576
+Info 70   [15:42:24.315] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":51},"end":{"line":4,"offset":55},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 71   [15:42:24.318] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 72   [15:42:24.319] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":7,"offset":46},"end":{"line":7,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":9,"offset":13},"end":{"line":9,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 73   [15:42:24.319] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":9}}
+Info 74   [15:43:14.007] request:
+    {
+      "seq": 10,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 75   [15:43:14.007] 10::change: async elapsed time (in milliseconds) 0.2009
+Info 76   [15:43:14.007] request:
+    {
+      "seq": 11,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 181,
+        "format": "2020"
+      }
+    }
+Info 77   [15:43:14.007] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 78   [15:43:14.014] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 4 structureChanged: false structureIsReused:: Completely Elapsed: 6.882600000011735ms
+Info 79   [15:43:14.015] Different program with same set of files
+Perf 80   [15:43:14.019] 11::encodedSemanticClassifications-full: elapsed time (in milliseconds) 11.1019
+Info 81   [15:43:14.019] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":11,"success":true,"performanceData":{"updateGraphDurationMs":6.882600000011735},"body":{"spans":[20,7,2064,28,3,3088,88,3,2057,98,3,2056,102,7,3088,110,1,1793,126,7,2064,134,3,3088,161,5,2081],"endOfLineState":0}}
+Info 82   [15:43:14.320] request:
+    {
+      "seq": 12,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 83   [15:43:14.321] 12::geterr: async elapsed time (in milliseconds) 0.5564
+Info 84   [15:43:14.335] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":51},"end":{"line":4,"offset":55},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 85   [15:43:14.339] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 86   [15:43:14.339] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":7,"offset":46},"end":{"line":7,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":9,"offset":13},"end":{"line":9,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 87   [15:43:14.340] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":12}}
+Info 88   [15:43:15.661] request:
+    {
+      "seq": 13,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 89   [15:43:15.662] 13::change: async elapsed time (in milliseconds) 0.1657
+Info 90   [15:43:15.662] request:
+    {
+      "seq": 14,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 181,
+        "format": "2020"
+      }
+    }
+Info 91   [15:43:15.662] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 92   [15:43:15.668] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 5 structureChanged: false structureIsReused:: Completely Elapsed: 5.9971000000077765ms
+Info 93   [15:43:15.668] Different program with same set of files
+Perf 94   [15:43:15.672] 14::encodedSemanticClassifications-full: elapsed time (in milliseconds) 10.2727
+Info 95   [15:43:15.672] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":14,"success":true,"performanceData":{"updateGraphDurationMs":5.9971000000077765},"body":{"spans":[20,7,2064,28,3,3088,88,3,2057,98,3,2056,102,7,3088,110,1,1793,126,7,2064,134,3,3088,161,5,2081],"endOfLineState":0}}
+Info 96   [15:43:15.974] request:
+    {
+      "seq": 15,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 97   [15:43:15.974] 15::geterr: async elapsed time (in milliseconds) 0.3389
+Info 98   [15:43:15.989] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":51},"end":{"line":4,"offset":55},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 99   [15:43:15.993] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 100  [15:43:15.993] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":7,"offset":46},"end":{"line":7,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":9,"offset":13},"end":{"line":9,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 101  [15:43:15.994] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":15}}
+Info 102  [15:43:16.067] request:
+    {
+      "seq": 16,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 103  [15:43:16.067] 16::change: async elapsed time (in milliseconds) 0.1953
+Info 104  [15:43:16.068] request:
+    {
+      "seq": 17,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 181,
+        "format": "2020"
+      }
+    }
+Info 105  [15:43:16.068] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 106  [15:43:16.073] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 6 structureChanged: false structureIsReused:: Completely Elapsed: 5.467700000008335ms
+Info 107  [15:43:16.073] Different program with same set of files
+Perf 108  [15:43:16.077] 17::encodedSemanticClassifications-full: elapsed time (in milliseconds) 8.9829
+Info 109  [15:43:16.077] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":17,"success":true,"performanceData":{"updateGraphDurationMs":5.467700000008335},"body":{"spans":[20,7,2064,28,3,3088,88,3,2057,98,3,2056,102,7,3088,110,1,1793,126,7,2064,134,3,3088,161,5,2081],"endOfLineState":0}}
+Info 110  [15:43:16.368] request:
+    {
+      "seq": 18,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 111  [15:43:16.368] 18::geterr: async elapsed time (in milliseconds) 0.3746
+Info 112  [15:43:16.383] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":51},"end":{"line":4,"offset":55},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 113  [15:43:16.387] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 114  [15:43:16.388] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":7,"offset":46},"end":{"line":7,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":9,"offset":13},"end":{"line":9,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 115  [15:43:16.388] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":18}}
+Info 116  [15:43:16.935] request:
+    {
+      "seq": 19,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 117  [15:43:16.935] 19::change: async elapsed time (in milliseconds) 0.2346
+Info 118  [15:43:16.936] request:
+    {
+      "seq": 20,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 181,
+        "format": "2020"
+      }
+    }
+Info 119  [15:43:16.936] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 120  [15:43:16.941] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 7 structureChanged: false structureIsReused:: Completely Elapsed: 5.580500000010943ms
+Info 121  [15:43:16.942] Different program with same set of files
+Perf 122  [15:43:16.944] 20::encodedSemanticClassifications-full: elapsed time (in milliseconds) 8.4067
+Info 123  [15:43:16.944] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":20,"success":true,"performanceData":{"updateGraphDurationMs":5.580500000010943},"body":{"spans":[20,7,2064,28,3,3088,88,3,2057,98,3,2056,102,7,3088,110,1,1793,126,7,2064,134,3,3088,161,5,2081],"endOfLineState":0}}
+Info 124  [15:43:17.244] request:
+    {
+      "seq": 21,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 125  [15:43:17.244] 21::geterr: async elapsed time (in milliseconds) 0.3507
+Info 126  [15:43:17.260] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":51},"end":{"line":4,"offset":55},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 127  [15:43:17.262] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 128  [15:43:17.263] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":7,"offset":46},"end":{"line":7,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":9,"offset":13},"end":{"line":9,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 129  [15:43:17.263] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":21}}
+Info 130  [15:43:17.559] request:
+    {
+      "seq": 22,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 131  [15:43:17.560] 22::change: async elapsed time (in milliseconds) 0.1874
+Info 132  [15:43:17.560] request:
+    {
+      "seq": 23,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 181,
+        "format": "2020"
+      }
+    }
+Info 133  [15:43:17.560] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 134  [15:43:17.565] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 8 structureChanged: false structureIsReused:: Completely Elapsed: 4.998599999991711ms
+Info 135  [15:43:17.565] Different program with same set of files
+Perf 136  [15:43:17.567] 23::encodedSemanticClassifications-full: elapsed time (in milliseconds) 7.8144
+Info 137  [15:43:17.568] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":23,"success":true,"performanceData":{"updateGraphDurationMs":4.998599999991711},"body":{"spans":[20,7,2064,28,3,3088,88,3,2057,98,3,2056,102,7,3088,110,1,1793,126,7,2064,134,3,3088,161,5,2081],"endOfLineState":0}}
+Info 138  [15:43:17.867] request:
+    {
+      "seq": 24,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 139  [15:43:17.867] 24::geterr: async elapsed time (in milliseconds) 0.3935
+Info 140  [15:43:17.882] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":51},"end":{"line":4,"offset":55},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 141  [15:43:17.884] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 142  [15:43:17.884] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":7,"offset":46},"end":{"line":7,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":9,"offset":13},"end":{"line":9,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 143  [15:43:17.884] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":24}}
+Info 144  [15:43:18.496] request:
+    {
+      "seq": 25,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 145  [15:43:18.497] 25::change: async elapsed time (in milliseconds) 0.1945
+Info 146  [15:43:18.497] request:
+    {
+      "seq": 26,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 181,
+        "format": "2020"
+      }
+    }
+Info 147  [15:43:18.497] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 148  [15:43:18.506] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 9 structureChanged: false structureIsReused:: Completely Elapsed: 8.980800000019372ms
+Info 149  [15:43:18.506] Different program with same set of files
+Perf 150  [15:43:18.510] 26::encodedSemanticClassifications-full: elapsed time (in milliseconds) 12.8681
+Info 151  [15:43:18.510] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":26,"success":true,"performanceData":{"updateGraphDurationMs":8.980800000019372},"body":{"spans":[20,7,2064,28,3,3088,88,3,2057,98,3,2056,102,7,3088,110,1,1793,126,7,2064,134,3,3088,161,5,2081],"endOfLineState":0}}
+Info 152  [15:43:18.809] request:
+    {
+      "seq": 27,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 153  [15:43:18.810] 27::geterr: async elapsed time (in milliseconds) 0.4360
+Info 154  [15:43:18.824] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":51},"end":{"line":4,"offset":55},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 155  [15:43:18.826] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 156  [15:43:18.827] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":7,"offset":46},"end":{"line":7,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":9,"offset":13},"end":{"line":9,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 157  [15:43:18.827] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":27}}
+Info 158  [15:43:18.889] request:
+    {
+      "seq": 28,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 159  [15:43:18.889] 28::change: async elapsed time (in milliseconds) 0.2682
+Info 160  [15:43:18.889] request:
+    {
+      "seq": 29,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 181,
+        "format": "2020"
+      }
+    }
+Info 161  [15:43:18.889] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 162  [15:43:18.894] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 10 structureChanged: false structureIsReused:: Completely Elapsed: 5.404399999999441ms
+Info 163  [15:43:18.895] Different program with same set of files
+Perf 164  [15:43:18.897] 29::encodedSemanticClassifications-full: elapsed time (in milliseconds) 8.2381
+Info 165  [15:43:18.897] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":29,"success":true,"performanceData":{"updateGraphDurationMs":5.404399999999441},"body":{"spans":[20,7,2064,28,3,3088,88,3,2057,98,3,2056,102,7,3088,110,1,1793,126,7,2064,134,3,3088,161,5,2081],"endOfLineState":0}}
+Info 166  [15:43:19.196] request:
+    {
+      "seq": 30,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 167  [15:43:19.197] 30::geterr: async elapsed time (in milliseconds) 0.4853
+Info 168  [15:43:19.211] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":51},"end":{"line":4,"offset":55},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 169  [15:43:19.213] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 170  [15:43:19.213] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":7,"offset":46},"end":{"line":7,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":9,"offset":13},"end":{"line":9,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 171  [15:43:19.214] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":30}}
+Info 172  [15:43:19.449] request:
+    {
+      "seq": 31,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 console.log('test')              test = 5 \n\n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 173  [15:43:19.449] 31::change: async elapsed time (in milliseconds) 0.2121
+Info 174  [15:43:19.449] request:
+    {
+      "seq": 32,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 183,
+        "format": "2020"
+      }
+    }
+Info 175  [15:43:19.449] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 176  [15:43:19.453] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 11 structureChanged: false structureIsReused:: Completely Elapsed: 4.519899999984773ms
+Info 177  [15:43:19.454] Different program with same set of files
+Perf 178  [15:43:19.456] 32::encodedSemanticClassifications-full: elapsed time (in milliseconds) 7.2093
+Info 179  [15:43:19.456] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":32,"success":true,"performanceData":{"updateGraphDurationMs":4.519899999984773},"body":{"spans":[20,7,2064,28,3,3088,90,3,2057,100,3,2056,104,7,3088,112,1,1793,128,7,2064,136,3,3088,163,5,2081],"endOfLineState":0}}
+Info 180  [15:43:19.756] request:
+    {
+      "seq": 33,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 181  [15:43:19.756] 33::geterr: async elapsed time (in milliseconds) 0.3613
+Info 182  [15:43:19.771] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":51},"end":{"line":4,"offset":55},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 183  [15:43:19.773] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 184  [15:43:19.773] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":9,"offset":46},"end":{"line":9,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":11,"offset":13},"end":{"line":11,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 185  [15:43:19.774] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":33}}
+Info 186  [15:43:20.488] request:
+    {
+      "seq": 34,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 console.log('test')              test = 5 \n\n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 187  [15:43:20.489] 34::change: async elapsed time (in milliseconds) 0.2504
+Info 188  [15:43:20.489] request:
+    {
+      "seq": 35,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 183,
+        "format": "2020"
+      }
+    }
+Info 189  [15:43:20.489] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 190  [15:43:20.495] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 12 structureChanged: false structureIsReused:: Completely Elapsed: 5.824799999973038ms
+Info 191  [15:43:20.495] Different program with same set of files
+Perf 192  [15:43:20.497] 35::encodedSemanticClassifications-full: elapsed time (in milliseconds) 8.0493
+Info 193  [15:43:20.497] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":35,"success":true,"performanceData":{"updateGraphDurationMs":5.824799999973038},"body":{"spans":[20,7,2064,28,3,3088,90,3,2057,100,3,2056,104,7,3088,112,1,1793,128,7,2064,136,3,3088,163,5,2081],"endOfLineState":0}}
+Info 194  [15:43:20.802] request:
+    {
+      "seq": 36,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 195  [15:43:20.802] 36::geterr: async elapsed time (in milliseconds) 0.5134
+Info 196  [15:43:20.817] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":51},"end":{"line":4,"offset":55},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 197  [15:43:20.819] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 198  [15:43:20.820] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":9,"offset":46},"end":{"line":9,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":11,"offset":13},"end":{"line":11,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 199  [15:43:20.820] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":36}}
+Info 200  [15:43:21.038] request:
+    {
+      "seq": 37,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 console.log('test')              test = 5 \n\n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 201  [15:43:21.038] 37::change: async elapsed time (in milliseconds) 0.1575
+Info 202  [15:43:21.038] request:
+    {
+      "seq": 38,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 183,
+        "format": "2020"
+      }
+    }
+Info 203  [15:43:21.038] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 204  [15:43:21.042] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 13 structureChanged: false structureIsReused:: Completely Elapsed: 3.9224000000103842ms
+Info 205  [15:43:21.042] Different program with same set of files
+Perf 206  [15:43:21.045] 38::encodedSemanticClassifications-full: elapsed time (in milliseconds) 6.4381
+Info 207  [15:43:21.045] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":38,"success":true,"performanceData":{"updateGraphDurationMs":3.9224000000103842},"body":{"spans":[20,7,2064,28,3,3088,90,3,2057,100,3,2056,104,7,3088,112,1,1793,128,7,2064,136,3,3088,163,5,2081],"endOfLineState":0}}
+Info 208  [15:43:21.346] request:
+    {
+      "seq": 39,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 209  [15:43:21.347] 39::geterr: async elapsed time (in milliseconds) 0.3624
+Info 210  [15:43:21.362] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":51},"end":{"line":4,"offset":55},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 211  [15:43:21.364] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 212  [15:43:21.364] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":9,"offset":46},"end":{"line":9,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":11,"offset":13},"end":{"line":11,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 213  [15:43:21.364] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":39}}
+Info 214  [15:43:21.573] request:
+    {
+      "seq": 40,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 console.log('test')              test = 5 \n\n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 215  [15:43:21.573] 40::change: async elapsed time (in milliseconds) 0.1486
+Info 216  [15:43:21.573] request:
+    {
+      "seq": 41,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 183,
+        "format": "2020"
+      }
+    }
+Info 217  [15:43:21.573] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 218  [15:43:21.577] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 14 structureChanged: false structureIsReused:: Completely Elapsed: 4.051200000016252ms
+Info 219  [15:43:21.577] Different program with same set of files
+Perf 220  [15:43:21.580] 41::encodedSemanticClassifications-full: elapsed time (in milliseconds) 6.6545
+Info 221  [15:43:21.580] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":41,"success":true,"performanceData":{"updateGraphDurationMs":4.051200000016252},"body":{"spans":[20,7,2064,28,3,3088,90,3,2057,100,3,2056,104,7,3088,112,1,1793,128,7,2064,136,3,3088,163,5,2081],"endOfLineState":0}}
+Info 222  [15:43:21.888] request:
+    {
+      "seq": 42,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 223  [15:43:21.888] 42::geterr: async elapsed time (in milliseconds) 0.2816
+Info 224  [15:43:21.904] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":51},"end":{"line":4,"offset":55},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 225  [15:43:21.906] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 226  [15:43:21.907] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":9,"offset":46},"end":{"line":9,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":11,"offset":13},"end":{"line":11,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 227  [15:43:21.907] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":42}}
+Info 228  [15:43:21.907] request:
+    {
+      "seq": 43,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 console.log('test')              test = 5 \n\n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 229  [15:43:21.907] 43::change: async elapsed time (in milliseconds) 0.0758
+Info 230  [15:43:21.907] request:
+    {
+      "seq": 44,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 183,
+        "format": "2020"
+      }
+    }
+Info 231  [15:43:21.907] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 232  [15:43:21.911] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 15 structureChanged: false structureIsReused:: Completely Elapsed: 4.193100000004051ms
+Info 233  [15:43:21.911] Different program with same set of files
+Perf 234  [15:43:21.914] 44::encodedSemanticClassifications-full: elapsed time (in milliseconds) 6.6512
+Info 235  [15:43:21.914] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":44,"success":true,"performanceData":{"updateGraphDurationMs":4.193100000004051},"body":{"spans":[20,7,2064,28,3,3088,90,3,2057,100,3,2056,104,7,3088,112,1,1793,128,7,2064,136,3,3088,163,5,2081],"endOfLineState":0}}
+Info 236  [15:43:22.215] request:
+    {
+      "seq": 45,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 237  [15:43:22.216] 45::geterr: async elapsed time (in milliseconds) 0.4301
+Info 238  [15:43:22.231] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":51},"end":{"line":4,"offset":55},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 239  [15:43:22.233] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 240  [15:43:22.234] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":9,"offset":46},"end":{"line":9,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":11,"offset":13},"end":{"line":11,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 241  [15:43:22.234] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":45}}
+Info 242  [15:43:22.390] request:
+    {
+      "seq": 46,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 console.log('test')              test = 5 \n\n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 243  [15:43:22.390] 46::change: async elapsed time (in milliseconds) 0.2261
+Info 244  [15:43:22.390] request:
+    {
+      "seq": 47,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 183,
+        "format": "2020"
+      }
+    }
+Info 245  [15:43:22.390] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 246  [15:43:22.396] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 16 structureChanged: false structureIsReused:: Completely Elapsed: 5.224300000001676ms
+Info 247  [15:43:22.396] Different program with same set of files
+Perf 248  [15:43:22.401] 47::encodedSemanticClassifications-full: elapsed time (in milliseconds) 10.1735
+Info 249  [15:43:22.401] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":47,"success":true,"performanceData":{"updateGraphDurationMs":5.224300000001676},"body":{"spans":[20,7,2064,28,3,3088,90,3,2057,100,3,2056,104,7,3088,112,1,1793,128,7,2064,136,3,3088,163,5,2081],"endOfLineState":0}}
+Info 250  [15:43:22.702] request:
+    {
+      "seq": 48,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 251  [15:43:22.702] 48::geterr: async elapsed time (in milliseconds) 0.3220
+Info 252  [15:43:22.718] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":51},"end":{"line":4,"offset":55},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 253  [15:43:22.719] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 254  [15:43:22.720] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":9,"offset":46},"end":{"line":9,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":11,"offset":13},"end":{"line":11,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 255  [15:43:22.720] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":48}}
+Info 256  [15:43:26.700] request:
+    {
+      "seq": 49,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 console.log('test')              test = 5 \n\n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 257  [15:43:26.700] 49::change: async elapsed time (in milliseconds) 0.1817
+Info 258  [15:43:26.700] request:
+    {
+      "seq": 50,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 183,
+        "format": "2020"
+      }
+    }
+Info 259  [15:43:26.700] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 260  [15:43:26.705] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 17 structureChanged: false structureIsReused:: Completely Elapsed: 4.840100000001257ms
+Info 261  [15:43:26.705] Different program with same set of files
+Perf 262  [15:43:26.707] 50::encodedSemanticClassifications-full: elapsed time (in milliseconds) 7.2594
+Info 263  [15:43:26.708] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":50,"success":true,"performanceData":{"updateGraphDurationMs":4.840100000001257},"body":{"spans":[20,7,2064,28,3,3088,90,3,2057,100,3,2056,104,7,3088,112,1,1793,128,7,2064,136,3,3088,163,5,2081],"endOfLineState":0}}
+Info 264  [15:43:27.013] request:
+    {
+      "seq": 51,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 265  [15:43:27.013] 51::geterr: async elapsed time (in milliseconds) 0.3182
+Info 266  [15:43:27.028] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":51},"end":{"line":4,"offset":55},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 267  [15:43:27.030] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 268  [15:43:27.031] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":9,"offset":46},"end":{"line":9,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":11,"offset":13},"end":{"line":11,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 269  [15:43:27.031] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":51}}
+Info 270  [15:43:28.493] request:
+    {
+      "seq": 52,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 console.log('test')              test = 5 \n\n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 271  [15:43:28.493] 52::change: async elapsed time (in milliseconds) 0.1562
+Info 272  [15:43:28.494] request:
+    {
+      "seq": 53,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 183,
+        "format": "2020"
+      }
+    }
+Info 273  [15:43:28.494] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 274  [15:43:28.499] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 18 structureChanged: false structureIsReused:: Completely Elapsed: 5.43949999997858ms
+Info 275  [15:43:28.499] Different program with same set of files
+Perf 276  [15:43:28.501] 53::encodedSemanticClassifications-full: elapsed time (in milliseconds) 7.7919
+Info 277  [15:43:28.501] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":53,"success":true,"performanceData":{"updateGraphDurationMs":5.43949999997858},"body":{"spans":[20,7,2064,28,3,3088,90,3,2057,100,3,2056,104,7,3088,112,1,1793,128,7,2064,136,3,3088,163,5,2081],"endOfLineState":0}}
+Info 278  [15:43:28.804] request:
+    {
+      "seq": 54,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 279  [15:43:28.804] 54::geterr: async elapsed time (in milliseconds) 0.2592
+Info 280  [15:43:28.819] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":51},"end":{"line":4,"offset":55},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 281  [15:43:28.821] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 282  [15:43:28.821] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":9,"offset":46},"end":{"line":9,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":11,"offset":13},"end":{"line":11,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 283  [15:43:28.821] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":54}}
+Info 284  [15:43:29.207] request:
+    {
+      "seq": 55,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 console.log('test')              test = 5 \n\n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 285  [15:43:29.207] 55::change: async elapsed time (in milliseconds) 0.1990
+Info 286  [15:43:29.207] request:
+    {
+      "seq": 56,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 183,
+        "format": "2020"
+      }
+    }
+Info 287  [15:43:29.207] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 288  [15:43:29.211] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 19 structureChanged: false structureIsReused:: Completely Elapsed: 4.020600000018021ms
+Info 289  [15:43:29.211] Different program with same set of files
+Perf 290  [15:43:29.213] 56::encodedSemanticClassifications-full: elapsed time (in milliseconds) 6.1194
+Info 291  [15:43:29.213] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":56,"success":true,"performanceData":{"updateGraphDurationMs":4.020600000018021},"body":{"spans":[20,7,2064,28,3,3088,90,3,2057,100,3,2056,104,7,3088,112,1,1793,128,7,2064,136,3,3088,163,5,2081],"endOfLineState":0}}
+Info 292  [15:43:29.517] request:
+    {
+      "seq": 57,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 293  [15:43:29.517] 57::geterr: async elapsed time (in milliseconds) 0.2789
+Info 294  [15:43:29.533] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":51},"end":{"line":4,"offset":55},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 295  [15:43:29.535] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 296  [15:43:29.536] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":9,"offset":46},"end":{"line":9,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":11,"offset":13},"end":{"line":11,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 297  [15:43:29.536] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":57}}
+Info 298  [15:43:31.227] request:
+    {
+      "seq": 58,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 console.log('test')              test = 5 \n                      foo \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 299  [15:43:31.227] 58::change: async elapsed time (in milliseconds) 0.1700
+Info 300  [15:43:31.227] request:
+    {
+      "seq": 59,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 209,
+        "format": "2020"
+      }
+    }
+Info 301  [15:43:31.227] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 302  [15:43:31.232] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 20 structureChanged: false structureIsReused:: Completely Elapsed: 4.975799999985611ms
+Info 303  [15:43:31.232] Different program with same set of files
+Perf 304  [15:43:31.235] 59::encodedSemanticClassifications-full: elapsed time (in milliseconds) 7.7409
+Info 305  [15:43:31.235] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":59,"success":true,"performanceData":{"updateGraphDurationMs":4.975799999985611},"body":{"spans":[20,7,2064,28,3,3088,116,3,2057,126,3,2056,130,7,3088,138,1,1793,154,7,2064,162,3,3088,189,5,2081],"endOfLineState":0}}
+Info 306  [15:43:31.538] request:
+    {
+      "seq": 60,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 307  [15:43:31.538] 60::geterr: async elapsed time (in milliseconds) 0.2543
+Info 308  [15:43:31.553] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":51},"end":{"line":4,"offset":55},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 309  [15:43:31.557] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 310  [15:43:31.557] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":9,"offset":46},"end":{"line":9,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":11,"offset":13},"end":{"line":11,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 311  [15:43:31.557] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":60}}
+Info 312  [15:43:32.328] request:
+    {
+      "seq": 61,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 console.log('test')              test = 5 \n                       \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 313  [15:43:32.328] 61::change: async elapsed time (in milliseconds) 0.1544
+Info 314  [15:43:32.328] request:
+    {
+      "seq": 62,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 206,
+        "format": "2020"
+      }
+    }
+Info 315  [15:43:32.328] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 316  [15:43:32.332] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 21 structureChanged: false structureIsReused:: Completely Elapsed: 3.3989000000001397ms
+Info 317  [15:43:32.332] Different program with same set of files
+Perf 318  [15:43:32.334] 62::encodedSemanticClassifications-full: elapsed time (in milliseconds) 5.7592
+Info 319  [15:43:32.334] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":62,"success":true,"performanceData":{"updateGraphDurationMs":3.3989000000001397},"body":{"spans":[20,7,2064,28,3,3088,113,3,2057,123,3,2056,127,7,3088,135,1,1793,151,7,2064,159,3,3088,186,5,2081],"endOfLineState":0}}
+Info 320  [15:43:32.635] request:
+    {
+      "seq": 63,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 321  [15:43:32.636] 63::geterr: async elapsed time (in milliseconds) 0.2408
+Info 322  [15:43:32.652] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":51},"end":{"line":4,"offset":55},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 323  [15:43:32.654] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 324  [15:43:32.655] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":9,"offset":46},"end":{"line":9,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":11,"offset":13},"end":{"line":11,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 325  [15:43:32.655] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":63}}
+Info 326  [15:43:36.265] request:
+    {
+      "seq": 64,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 8,
+        "insertString": "\n\n\n                console.log('test')              test = 5 \n                       \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 327  [15:43:36.265] 64::change: async elapsed time (in milliseconds) 0.1421
+Info 328  [15:43:36.265] request:
+    {
+      "seq": 65,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 205,
+        "format": "2020"
+      }
+    }
+Info 329  [15:43:36.265] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 330  [15:43:36.269] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 22 structureChanged: false structureIsReused:: Completely Elapsed: 3.4319000000250526ms
+Info 331  [15:43:36.269] Different program with same set of files
+Perf 332  [15:43:36.271] 65::encodedSemanticClassifications-full: elapsed time (in milliseconds) 5.5808
+Info 333  [15:43:36.271] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":65,"success":true,"performanceData":{"updateGraphDurationMs":3.4319000000250526},"body":{"spans":[19,7,2064,27,3,3088,112,3,2057,122,3,2056,126,7,3088,134,1,1793,150,7,2064,158,3,3088,185,5,2081],"endOfLineState":0}}
+Info 334  [15:43:36.575] request:
+    {
+      "seq": 66,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 335  [15:43:36.575] 66::geterr: async elapsed time (in milliseconds) 0.2294
+Info 336  [15:43:36.590] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":50},"end":{"line":4,"offset":54},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 337  [15:43:36.593] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 338  [15:43:36.593] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[{"start":{"line":9,"offset":46},"end":{"line":9,"offset":47},"text":"'x' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true},{"start":{"line":11,"offset":13},"end":{"line":11,"offset":18},"text":"'konau' is declared but its value is never read.","code":6133,"category":"suggestion","reportsUnnecessary":true}]}}
+Info 339  [15:43:36.593] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":66}}

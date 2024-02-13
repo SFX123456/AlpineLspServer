@@ -1,6 +1,7 @@
 import {RequestMessage} from "../server";
-import {initializeTypescriptServer} from "../StartTypescriptServer";
-import {InitializeParams} from "../ClientTypes";
+import {initializeTypescriptServer, infos} from "../typescriptLsp/typescriptServer";
+import {InitializeParams} from "../types/ClientTypes";
+import Log from "../log";
 
 type ServerCapabilities = Record<string, unknown>
 
@@ -13,14 +14,21 @@ interface InitializeResult
     }
 }
 
-export const initialize = (message : RequestMessage) : InitializeResult => {
-    const initializeParams = message as unknown as InitializeParams
 
-    initializeTypescriptServer(message)
+
+
+export const initialize = async (message : RequestMessage) : Promise<InitializeResult> => {
+    const initializeParams = message.params as unknown as InitializeParams
+    Log.writeLspServer('search here 2')
+    Log.writeLspServer(initializeParams)
+    infos.rootUri = initializeParams.rootUri
+    infos.rootPath = initializeParams.rootPath!
+    Log.writeLspServer('initialized methjod callled once')
+    await initializeTypescriptServer(message)
     return {
         capabilities : {
             completionProvider: {
-                triggerCharacters: ['@', 'x', '\"']
+                triggerCharacters: ['@', 'x', '\"', 'c', '$', '.']
             },
             resolveProvider: true,
             textDocumentSync: 1,
@@ -29,12 +37,14 @@ export const initialize = (message : RequestMessage) : InitializeResult => {
             },
             semanticTokensProvider: {
                 legend: {
-                    tokenTypes: ['property', 'type', 'class'],
-                    tokenModifiers: ['private', 'static']
+                    tokenTypes:["class","enum","interface","namespace","typeParameter","type","parameter","variable","enumMember","property","function","member"],
+                    tokenModifiers:["declaration","static","async","readonly","defaultLibrary","local"]
                 },
                 full: true,
                 documentSelector: null
             }
+
+
         },
         serverInfo: {
             name: "alpinelspServer",

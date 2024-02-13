@@ -1,0 +1,677 @@
+Info 0    [01:57:40.271] Starting TS Server
+Info 1    [01:57:40.272] Version: 5.3.3
+Info 2    [01:57:40.272] Arguments: C:\Program Files\nodejs\node.exe e:\Coding\LSP\Final\AlpineLsp\test\node_modules\typescript\lib\tsserver.js --useInferredProjectPerProjectRoot --cancellationPipeName C:\Users\Nico\AppData\Local\Temp\f73d809ba5dbc9ed75e3d8a75d35f8f7\tscancellation* --logVerbosity verbose --logFile e:\Coding\LSP\Final\AlpineLsp\test\.log\tsserver-log-8fRk0N\tsserver.log --locale en --validateDefaultNpmLocation --useNodeIpc
+Info 3    [01:57:40.273] Platform: win32 NodeVersion: v20.11.0 CaseSensitive: false
+Info 4    [01:57:40.273] ServerMode: undefined hasUnknownServerMode: undefined
+Info 5    [01:57:40.281] Binding...
+Info 6    [01:57:40.296] request:
+    {
+      "seq": 0,
+      "type": "request",
+      "command": "configure",
+      "arguments": {
+        "formatOptions": {
+          "newLineCharacter": "\n"
+        },
+        "preferences": {
+          "allowIncompleteCompletions": true,
+          "allowRenameOfImportPath": true,
+          "allowTextChangesInNewFiles": true,
+          "disableLineTextInReferences": true,
+          "disableSuggestions": false,
+          "displayPartsForJSDoc": true,
+          "excludeLibrarySymbolsInNavTo": true,
+          "generateReturnInDocTemplate": true,
+          "importModuleSpecifierEnding": "auto",
+          "importModuleSpecifierPreference": "shortest",
+          "includeAutomaticOptionalChainCompletions": true,
+          "includeCompletionsForImportStatements": true,
+          "includeCompletionsForModuleExports": true,
+          "includeCompletionsWithClassMemberSnippets": true,
+          "includeCompletionsWithInsertText": true,
+          "includeCompletionsWithObjectLiteralMethodSnippets": true,
+          "includeCompletionsWithSnippetText": true,
+          "includeInlayEnumMemberValueHints": false,
+          "includeInlayFunctionLikeReturnTypeHints": false,
+          "includeInlayFunctionParameterTypeHints": false,
+          "includeInlayParameterNameHints": "none",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": false,
+          "includeInlayVariableTypeHints": false,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includePackageJsonAutoImports": "auto",
+          "interactiveInlayHints": true,
+          "jsxAttributeCompletionStyle": "auto",
+          "lazyConfiguredProjectsFromExternalProject": false,
+          "organizeImportsAccentCollation": true,
+          "organizeImportsCaseFirst": false,
+          "organizeImportsCollation": "ordinal",
+          "organizeImportsCollationLocale": "en",
+          "organizeImportsIgnoreCase": "auto",
+          "organizeImportsNumericCollation": false,
+          "providePrefixAndSuffixTextForRename": true,
+          "provideRefactorNotApplicableReason": true,
+          "quotePreference": "auto",
+          "useLabelDetailsInCompletionEntries": true
+        }
+      }
+    }
+Info 7    [01:57:40.297] Format host information updated
+Info 8    [01:57:40.298] response:
+    {"seq":0,"type":"response","command":"configure","request_seq":0,"success":true}
+Perf 9    [01:57:40.298] 0::configure: async elapsed time (in milliseconds) 2.1021
+Info 10   [01:57:40.299] request:
+    {
+      "seq": 1,
+      "type": "request",
+      "command": "compilerOptionsForInferredProjects",
+      "arguments": {
+        "options": {
+          "module": "ESNext",
+          "moduleResolution": "Node",
+          "target": "ES2020",
+          "jsx": "React",
+          "allowImportingTsExtensions": true,
+          "strictNullChecks": true,
+          "strictFunctionTypes": true,
+          "sourceMap": true,
+          "allowJs": true,
+          "allowNonTsExtensions": true,
+          "allowSyntheticDefaultImports": true,
+          "resolveJsonModule": true
+        }
+      }
+    }
+Perf 11   [01:57:40.300] 1::compilerOptionsForInferredProjects: elapsed time (in milliseconds) 0.9684
+Info 12   [01:57:40.300] response:
+    {"seq":0,"type":"response","command":"compilerOptionsForInferredProjects","request_seq":1,"success":true,"body":true}
+Info 13   [01:57:40.300] request:
+    {
+      "seq": 2,
+      "type": "request",
+      "command": "open",
+      "arguments": {
+        "file": "\\",
+        "fileContent": "",
+        "scriptKindName": "JS"
+      }
+    }
+Info 14   [01:57:40.302] Search path: /
+Info 15   [01:57:40.302] For info: / :: No config files found.
+Info 16   [01:57:40.309] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 17   [01:57:40.322] DirectoryWatcher:: Added:: WatchInfo: e:/coding/lsp/final/alpinelsp/test/node_modules 1 undefined WatchType: node_modules for closed script infos and package.jsons affecting module specifier cache
+Info 18   [01:57:40.322] e for path e:/coding/lsp/final/alpinelsp/test/node_modules not found in cache...
+Info 19   [01:57:40.322] Starting C:\Program Files\nodejs\node.exe with args:
+    [
+      "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/watchGuard.js",
+      "e:/coding/lsp/final/alpinelsp/test/node_modules"
+    ]
+Info 20   [01:57:40.408] WatchGuard for path e:/coding/lsp/final/alpinelsp/test/node_modules returned: OK
+Info 21   [01:57:40.411] Elapsed:: 89.08190000000002ms DirectoryWatcher:: Added:: WatchInfo: e:/coding/lsp/final/alpinelsp/test/node_modules 1 undefined WatchType: node_modules for closed script infos and package.jsons affecting module specifier cache
+Info 22   [01:57:41.211] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 1 structureChanged: true structureIsReused:: Not Elapsed: 902.5315999999999ms
+Info 23   [01:57:41.212] Project '/dev/null/inferredProject1*' (Inferred)
+Info 24   [01:57:41.215] 	Files (49)
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.iterable.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.core.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.collection.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.generator.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.iterable.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.promise.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.proxy.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.reflect.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.array.include.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.date.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.object.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.string.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.intl.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asyncgenerator.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.intl.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.promise.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.regexp.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.array.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.object.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.string.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.symbol.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.intl.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.bigint.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.date.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.promise.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.sharedmemory.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.string.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.intl.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.number.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.full.d.ts
+	/
+
+
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts
+	  Library referenced via 'es5' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts
+	  Library referenced via 'es2015' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.d.ts
+	  Library referenced via 'es2016' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts
+	  Library referenced via 'es2017' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts
+	  Library referenced via 'es2018' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts
+	  Library referenced via 'es2019' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts
+	  Library referenced via 'es2020' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.full.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts
+	  Library referenced via 'dom' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.full.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.iterable.d.ts
+	  Library referenced via 'dom.iterable' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.full.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts
+	  Library referenced via 'webworker.importscripts' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.full.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts
+	  Library referenced via 'scripthost' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.full.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.core.d.ts
+	  Library referenced via 'es2015.core' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.collection.d.ts
+	  Library referenced via 'es2015.collection' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.generator.d.ts
+	  Library referenced via 'es2015.generator' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.iterable.d.ts
+	  Library referenced via 'es2015.iterable' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	  Library referenced via 'es2015.iterable' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.generator.d.ts'
+	  Library referenced via 'es2015.iterable' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts'
+	  Library referenced via 'es2015.iterable' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.object.d.ts'
+	  Library referenced via 'es2015.iterable' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.string.d.ts'
+	  Library referenced via 'es2015.iterable' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.promise.d.ts
+	  Library referenced via 'es2015.promise' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.proxy.d.ts
+	  Library referenced via 'es2015.proxy' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.reflect.d.ts
+	  Library referenced via 'es2015.reflect' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.d.ts
+	  Library referenced via 'es2015.symbol' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.iterable.d.ts'
+	  Library referenced via 'es2015.symbol' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	  Library referenced via 'es2015.symbol' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts'
+	  Library referenced via 'es2015.symbol' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts'
+	  Library referenced via 'es2015.symbol' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts'
+	  Library referenced via 'es2015.symbol' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts
+	  Library referenced via 'es2015.symbol.wellknown' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts'
+	  Library referenced via 'es2015.symbol.wellknown' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.array.include.d.ts
+	  Library referenced via 'es2016.array.include' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.date.d.ts
+	  Library referenced via 'es2017.date' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.object.d.ts
+	  Library referenced via 'es2017.object' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts
+	  Library referenced via 'es2017.sharedmemory' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.string.d.ts
+	  Library referenced via 'es2017.string' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.intl.d.ts
+	  Library referenced via 'es2017.intl' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts
+	  Library referenced via 'es2017.typedarrays' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asyncgenerator.d.ts
+	  Library referenced via 'es2018.asyncgenerator' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts
+	  Library referenced via 'es2018.asynciterable' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts'
+	  Library referenced via 'es2018.asynciterable' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asyncgenerator.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.intl.d.ts
+	  Library referenced via 'es2018.intl' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts'
+	  Library referenced via 'es2018.intl' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.intl.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.promise.d.ts
+	  Library referenced via 'es2018.promise' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.regexp.d.ts
+	  Library referenced via 'es2018.regexp' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.array.d.ts
+	  Library referenced via 'es2019.array' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.object.d.ts
+	  Library referenced via 'es2019.object' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.string.d.ts
+	  Library referenced via 'es2019.string' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.symbol.d.ts
+	  Library referenced via 'es2019.symbol' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.intl.d.ts
+	  Library referenced via 'es2019.intl' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.bigint.d.ts
+	  Library referenced via 'es2020.bigint' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.date.d.ts
+	  Library referenced via 'es2020.date' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.promise.d.ts
+	  Library referenced via 'es2020.promise' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.sharedmemory.d.ts
+	  Library referenced via 'es2020.sharedmemory' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.string.d.ts
+	  Library referenced via 'es2020.string' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts
+	  Library referenced via 'es2020.symbol.wellknown' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.intl.d.ts
+	  Library referenced via 'es2020.intl' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.bigint.d.ts'
+	  Library referenced via 'es2020.intl' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.date.d.ts'
+	  Library referenced via 'es2020.intl' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.number.d.ts'
+	  Library referenced via 'es2020.intl' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.number.d.ts
+	  Library referenced via 'es2020.number' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts
+	  Library referenced via 'decorators' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts
+	  Library referenced via 'decorators.legacy' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.full.d.ts
+	  Default library for target 'es2020'
+	
+	  Root file specified for compilation
+
+Info 25   [01:57:41.215] -----------------------------------------------
+Info 26   [01:57:41.217] Scheduling throttled operation:
+    {
+      "projectName": "/dev/null/inferredProject1*",
+      "fileNames": [
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.iterable.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.core.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.collection.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.generator.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.promise.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.proxy.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.reflect.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.array.include.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.date.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.object.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.string.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asyncgenerator.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.promise.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.regexp.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.array.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.object.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.string.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.symbol.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.bigint.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.date.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.promise.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.sharedmemory.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.string.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.number.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.full.d.ts",
+        "/"
+      ],
+      "compilerOptions": {
+        "module": 99,
+        "moduleResolution": 2,
+        "target": 7,
+        "jsx": 2,
+        "allowImportingTsExtensions": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "sourceMap": true,
+        "allowJs": true,
+        "allowNonTsExtensions": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "noEmitForJsFiles": true,
+        "maxNodeModuleJsDepth": 2
+      },
+      "typeAcquisition": {
+        "enable": true,
+        "include": [],
+        "exclude": []
+      },
+      "unresolvedImports": [],
+      "projectRootPath": "/",
+      "kind": "discover"
+    }
+Info 27   [01:57:41.217] Scheduling request for: /dev/null/inferredProject1*
+Info 28   [01:57:41.219] Project '/dev/null/inferredProject1*' (Inferred)
+Info 28   [01:57:41.219] 	Files (49)
+
+Info 28   [01:57:41.219] -----------------------------------------------
+Info 28   [01:57:41.219] Open files: 
+Info 28   [01:57:41.219] 	FileName: / ProjectRootPath: undefined
+Info 28   [01:57:41.219] 		Projects: /dev/null/inferredProject1*
+Perf 28   [01:57:41.219] 2::open: async elapsed time (in milliseconds) 918.8876
+Info 29   [01:57:41.219] request:
+    {
+      "seq": 3,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 30   [01:57:41.220] 3::geterr: async elapsed time (in milliseconds) 0.7270
+Info 31   [01:57:41.227] event:
+    {"seq":0,"type":"event","event":"typingsInstallerPid","body":{"pid":20924}}
+Info 32   [01:57:41.229] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[]}}
+Info 33   [01:57:41.231] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 34   [01:57:41.232] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[]}}
+Info 35   [01:57:41.232] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":3}}
+Info 36   [01:57:41.321] Sending request:
+    {
+      "projectName": "/dev/null/inferredProject1*",
+      "fileNames": [
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.iterable.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.core.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.collection.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.generator.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.promise.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.proxy.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.reflect.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.array.include.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.date.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.object.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.string.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asyncgenerator.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.promise.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.regexp.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.array.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.object.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.string.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.symbol.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.bigint.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.date.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.promise.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.sharedmemory.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.string.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.number.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.full.d.ts",
+        "/"
+      ],
+      "compilerOptions": {
+        "module": 99,
+        "moduleResolution": 2,
+        "target": 7,
+        "jsx": 2,
+        "allowImportingTsExtensions": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "sourceMap": true,
+        "allowJs": true,
+        "allowNonTsExtensions": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "noEmitForJsFiles": true,
+        "maxNodeModuleJsDepth": 2
+      },
+      "typeAcquisition": {
+        "enable": true,
+        "include": [],
+        "exclude": []
+      },
+      "unresolvedImports": [],
+      "projectRootPath": "/",
+      "kind": "discover"
+    }
+Info 37   [01:57:43.137] request:
+    {
+      "seq": 4,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 1,
+        "endOffset": 1,
+        "insertString": "\n                 foo \n\n                $dispatch('testevent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 $dispatch('customor')\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 38   [01:57:43.138] 4::change: async elapsed time (in milliseconds) 1.5385
+Info 39   [01:57:43.138] request:
+    {
+      "seq": 5,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 879,
+        "format": "2020"
+      }
+    }
+Info 40   [01:57:43.138] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 41   [01:57:43.151] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 2 structureChanged: false structureIsReused:: Completely Elapsed: 12.569700000000012ms
+Info 42   [01:57:43.151] Different program with same set of files
+Perf 43   [01:57:43.172] 5::encodedSemanticClassifications-full: elapsed time (in milliseconds) 34.1876
+Info 44   [01:57:43.173] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":5,"success":true,"performanceData":{"updateGraphDurationMs":12.569700000000012},"body":{"spans":[40,9,2816,65,7,2561,80,5,2561,138,5,2048,225,9,2816,751,3,2049,761,5,2049,773,6,2049,786,6,2049,799,9,2049,815,9,2049,831,5,2049,843,5,2049,855,3,2049,865,12,2049],"endOfLineState":0}}
+Info 45   [01:57:43.448] request:
+    {
+      "seq": 6,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 46   [01:57:43.448] 6::geterr: async elapsed time (in milliseconds) 0.2707
+Info 47   [01:57:43.464] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":83},"end":{"line":4,"offset":87},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 48   [01:57:43.475] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 49   [01:57:43.475] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[]}}
+Info 50   [01:57:43.476] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":6}}
+Info 51   [01:57:43.889] Received response:
+    {
+      "kind": "action::watchTypingLocations",
+      "projectName": "/dev/null/inferredProject1*",
+      "files": [
+        "/bower_components",
+        "/node_modules"
+      ]
+    }
+Info 52   [01:57:43.890] DirectoryWatcher:: Added:: WatchInfo: /bower_components 1 undefined Project: /dev/null/inferredProject1* WatchType: Directory location for typing installer
+Info 53   [01:57:43.890] watchDirectory for /bower_components uses cached drive information.
+Info 54   [01:57:43.891] Elapsed:: 1.1305999999999585ms DirectoryWatcher:: Added:: WatchInfo: /bower_components 1 undefined Project: /dev/null/inferredProject1* WatchType: Directory location for typing installer
+Info 55   [01:57:43.891] DirectoryWatcher:: Added:: WatchInfo: /node_modules 1 undefined Project: /dev/null/inferredProject1* WatchType: Directory location for typing installer
+Info 56   [01:57:43.891] watchDirectory for /node_modules uses cached drive information.
+Info 57   [01:57:43.891] Elapsed:: 0.1724000000003798ms DirectoryWatcher:: Added:: WatchInfo: /node_modules 1 undefined Project: /dev/null/inferredProject1* WatchType: Directory location for typing installer
+Info 58   [01:57:43.892] Received response:
+    {
+      "projectName": "/dev/null/inferredProject1*",
+      "typeAcquisition": {
+        "enable": true,
+        "include": [],
+        "exclude": []
+      },
+      "compilerOptions": {
+        "module": 99,
+        "moduleResolution": 2,
+        "target": 7,
+        "jsx": 2,
+        "allowImportingTsExtensions": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "sourceMap": true,
+        "allowJs": true,
+        "allowNonTsExtensions": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "noEmitForJsFiles": true,
+        "maxNodeModuleJsDepth": 2
+      },
+      "typings": [],
+      "unresolvedImports": [],
+      "kind": "action::set"
+    }
+Info 59   [01:57:43.892] event:
+    {"seq":0,"type":"event","event":"setTypings","body":{"projectName":"/dev/null/inferredProject1*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"module":99,"moduleResolution":2,"target":7,"jsx":2,"allowImportingTsExtensions":true,"strictNullChecks":true,"strictFunctionTypes":true,"sourceMap":true,"allowJs":true,"allowNonTsExtensions":true,"allowSyntheticDefaultImports":true,"resolveJsonModule":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typings":[],"unresolvedImports":[],"kind":"action::set"}}
+Info 60   [01:57:45.364] request:
+    {
+      "seq": 7,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 515,
+        "endOffset": 134,
+        "insertString": "\n                 foo \n\n                $dispatch('testevent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 $dispatch('customor')\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 61   [01:57:45.366] 7::change: async elapsed time (in milliseconds) 2.6630
+Info 62   [01:57:45.367] request:
+    {
+      "seq": 8,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 879,
+        "format": "2020"
+      }
+    }
+Info 63   [01:57:45.367] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 64   [01:57:45.373] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 3 structureChanged: false structureIsReused:: Completely Elapsed: 6.458699999999226ms
+Info 65   [01:57:45.373] Different program with same set of files
+Perf 66   [01:57:45.376] 8::encodedSemanticClassifications-full: elapsed time (in milliseconds) 9.7931
+Info 67   [01:57:45.376] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":8,"success":true,"performanceData":{"updateGraphDurationMs":6.458699999999226},"body":{"spans":[40,9,2816,65,7,2561,80,5,2561,138,5,2048,225,9,2816,751,3,2049,761,5,2049,773,6,2049,786,6,2049,799,9,2049,815,9,2049,831,5,2049,843,5,2049,855,3,2049,865,12,2049],"endOfLineState":0}}
+Info 68   [01:57:45.671] request:
+    {
+      "seq": 9,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 69   [01:57:45.671] 9::geterr: async elapsed time (in milliseconds) 0.3472
+Info 70   [01:57:45.672] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":83},"end":{"line":4,"offset":87},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 71   [01:57:45.675] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 72   [01:57:45.676] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[]}}
+Info 73   [01:57:45.676] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":9}}
+Info 74   [01:57:47.449] request:
+    {
+      "seq": 10,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 515,
+        "endOffset": 134,
+        "insertString": "\n                 foo \n\n                $dispatch('testevent', { message : '5', jakob : 7 })              test = 5 \n                      $data\r\n        \r\n        \r\n        \r\n        \r\n        \r\n         \n\n\n\n                 $dispatch('customor')\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n var $el;  var $refs;  var $store;  var $watch;  var $dispatch;  var $nextTick;  var $root;  var $data;  var $id;  var $justTestomg; "
+      }
+    }
+Perf 75   [01:57:47.450] 10::change: async elapsed time (in milliseconds) 1.1644
+Info 76   [01:57:47.451] request:
+    {
+      "seq": 11,
+      "type": "request",
+      "command": "encodedSemanticClassifications-full",
+      "arguments": {
+        "file": "\\",
+        "start": 0,
+        "length": 879,
+        "format": "2020"
+      }
+    }
+Info 77   [01:57:47.451] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 78   [01:57:47.458] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 4 structureChanged: false structureIsReused:: Completely Elapsed: 7.592800000000352ms
+Info 79   [01:57:47.459] Different program with same set of files
+Perf 80   [01:57:47.463] 11::encodedSemanticClassifications-full: elapsed time (in milliseconds) 12.3859
+Info 81   [01:57:47.463] response:
+    {"seq":0,"type":"response","command":"encodedSemanticClassifications-full","request_seq":11,"success":true,"performanceData":{"updateGraphDurationMs":7.592800000000352},"body":{"spans":[40,9,2816,65,7,2561,80,5,2561,138,5,2048,225,9,2816,751,3,2049,761,5,2049,773,6,2049,786,6,2049,799,9,2049,815,9,2049,831,5,2049,843,5,2049,855,3,2049,865,12,2049],"endOfLineState":0}}
+Info 82   [01:57:47.757] request:
+    {
+      "seq": 12,
+      "type": "request",
+      "command": "geterr",
+      "arguments": {
+        "delay": 0,
+        "files": [
+          "\\"
+        ]
+      }
+    }
+Perf 83   [01:57:47.757] 12::geterr: async elapsed time (in milliseconds) 0.5737
+Info 84   [01:57:47.772] event:
+    {"seq":0,"type":"event","event":"syntaxDiag","body":{"file":"/","diagnostics":[{"start":{"line":4,"offset":83},"end":{"line":4,"offset":87},"text":"';' expected.","code":1005,"category":"error"}]}}
+Info 85   [01:57:47.775] event:
+    {"seq":0,"type":"event","event":"semanticDiag","body":{"file":"/","diagnostics":[]}}
+Info 86   [01:57:47.776] event:
+    {"seq":0,"type":"event","event":"suggestionDiag","body":{"file":"/","diagnostics":[]}}
+Info 87   [01:57:47.776] event:
+    {"seq":0,"type":"event","event":"requestCompleted","body":{"request_seq":12}}

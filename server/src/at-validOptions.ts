@@ -1,27 +1,9 @@
-import {Range} from "./methods/textDocument/completion";
+import {CompletionItem} from "./types/completionTypes";
 
-export type CompletionItemKind = 1 | 2 | 15
-
-
-export interface CompletionItem {
-
-    label: string
-    kind: CompletionItemKind,
-    insertTextFormat?: InsertTextFormat,
-    textEdit?: textEdit
-}
-
-export type InsertTextFormat = 1 | 2
-export interface textEdit {
-    range: Range,
-    newText: string
-}
-
-export const magicObjects = ['$el', '$refs', '$store', '$watch', '$dispatch', '$nextTick', '$root', '$data', '$id']
 
 export const atoptions : CompletionItem[] = [
     {
-        label: '@click=" ${1:foo} "',
+        label: '@click${1:}=" ${2:bar} "',
         kind: 15,
         insertTextFormat : 2,
 

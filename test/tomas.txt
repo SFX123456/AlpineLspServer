@@ -1,16 +1,15 @@
 
-<div x-data="{foo : bar}"  x-data="
-{test : true,
- toggle() {this.open = !this.open}}
-" 
+<div @click="  " >
 
-x-init=" con "
- >
-private 
-<div @click=" " >
-    <div @click=" >
+    <p  x-init="$dispatch('testevent', { message : '5', jakob : 7 })  "  @click=" test = 5 " >
+        <span x-init=" 
+        let test = 5;
+        test = 10;
+        console.log(test) " > 
+
+        </span>
+    </p>
+    <div x-init="$dispatch('customor')" >
 
     </div>
-
-</div>
 </div>
