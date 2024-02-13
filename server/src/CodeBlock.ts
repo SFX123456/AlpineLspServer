@@ -2,6 +2,7 @@ import { Range, textDocumentType} from "./types/ClientTypes";
 import Log from "./log";
 import {allFiles} from "./allFiles";
 import {magicObjects} from "./magicobjects";
+import {end} from "cheerio/lib/api/traversing";
 
 export class CodeBlock
 {
@@ -40,7 +41,7 @@ export class CodeBlock
                     lastMatchIndex = startTag.index;
                 }
             }
-            characterTemp = 500
+            characterTemp = 1000
             goUp++;
         }
         goUp--
@@ -52,13 +53,14 @@ export class CodeBlock
         let lastMatchEndingIndex = 0
         let i = 0;
         const endPatternHtml = />[\r\n\s]*$/;
-        characterTemp = character
         while (!foundAMatch && i < 200 && line - goUp + i < arr.length - 1 && line - goUp + i <= this.htmlTagRange.end.line)
         {
 
             while ((endTag = endPattern.exec(arr[line - goUp + i])) !== null) {
-                if (endTag.index > characterTemp || goUp - i != 0)
+                if (endTag.index > lastMatchIndex && endTag.index < character ) return null
+                if (endTag.index > character || goUp - i != 0)
                 {
+
                     foundAMatch = true
                     lastMatchEndingIndex = endTag.index;
                 }

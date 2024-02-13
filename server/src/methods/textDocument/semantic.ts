@@ -11,23 +11,31 @@ interface semanticResponse  {
     data: number[]
 }
 export const semantic = async (message : RequestMessage ) : Promise<semanticResponse> => {
-    log.write('should give semantic')
+    log.writeLspServer('should give semantic', 3)
     const textDocument = message.params as textDocumentType
     const javaScrText = getAllJavaScriptText(textDocument.textDocument.uri)
     const resJavaScr = await requestingMethods('semantic', javaScrText, 0, 0)
     let javascSem : semanticToken[] = []
     if (resJavaScr)
     {
-        //@ts-ignore
-        const temp = resJavaScr.result.data
-        const z = decryptSemanticsFromJavascriptServer(temp)
-        javascSem = z
+        try {
+            //@ts-ignore
+            const temp = resJavaScr.result.data
+            const z = decryptSemanticsFromJavascriptServer(temp)
+            javascSem = z
+        }
+        catch (e)
+        {
+            Log.writeLspServer('erroo in smeantic')
+        }
+
     }
     const res = detectAlpineCharacters(textDocument.textDocument.uri)
     const allTokens = [...res]
     allTokens.push(...javascSem)
     const sortedSemTokens = sortSemanticTokens(allTokens)
     const decrpytedTokens = decryptSemanticTokens(sortedSemTokens)
+
     return {
         data:
         decrpytedTokens
@@ -133,7 +141,7 @@ function detectAlpineCharacters(uri: string) : semanticToken[]
 {
     const lines = allFiles.get(uri)!.split('\n')
 // Regular expression with the global flag
-    const regExpx = /x-[a-zA-Z]+="|(?<![\\=])"|@[a-zA-Z.]+="|let|var|const/g;
+    const regExpx = /x-[a-zA-Z]+="|(?<![\\=])"|@[a-z-]+(\.[a-z]+)*="|let|var|const/g;
     let match : any;
     const output : semanticToken[] = []
     lines.forEach((line, currentLine) => {

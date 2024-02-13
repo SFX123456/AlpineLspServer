@@ -92,6 +92,7 @@ export const completion = async (message : RequestMessage) : Promise<CompletionL
     {
         Log.writeLspServer('range idd nto work')
         Log.writeLspServer(rangeHtmlTag)
+        return null
     }
 
     Log.writeLspServer(rangeHtmlTag)

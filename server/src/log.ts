@@ -20,7 +20,9 @@ export default {
         }
         log.write('\n')
     },
-    writeLspServer: (message : object | unknown) => {
+    writeLspServer: (message : object | unknown, logLev : number = 0) => {
+
+
         if (message == undefined)
         {
 

@@ -199,8 +199,7 @@ export function getEndingParenthesisPosition(uri: string, line: number, characte
             {
                 return null
             }
-
-
+            
             if (line == closingTagIndexLine) {
                 if (resEnd.index! > closingTagIndexCharacter)
                 {
