@@ -1,3 +1,5 @@
+import {CompletionItem, InsertTextFormat, textEdit} from "./completionTypes";
+
 export interface InitializeParams {
     processId: number;
 
@@ -33,5 +35,42 @@ export interface customEvent  {
     details: dispatchVariables
 }
 export type dispatchVariables = Record<string, unknown>
+
+
+
+export interface Range {
+    start: Position,
+    end: Position
+}
+
+
+
+export interface textDocumentType {
+    textDocument: TextDocumentItem,
+    position: Position
+}
+
+
+
+export interface CompletionList {
+    isIncomplete: boolean;
+    items: CompletionItem[];
+}
+
+
+export interface TextDocumentItem {
+    uri: DocumentUri;
+    languageId: string;
+    version: number;
+    text: string;
+}
+
+
+
+export type DocumentUri = string;
+
+
+
+export type CompletionItemKind = 1 | 2 | 15
 
 

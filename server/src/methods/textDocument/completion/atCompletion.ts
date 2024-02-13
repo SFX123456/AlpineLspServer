@@ -1,0 +1,76 @@
+import {addNecessaryCompletionItemProperties, completionResponse} from "../completion";
+import {allHtml} from "../../../allFiles";
+import {findAccordingRow} from "../../../cheerioFn";
+import Log from "../../../log";
+import {CompletionList, customEvent} from "../../../types/ClientTypes";
+import {CompletionItem} from "../../../types/completionTypes";
+import {atoptions} from "../../../at-validOptions";
+import {Cheerio, Element} from "cheerio";
+
+export const completionJustAT : completionResponse = async (line: number, character : number, uri: string | undefined) : Promise<CompletionList | null> =>
+{
+    const htmpPage = allHtml.get(uri!)!
+    const node = findAccordingRow(line, htmpPage)
+    Log.writeLspServer('@reaction')
+    Log.writeLspServer(node!.toString())
+    const allCustomEvents :customEvent[] = []
+    for (let key of allHtml.keys()) {
+        const allEventsHtmlPage = allHtml.get(key)
+        allCustomEvents.push(...allEventsHtmlPage!.events)
+    }
+    const eventsWithoutWindow = getCustomNotWindowEventsWithVariables(node!)
+    //z.map(item => item.name)
+    const completionItemsEvents : CompletionItem[] =  allCustomEvents.map(item => {
+        if (eventsWithoutWindow.indexOf(item.name) != -1)
+        {
+            return {
+                label: `@${item.name}=" \${1:foo} ".stop`,
+                kind: 15,
+                insertTextFormat : 2
+            }
+        }
+        return {
+            label: `@${item.name}=" \${1:foo} ".window`,
+            kind: 15,
+            insertTextFormat : 2
+        }
+    })
+    completionItemsEvents.push(...atoptions)
+
+
+    const readyXoptions = addNecessaryCompletionItemProperties(completionItemsEvents, line, character)
+
+    return {
+        isIncomplete: false,
+        items: readyXoptions
+    }
+}
+
+export function getCustomNotWindowEventsWithVariables(node : Cheerio<Element>): string[]
+{
+    const customEvents :  string[] = []
+    const content = node.toString()
+        const arr = content.split('$dispatch')
+        Log.writeLspServer('dispatch')
+        Log.writeLspServer(content)
+        arr.forEach((match : string) => {
+            match = match.replace('\n','')
+            if (match.includes('customevent'))
+            {
+                Log.writeLspServer('customevent trigger')
+            }
+            Log.writeLspServer(match)
+            const regExp = /^\(['\s]+([a-z-]+)(?:[\s',]+{([a-zA-Z\s,':0-9]+)}|[\s'])\)/
+            const res = match.match(regExp)
+            if (!res){
+                Log.writeLspServer('event regex did not work')
+                return
+            }
+            customEvents.push(res[1])
+
+        })
+        Log.writeLspServer('results')
+        Log.writeLspServer(customEvents)
+
+        return customEvents
+}

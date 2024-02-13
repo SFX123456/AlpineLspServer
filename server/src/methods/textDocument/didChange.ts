@@ -1,12 +1,10 @@
 import {allFiles, allHtml} from "../../allFiles";
 import log from "../../log";
 import {RequestMessage} from "../../server";
-import * as cheerio from "cheerio";
-import {func} from "vscode-languageserver/lib/common/utils/is";
 import {saveCheerioFile} from "../../cheerioFn";
+import {TextDocumentItem} from "../../types/ClientTypes";
 
 
-export type DocumentUri = string;
 type contentChange = {
     text: string
 }
@@ -14,13 +12,6 @@ interface textDocument {
     textDocument : TextDocumentItem,
     contentChanges: contentChange[]
 }
-export interface TextDocumentItem {
-    uri: DocumentUri;
-    languageId: string;
-    version: number;
-    text: string;
-}
-
 
 
 export const didChange = async (message : RequestMessage): Promise<null> => {

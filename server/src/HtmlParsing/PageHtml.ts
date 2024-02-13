@@ -1,24 +1,23 @@
 import * as cheerio from "cheerio";
 import * as cheerioType from "domhandler/lib/node"
 import Log from "../log";
-import {customEvent, dispatchVariables} from "../ClientTypes";
+import {customEvent, dispatchVariables} from "../types/ClientTypes";
 
 export class PageHtml
 {
     public events : customEvent[];
     public cheerioObj : cheerio.CheerioAPI
-    public folderName : string
+    public uri : string
     private eventNames : string[]
 
-    public constructor(cheerioObj: cheerio.CheerioAPI, folderName : string) {
+    public constructor(cheerioObj: cheerio.CheerioAPI, uri : string) {
         this.events = []
         this.eventNames = []
         this.cheerioObj = cheerioObj
         cheerioObj('body').children().each((index : any, element : cheerio.Element) => {
             this.processElement(element);
         })
-        this.folderName = folderName
-
+        this.uri = uri
     }
 
 
@@ -35,32 +34,22 @@ export class PageHtml
     });
     }
 
+
+
     public getCustomNotWindowEventsWithVariables(nodeText : string): customEvent[]
     {
         const customEvents : customEvent[] = []
         const content = nodeText
         const arr = content.split('$dispatch')
-        Log.writeLspServer('dispatch')
-        Log.writeLspServer(content)
+        arr.shift()
         arr.forEach((match : string) => {
             match = match.replace('\n','')
-            if (match.includes('customevent'))
-            {
-                Log.writeLspServer('customevent trigger')
-            }
-            Log.writeLspServer(match)
             const regExp = /^\(['\s]+([a-z-]+)(?:[\s',]+{([a-zA-Z\s,':0-9]+)}|[\s'])\)/
             const res = match.match(regExp)
-            if (!res){
-                Log.writeLspServer('event regex did not work')
-                return
-            }
+            if (!res) return
             const keysVar: dispatchVariables  = {}
-            Log.writeLspServer(res[1])
             if (res.length > 2 && res[2] )
             {
-                Log.writeLspServer('hits here')
-                Log.writeLspServer(res[2])
                 const zu = res[2].split(',')
 
                 zu.forEach(v => {
@@ -80,8 +69,6 @@ export class PageHtml
             }
 
         })
-        Log.writeLspServer('results')
-        Log.writeLspServer(customEvents)
 
         return customEvents
     }

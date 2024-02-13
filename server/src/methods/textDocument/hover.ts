@@ -1,14 +1,9 @@
 import {RequestMessage} from "../../server";
-import {textDocument} from "./completion";
 import {getLastWord} from "../../analyzeFile";
-import log from "../../log";
 import {allHtml} from "../../allFiles";
-import {InsertTextFormat, ProposedFeatures} from "vscode-languageserver";
 import Log from "../../log";
-import {fileUriToPath} from "file-uri-to-path"
-import all = ProposedFeatures.all;
-import * as path_1 from "path"
-import {rootUri} from "../initialize";
+import {infos} from "../../typescriptLsp/typescriptServer";
+import {textDocumentType} from "../../types/ClientTypes";
 interface HoverResult {
     contents: string
 }
@@ -20,8 +15,8 @@ const lastWordAnswerMatches : Record<predefinedAnswersKeys, string> = {
     '@' : 'event'
 }
 export const hoverRequest = async (message: RequestMessage) : Promise<HoverResult>  => {
-    const textDocument = message.params as textDocument
-    let lastWord = getLastWord(textDocument)
+    const textDocumentt = message.params as textDocumentType
+    let lastWord = getLastWord(textDocumentt)
     if (lastWord == '')
         return {
             contents : ''
@@ -60,8 +55,8 @@ function getTextForEvent(event : string) : string
            Log.writeLspServer(x)
            if (x.name === event)
            {
-               let fileName =allHtml.get(key!)!.folderName
-               const relPath = fileName.split(rootUri)[1]
+               let fileName =allHtml.get(key!)!.uri
+               const relPath = fileName.split(infos.rootUri!)[1]
                if (fileNames.indexOf(relPath) === -1)
                {
                    output += relPath

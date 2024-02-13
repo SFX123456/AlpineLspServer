@@ -1,29 +1,18 @@
 import {RequestMessage} from "../../server";
-import {allFiles, allHtml} from "../../allFiles";
-import {TextDocumentItem} from "./didChange";
+import {allFiles} from "../../allFiles";
 import log from "../../log";
-import {CompletionItem, xoptions} from "../../x-validOptions";
-import {getLastWord} from "../../analyzeFile";
-import {findAccordingRow, getParentAndOwnVariables} from "../../cheerioFn";
 import Log from "../../log";
-import {atoptions, magicObjects} from "../../at-validOptions";
-import {ResponseMessage} from "vscode-languageserver";
-import {func} from "vscode-languageserver/lib/common/utils/is";
 
-import { getAllJavaScriptText, textDocument} from "./completion";
-import {requestingMethods} from "../../StartTypescriptServer";
-//add alpine data
-
-const tokenTypes = ['property', 'type', 'class']
-
-const tokenModifiers = ['private', 'static']
+import {requestingMethods} from "../../typescriptLsp/typescriptServer";
+import {textDocumentType} from "../../types/ClientTypes";
+import {getAllJavaScriptText} from "./javascriptText";
 
 interface semanticResponse  {
     data: number[]
 }
 export const semantic = async (message : RequestMessage ) : Promise<semanticResponse> => {
     log.write('should give semantic')
-    const textDocument = message.params as textDocument
+    const textDocument = message.params as textDocumentType
     const javaScrText = getAllJavaScriptText(textDocument.textDocument.uri)
     Log.writeLspServer('all js text ')
     Log.writeLspServer(javaScrText)

@@ -1,6 +1,6 @@
 import {RequestMessage} from "../server";
-import {initializeTypescriptServer} from "../StartTypescriptServer";
-import {InitializeParams} from "../ClientTypes";
+import {initializeTypescriptServer, infos} from "../typescriptLsp/typescriptServer";
+import {InitializeParams} from "../types/ClientTypes";
 import Log from "../log";
 
 type ServerCapabilities = Record<string, unknown>
@@ -14,15 +14,15 @@ interface InitializeResult
     }
 }
 
-export let rootUri : string
-export let rootPath : string
+
+
 
 export const initialize = async (message : RequestMessage) : Promise<InitializeResult> => {
     const initializeParams = message.params as unknown as InitializeParams
     Log.writeLspServer('search here 2')
     Log.writeLspServer(initializeParams)
-    rootUri = initializeParams.rootUri
-    rootPath = initializeParams.rootPath!
+    infos.rootUri = initializeParams.rootUri
+    infos.rootPath = initializeParams.rootPath!
     Log.writeLspServer('initialized methjod callled once')
     await initializeTypescriptServer(message)
     return {

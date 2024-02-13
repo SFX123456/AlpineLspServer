@@ -1,5 +1,5 @@
 
-<div @customor=" foo ".window  x-data="{test : bar}" >
+<div  >
 
     <p  x-init="$dispatch('testevent', { message : '5', jakob : 7 })  "  @click=" test = 5 " >
         <span x-init="$data
