@@ -270,45 +270,18 @@ export function getOpeningTagPosition(uri: string, line: number) : Position | nu
     return null
 }
 
-
-export function isInsideElement(line : number , char : number, uri: string): boolean {
-    const startPattern =  /<[a-z]+\s/;
-    const endPattern = />[\r]*$/;
-    const arr = allFiles.get(uri)!.split('\n')
-    let goUp = 0;
-    let startTag = startPattern.exec(arr[line])
-    while (!startTag && goUp < 200 && line - goUp > 0)
-    {
-        goUp++;
-        if (line - goUp == 0)
-            startTag = startPattern.exec(arr[line - goUp])
-    }
-    if (!startTag) return false
-    let endTag = endPattern.exec(arr[line - goUp])
-    let i = 0;
-    while (!endTag && i < 200 && line - goUp + i < arr.length - 1)
-    {
-        i++;
-        endTag = endPattern.exec(arr[line - goUp + i])
-    }
-    return line - goUp + i >= line
-        && line - goUp <= line
-        && ( startTag!.index + 2 < char || goUp != 0 )
-        && ( endTag!.index  > char || goUp - i != 0 )
-}
-
 export function isInsideElement2(line : number , char : number, uri: string): null | Range {
     const startPattern =  /<[a-z]+\s/;
     const endPattern = />[\r]*$/;
     const arr = allFiles.get(uri)!.split('\n')
     let goUp = 0;
-    let startTag = startPattern.exec(arr[line])
-    while (!startTag && goUp < 200 && line - goUp > 0)
+    let startTag = null
+    while (!startTag && goUp < 200 && line - goUp >= 0)
     {
-        goUp++;
-        if (line - goUp == 0)
-            startTag = startPattern.exec(arr[line - goUp])
+        startTag = startPattern.exec(arr[line - goUp])
+        goUp++
     }
+    goUp--
     if (!startTag) return null
     let endTag = endPattern.exec(arr[line - goUp])
     let i = 0;
@@ -317,8 +290,8 @@ export function isInsideElement2(line : number , char : number, uri: string): nu
         i++;
         endTag = endPattern.exec(arr[line - goUp + i])
     }
+    if (!endTag) return null
     if ( line - goUp + i >= line
-        && line - goUp <= line
         && ( startTag!.index + 2 < char || goUp != 0 )
         && ( endTag!.index  > char || goUp - i != 0 )
     )

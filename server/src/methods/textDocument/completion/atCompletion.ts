@@ -51,26 +51,17 @@ export function getCustomNotWindowEventsWithVariables(node : Cheerio<Element>): 
     const customEvents :  string[] = []
     const content = node.toString()
         const arr = content.split('$dispatch')
+        arr.shift()
         Log.writeLspServer('dispatch')
         Log.writeLspServer(content)
         arr.forEach((match : string) => {
             match = match.replace('\n','')
-            if (match.includes('customevent'))
-            {
-                Log.writeLspServer('customevent trigger')
-            }
-            Log.writeLspServer(match)
             const regExp = /^\(['\s]+([a-z-]+)(?:[\s',]+{([a-zA-Z\s,':0-9]+)}|[\s'])\)/
             const res = match.match(regExp)
-            if (!res){
-                Log.writeLspServer('event regex did not work')
-                return
-            }
+            if (!res) return
             customEvents.push(res[1])
 
         })
-        Log.writeLspServer('results')
-        Log.writeLspServer(customEvents)
 
         return customEvents
 }

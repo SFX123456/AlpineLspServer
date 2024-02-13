@@ -5,7 +5,7 @@ import {CompletionList, lastWordSuggestion, textDocumentType} from "../../types/
 import {CompletionItem} from "../../types/completionTypes";
 import {completionJustAT} from "./completion/atCompletion";
 import {completionJs} from "./completion/completionJs";
-import {getLastWord, isInsideElement, isInsideElement2, isInsideParenthesis} from "../../analyzeFile";
+import {getLastWord, isInsideElement2} from "../../analyzeFile";
 import {CodeBlock} from "../../CodeBlock";
 import {completionX} from "./completion/xCompletion";
 import {chainableOnAt, chainableOnAtKeyboard} from "../chainableOnAt";
@@ -94,7 +94,7 @@ export const completion = async (message : RequestMessage) : Promise<CompletionL
         Log.writeLspServer(rangeHtmlTag)
     }
 
-
+    Log.writeLspServer(rangeHtmlTag)
     const codeBlock = new CodeBlock(rangeHtmlTag!, textDocumentt)
    if (codeBlock.isInsideParenthesis())
    {
@@ -102,6 +102,7 @@ export const completion = async (message : RequestMessage) : Promise<CompletionL
        {
            return createReturnObject([])
        }
+       Log.writeLspServer('works so far')
       const output = await completionJs(line, character, textDocumentt.textDocument.uri, codeBlock)
        if (!output) return createReturnObject([])
        return output

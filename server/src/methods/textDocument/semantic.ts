@@ -14,8 +14,6 @@ export const semantic = async (message : RequestMessage ) : Promise<semanticResp
     log.write('should give semantic')
     const textDocument = message.params as textDocumentType
     const javaScrText = getAllJavaScriptText(textDocument.textDocument.uri)
-    Log.writeLspServer('all js text ')
-    Log.writeLspServer(javaScrText)
     const resJavaScr = await requestingMethods('semantic', javaScrText, 0, 0)
     let javascSem : semanticToken[] = []
     if (resJavaScr)
@@ -28,8 +26,6 @@ export const semantic = async (message : RequestMessage ) : Promise<semanticResp
     const res = detectAlpineCharacters(textDocument.textDocument.uri)
     const allTokens = [...res]
     allTokens.push(...javascSem)
-    log.writeLspServer('all tokens')
-    Log.writeLspServer(allTokens)
     const sortedSemTokens = sortSemanticTokens(allTokens)
     const decrpytedTokens = decryptSemanticTokens(sortedSemTokens)
     return {
@@ -52,14 +48,10 @@ function decryptSemanticTokens(tokens : semanticToken[]): number[]
     const output : number[] = []
     let lastHitChar = 0
     let lastHitLine = 0
-    Log.writeLspServer('count ' + tokens.length)
     tokens.forEach((token) => {
         if (token.line != lastHitLine){
             lastHitChar = 0
-            Log.writeLspServer('resetting for ')
-            Log.writeLspServer(token)
         }
-        Log.writeLspServer(token)
         output.push(token.line - lastHitLine)
         lastHitLine = token.line
         output.push(token.startChar - lastHitChar)
@@ -67,7 +59,6 @@ function decryptSemanticTokens(tokens : semanticToken[]): number[]
         output.push(token.length)
         output.push(token.tokenType)
         output.push(token.tokenModifier)
-        Log.writeLspServer(output)
     })
     return output
 }
@@ -102,8 +93,6 @@ function sortSemanticTokens(tokens: semanticToken[])
     patchTokens.forEach(y => {
         allSortedTokens.push(y)
     })
-    Log.writeLspServer('soted tokens ' + allSortedTokens.length)
-    Log.writeLspServer(allSortedTokens)
     return allSortedTokens
 
 }
@@ -121,7 +110,6 @@ function decryptSemanticsFromJavascriptServer(numbers : number[]): semanticToken
     {
         if (numbers[i] > 500)
         {
-            Log.writeLspServer('end of decrypt')
             i = numbers.length
             continue
         }
@@ -138,8 +126,6 @@ function decryptSemanticsFromJavascriptServer(numbers : number[]): semanticToken
             tokenModifier: numbers[i + 4]
         })
     }
-    Log.writeLspServer('decrypted token')
-    Log.writeLspServer(output)
     return output
 }
 
@@ -164,8 +150,6 @@ function detectAlpineCharacters(uri: string) : semanticToken[]
             })
         }
     })
-    Log.writeLspServer('all alpine')
-    Log.writeLspServer(output)
 
     return output
 }

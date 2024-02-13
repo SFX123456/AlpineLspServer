@@ -1,14 +1,11 @@
 
-<div  >
+<div @click="  " >
 
     <p  x-init="$dispatch('testevent', { message : '5', jakob : 7 })  "  @click=" test = 5 " >
-        <span x-init="$data
-        
-        
-        
-        
-        
-         " > 
+        <span x-init=" 
+        let test = 5;
+        test = 10;
+        console.log(test) " > 
 
         </span>
     </p>

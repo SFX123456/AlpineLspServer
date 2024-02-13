@@ -30,18 +30,17 @@ export class CodeBlock
         let startTag : any
         let lastMatchIndex = 0
         let foundAMatch = false
-        while (!foundAMatch && goUp < 200 && line - goUp >= 0)
+        let characterTemp = character
+        while (!foundAMatch && goUp < 200 && line - goUp >= 0 && line - goUp >= this.htmlTagRange.start.line)
         {
-
             while ((startTag = startPattern.exec(arr[line - goUp])) !== null) {
-                if (startTag.index < character)
+                if (startTag.index < characterTemp)
                 {
                     foundAMatch = true
-
                     lastMatchIndex = startTag.index;
                 }
             }
-
+            characterTemp = 500
             goUp++;
         }
         goUp--
@@ -52,11 +51,13 @@ export class CodeBlock
         foundAMatch = false
         let lastMatchEndingIndex = 0
         let i = 0;
-        const endPatternHtml = />[\r]*$/;
-        while (!foundAMatch && i < 200 && line - goUp + i < arr.length - 1)
+        const endPatternHtml = />[\r\n\s]*$/;
+        characterTemp = character
+        while (!foundAMatch && i < 200 && line - goUp + i < arr.length - 1 && line - goUp + i <= this.htmlTagRange.end.line)
         {
+
             while ((endTag = endPattern.exec(arr[line - goUp + i])) !== null) {
-                if (endTag.index > character)
+                if (endTag.index > characterTemp || goUp - i != 0)
                 {
                     foundAMatch = true
                     lastMatchEndingIndex = endTag.index;
@@ -66,19 +67,25 @@ export class CodeBlock
             {
                 if (arr[line - goUp + i].match(endPatternHtml))
                 {
+                    Log.writeLspServer('apparently found enta tag befoer')
+                    Log.writeLspServer(goUp.toString())
+                    Log.writeLspServer(arr[line -goUp + i])
+
                     return null
                 }
             }
+
             i++
         }
         i--;
         if (!foundAMatch) return null
         Log.writeLspServer('here to search')
+        Log.writeLspServer(this.htmlTagRange)
         Log.writeLspServer(lastMatchIndex.toString())
+        Log.writeLspServer(lastMatchEndingIndex.toString())
         Log.writeLspServer(goUp.toString())
         Log.writeLspServer((goUp - i).toString())
         if ( line - goUp + i >= line
-            && line - goUp <= line
             && (lastMatchIndex + 2 < character || goUp != 0 )
             && ( lastMatchEndingIndex  > character || goUp - i != 0 )
         )
@@ -155,8 +162,5 @@ export class CodeBlock
 
         return subStr.substring(beginningIndex + 1, this.parenthesisRange!.start.character - 2)
     }
-
-
-
 
 }
