@@ -104,25 +104,6 @@ function buildMagiceventVar(item : customEvent )
 }
 
 
-function generateFullTextForLspJavascript(uri : string,variables : string[], line : number, character : number)
-{
-    const fullText = getAllJavascriptCode(uri, line, character)
-    let fullTextWithVariables = fullText
-    for (let i = 0; i < 500; i++)
-    {
-        fullTextWithVariables+= '\n'
-    }
-    let varAsTextStr = variables.map(x => 'var ' + x + ';' ).join('')
-    varAsTextStr += (magicObjects.map(x => ' var ' + x +'; ').join(''))
-    const openingTagIndex = getOpeningParenthesisPosition(uri, line, character)
-    if (!openingTagIndex || fullText == '') return ''
-    let beforeText = ''
-    for (let i = 0; i < openingTagIndex.line; i++)
-    {
-        beforeText += '\n'
-    }
-    return beforeText + fullTextWithVariables + varAsTextStr
-}
 
 
 

@@ -24,13 +24,13 @@ export const completionJustAT : completionResponse = async (line: number, charac
         if (eventsWithoutWindow.indexOf(item.name) != -1)
         {
             return {
-                label: `@${item.name}=" \${1:foo} ".stop`,
+                label: `@${item.name}\${1:.stop}=" \${2:foo} "`,
                 kind: 15,
                 insertTextFormat : 2
             }
         }
         return {
-            label: `@${item.name}=" \${1:foo} ".window`,
+            label: `@${item.name}\${1:.window}=" \${2:foo} "`,
             kind: 15,
             insertTextFormat : 2
         }

@@ -147,7 +147,7 @@ function detectAlpineCharacters(uri: string) : semanticToken[]
 {
     const lines = allFiles.get(uri)!.split('\n')
 // Regular expression with the global flag
-    const regExpx = /x-[a-zA-Z]+="|(?<![\\=])"|@[a-zA-Z]+="|let|var|const/g;
+    const regExpx = /x-[a-zA-Z]+="|(?<![\\=])"|@[a-zA-Z.]+="|let|var|const/g;
     let match : any;
     const output : semanticToken[] = []
     lines.forEach((line, currentLine) => {

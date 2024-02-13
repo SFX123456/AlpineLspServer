@@ -16,7 +16,7 @@ const lastWordAnswerMatches : Record<predefinedAnswersKeys, string> = {
 }
 export const hoverRequest = async (message: RequestMessage) : Promise<HoverResult>  => {
     const textDocumentt = message.params as textDocumentType
-    let lastWord = getLastWord(textDocumentt)
+    let lastWord = getLastWord(textDocumentt).lastWord
     if (lastWord == '')
         return {
             contents : ''

@@ -37,14 +37,14 @@ export function getAllJavaScriptText(uri: string )
             output += fullText
         }
     })
+
+
     for (let i = 0; i < 500;i++)
     {
         output += '\n'
     }
     output += (magicObjects.map(x => ' var ' + x +'; ').join(''))
-    Log.writeLspServer('should have added')
-    Log.writeLspServer(output)
-    Log.writeLspServer(magicObjects[0].toString())
+
     return output
 }
 

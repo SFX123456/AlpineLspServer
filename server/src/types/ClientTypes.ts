@@ -73,4 +73,8 @@ export type DocumentUri = string;
 
 export type CompletionItemKind = 1 | 2 | 15
 
+export type lastWordSuggestion = {
+    wholeLine : string,
+    lastWord : string
+}
 

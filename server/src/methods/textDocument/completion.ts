@@ -1,13 +1,14 @@
 import {RequestMessage} from "../../server";
 import {xoptions} from "../../x-validOptions";
 import Log from "../../log";
-import {CompletionList, textDocumentType} from "../../types/ClientTypes";
+import {CompletionList, lastWordSuggestion, textDocumentType} from "../../types/ClientTypes";
 import {CompletionItem} from "../../types/completionTypes";
 import {completionJustAT} from "./completion/atCompletion";
 import {completionJs} from "./completion/completionJs";
 import {getLastWord, isInsideElement, isInsideElement2, isInsideParenthesis} from "../../analyzeFile";
 import {CodeBlock} from "../../CodeBlock";
 import {completionX} from "./completion/xCompletion";
+import {chainableOnAt, chainableOnAtKeyboard} from "../chainableOnAt";
 
 
 
@@ -20,9 +21,25 @@ export interface completionResponseType {
 
 
 
-export function addNecessaryCompletionItemProperties(options : CompletionItem[], line: number, char : number)
+export function addNecessaryCompletionItemProperties(options : CompletionItem[] | string[], line: number, char : number) : CompletionItem[]
 {
-    return options.map(x => {
+    if (!options.length)
+    {
+        return []
+    }
+    if (typeof options[0] == 'string')
+    {
+        const optionsStr = options as string[]
+        return optionsStr.map(x=> {
+            return {
+                label: x,
+                kind : 6
+            }
+        })
+    }
+    const optionsComp = options as CompletionItem[]
+    return optionsComp.map(x => {
+
         if (x.insertTextFormat === 2) {
             x.textEdit = {
                 range: {
@@ -44,7 +61,20 @@ export function addNecessaryCompletionItemProperties(options : CompletionItem[],
 
 const tableCompletion : Record<string, completionResponse> = {
     '@' : completionJustAT,
-    'x-' :  completionX
+    'x-' :  completionX,
+    '@.' : completionAtPoint
+}
+
+async function completionAtPoint(line : number, char : number, uri : string | undefined, lastWord : string | undefined) : Promise<CompletionList | null>
+{
+    Log.writeLspServer('completion at point called')
+    const lastWordWithoutAt = lastWord!.substring(1)
+    const arr = lastWordWithoutAt.split('.')
+    if (arr[0] === 'keydown' || arr[0] === 'keyup')
+    {
+        return createReturnObject(addNecessaryCompletionItemProperties(chainableOnAtKeyboard, line, char))
+    }
+    return createReturnObject(addNecessaryCompletionItemProperties(chainableOnAt,line, char))
 }
 
 
@@ -78,10 +108,10 @@ export const completion = async (message : RequestMessage) : Promise<CompletionL
    }
 
 
-    const key = getMatchingTableLookUp(lastWord)
+    const key = getMatchingTableLookUp(lastWord, character)
     if (!key) return createReturnObject([])
 
-    let res = tableCompletion[key]( line, character, textDocumentt.textDocument.uri, lastWord)
+    let res = tableCompletion[key]( line, character, textDocumentt.textDocument.uri, lastWord.lastWord)
     const output = await res
     if (!output) return createReturnObject([])
     return output
@@ -100,11 +130,16 @@ function createReturnObject(arr : CompletionItem[]) :CompletionList
     }
 }
 
-function getMatchingTableLookUp(lastWord : string): string | null
+function getMatchingTableLookUp(lastWord : lastWordSuggestion, character : number): string | null
 {
-    if (lastWord === '@' ) return '@'
-    if (lastWord.indexOf('x') != -1 && lastWord.length < 2) return 'x-'
+    Log.writeLspServer('deciding where to go')
+    Log.writeLspServer(lastWord)
+    Log.writeLspServer(lastWord.wholeLine[character])
+    Log.writeLspServer(lastWord.lastWord.indexOf('@').toString())
 
+    if (lastWord.lastWord === '@' ) return '@'
+    if (lastWord.lastWord.indexOf('x') != -1 && lastWord.lastWord.length < 2) return 'x-'
+    if (lastWord.lastWord.indexOf('@') == 0 && lastWord.wholeLine[character-1] ==='.') return '@.'
 
     return null;
 }

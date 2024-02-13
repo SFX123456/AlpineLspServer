@@ -1,13 +1,12 @@
 import {allFiles} from "./allFiles";
 import log from "./log";
-import {Position, Range, textDocumentType} from "./types/ClientTypes";
+import {lastWordSuggestion, Position, Range, textDocumentType} from "./types/ClientTypes";
 import Log from "./log";
 import {end} from "cheerio/lib/api/traversing";
 
 
-export function getLastWord( textDocument: textDocumentType) : string {
-    const text = allFiles.get(textDocument.textDocument.uri)
-    if (!text) return ''
+export function getLastWord( textDocument: textDocumentType) : lastWordSuggestion {
+    const text = allFiles.get(textDocument.textDocument.uri)!
     let character = textDocument.position.character
     const wholeLine = text!.split('\n')[(textDocument.position.line)]
     let wholeLineSubStrTillChar = wholeLine.substring(0, character)
@@ -23,7 +22,10 @@ export function getLastWord( textDocument: textDocumentType) : string {
     if (endTagIndex == -1) endTagIndex = 900
     if (spaceCharIndexEnd == -1) spaceCharIndexEnd = 900
     let endIndex = Math.min(spaceCharIndexEnd, endTagIndex, wholeLine.length - character)
-    return wholeLine.substring(startIndex + 1, endIndex + character)
+    return {
+        wholeLine,
+        lastWord: wholeLine.substring(startIndex + 1, endIndex + character)
+    }
 }
 
 export function isInsideParenthesis(line : number , char : number, uri: string): boolean {
