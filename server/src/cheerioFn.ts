@@ -5,6 +5,9 @@ import log from "./log";
 import Log from "./log";
 import {Cheerio, Element} from "cheerio";
 import {func} from "vscode-languageserver/lib/common/utils/is";
+import {ConnectionStrategy} from "vscode-languageserver";
+import {match} from "assert";
+import {customEvent, dispatchVariables} from "./ClientTypes";
 
 export function saveCheerioFile(text: string, uri : string)
 {
@@ -13,7 +16,7 @@ export function saveCheerioFile(text: string, uri : string)
     let contentLines = addLineAttributes(contentLinesOr)
     const finalStr = contentLines.join('\n')
     const cheer = cheerio.load(finalStr)
-    const htmlPage = new PageHtml(cheer)
+    const htmlPage = new PageHtml(cheer, uri)
     allHtml.set(uri, htmlPage)
 }
 function addLineAttributes(contentLines : string[]) : string[]
@@ -89,6 +92,39 @@ export function getParentAndOwnVariables(node : Cheerio<Element>): string[]
         }
     }
     return variables;
+}
+
+export function getCustomNotWindowEventsWithVariables(node : Cheerio<Element>): string[]
+{
+    const customEvents :  string[] = []
+    const content = node.toString()
+    const arr = content.split('$dispatch')
+    Log.writeLspServer('dispatch')
+    arr.shift()
+    arr.forEach((match : string,  index : number) => {
+        match = match.replace('\n','')
+        const regExp = /\(['\s]+([a-zA-Z]+)[\s',]+{([a-zA-Z\s,':0-9]+)}/
+        const res = match.match(regExp)
+        if (!res){
+            Log.writeLspServer('event regex did not work')
+            return
+        }
+        const zu = res[2].split(',')
+        const keysVar: dispatchVariables  = {}
+        zu.forEach(v => {
+            const p = v.split(':')
+            let value = p[1].indexOf("'") != -1 ? p[1].replace(/'/g, '') : parseFloat(p[1])
+            keysVar[p[0].trim()] = value
+        })
+        customEvents.push(res[1])
+    })
+    return customEvents
+
+
+}
+function getAllCustomEvents(uri: string)
+{
+
 }
 
 

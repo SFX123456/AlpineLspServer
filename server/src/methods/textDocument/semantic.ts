@@ -10,7 +10,8 @@ import {atoptions, magicObjects} from "../../at-validOptions";
 import {ResponseMessage} from "vscode-languageserver";
 import {func} from "vscode-languageserver/lib/common/utils/is";
 
-import {textDocument} from "./completion";
+import { getAllJavaScriptText, textDocument} from "./completion";
+import {requestingMethods} from "../../StartTypescriptServer";
 //add alpine data
 
 const tokenTypes = ['property', 'type', 'class']
@@ -22,38 +23,161 @@ interface semanticResponse  {
 }
 export const semantic = async (message : RequestMessage ) : Promise<semanticResponse> => {
     log.write('should give semantic')
-
     const textDocument = message.params as textDocument
+    const javaScrText = getAllJavaScriptText(textDocument.textDocument.uri)
+    Log.writeLspServer('all js text ')
+    Log.writeLspServer(javaScrText)
+    const resJavaScr = await requestingMethods('semantic', javaScrText, 0, 0)
+    let javascSem : semanticToken[] = []
+    if (resJavaScr)
+    {
+        //@ts-ignore
+        const temp = resJavaScr.result.data
+        const z = decryptSemanticsFromJavascriptServer(temp)
+        javascSem = z
+    }
     const res = detectAlpineCharacters(textDocument.textDocument.uri)
+    const allTokens = [...res]
+    allTokens.push(...javascSem)
+    log.writeLspServer('all tokens')
+    Log.writeLspServer(allTokens)
+    const sortedSemTokens = sortSemanticTokens(allTokens)
+    const decrpytedTokens = decryptSemanticTokens(sortedSemTokens)
     return {
         data:
-        res
+        decrpytedTokens
 
     }
 }
 
-function detectAlpineCharacters(uri: string) : number[]
-{
-    const lines = allFiles.get(uri)!.split('\n')
-// Regular expression with the global flag
-    const regExpx = /x-[a-zA-Z]+="|(?<![\\=])"/g;
+interface semanticToken {
+    line: number,
+    startChar: number,
+    length : number,
+    tokenType : number,
+    tokenModifier: number
+}
 
-    let match : any;
+function decryptSemanticTokens(tokens : semanticToken[]): number[]
+{
     const output : number[] = []
     let lastHitChar = 0
     let lastHitLine = 0
+    Log.writeLspServer('count ' + tokens.length)
+    tokens.forEach((token) => {
+        if (token.line != lastHitLine){
+            lastHitChar = 0
+            Log.writeLspServer('resetting for ')
+            Log.writeLspServer(token)
+        }
+        Log.writeLspServer(token)
+        output.push(token.line - lastHitLine)
+        lastHitLine = token.line
+        output.push(token.startChar - lastHitChar)
+        lastHitChar = token.startChar
+        output.push(token.length)
+        output.push(token.tokenType)
+        output.push(token.tokenModifier)
+        Log.writeLspServer(output)
+    })
+    return output
+}
+
+function sortSemanticTokens(tokens: semanticToken[])
+{
+    const sortedTokens = tokens.sort((a,b)=> a.line - b.line)
+    let patchTokens : semanticToken[] = []
+    let curLine = -1
+    let allSortedTokens : semanticToken[] = []
+    sortedTokens.forEach(x => {
+        if (curLine == -1)
+        {
+            curLine = x.line
+        }
+        if (curLine == x.line)
+        {
+            patchTokens.push(x)
+        }
+        else
+        {
+            curLine = x.line
+            patchTokens = patchTokens.sort((a,b) => a.startChar - b.startChar)
+            patchTokens.forEach(y => {
+                allSortedTokens.push(y)
+            })
+            patchTokens = []
+            patchTokens.push(x)
+        }
+    })
+    patchTokens = patchTokens.sort((a,b) => a.startChar - b.startChar)
+    patchTokens.forEach(y => {
+        allSortedTokens.push(y)
+    })
+    Log.writeLspServer('soted tokens ' + allSortedTokens.length)
+    Log.writeLspServer(allSortedTokens)
+    return allSortedTokens
+
+}
+
+function decryptSemanticsFromJavascriptServer(numbers : number[]): semanticToken[]
+{
+    const output : semanticToken[] = []
+    let lastLine = 0
+    let lastX = 0
+    if (!numbers){
+        Log.writeLspServer('numbers was undefined')
+        return output
+    }
+    for (let i = 0; i < numbers.length; i+= 5)
+    {
+        if (numbers[i] > 500)
+        {
+            Log.writeLspServer('end of decrypt')
+            i = numbers.length
+            continue
+        }
+        let row = numbers[i] + lastLine
+        lastLine = row
+        if (numbers[i] != 0) lastX = 0
+        let column = numbers[i + 1] + lastX
+        lastX = column
+        output.push({
+            line : row,
+            startChar: column,
+            length: numbers[i + 2],
+            tokenType: numbers[i + 3],
+            tokenModifier: numbers[i + 4]
+        })
+    }
+    Log.writeLspServer('decrypted token')
+    Log.writeLspServer(output)
+    return output
+}
+
+function detectAlpineCharacters(uri: string) : semanticToken[]
+{
+    const lines = allFiles.get(uri)!.split('\n')
+// Regular expression with the global flag
+    const regExpx = /x-[a-zA-Z]+="|(?<![\\=])"|@[a-zA-Z]+="|let|var|const/g;
+    let match : any;
+    const output : semanticToken[] = []
     lines.forEach((line, currentLine) => {
         while ((match = regExpx.exec(line)) !== null) {
-            output.push(currentLine - lastHitLine)
-            lastHitLine = currentLine
-            output.push(match.index - lastHitChar)
-            lastHitChar = match.index
-            output.push(match[0].length)
-            output.push(0)
-            output.push(3)
+            let tokenType = 0
+            if (match[0] === 'let' || match[0] === 'var'|| match[0] === 'const')
+                tokenType = 10
+            output.push({
+                line: currentLine,
+                startChar: match.index,
+                length: match[0].length,
+                tokenType,
+                tokenModifier: 3
+            })
         }
-        lastHitChar = 0
     })
+    Log.writeLspServer('all alpine')
+    Log.writeLspServer(output)
+
     return output
 }
 

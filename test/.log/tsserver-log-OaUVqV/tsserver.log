@@ -1,0 +1,845 @@
+Info 0    [22:36:30.432] Starting TS Server
+Info 1    [22:36:30.434] Version: 5.3.3
+Info 2    [22:36:30.434] Arguments: C:\Program Files\nodejs\node.exe e:\Coding\LSP\Final\AlpineLsp\test\node_modules\typescript\lib\tsserver.js --serverMode partialSemantic --useInferredProjectPerProjectRoot --disableAutomaticTypingAcquisition --cancellationPipeName C:\Users\Nico\AppData\Local\Temp\892ee0e6f778271e8ffef7205e57f88c\tscancellation* --logVerbosity verbose --logFile e:\Coding\LSP\Final\AlpineLsp\test\.log\tsserver-log-OaUVqV\tsserver.log --locale en --validateDefaultNpmLocation --useNodeIpc
+Info 3    [22:36:30.434] Platform: win32 NodeVersion: v20.11.0 CaseSensitive: false
+Info 4    [22:36:30.434] ServerMode: 1 hasUnknownServerMode: undefined
+Info 5    [22:36:30.451] request:
+    {
+      "seq": 0,
+      "type": "request",
+      "command": "configure",
+      "arguments": {
+        "formatOptions": {
+          "newLineCharacter": "\n"
+        },
+        "preferences": {
+          "allowIncompleteCompletions": true,
+          "allowRenameOfImportPath": true,
+          "allowTextChangesInNewFiles": true,
+          "disableLineTextInReferences": true,
+          "disableSuggestions": false,
+          "displayPartsForJSDoc": true,
+          "excludeLibrarySymbolsInNavTo": true,
+          "generateReturnInDocTemplate": true,
+          "importModuleSpecifierEnding": "auto",
+          "importModuleSpecifierPreference": "shortest",
+          "includeAutomaticOptionalChainCompletions": true,
+          "includeCompletionsForImportStatements": true,
+          "includeCompletionsForModuleExports": true,
+          "includeCompletionsWithClassMemberSnippets": true,
+          "includeCompletionsWithInsertText": true,
+          "includeCompletionsWithObjectLiteralMethodSnippets": true,
+          "includeCompletionsWithSnippetText": true,
+          "includeInlayEnumMemberValueHints": false,
+          "includeInlayFunctionLikeReturnTypeHints": false,
+          "includeInlayFunctionParameterTypeHints": false,
+          "includeInlayParameterNameHints": "none",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": false,
+          "includeInlayVariableTypeHints": false,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includePackageJsonAutoImports": "auto",
+          "interactiveInlayHints": true,
+          "jsxAttributeCompletionStyle": "auto",
+          "lazyConfiguredProjectsFromExternalProject": false,
+          "organizeImportsAccentCollation": true,
+          "organizeImportsCaseFirst": false,
+          "organizeImportsCollation": "ordinal",
+          "organizeImportsCollationLocale": "en",
+          "organizeImportsIgnoreCase": "auto",
+          "organizeImportsNumericCollation": false,
+          "providePrefixAndSuffixTextForRename": true,
+          "provideRefactorNotApplicableReason": true,
+          "quotePreference": "auto",
+          "useLabelDetailsInCompletionEntries": true
+        }
+      }
+    }
+Info 6    [22:36:30.451] Format host information updated
+Info 7    [22:36:30.452] response:
+    {"seq":0,"type":"response","command":"configure","request_seq":0,"success":true}
+Perf 8    [22:36:30.452] 0::configure: async elapsed time (in milliseconds) 1.4158
+Info 9    [22:36:30.453] request:
+    {
+      "seq": 1,
+      "type": "request",
+      "command": "open",
+      "arguments": {
+        "file": "\\",
+        "fileContent": "",
+        "scriptKindName": "JS"
+      }
+    }
+Info 10   [22:36:30.459] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 11   [22:36:31.197] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 1 structureChanged: true structureIsReused:: Not Elapsed: 737.7295000000001ms
+Info 12   [22:36:31.198] Project '/dev/null/inferredProject1*' (Inferred)
+Info 13   [22:36:31.199] 	Files (8)
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts
+	/
+
+
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts
+	  Default library for target 'es5'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts
+	  Library referenced via 'es5' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts
+	  Library referenced via 'dom' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts
+	  Library referenced via 'webworker.importscripts' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts
+	  Library referenced via 'scripthost' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts
+	  Library referenced via 'decorators' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts
+	  Library referenced via 'decorators.legacy' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts'
+	
+	  Root file specified for compilation
+
+Info 14   [22:36:31.199] -----------------------------------------------
+Info 15   [22:36:31.200] Project '/dev/null/inferredProject1*' (Inferred)
+Info 15   [22:36:31.200] 	Files (8)
+
+Info 15   [22:36:31.200] -----------------------------------------------
+Info 15   [22:36:31.200] Open files: 
+Info 15   [22:36:31.200] 	FileName: / ProjectRootPath: undefined
+Info 15   [22:36:31.200] 		Projects: /dev/null/inferredProject1*
+Perf 15   [22:36:31.200] 1::open: async elapsed time (in milliseconds) 747.7952
+Info 16   [22:36:33.234] request:
+    {
+      "seq": 2,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 1,
+        "endOffset": 1,
+        "insertString": "\n\n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 17   [22:36:33.235] 2::change: async elapsed time (in milliseconds) 0.8566
+Info 18   [22:39:06.483] request:
+    {
+      "seq": 3,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 19   [22:39:06.484] 3::change: async elapsed time (in milliseconds) 0.8415
+Info 20   [22:39:08.456] request:
+    {
+      "seq": 4,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 21   [22:39:08.458] 4::change: async elapsed time (in milliseconds) 1.3343
+Info 22   [22:39:09.971] request:
+    {
+      "seq": 5,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 23   [22:39:09.972] 5::change: async elapsed time (in milliseconds) 0.4770
+Info 24   [22:39:13.652] request:
+    {
+      "seq": 6,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 25   [22:39:13.653] 6::change: async elapsed time (in milliseconds) 0.5085
+Info 26   [22:39:14.907] request:
+    {
+      "seq": 7,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 27   [22:39:14.907] 7::change: async elapsed time (in milliseconds) 0.3879
+Info 28   [22:39:16.063] request:
+    {
+      "seq": 8,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 29   [22:39:16.064] 8::change: async elapsed time (in milliseconds) 0.4230
+Info 30   [22:39:17.116] request:
+    {
+      "seq": 9,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 31   [22:39:17.116] 9::change: async elapsed time (in milliseconds) 0.3284
+Info 32   [22:39:17.877] request:
+    {
+      "seq": 10,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n"
+      }
+    }
+Perf 33   [22:39:17.878] 10::change: async elapsed time (in milliseconds) 0.5758
+Info 34   [22:39:25.642] request:
+    {
+      "seq": 11,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 1,
+        "insertString": "\n\n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n"
+      }
+    }
+Perf 35   [22:39:25.642] 11::change: async elapsed time (in milliseconds) 0.7165
+Info 36   [22:39:26.231] request:
+    {
+      "seq": 12,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 1,
+        "insertString": "\n\n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n"
+      }
+    }
+Perf 37   [22:39:26.232] 12::change: async elapsed time (in milliseconds) 0.3231
+Info 38   [22:39:27.570] request:
+    {
+      "seq": 13,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 1,
+        "insertString": "\n\n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) \n\n                  test"
+      }
+    }
+Perf 39   [22:39:27.570] 13::change: async elapsed time (in milliseconds) 0.3740
+Info 40   [22:39:51.594] request:
+    {
+      "seq": 14,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 23,
+        "insertString": "\n\n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 41   [22:39:51.594] 14::change: async elapsed time (in milliseconds) 0.2484
+Info 42   [22:39:52.028] request:
+    {
+      "seq": 15,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 43   [22:39:52.028] 15::change: async elapsed time (in milliseconds) 0.3326
+Info 44   [22:39:52.512] request:
+    {
+      "seq": 16,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 45   [22:39:52.513] 16::change: async elapsed time (in milliseconds) 0.3639
+Info 46   [22:39:53.666] request:
+    {
+      "seq": 17,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 47   [22:39:53.667] 17::change: async elapsed time (in milliseconds) 0.3114
+Info 48   [22:40:02.952] request:
+    {
+      "seq": 18,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 49   [22:40:02.952] 18::change: async elapsed time (in milliseconds) 0.1965
+Info 50   [22:40:04.766] request:
+    {
+      "seq": 19,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n\n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 51   [22:40:04.767] 19::change: async elapsed time (in milliseconds) 0.2146
+Info 52   [22:40:12.123] request:
+    {
+      "seq": 20,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n                                   foo \n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 53   [22:40:12.123] 20::change: async elapsed time (in milliseconds) 0.4565
+Info 54   [22:40:13.866] request:
+    {
+      "seq": 21,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n                                    \n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 55   [22:40:13.866] 21::change: async elapsed time (in milliseconds) 0.2008
+Info 56   [22:40:16.035] request:
+    {
+      "seq": 22,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;let test;\n                                   t "
+      }
+    }
+Perf 57   [22:40:16.035] 22::change: async elapsed time (in milliseconds) 0.2061
+Info 58   [22:40:16.036] request:
+    {
+      "seq": 23,
+      "type": "request",
+      "command": "configure",
+      "arguments": {
+        "file": "\\",
+        "formatOptions": {
+          "newLineCharacter": "\n"
+        },
+        "preferences": {
+          "allowIncompleteCompletions": true,
+          "allowRenameOfImportPath": true,
+          "allowTextChangesInNewFiles": true,
+          "autoImportFileExcludePatterns": [],
+          "disableLineTextInReferences": true,
+          "disableSuggestions": false,
+          "displayPartsForJSDoc": true,
+          "excludeLibrarySymbolsInNavTo": true,
+          "generateReturnInDocTemplate": true,
+          "importModuleSpecifierEnding": "auto",
+          "importModuleSpecifierPreference": "shortest",
+          "includeAutomaticOptionalChainCompletions": true,
+          "includeCompletionsForImportStatements": true,
+          "includeCompletionsForModuleExports": true,
+          "includeCompletionsWithClassMemberSnippets": true,
+          "includeCompletionsWithInsertText": true,
+          "includeCompletionsWithObjectLiteralMethodSnippets": true,
+          "includeCompletionsWithSnippetText": true,
+          "includeInlayEnumMemberValueHints": false,
+          "includeInlayFunctionLikeReturnTypeHints": false,
+          "includeInlayFunctionParameterTypeHints": false,
+          "includeInlayParameterNameHints": "none",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": false,
+          "includeInlayVariableTypeHints": false,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includePackageJsonAutoImports": "auto",
+          "interactiveInlayHints": true,
+          "jsxAttributeCompletionStyle": "auto",
+          "lazyConfiguredProjectsFromExternalProject": false,
+          "organizeImportsAccentCollation": true,
+          "organizeImportsCaseFirst": false,
+          "organizeImportsCollation": "ordinal",
+          "organizeImportsCollationLocale": "en",
+          "organizeImportsIgnoreCase": "auto",
+          "organizeImportsNumericCollation": false,
+          "providePrefixAndSuffixTextForRename": true,
+          "provideRefactorNotApplicableReason": true,
+          "quotePreference": "auto",
+          "useLabelDetailsInCompletionEntries": true
+        }
+      }
+    }
+Info 59   [22:40:16.036] Host configuration update for file \
+Info 60   [22:40:16.036] response:
+    {"seq":0,"type":"response","command":"configure","request_seq":23,"success":true}
+Perf 61   [22:40:16.036] 23::configure: async elapsed time (in milliseconds) 0.4231
+Info 62   [22:40:16.322] request:
+    {
+      "seq": 24,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 2,
+        "endOffset": 38,
+        "insertString": "\n                                   t \n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 63   [22:40:16.322] 24::change: async elapsed time (in milliseconds) 0.2957
+Info 64   [22:40:20.123] request:
+    {
+      "seq": 25,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n                                   test \n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 65   [22:40:20.123] 25::change: async elapsed time (in milliseconds) 0.2254
+Info 66   [22:40:23.144] request:
+    {
+      "seq": 26,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n                                   test = \n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 67   [22:40:23.144] 26::change: async elapsed time (in milliseconds) 0.2129
+Info 68   [22:40:23.516] request:
+    {
+      "seq": 27,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n                                   test =  \n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 69   [22:40:23.516] 27::change: async elapsed time (in milliseconds) 0.2173
+Info 70   [22:40:24.168] request:
+    {
+      "seq": 28,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;let test;\n                                   test = f "
+      }
+    }
+Perf 71   [22:40:24.168] 28::change: async elapsed time (in milliseconds) 0.2127
+Info 72   [22:40:24.407] request:
+    {
+      "seq": 29,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 2,
+        "endOffset": 45,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;let test;\n                                   test = fa "
+      }
+    }
+Perf 73   [22:40:24.407] 29::change: async elapsed time (in milliseconds) 0.1760
+Info 74   [22:40:24.471] request:
+    {
+      "seq": 30,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 2,
+        "endOffset": 46,
+        "insertString": "\n                                   test = fa \n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 75   [22:40:24.471] 30::change: async elapsed time (in milliseconds) 0.1846
+Info 76   [22:40:25.451] request:
+    {
+      "seq": 31,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n                                   test = false \n\n               console.log('test')              test = 5 \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 77   [22:40:25.451] 31::change: async elapsed time (in milliseconds) 0.1810
+Info 78   [22:40:32.816] request:
+    {
+      "seq": 32,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;let test;\n\n\n                                                c "
+      }
+    }
+Perf 79   [22:40:32.816] 32::change: async elapsed time (in milliseconds) 0.2054
+Info 80   [22:40:33.210] request:
+    {
+      "seq": 33,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 4,
+        "endOffset": 51,
+        "insertString": "\n                                   test = false \n\n               console.log('test')              c \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 81   [22:40:33.210] 33::change: async elapsed time (in milliseconds) 0.2030
+Info 82   [22:40:34.558] request:
+    {
+      "seq": 34,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n                                   test = false \n\n               console.log('test')               \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 83   [22:40:34.558] 34::change: async elapsed time (in milliseconds) 0.1778
+Info 84   [22:40:39.730] request:
+    {
+      "seq": 35,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;let test;\n\n\n                                                t "
+      }
+    }
+Perf 85   [22:40:39.730] 35::change: async elapsed time (in milliseconds) 0.2013
+Info 86   [22:40:39.865] request:
+    {
+      "seq": 36,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 4,
+        "endOffset": 51,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;let test;\n\n\n                                                te "
+      }
+    }
+Perf 87   [22:40:39.865] 36::change: async elapsed time (in milliseconds) 0.1947
+Info 88   [22:40:40.120] request:
+    {
+      "seq": 37,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 4,
+        "endOffset": 52,
+        "insertString": "\n                                   test = false \n\n               console.log('test')              te \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 89   [22:40:40.121] 37::change: async elapsed time (in milliseconds) 0.1869
+Info 90   [22:40:40.949] request:
+    {
+      "seq": 38,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n                                   test = false \n\n               console.log('test')              test \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 91   [22:40:40.949] 38::change: async elapsed time (in milliseconds) 0.1800
+Info 92   [22:40:41.434] request:
+    {
+      "seq": 39,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n                                   test = false \n\n               console.log('test')              test  \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 93   [22:40:41.434] 39::change: async elapsed time (in milliseconds) 0.1989
+Info 94   [22:40:41.906] request:
+    {
+      "seq": 40,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n                                   test = false \n\n               console.log('test')              test =  \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 95   [22:40:41.907] 40::change: async elapsed time (in milliseconds) 0.1888
+Info 96   [22:40:42.590] request:
+    {
+      "seq": 41,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;let test;\n\n\n                                                test = t "
+      }
+    }
+Perf 97   [22:40:42.590] 41::change: async elapsed time (in milliseconds) 0.1793
+Info 98   [22:40:42.768] request:
+    {
+      "seq": 42,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 4,
+        "endOffset": 58,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;let test;\n\n\n                                                test = tr "
+      }
+    }
+Perf 99   [22:40:42.769] 42::change: async elapsed time (in milliseconds) 0.1912
+Info 100  [22:40:42.891] request:
+    {
+      "seq": 43,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 4,
+        "endOffset": 59,
+        "insertString": "\n                                   test = false \n\n               console.log('test')              test = tr \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 101  [22:40:42.892] 43::change: async elapsed time (in milliseconds) 0.1640
+Info 102  [22:40:43.779] request:
+    {
+      "seq": 44,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n                                   test = false \n\n               console.log('test')              test = true \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 103  [22:40:43.779] 44::change: async elapsed time (in milliseconds) 0.1749
+Info 104  [22:41:17.959] request:
+    {
+      "seq": 45,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n                                   test = false \n\n                console.log('test')              test = true \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 105  [22:41:17.959] 45::change: async elapsed time (in milliseconds) 0.2892
+Info 106  [22:41:18.385] request:
+    {
+      "seq": 46,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": "\n                                   test = false \n\n                 console.log('test')              test = true \n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 107  [22:41:18.385] 46::change: async elapsed time (in milliseconds) 0.1921
+Info 108  [22:41:19.115] request:
+    {
+      "seq": 47,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 10,
+        "endOffset": 8,
+        "insertString": ""
+      }
+    }
+Perf 109  [22:41:19.115] 47::change: async elapsed time (in milliseconds) 0.2508

@@ -14,8 +14,15 @@ interface InitializeResult
     }
 }
 
+export let rootUri : string
+export let rootPath : string
+
 export const initialize = async (message : RequestMessage) : Promise<InitializeResult> => {
-    const initializeParams = message as unknown as InitializeParams
+    const initializeParams = message.params as unknown as InitializeParams
+    Log.writeLspServer('search here 2')
+    Log.writeLspServer(initializeParams)
+    rootUri = initializeParams.rootUri
+    rootPath = initializeParams.rootPath!
     Log.writeLspServer('initialized methjod callled once')
     await initializeTypescriptServer(message)
     return {
@@ -28,11 +35,10 @@ export const initialize = async (message : RequestMessage) : Promise<InitializeR
             hoverProvider: {
 
             },
-
             semanticTokensProvider: {
                 legend: {
-                    tokenTypes: ['property', 'type', 'class'],
-                    tokenModifiers: ['private', 'static']
+                    tokenTypes:["class","enum","interface","namespace","typeParameter","type","parameter","variable","enumMember","property","function","member"],
+                    tokenModifiers:["declaration","static","async","readonly","defaultLibrary","local"]
                 },
                 full: true,
                 documentSelector: null

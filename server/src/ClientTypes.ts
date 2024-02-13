@@ -28,5 +28,10 @@ export interface Position {
 
     character: number;
 }
+export interface customEvent  {
+    name: string,
+    details: dispatchVariables
+}
+export type dispatchVariables = Record<string, unknown>
 
 

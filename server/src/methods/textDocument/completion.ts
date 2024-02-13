@@ -2,11 +2,16 @@ import {RequestMessage} from "../../server";
 import {allFiles, allHtml} from "../../allFiles";
 import {TextDocumentItem} from "./didChange";
 import {CompletionItem, xoptions} from "../../x-validOptions";
-import {findAccordingRow, getParentAndOwnVariables} from "../../cheerioFn";
+import {
+    findAccordingRow,
+    getCustomNotWindowEventsWithVariables,
+    getParentAndOwnVariables
+} from "../../cheerioFn";
 import Log from "../../log";
 import {atoptions, magicObjects} from "../../at-validOptions";
 import {requestingMethods} from "../../StartTypescriptServer";
-import {Position} from "../../ClientTypes";
+import {customEvent, Position} from "../../ClientTypes";
+import {write} from "fs";
 //add alpine data
 export interface textDocument {
     textDocument: TextDocumentItem,
@@ -49,7 +54,22 @@ const completionVar : completionResponse = async (line : number, character : num
         Log.write("node did not found")
         return null
     }
+    const eventName = getEventName(uri!, line, character)
+    if (eventName)
+    {
+        Log.writeLspServer('eventname found')
+        Log.writeLspServer(eventName)
+        allHtml.get(uri!)!.events.forEach(item => {
+            if (item.name == eventName)
+            {
+                let full = buildMagiceventVar(item)
 
+                Log.writeLspServer('check here')
+                Log.writeLspServer(full)
+                optionsStr.push(full)
+            }
+        })
+    }
     Log.write(node[0].attribs)
 
 
@@ -68,6 +88,7 @@ const completionVar : completionResponse = async (line : number, character : num
 
     if (res)
     {
+
         const message = res as completionResponseType
         try {
 
@@ -93,9 +114,70 @@ const completionVar : completionResponse = async (line : number, character : num
     return null
 }
 
-const completionJustAT : completionResponse = async (line: number, char : number) : Promise<CompletionList | null> =>
+function getEventName(uri: string, line: number, character: number) : string | null
 {
-    const readyXoptions = addNecessaryCompletionItemProperties(atoptions, line, char)
+    const arr = allFiles.get(uri)!.split('\n')
+    let lineFound = line
+    let char = character
+    while (lineFound >= 0)
+    {
+
+        let subStrLine = lineFound == line ? arr[lineFound].substring(0, char) : arr[lineFound]
+        const match = subStrLine.lastIndexOf('="')
+        if (match != -1)
+        {
+            const lastIndexWhitespace = subStrLine.substring(0, match).lastIndexOf(' ')
+            if (subStrLine[lastIndexWhitespace + 1] === '@')
+            {
+                return subStrLine.substring(lastIndexWhitespace + 2, match)
+            }
+            return null
+        }
+        lineFound--
+
+    }
+    return null
+
+}
+
+const completionJustAT : completionResponse = async (line: number, character : number, uri: string | undefined) : Promise<CompletionList | null> =>
+{
+    const htmpPage = allHtml.get(uri!)!
+    const node = findAccordingRow(line, htmpPage)
+    Log.writeLspServer('@reaction')
+    Log.writeLspServer(node!.toString())
+    const allCustomEvents :customEvent[] = []
+    for (let key of allHtml.keys()) {
+       const allEventsHtmlPage = allHtml.get(key)
+        allCustomEvents.push(...allEventsHtmlPage!.events)
+    }
+    const eventsWithoutWindow = getCustomNotWindowEventsWithVariables(node!)
+    //z.map(item => item.name)
+    const completionItemsEvents : CompletionItem[] =  allCustomEvents.map(item => {
+        if (eventsWithoutWindow.indexOf(item.name) != -1)
+        {
+            return {
+                label: `@${item.name}=" \${1:foo} ".stop`,
+                kind: 15,
+                insertTextFormat : 2
+            }
+        }
+         return {
+                label: `@${item.name}=" \${1:foo} ".window`,
+                kind: 15,
+                insertTextFormat : 2
+        }
+    })
+    completionItemsEvents.push(...atoptions)
+    /*
+    if (!node){
+        Log.write("node did not found")
+        return null
+    }
+
+     */
+    //const customEvents = getCustomEvents(node)
+    const readyXoptions = addNecessaryCompletionItemProperties(completionItemsEvents, line, character)
 
     return {
         isIncomplete: false,
@@ -223,61 +305,91 @@ function getMatchingTableLookUp(uri: string, lastWord : string, line: number, ch
 }
 
 function isInsideParenthesis(line : number , char : number, uri: string): boolean {
-    const startPattern =  /="/
-    const endPattern = /(?<![\\=])"/
+    const startPattern =  /="/g
+    const endPattern = /(?<![\\=])"/g
     const arr = allFiles.get(uri)!.split('\n')
     let goUp = 0;
-    let startTag = startPattern.exec(arr[line])
-    while (!startTag && goUp < 200 && line - goUp > 0)
+    let startTag : any
+    let lastMatchIndex = 0
+    let foundAMatch = false
+    let wholeLineSubStrTillChar = arr[line].substring(0, char)
+    while (!foundAMatch && goUp < 200 && line - goUp >= 0)
     {
-        goUp++;
-        startTag = startPattern.exec(arr[line - goUp])
-    }
-    if (!startTag) return false
-    let openingiIndex = arr[line - goUp].lastIndexOf('="') + 2
-    let endTag = endPattern.exec(arr[line - goUp])
-    if (endTag)
-    {
-        if (endTag.index < openingiIndex )
-        {
-            endTag = null
-        }
-    }
 
-    let i = 0;
-    while (!endTag && i < 200 && line - goUp + i < arr.length - 1)
-    {
-        i++;
-        endTag = endPattern.exec(arr[line - goUp + i])
+        while ((startTag = startPattern.exec(arr[line - goUp])) !== null) {
+            if (startTag.index < char)
+            {
+                foundAMatch = true
+
+                lastMatchIndex = startTag.index;
+            }
+        }
+
+        goUp++;
     }
-    if (!endTag) return false
+    goUp--
+    if (!foundAMatch) return false
+
+    let endTag : any
+
+    foundAMatch = false
+    let lastMatchEndingIndex = 0
+    let i = 0;
+    const endPatternHtml = />[\r]*$/;
+    while (!foundAMatch && i < 200 && line - goUp + i < arr.length - 1)
+    {
+        while ((endTag = endPattern.exec(arr[line - goUp + i])) !== null) {
+            if (endTag.index > char)
+            {
+                foundAMatch = true
+                lastMatchEndingIndex = endTag.index;
+            }
+        }
+        if (!foundAMatch)
+        {
+            if (arr[line - goUp + i].match(endPatternHtml))
+            {
+                return false
+            }
+        }
+        i++
+    }
+    i--;
+    if (!foundAMatch) return false
+    Log.writeLspServer('here to search')
+    Log.writeLspServer(lastMatchIndex.toString())
+    Log.writeLspServer(goUp.toString())
+    Log.writeLspServer((goUp - i).toString())
     return line - goUp + i >= line
         && line - goUp <= line
-        && ( startTag!.index + 2 < char || goUp != 0 )
-        && ( endTag!.index  > char || goUp - i != 0 )
+        && (lastMatchIndex + 2 < char || goUp != 0 )
+        && ( lastMatchEndingIndex  > char || goUp - i != 0 )
 }
 
-function getOpeningIdentifierIndex(wholeLine : string, character : number) : number
-{
 
-    const lineTillCharacter = wholeLine.substring(0, character)
-    return lineTillCharacter.lastIndexOf('="') + 2
-}
+
 
 function getOpeningParenthesisPosition(uri: string, line:number, character: number) : Position | null
 {
     const content = allFiles.get(uri)!
     const regExpEndParenthesis = /(?<![\\=])"/
-    const regExpStart= /="/
+    const regExpStart= /="/g
 
     const wholeLineSubStr = content.split('\n')[line].substring(0, character)
-    const res = wholeLineSubStr.match(regExpStart)
+    let res
+    let lastIndex = 0
+    let hit = false
+    while ((res = regExpStart.exec(wholeLineSubStr)) != null )
+    {
+        hit = true
+        lastIndex = res.index!
+    }
 
-    if (res)
+    if (hit)
     {
         return {
             line: line,
-            character: res.index! + 2
+            character: lastIndex + 2
         }
     }
 
@@ -448,6 +560,8 @@ function getAllJavascriptCode(uri: string, line: number, character : number ) : 
     const content = allFiles.get(uri)!.split('\n')
     for (let i = openingParenthesisPosition.line; i <= endingParenthesisPosition.line; i++)
     {
+        //  console.log(allFiles.get(uri)!.split('\n')[i])
+        let c = openingParenthesisPosition.line == i ? openingParenthesisPosition.character : 0
         let cEnd = endingParenthesisPosition.line == i ? endingParenthesisPosition.character : content[i].length
         for (let column = 0; column < cEnd; column++)
         {
@@ -460,36 +574,103 @@ function getAllJavascriptCode(uri: string, line: number, character : number ) : 
                 output += content[i][column]
             }
         }
+        if (i != endingParenthesisPosition.line)
+            output += '\n'
+    }
+    return output
+}
+export function getAllJavaScriptText(uri: string )
+{
+    const regExpStart = /([a-z]+)="/g
+    const arrLines = allFiles.get(uri)!.split('\n')
+    let output = ''
+    let lastY = 0
+    arrLines.forEach((lineStr , line) => {
+        let match :any
+        while((match = regExpStart.exec(lineStr)) != null)
+        {
+            if (match[1] === 'data'){
+
+                continue
+            }
+            const fullText = getAllJavascriptCode(uri, line, match.index + 2 + match[1].length)
+            if (lastY == line)
+            {
+                const input = output.split('\n')
+                const laenge = input[line].length
+                input[line] += fullText.substring(laenge)
+                output = input.join('\n')
+                continue
+            }
+            while (lastY < line )
+            {
+                lastY++
+                output += '\n'
+            }
+            const lineBreakCount = fullText.split('\n').length
+            lastY += lineBreakCount
+            lastY--
+            output += fullText
+        }
+    })
+    for (let i = 0; i < 500;i++)
+    {
         output += '\n'
     }
+    output += (magicObjects.map(x => ' var ' + x +'; ').join(''))
+    Log.writeLspServer('should have added')
+    Log.writeLspServer(output)
+    Log.writeLspServer(magicObjects[0].toString())
     return output
 }
 
 function generateFullTextForLspJavascript(uri : string,variables : string[], line : number, character : number)
 {
     const fullText = getAllJavascriptCode(uri, line, character)
-    let varAsTextStr = variables.map(x => 'let ' + x + ';' ).join('')
+    let fullTextWithVariables = fullText
+    for (let i = 0; i < 500; i++)
+    {
+        fullTextWithVariables+= '\n'
+    }
+    let varAsTextStr = variables.map(x => 'var ' + x + ';' ).join('')
+    varAsTextStr += (magicObjects.map(x => ' var ' + x +'; ').join(''))
     const openingTagIndex = getOpeningParenthesisPosition(uri, line, character)
     if (!openingTagIndex || fullText == '') return ''
-
+    let beforeText = ''
     for (let i = 0; i < openingTagIndex.line; i++)
     {
-        varAsTextStr += '\n'
+        beforeText += '\n'
     }
-    return varAsTextStr + fullText
+    return beforeText + fullTextWithVariables + varAsTextStr
 }
 
 
 function getLastWord(wholeLine : string, character : number): string {
     let spaceCharIndex = wholeLine.substring(0, character).lastIndexOf(' ')
     let startTagIndex = wholeLine.substring(0, character).lastIndexOf('<')
-    let startIndex = Math.max(spaceCharIndex, startTagIndex)
+    let startOpenExpr = wholeLine.substring(0, character).lastIndexOf('="') + 1
+    let startIndex = Math.max(spaceCharIndex, startTagIndex, startOpenExpr)
     let spaceCharIndexEnd = wholeLine.substring(character).indexOf(' ')
     let endTagIndex = wholeLine.substring(character).indexOf('>');
     if (endTagIndex == -1) endTagIndex = 900
     if (spaceCharIndexEnd == -1) spaceCharIndexEnd = 900
     let endIndex = Math.min(spaceCharIndexEnd, endTagIndex, wholeLine.length - character)
     return wholeLine.substring(startIndex + 1, endIndex + character)
+}
+
+
+function buildMagiceventVar(item : customEvent )
+{
+    const keys = Object.keys(item.details)
+    let tempStr = keys.map(key => {
+        let tempStr = ' '
+        tempStr += key
+        tempStr += ' : '
+        tempStr += item.details[key]
+        return tempStr
+    }).join(',')
+
+    return  '$event = ' + '{ target: { ' +  tempStr   +  '  }, srcElement : { dispatchEvent: 5 } } '
 }
 
 

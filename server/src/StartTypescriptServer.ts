@@ -51,43 +51,35 @@ export const request = async (id : Boolean,method: string, clientRequest : unkno
         return null
 
 }
-type validMethods = 'completion' | 'hover'
+type validMethods = 'completion' | 'hover' | 'semantic'
 let version = 2
 export const requestingMethods = async (method : validMethods, content : string, line: number, character: number) : Promise<object | null> =>  {
-
+    await request(false, 'textDocument/didChange', {
+        textDocument : {
+            uri: filePathUri,
+            version: version
+        },
+        contentChanges: [
+            {
+                text: content
+            }
+        ]
+    })
     if (method == 'completion')
     {
         filePathUri = ''
         Log.writeLspServer('completion on requestingmethods called')
-        /*
-        await request(false, 'textDocument/didOpen', {
-            textDocument: {
-                uri: filePathUri,
-                languageId:"javascript",
-                version:version,
-                text: content
-            }
-        })
 
-         */
+
         Log.writeLspServer('trsing to give it out')
 
-        await request(false, 'textDocument/didChange', {
-            textDocument : {
-                uri: filePathUri,
-                version: version
-            },
-            contentChanges: [
-                {
-                    text: content
-                }
-            ]
-        })
+        Log.writeLspServer('content i get ')
+        Log.writeLspServer(content ?? 'content')
         Log.writeLspServer(content.split('\n')[line])
         Log.writeLspServer(character.toString())
-        let lastWord = getLastWord(content.split('\n')[line], character)
+        //let lastWord = getLastWord(content.split('\n')[line], character)
         Log.writeLspServer('lastWord here')
-        Log.writeLspServer(lastWord)
+        //Log.writeLspServer(lastWord)
         //version++;
         return request(true, 'textDocument/completion', {
             textDocument: {uri : filePathUri},
@@ -95,6 +87,15 @@ export const requestingMethods = async (method : validMethods, content : string,
             context:{"triggerKind":1}
         })
 
+    }
+    else if (method === 'semantic')
+    {
+        Log.writeLspServer('semantic requested')
+        return request(true, 'textDocument/semanticTokens/full', {
+            textDocument: {
+                uri:''
+            }
+        })
     }
     return null
 }
@@ -181,7 +182,8 @@ export const initializeTypescriptServer = async (receivedInitializedMessage : ob
 function getLastWord(wholeLine : string, character : number): string {
     let spaceCharIndex = wholeLine.substring(0, character).lastIndexOf(' ')
     let startTagIndex = wholeLine.substring(0, character).lastIndexOf('<')
-    let startIndex = Math.max(spaceCharIndex, startTagIndex)
+    let startOpenExpr = wholeLine.substring(0, character).lastIndexOf('="') + 1
+    let startIndex = Math.max(spaceCharIndex, startTagIndex, startOpenExpr)
     let spaceCharIndexEnd = wholeLine.substring(character).indexOf(' ')
     let endTagIndex = wholeLine.substring(character).indexOf('>');
     if (endTagIndex == -1) endTagIndex = 900

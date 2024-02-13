@@ -17,7 +17,7 @@ export interface textEdit {
     newText: string
 }
 
-export const magicObjects = ['$el', '$refs', '$store', '$watch', '$dispatch', '$nextTick', '$root', '$data', '$id']
+export const magicObjects = ['$el', '$refs', '$store', '$watch', '$dispatch', '$nextTick', '$root', '$data', '$id', '$justTestomg']
 
 export const atoptions : CompletionItem[] = [
     {

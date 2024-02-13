@@ -1,0 +1,380 @@
+Info 0    [16:04:27.369] Starting TS Server
+Info 1    [16:04:27.371] Version: 5.3.3
+Info 2    [16:04:27.371] Arguments: C:\Program Files\nodejs\node.exe e:\Coding\LSP\Final\AlpineLsp\test\node_modules\typescript\lib\tsserver.js --serverMode partialSemantic --useInferredProjectPerProjectRoot --disableAutomaticTypingAcquisition --cancellationPipeName C:\Users\Nico\AppData\Local\Temp\b217563579bf0597f6006da92d42303b\tscancellation* --logVerbosity verbose --logFile e:\Coding\LSP\Final\AlpineLsp\test\.log\tsserver-log-5KqhU4\tsserver.log --locale en --validateDefaultNpmLocation --useNodeIpc
+Info 3    [16:04:27.371] Platform: win32 NodeVersion: v20.11.0 CaseSensitive: false
+Info 4    [16:04:27.371] ServerMode: 1 hasUnknownServerMode: undefined
+Info 5    [16:04:27.385] request:
+    {
+      "seq": 0,
+      "type": "request",
+      "command": "configure",
+      "arguments": {
+        "formatOptions": {
+          "newLineCharacter": "\n"
+        },
+        "preferences": {
+          "allowIncompleteCompletions": true,
+          "allowRenameOfImportPath": true,
+          "allowTextChangesInNewFiles": true,
+          "disableLineTextInReferences": true,
+          "disableSuggestions": false,
+          "displayPartsForJSDoc": true,
+          "excludeLibrarySymbolsInNavTo": true,
+          "generateReturnInDocTemplate": true,
+          "importModuleSpecifierEnding": "auto",
+          "importModuleSpecifierPreference": "shortest",
+          "includeAutomaticOptionalChainCompletions": true,
+          "includeCompletionsForImportStatements": true,
+          "includeCompletionsForModuleExports": true,
+          "includeCompletionsWithClassMemberSnippets": true,
+          "includeCompletionsWithInsertText": true,
+          "includeCompletionsWithObjectLiteralMethodSnippets": true,
+          "includeCompletionsWithSnippetText": true,
+          "includeInlayEnumMemberValueHints": false,
+          "includeInlayFunctionLikeReturnTypeHints": false,
+          "includeInlayFunctionParameterTypeHints": false,
+          "includeInlayParameterNameHints": "none",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": false,
+          "includeInlayVariableTypeHints": false,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includePackageJsonAutoImports": "auto",
+          "interactiveInlayHints": true,
+          "jsxAttributeCompletionStyle": "auto",
+          "lazyConfiguredProjectsFromExternalProject": false,
+          "organizeImportsAccentCollation": true,
+          "organizeImportsCaseFirst": false,
+          "organizeImportsCollation": "ordinal",
+          "organizeImportsCollationLocale": "en",
+          "organizeImportsIgnoreCase": "auto",
+          "organizeImportsNumericCollation": false,
+          "providePrefixAndSuffixTextForRename": true,
+          "provideRefactorNotApplicableReason": true,
+          "quotePreference": "auto",
+          "useLabelDetailsInCompletionEntries": true
+        }
+      }
+    }
+Info 6    [16:04:27.385] Format host information updated
+Info 7    [16:04:27.386] response:
+    {"seq":0,"type":"response","command":"configure","request_seq":0,"success":true}
+Perf 8    [16:04:27.386] 0::configure: async elapsed time (in milliseconds) 1.1718
+Info 9    [16:04:27.386] request:
+    {
+      "seq": 1,
+      "type": "request",
+      "command": "open",
+      "arguments": {
+        "file": "\\",
+        "fileContent": "",
+        "scriptKindName": "JS"
+      }
+    }
+Info 10   [16:04:27.392] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 11   [16:04:28.087] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 1 structureChanged: true structureIsReused:: Not Elapsed: 694.5048999999999ms
+Info 12   [16:04:28.087] Project '/dev/null/inferredProject1*' (Inferred)
+Info 13   [16:04:28.088] 	Files (8)
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts
+	/
+
+
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts
+	  Default library for target 'es5'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts
+	  Library referenced via 'es5' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts
+	  Library referenced via 'dom' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts
+	  Library referenced via 'webworker.importscripts' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts
+	  Library referenced via 'scripthost' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts
+	  Library referenced via 'decorators' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts'
+	e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts
+	  Library referenced via 'decorators.legacy' from file 'e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts'
+	
+	  Root file specified for compilation
+
+Info 14   [16:04:28.089] -----------------------------------------------
+Info 15   [16:04:28.089] Project '/dev/null/inferredProject1*' (Inferred)
+Info 15   [16:04:28.089] 	Files (8)
+
+Info 15   [16:04:28.089] -----------------------------------------------
+Info 15   [16:04:28.089] Open files: 
+Info 15   [16:04:28.089] 	FileName: / ProjectRootPath: undefined
+Info 15   [16:04:28.090] 		Projects: /dev/null/inferredProject1*
+Perf 15   [16:04:28.090] 1::open: async elapsed time (in milliseconds) 703.4578
+Info 16   [16:04:29.870] request:
+    {
+      "seq": 2,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 1,
+        "endOffset": 1,
+        "insertString": "\n\n\n                $dispatch('testEvent', { message : '5' })              test = 5 \n                       \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 17   [16:04:29.871] 2::change: async elapsed time (in milliseconds) 0.6354
+Info 18   [16:04:32.412] request:
+    {
+      "seq": 3,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 $dispatch('testEvent', { message : '5' })              test = 5 \n                       \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 19   [16:04:32.412] 3::change: async elapsed time (in milliseconds) 0.6561
+Info 20   [16:24:02.556] request:
+    {
+      "seq": 4,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 $dispatch('testEvent', { message : '5',  })              test = 5 \n                       \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 21   [16:24:02.557] 4::change: async elapsed time (in milliseconds) 1.3939
+Info 22   [16:24:05.383] request:
+    {
+      "seq": 5,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 8,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;let test;\n\n\n                 $dispatch('testEvent', { message : '5', j })  "
+      }
+    }
+Perf 23   [16:24:05.384] 5::change: async elapsed time (in milliseconds) 0.4230
+Info 24   [16:24:05.385] request:
+    {
+      "seq": 6,
+      "type": "request",
+      "command": "configure",
+      "arguments": {
+        "file": "\\",
+        "formatOptions": {
+          "newLineCharacter": "\n"
+        },
+        "preferences": {
+          "allowIncompleteCompletions": true,
+          "allowRenameOfImportPath": true,
+          "allowTextChangesInNewFiles": true,
+          "autoImportFileExcludePatterns": [],
+          "disableLineTextInReferences": true,
+          "disableSuggestions": false,
+          "displayPartsForJSDoc": true,
+          "excludeLibrarySymbolsInNavTo": true,
+          "generateReturnInDocTemplate": true,
+          "importModuleSpecifierEnding": "auto",
+          "importModuleSpecifierPreference": "shortest",
+          "includeAutomaticOptionalChainCompletions": true,
+          "includeCompletionsForImportStatements": true,
+          "includeCompletionsForModuleExports": true,
+          "includeCompletionsWithClassMemberSnippets": true,
+          "includeCompletionsWithInsertText": true,
+          "includeCompletionsWithObjectLiteralMethodSnippets": true,
+          "includeCompletionsWithSnippetText": true,
+          "includeInlayEnumMemberValueHints": false,
+          "includeInlayFunctionLikeReturnTypeHints": false,
+          "includeInlayFunctionParameterTypeHints": false,
+          "includeInlayParameterNameHints": "none",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": false,
+          "includeInlayVariableTypeHints": false,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includePackageJsonAutoImports": "auto",
+          "interactiveInlayHints": true,
+          "jsxAttributeCompletionStyle": "auto",
+          "lazyConfiguredProjectsFromExternalProject": false,
+          "organizeImportsAccentCollation": true,
+          "organizeImportsCaseFirst": false,
+          "organizeImportsCollation": "ordinal",
+          "organizeImportsCollationLocale": "en",
+          "organizeImportsIgnoreCase": "auto",
+          "organizeImportsNumericCollation": false,
+          "providePrefixAndSuffixTextForRename": true,
+          "provideRefactorNotApplicableReason": true,
+          "quotePreference": "auto",
+          "useLabelDetailsInCompletionEntries": true
+        }
+      }
+    }
+Info 25   [16:24:05.385] Host configuration update for file \
+Info 26   [16:24:05.385] response:
+    {"seq":0,"type":"response","command":"configure","request_seq":6,"success":true}
+Perf 27   [16:24:05.385] 6::configure: async elapsed time (in milliseconds) 0.3973
+Info 28   [16:24:05.521] request:
+    {
+      "seq": 7,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 4,
+        "endOffset": 64,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;let test;\n\n\n                 $dispatch('testEvent', { message : '5', ja })  "
+      }
+    }
+Perf 29   [16:24:05.521] 7::change: async elapsed time (in milliseconds) 0.4785
+Info 30   [16:24:05.605] request:
+    {
+      "seq": 8,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 4,
+        "endOffset": 65,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;let test;\n\n\n                 $dispatch('testEvent', { message : '5', jak })  "
+      }
+    }
+Perf 31   [16:24:05.605] 8::change: async elapsed time (in milliseconds) 0.3239
+Info 32   [16:24:05.680] request:
+    {
+      "seq": 9,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 4,
+        "endOffset": 66,
+        "insertString": "\n\n\n                 $dispatch('testEvent', { message : '5', jak })              test = 5 \n                       \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 33   [16:24:05.680] 9::change: async elapsed time (in milliseconds) 0.3767
+Info 34   [16:24:05.784] request:
+    {
+      "seq": 10,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 8,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;let test;\n\n\n                 $dispatch('testEvent', { message : '5', jako })  "
+      }
+    }
+Perf 35   [16:24:05.785] 10::change: async elapsed time (in milliseconds) 0.3427
+Info 36   [16:24:06.038] request:
+    {
+      "seq": 11,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 4,
+        "endOffset": 67,
+        "insertString": "let $el;let $refs;let $store;let $watch;let $dispatch;let $nextTick;let $root;let $data;let $id;let test;\n\n\n                 $dispatch('testEvent', { message : '5', jakob })  "
+      }
+    }
+Perf 37   [16:24:06.039] 11::change: async elapsed time (in milliseconds) 0.5080
+Info 38   [16:24:06.086] request:
+    {
+      "seq": 12,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 4,
+        "endOffset": 68,
+        "insertString": "\n\n\n                 $dispatch('testEvent', { message : '5', jakob })              test = 5 \n                       \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 39   [16:24:06.086] 12::change: async elapsed time (in milliseconds) 0.4219
+Info 40   [16:24:06.543] request:
+    {
+      "seq": 13,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 $dispatch('testEvent', { message : '5', jakob  })              test = 5 \n                       \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 41   [16:24:06.543] 13::change: async elapsed time (in milliseconds) 0.4210
+Info 42   [16:24:07.015] request:
+    {
+      "seq": 14,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 $dispatch('testEvent', { message : '5', jakob :  })              test = 5 \n                       \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 43   [16:24:07.015] 14::change: async elapsed time (in milliseconds) 0.5126
+Info 44   [16:24:08.882] request:
+    {
+      "seq": 15,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 8,
+        "insertString": "\n\n\n                 $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                       \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 45   [16:24:08.882] 15::change: async elapsed time (in milliseconds) 0.3068
+Info 46   [16:38:52.885] request:
+    {
+      "seq": 16,
+      "type": "request",
+      "command": "change",
+      "arguments": {
+        "file": "\\",
+        "line": 1,
+        "offset": 1,
+        "endLine": 12,
+        "endOffset": 8,
+        "insertString": "\n\n\n                $dispatch('testEvent', { message : '5', jakob : 7 })              test = 5 \n                       \n\n\n\n                 const arr = []; arr.forEach(x => {\r\n        console.log('dsfsdf')\r\n        let konau = 54;\r\n    }) "
+      }
+    }
+Perf 47   [16:38:52.885] 16::change: async elapsed time (in milliseconds) 0.2636

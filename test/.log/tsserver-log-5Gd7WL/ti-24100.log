@@ -1,0 +1,209 @@
+[00:53:58.602] Global cache location 'C:/Users/Nico/AppData/Local/Microsoft/TypeScript/5.3', safe file path 'e:/coding/lsp/final/alpinelsp/test/node_modules/typescript/lib/typingsafelist.json', types map path e:/coding/lsp/final/alpinelsp/test/node_modules/typescript/lib/typesmap.json
+[00:53:58.604] Processing cache location 'C:/Users/Nico/AppData/Local/Microsoft/TypeScript/5.3'
+[00:53:58.604] Trying to find 'C:/Users/Nico/AppData/Local/Microsoft/TypeScript/5.3/package.json'...
+[00:53:58.607] Loaded content of 'C:/Users/Nico/AppData/Local/Microsoft/TypeScript/5.3/package.json':
+    {
+      "private": true,
+      "dependencies": {
+        "types-registry": "^0.1.683"
+      },
+      "devDependencies": {
+        "@types/eslint": "^8.56.2",
+        "@types/mocha": "^10.0.6"
+      }
+    }
+[00:53:58.611] Loaded content of 'C:/Users/Nico/AppData/Local/Microsoft/TypeScript/5.3/package-lock.json':
+    {
+      "name": "5.3",
+      "lockfileVersion": 3,
+      "requires": true,
+      "packages": {
+        "": {
+          "dependencies": {
+            "types-registry": "^0.1.683"
+          },
+          "devDependencies": {
+            "@types/eslint": "^8.56.2",
+            "@types/mocha": "^10.0.6"
+          }
+        },
+        "node_modules/@types/eslint": {
+          "version": "8.56.2",
+          "resolved": "https://registry.npmjs.org/@types/eslint/-/eslint-8.56.2.tgz",
+          "integrity": "sha512-uQDwm1wFHmbBbCZCqAlq6Do9LYwByNZHWzXppSnay9SuwJ+VRbjkbLABer54kcPnMSlG6Fdiy2yaFXm/z9Z5gw==",
+          "dev": true,
+          "dependencies": {
+            "@types/estree": "*",
+            "@types/json-schema": "*"
+          }
+        },
+        "node_modules/@types/estree": {
+          "version": "1.0.5",
+          "resolved": "https://registry.npmjs.org/@types/estree/-/estree-1.0.5.tgz",
+          "integrity": "sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==",
+          "dev": true
+        },
+        "node_modules/@types/json-schema": {
+          "version": "7.0.15",
+          "resolved": "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.15.tgz",
+          "integrity": "sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==",
+          "dev": true
+        },
+        "node_modules/@types/mocha": {
+          "version": "10.0.6",
+          "resolved": "https://registry.npmjs.org/@types/mocha/-/mocha-10.0.6.tgz",
+          "integrity": "sha512-dJvrYWxP/UcXm36Qn36fxhUKu8A/xMRXVT2cliFF1Z7UA9liG5Psj3ezNSZw+5puH2czDXRLcXQxf8JbJt0ejg==",
+          "dev": true
+        },
+        "node_modules/types-registry": {
+          "version": "0.1.683",
+          "resolved": "https://registry.npmjs.org/types-registry/-/types-registry-0.1.683.tgz",
+          "integrity": "sha512-XcbiXpnMOE7z1iomyKg7jH8XLHSVUsIiJIrZZDJqALOsspsqpmTd7UAkurgELZRuhA4lCTe2SdfhQbIYgBTpFw=="
+        }
+      }
+    }
+[00:53:58.611] Finished processing cache location 'C:/Users/Nico/AppData/Local/Microsoft/TypeScript/5.3'
+[00:53:58.612] Process id: 31176
+[00:53:58.612] NPM location: "C:\Program Files\nodejs\npm" (explicit '--npmLocation' not  provided)
+[00:53:58.613] validateDefaultNpmLocation: true
+[00:53:58.613] Npm config file: C:/Users/Nico/AppData/Local/Microsoft/TypeScript/5.3/package.json
+[00:53:58.614] Updating types-registry npm package...
+[00:53:58.614] Exec: "C:\Program Files\nodejs\npm" install --ignore-scripts types-registry@latest
+[00:54:00.617]     Succeeded. stdout:
+    
+    up to date, audited 6 packages in 461ms
+
+found 0 vulnerabilities
+
+[00:54:00.618] Updated types-registry npm package
+[00:54:00.662] Got install request
+    {
+      "projectName": "/dev/null/inferredProject1*",
+      "fileNames": [
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es5.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.dom.iterable.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.scripthost.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.core.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.collection.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.generator.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.promise.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.proxy.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.reflect.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2016.array.include.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.date.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.object.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.string.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asyncgenerator.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.promise.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2018.regexp.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.array.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.object.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.string.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.symbol.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2019.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.bigint.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.date.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.promise.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.sharedmemory.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.string.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.intl.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.number.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.decorators.legacy.d.ts",
+        "e:/Coding/LSP/Final/AlpineLsp/test/node_modules/typescript/lib/lib.es2020.full.d.ts",
+        "/"
+      ],
+      "compilerOptions": {
+        "module": 99,
+        "moduleResolution": 2,
+        "target": 7,
+        "jsx": 2,
+        "allowImportingTsExtensions": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "sourceMap": true,
+        "allowJs": true,
+        "allowNonTsExtensions": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "noEmitForJsFiles": true,
+        "maxNodeModuleJsDepth": 2
+      },
+      "typeAcquisition": {
+        "enable": true,
+        "include": [],
+        "exclude": []
+      },
+      "unresolvedImports": [],
+      "projectRootPath": "/",
+      "kind": "discover"
+    }
+[00:54:00.682] Loaded safelist from types map file 'e:/coding/lsp/final/alpinelsp/test/node_modules/typescript/lib/typesmap.json'
+[00:54:00.683] Explicitly included types: []
+[00:54:00.684] Inferred typings from unresolved imports: []
+[00:54:00.685] Finished typings discovery:
+    {
+      "cachedTypingPaths": [],
+      "newTypingNames": [],
+      "filesToWatch": [
+        "/bower_components",
+        "/node_modules"
+      ]
+    }
+[00:54:00.685] Sending response:
+    {
+      "kind": "action::watchTypingLocations",
+      "projectName": "/dev/null/inferredProject1*",
+      "files": [
+        "/bower_components",
+        "/node_modules"
+      ]
+    }
+[00:54:00.686] Response has been sent.
+[00:54:00.687] Sending response:
+    {
+      "projectName": "/dev/null/inferredProject1*",
+      "typeAcquisition": {
+        "enable": true,
+        "include": [],
+        "exclude": []
+      },
+      "compilerOptions": {
+        "module": 99,
+        "moduleResolution": 2,
+        "target": 7,
+        "jsx": 2,
+        "allowImportingTsExtensions": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "sourceMap": true,
+        "allowJs": true,
+        "allowNonTsExtensions": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "noEmitForJsFiles": true,
+        "maxNodeModuleJsDepth": 2
+      },
+      "typings": [],
+      "unresolvedImports": [],
+      "kind": "action::set"
+    }
+[00:54:00.687] Response has been sent.
+[00:54:00.687] No new typings were requested as a result of typings discovery

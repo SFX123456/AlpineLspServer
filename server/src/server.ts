@@ -25,7 +25,7 @@ const methodLookUp : Record<string, RequestMethod> = {
     'textDocument/didChange': didChange,
     'textDocument/hover': hoverRequest,
     'textDocument/didOpen': didOpen,
-    //'textDocument/semanticTokens/full' : semantic
+    'textDocument/semanticTokens/full' : semantic
 }
 
 
