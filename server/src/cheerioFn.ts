@@ -11,7 +11,8 @@ export function saveCheerioFile(text: string, uri : string)
     let contentLines = addLineAttributes(contentLinesOr)
     const finalStr = contentLines.join('\n')
     const cheer = cheerio.load(finalStr)
-    const htmlPage = new PageHtml(cheer, uri)
+    const htmlPage = new PageHtml(cheer, uri.trim())
+    Log.writeLspServer('savef  ile with uri ' + uri)
     allHtml.set(uri, htmlPage)
 }
 function addLineAttributes(contentLines : string[]) : string[]

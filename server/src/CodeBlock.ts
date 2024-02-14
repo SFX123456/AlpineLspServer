@@ -105,6 +105,34 @@ export class CodeBlock
         }
         return null
     }
+    public generateTextJavascript()
+    {
+        const openingParenthesisPosition = this.parenthesisRange?.start!
+        const endingParenthesisPosition = this.parenthesisRange?.end!
+
+        let output = ''
+        const content = allFiles.get(this.textDocument.textDocument.uri)!.split('\n')
+        for (let i = openingParenthesisPosition.line; i <= endingParenthesisPosition.line; i++)
+        {
+            //  console.log(allFiles.get(uri)!.split('\n')[i])
+            let c = openingParenthesisPosition.line == i ? openingParenthesisPosition.character : 0
+            let cEnd = endingParenthesisPosition.line == i ? endingParenthesisPosition.character : content[i].length
+            for (let column = 0; column < cEnd; column++)
+            {
+                if (openingParenthesisPosition.line == i && column < openingParenthesisPosition.character)
+                {
+                    output += ' '
+                }
+                else
+                {
+                    output += content[i][column]
+                }
+            }
+            if (i != endingParenthesisPosition.line)
+                output += '\n'
+        }
+        return output
+    }
 
     public generateFullTextJavascriptLsp(variables : string[]) : string
     {
@@ -160,7 +188,7 @@ export class CodeBlock
     {
         const wholeLine = allFiles.get(this.textDocument.textDocument.uri)!.split('\n')[this.parenthesisRange!.start.line]
         const subStr = wholeLine.substring(0, this.parenthesisRange!.start.character)
-        const beginningIndex = subStr.indexOf(' ')
+        const beginningIndex = subStr.lastIndexOf(' ')
 
         return subStr.substring(beginningIndex + 1, this.parenthesisRange!.start.character - 2)
     }

@@ -5,7 +5,7 @@ import {getEndingParenthesisPosition, getOpeningParenthesisPosition} from "../..
 
 export function getAllJavaScriptText(uri: string )
 {
-    const regExpStart = /([a-z]+)="/g
+    const regExpStart = /(?:x-([a-z]+)|@([a-z-]+)[\.a-z-]*)="/g
     const arrLines = allFiles.get(uri)!.split('\n')
     let output = ''
     let lastY = 0
@@ -17,7 +17,7 @@ export function getAllJavaScriptText(uri: string )
 
                 continue
             }
-            const fullText = getAllJavascriptCode(uri, line, match.index + 2 + match[1].length)
+            const fullText = getAllJavascriptCode(uri, line, match.index + match[0].length)
             if (lastY == line)
             {
                 const input = output.split('\n')
