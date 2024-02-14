@@ -104,7 +104,7 @@ export const completion = async (message : RequestMessage) : Promise<CompletionL
            return createReturnObject([])
        }
        Log.writeLspServer('works so far')
-      const output = await completionJs(line, character, textDocumentt.textDocument.uri, codeBlock)
+       const output = await completionJs(line, character, textDocumentt.textDocument.uri, codeBlock)
        if (!output) return createReturnObject([])
        return output
    }

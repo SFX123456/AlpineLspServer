@@ -50,13 +50,15 @@ export const completionJs  = async (line : number, character : number, uri : str
         let indexFirstPoint = keyWord.indexOf('.')
         if (indexFirstPoint == -1) indexFirstPoint = keyWord.length - 1
         const eventName = keyWord.substring(1, indexFirstPoint)
-        allHtml.get(uri!)!.events.forEach(item => {
-            if (item.name == eventName)
-            {
-                let full = buildMagiceventVar(item)
-                optionsStr.push(full)
-            }
-        })
+        for (let key of allHtml.keys()) {
+            allHtml.get(key)!.events.forEach(item => {
+                if (item.name == eventName)
+                {
+                    let full = buildMagiceventVar(item)
+                    optionsStr.push(full)
+                }
+            })
+        }
     }
 
     optionsStr.push(...getParentAndOwnVariables(node))

@@ -2,6 +2,9 @@ import {RequestMessage} from "../server";
 import {initializeTypescriptServer, infos} from "../typescriptLsp/typescriptServer";
 import {InitializeParams} from "../types/ClientTypes";
 import Log from "../log";
+import * as fs from "fs";
+import {allFiles, allHtml} from "../allFiles";
+import {saveCheerioFile} from "../cheerioFn";
 
 type ServerCapabilities = Record<string, unknown>
 
@@ -23,6 +26,7 @@ export const initialize = async (message : RequestMessage) : Promise<InitializeR
     Log.writeLspServer(initializeParams)
     infos.rootUri = initializeParams.rootUri
     infos.rootPath = initializeParams.rootPath!
+    scanAllDocuments(infos.rootPath)
     Log.writeLspServer('initialized methjod callled once')
     await initializeTypescriptServer(message)
     return {
@@ -51,4 +55,66 @@ export const initialize = async (message : RequestMessage) : Promise<InitializeR
             version: "0.0.1"
         }
     }
+}
+
+
+function scanAllDocuments(rootPath : string)
+{
+    Log.writeLspServer('Scanning document with oath ' + rootPath)
+    goThrewDirectorie(rootPath)
+}
+
+function goThrewDirectorie(path : string)
+{
+    const res = fs.opendirSync(path)
+    let allDirAndFiles
+    while ((allDirAndFiles = res.readSync()) != null)
+    {
+        if (!allDirAndFiles) return
+
+
+            // @ts-ignore
+            Log.writeLspServer(allDirAndFiles.path)
+            if (allDirAndFiles.name == 'node_modules') continue
+
+            if (allDirAndFiles.isDirectory())
+            {
+                Log.writeLspServer('is a directorie')
+                goThrewDirectorie(allDirAndFiles.path)
+            }
+            else
+            {
+
+                const fileExtension = getFileExtension(allDirAndFiles.name)
+                Log.writeLspServer('found a file with extensui ' + fileExtension)
+                if (fileExtension === 'txt')
+                {
+                   const content = fs.readFileSync(allDirAndFiles.path, {encoding: 'utf-8'})
+                    Log.writeLspServer('savinf file with content ' + content)
+                    const uri = encodeURI(allDirAndFiles.path)
+                    allFiles.set(uri, content)
+
+                    saveCheerioFile(content, uri)
+                    let includedFiles = ''
+                    for (let key of allFiles.keys()) {
+                        includedFiles += key
+                    }
+                    Log.writeLspServer('content in allFiles so far ' + includedFiles)
+                    Log.writeLspServer(allHtml.get(uri)!.events)
+                    Log.writeLspServer(allHtml.get(uri)!.listenedToEvents)
+                }
+            }
+
+
+
+
+    }
+
+
+}
+
+function getFileExtension(filePath : string)
+{
+    const arr = filePath.split('.')
+    return arr[arr.length - 1]
 }

@@ -58,9 +58,11 @@ export class PageHtml
         const content = nodeText
         const arr = content.split('$dispatch')
         arr.shift()
+        Log.writeLspServer('get events with variables')
         arr.forEach((match : string) => {
+            Log.writeLspServer(match)
             match = match.replace('\n','')
-            const regExp = /^\(['\s]+([a-z-]+)(?:[\s',]+{([a-zA-Z\s,':0-9]+)}|[\s'])\)/
+            const regExp = /^\(\s*'([a-z-]+)'(?:\s*,+\s*{((?:[a-zA-Z\s-]+:[a-z,0-9\s\n']+)+)}\s*|\s*)\)/
             const res = match.match(regExp)
             if (!res) return
             const keysVar: dispatchVariables  = {}

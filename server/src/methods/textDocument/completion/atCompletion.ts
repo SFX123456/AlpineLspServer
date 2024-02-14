@@ -13,11 +13,31 @@ export const completionJustAT : completionResponse = async (line: number, charac
     const node = findAccordingRow(line, htmpPage)
     Log.writeLspServer('@reaction')
     Log.writeLspServer(node!.toString())
-    const allCustomEvents :customEvent[] = []
+    let allCustomEvents :customEvent[] = []
     for (let key of allHtml.keys()) {
         const allEventsHtmlPage = allHtml.get(key)
+
         allCustomEvents.push(...allEventsHtmlPage!.events)
     }
+
+    Log.writeLspServer('before')
+    Log.writeLspServer(allCustomEvents)
+    let hashMap : Record<string, customEvent> = {}
+    allCustomEvents.forEach(item => {
+        const str = JSON.stringify(item)
+        if (hashMap[str] == undefined)
+        {
+            hashMap[str] = item
+        }
+    })
+    Log.writeLspServer(hashMap)
+    allCustomEvents = []
+    for (let customEventsKey in hashMap) {
+        allCustomEvents.push(hashMap[customEventsKey])
+    }
+
+
+
     const eventsWithoutWindow = getCustomNotWindowEventsWithVariables(node!)
     //z.map(item => item.name)
     const completionItemsEvents : CompletionItem[] =  allCustomEvents.map(item => {
@@ -26,23 +46,26 @@ export const completionJustAT : completionResponse = async (line: number, charac
             return {
                 label: `@${item.name}\${1:.stop}=" \${2:foo} "`,
                 kind: 15,
-                insertTextFormat : 2
+                insertTextFormat : 2,
+                detail : 'details : ' + JSON.stringify(item.details)
             }
         }
         return {
             label: `@${item.name}\${1:.window}=" \${2:foo} "`,
             kind: 15,
-            insertTextFormat : 2
+            insertTextFormat : 2,
+            detail : 'details : ' + JSON.stringify(item.details)
         }
     })
+
     completionItemsEvents.push(...atoptions)
 
 
-    const readyXoptions = addNecessaryCompletionItemProperties(completionItemsEvents, line, character)
+    const readyAtoptions = addNecessaryCompletionItemProperties(completionItemsEvents, line, character)
 
     return {
         isIncomplete: false,
-        items: readyXoptions
+        items: readyAtoptions
     }
 }
 
