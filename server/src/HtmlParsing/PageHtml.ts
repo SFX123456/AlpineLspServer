@@ -1,8 +1,10 @@
 import * as cheerio from "cheerio";
 import * as cheerioType from "domhandler/lib/node"
 import Log from "../log";
-import {customEvent, dispatchVariables} from "../types/ClientTypes";
+import {customEvent, dispatchVariables, listenedToObjects} from "../types/ClientTypes";
 import {allFiles, allHtml} from "../allFiles";
+import {ExecutionSummary, InsertTextMode} from "vscode-languageserver";
+import {subscribe} from "diagnostics_channel";
 
 export class PageHtml
 {
@@ -10,16 +12,22 @@ export class PageHtml
     public cheerioObj : cheerio.CheerioAPI
     public uri : string
     private eventNames : string[]
-    public listenedToEvents : string[]
+    public listenedToEventsPosition : listenedToObjects[]
 
     public constructor(cheerioObj: cheerio.CheerioAPI, uri : string) {
-        this.listenedToEvents = []
+        this.listenedToEventsPosition = []
         this.events = []
         this.eventNames = []
         this.cheerioObj = cheerioObj
         this.uri = uri
         cheerioObj('body').children().each((index : any, element : cheerio.Element) => {
             this.processElement(element);
+        })
+    }
+    public get listenedToEvents()
+    {
+        return this.listenedToEventsPosition.map(item => {
+            return item.name
         })
     }
 
@@ -40,14 +48,28 @@ export class PageHtml
     private abstractListenedEvents()
     {
         const nodeText = allFiles.get(this.uri)!
+        const indLines = nodeText.split('\n')
         const regExpEvents = /@([a-z-]*)[=\.]+/g
         let match
-        while ((match = regExpEvents.exec(nodeText)) != null)
-        {
-            //do other checks
-            if (match[1] != 'click')
-                this.listenedToEvents.push(match[1])
-        }
+        indLines.forEach((item,index) => {
+            while ((match = regExpEvents.exec(item)) != null)
+            {
+                //do other checks
+                if (match[1] != 'click')
+                {
+
+                    this.listenedToEventsPosition.push(
+                        {
+                            name: match[1],
+                            positon : {
+                                line: index,
+                                character : match.index
+                            }
+                        })
+                }
+
+            }
+        })
     }
 
 
@@ -57,9 +79,15 @@ export class PageHtml
         const customEvents : customEvent[] = []
         const content = nodeText
         const arr = content.split('$dispatch')
+        if (!arr) return []
+        Log.writeLspServer('thats the array ')
+        Log.writeLspServer(arr)
+        let lineAmountFirstPart = arr[0].split('\n').length - 1
+
+        Log.writeLspServer(lineAmountFirstPart.toString())
         arr.shift()
         Log.writeLspServer('get events with variables')
-        arr.forEach((match : string) => {
+        arr.forEach((match : string, index) => {
             Log.writeLspServer(match)
             match = match.replace('\n','')
             const regExp = /^\(\s*'([a-z-]+)'(?:\s*,+\s*{((?:[a-zA-Z\s-]+:[a-z,0-9\s\n']+)+)}\s*|\s*)\)/
@@ -83,15 +111,41 @@ export class PageHtml
 
             if (this.eventNames.indexOf(res[1]) === -1)
             {
+                let line = lineAmountFirstPart
+                for (let i = 0; i <= index; i++)
+                {
+                    line += arr[i].split('\n').length - 1
+                }
+
+                Log.writeLspServer('thats the oinm i get')
+                Log.writeLspServer(line.toString())
                 customEvents.push({
                     name : res[1],
-                    details: keysVar
+                    details: keysVar,
+                    position: {
+                       line,
+                       character : 1
+                    }
                 })
                 this.eventNames.push(res[1])
             }
 
         })
 
+        const arr2 = allFiles.get(this.uri)!.split('\n')
+        customEvents.forEach(item => {
+            const regex:RegExp = new RegExp(`\\$dispatch\\(\\s*'${item.name}`, 'g')
+            arr2.forEach((line,ind) => {
+                const match = regex.exec(line)
+                Log.writeLspServer(match)
+                if (match)
+                {
+                    item.position.line = ind
+                    item.position.character = match.index + 11
+                }
+            })
+        })
+        Log.writeLspServer(customEvents)
         return customEvents
     }
 
@@ -100,8 +154,8 @@ export class PageHtml
         const output : string[] = []
         const set : Set<string> = new Set()
         for (let key of allHtml.keys()) {
-            allHtml.get(key)!.listenedToEvents.forEach(x => {
-                set.add(x)
+            allHtml.get(key)!.listenedToEventsPosition.forEach(x => {
+                set.add(x.name)
             })
         }
         for (let key of set.keys()) {

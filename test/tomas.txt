@@ -1,5 +1,5 @@
 
-<div  @hello.window="  "   x-cloak x-data="{ modalOpen : false }" @updateidea.window="modalOpen = false" @custom-modal-delete.window="modalOpen = true"  x-show="modalOpen" id="default-modal" tabindex="-1" aria-hidden="true" class="flex items-end overflow-y-auto overflow-x-hidden fixed bottom-0 left-0  z-50 justify-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+<div @cmargib.stop=" $data " foo "  @hello.window="  "   x-cloak x-data="{ modalOpen : false }" @updateidea.window="modalOpen = false" @custom-modal-delete.window="modalOpen = true"  x-show="modalOpen" id="default-modal" tabindex="-1" aria-hidden="true" class="flex items-end overflow-y-auto overflow-x-hidden fixed bottom-0 left-0  z-50 justify-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700" x-data="{foo : bar}" >
             <span x-init=" 

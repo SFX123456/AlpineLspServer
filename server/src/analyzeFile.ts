@@ -24,7 +24,8 @@ export function getLastWord( textDocument: textDocumentType) : lastWordSuggestio
     let endIndex = Math.min(spaceCharIndexEnd, endTagIndex, wholeLine.length - character)
     return {
         wholeLine,
-        lastWord: wholeLine.substring(startIndex + 1, endIndex + character)
+        lastWord: wholeLine.substring(startIndex + 1, endIndex + character),
+        wholeLineTillEndofWord : wholeLine.substring(0, endIndex + character)
     }
 }
 
@@ -199,7 +200,7 @@ export function getEndingParenthesisPosition(uri: string, line: number, characte
             {
                 return null
             }
-            
+
             if (line == closingTagIndexLine) {
                 if (resEnd.index! > closingTagIndexCharacter)
                 {

@@ -30,9 +30,15 @@ export interface Position {
 
     character: number;
 }
+
+export interface listenedToObjects {
+    name : string,
+    positon : Position
+}
 export interface customEvent  {
     name: string,
-    details: dispatchVariables
+    details: dispatchVariables,
+    position : Position
 }
 export type dispatchVariables = Record<string, unknown>
 
@@ -75,6 +81,7 @@ export type CompletionItemKind = 1 | 2 | 15
 
 export type lastWordSuggestion = {
     wholeLine : string,
-    lastWord : string
+    lastWord : string,
+    wholeLineTillEndofWord : string
 }
 

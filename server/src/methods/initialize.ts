@@ -39,6 +39,7 @@ export const initialize = async (message : RequestMessage) : Promise<InitializeR
             hoverProvider: {
 
             },
+            definitionProvider: true,
             semanticTokensProvider: {
                 legend: {
                     tokenTypes:["class","enum","interface","namespace","typeParameter","type","parameter","variable","enumMember","property","function","member"],
@@ -71,8 +72,6 @@ function goThrewDirectorie(path : string)
     while ((allDirAndFiles = res.readSync()) != null)
     {
         if (!allDirAndFiles) return
-
-
             // @ts-ignore
             Log.writeLspServer(allDirAndFiles.path)
             if (allDirAndFiles.name == 'node_modules') continue
@@ -85,32 +84,32 @@ function goThrewDirectorie(path : string)
             else
             {
 
+
                 const fileExtension = getFileExtension(allDirAndFiles.name)
                 Log.writeLspServer('found a file with extensui ' + fileExtension)
                 if (fileExtension === 'txt')
                 {
                    const content = fs.readFileSync(allDirAndFiles.path, {encoding: 'utf-8'})
                     Log.writeLspServer('savinf file with content ' + content)
-                    const uri = encodeURI(allDirAndFiles.path)
-                    allFiles.set(uri, content)
+                    let encodedUri = 'file:///' + encodeURIComponent(allDirAndFiles.path.replace(/\\/g, '/'))
+                    Log.writeLspServer(encodedUri)
+                    encodedUri = encodedUri.replace(/%2F/g, '/')
+                    Log.writeLspServer(encodedUri)
+                    Log.writeLspServer(allDirAndFiles.path)
+                    Log.writeLspServer(encodedUri)
+                    allFiles.set(encodedUri, content)
 
-                    saveCheerioFile(content, uri)
+                    saveCheerioFile(content,encodedUri)
                     let includedFiles = ''
                     for (let key of allFiles.keys()) {
                         includedFiles += key
                     }
                     Log.writeLspServer('content in allFiles so far ' + includedFiles)
-                    Log.writeLspServer(allHtml.get(uri)!.events)
-                    Log.writeLspServer(allHtml.get(uri)!.listenedToEvents)
+                    Log.writeLspServer(allHtml.get(encodedUri)!.events)
+                    Log.writeLspServer(allHtml.get(encodedUri)!.listenedToEvents)
                 }
             }
-
-
-
-
     }
-
-
 }
 
 function getFileExtension(filePath : string)

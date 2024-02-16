@@ -7,6 +7,7 @@ import {hoverRequest} from "./methods/textDocument/hover";
 import {didOpen} from "./methods/textDocument/didOpen";
 import {semantic} from "./methods/textDocument/semantic";
 import Log from "./log";
+import {definitionRequest} from "./methods/textDocument/definition";
 
 
 log.write("data")
@@ -25,7 +26,8 @@ const methodLookUp : Record<string, RequestMethod> = {
     'textDocument/didChange': didChange,
     'textDocument/hover': hoverRequest,
     'textDocument/didOpen': didOpen,
-    'textDocument/semanticTokens/full' : semantic
+    'textDocument/semanticTokens/full' : semantic,
+    'textDocument/definition' : definitionRequest
 }
 
 
