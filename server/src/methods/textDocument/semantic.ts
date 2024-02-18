@@ -140,7 +140,6 @@ function decryptSemanticsFromJavascriptServer(numbers : number[]): semanticToken
 function detectAlpineCharacters(uri: string) : semanticToken[]
 {
     const lines = allFiles.get(uri)!.split('\n')
-// Regular expression with the global flag
     const regExpx = /x-[a-zA-Z]+="|(?<![\\=])"|@[a-z-]+(\.[a-z]+)*="|let|var|const/g;
     let match : any;
     const output : semanticToken[] = []
@@ -158,7 +157,6 @@ function detectAlpineCharacters(uri: string) : semanticToken[]
             })
         }
     })
-
     return output
 }
 

@@ -69,24 +69,13 @@ export class CodeBlock
             {
                 if (arr[line - goUp + i].match(endPatternHtml))
                 {
-                    Log.writeLspServer('apparently found enta tag befoer')
-                    Log.writeLspServer(goUp.toString())
-                    Log.writeLspServer(arr[line -goUp + i])
-
                     return null
                 }
             }
-
             i++
         }
         i--;
         if (!foundAMatch) return null
-        Log.writeLspServer('here to search')
-        Log.writeLspServer(this.htmlTagRange)
-        Log.writeLspServer(lastMatchIndex.toString())
-        Log.writeLspServer(lastMatchEndingIndex.toString())
-        Log.writeLspServer(goUp.toString())
-        Log.writeLspServer((goUp - i).toString())
         if ( line - goUp + i >= line
             && (lastMatchIndex + 2 < character || goUp != 0 )
             && ( lastMatchEndingIndex  > character || goUp - i != 0 )
@@ -114,7 +103,6 @@ export class CodeBlock
         const content = allFiles.get(this.textDocument.textDocument.uri)!.split('\n')
         for (let i = openingParenthesisPosition.line; i <= endingParenthesisPosition.line; i++)
         {
-            //  console.log(allFiles.get(uri)!.split('\n')[i])
             let c = openingParenthesisPosition.line == i ? openingParenthesisPosition.character : 0
             let cEnd = endingParenthesisPosition.line == i ? endingParenthesisPosition.character : content[i].length
             for (let column = 0; column < cEnd; column++)

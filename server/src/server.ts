@@ -9,11 +9,6 @@ import {semantic} from "./methods/textDocument/semantic";
 import Log from "./log";
 import {definitionRequest} from "./methods/textDocument/definition";
 
-
-log.write("data")
-
-
-
 export interface RequestMessage{
     id: number | string;
     method: string;
@@ -29,7 +24,6 @@ const methodLookUp : Record<string, RequestMethod> = {
     'textDocument/semanticTokens/full' : semantic,
     'textDocument/definition' : definitionRequest
 }
-
 
 const respond = async (id : number, fn : Function, params: unknown) => {
     const res = await fn(params)
@@ -47,7 +41,6 @@ let initializeMethod = true
 let buffer = ''
 process.stdin.on('data', async (chunk) => {
     buffer += chunk;
-    Log.write(buffer)
     while (true)
     {
         const match = buffer.match(/Content-Length: (\d+)\r\n/)
@@ -58,8 +51,6 @@ process.stdin.on('data', async (chunk) => {
         const rawMessage = buffer.slice(messageStart, messageStart + contentLength)
         const message = JSON.parse(rawMessage)
         const method = methodLookUp[message.method]
-
-        Log.write(message)
         if (method)
         {
             if (initializeMethod)
@@ -70,11 +61,9 @@ process.stdin.on('data', async (chunk) => {
             }
             else
             {
-
                 await respond(message.id, method, message)
             }
         }
-
         log.write({id: message.id, method: message.method, params : message.params})
         buffer = buffer.slice(messageStart + contentLength)
     }

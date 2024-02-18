@@ -1,5 +1,4 @@
 import {RequestMessage} from "../../server";
-import {xoptions} from "../../x-validOptions";
 import Log from "../../log";
 import {CompletionList, lastWordSuggestion, textDocumentType} from "../../types/ClientTypes";
 import {CompletionItem} from "../../types/completionTypes";

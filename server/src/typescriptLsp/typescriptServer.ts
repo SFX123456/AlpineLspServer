@@ -12,7 +12,6 @@ let requestId = 0;
 
 let filePathUri = ''
 
-
 export let infos : {
     rootPath?: string,
     rootUri? : string
@@ -20,10 +19,6 @@ export let infos : {
 
 
 export const request = async (id : Boolean,method: string, clientRequest : unknown) : Promise<object | null> => {
-
-        Log.writeLspServer('request method called with method ' + method)
-
-
         let message = ''
         if (id)
         {
@@ -34,7 +29,6 @@ export const request = async (id : Boolean,method: string, clientRequest : unkno
         {
             message = JSON.stringify({method: method, params:  clientRequest})
         }
-
         const headerLength = Buffer.byteLength(message, "utf-8")
         const header = `Content-Length: ${headerLength}\r\n\r\n`
         childProcess.stdin.write(header + message)
@@ -42,7 +36,6 @@ export const request = async (id : Boolean,method: string, clientRequest : unkno
         if (id) {
             return (await listenToAnswer(requestId))
         }
-
         return null
 
 }
@@ -89,7 +82,6 @@ async function listenToAnswer(id: number): Promise<object>
         let buffer = ''
         const onData = (data : string) => {
             buffer += data
-            //Log.writeLspServer(buffer)
             while (true) {
                 const match = buffer.match(/Content-Length: (\d+)\r\n/)
                 if (!match) break;
@@ -97,18 +89,13 @@ async function listenToAnswer(id: number): Promise<object>
                 const messageStart = buffer.indexOf('\r\n\r\n') + 4
                 if (buffer.length < messageStart + contentLength) break
                 const rawMessage = buffer.slice(messageStart, messageStart + contentLength)
-                Log.write(buffer)
                 if (rawMessage.includes('id') ) {
-                    Log.writeLspServer('found matchiong response')
                     const message = JSON.parse(rawMessage)
-                    Log.writeLspServer(message)
                     resolve(message)
                     childProcess.stdout.off('data', onData)
-                    Log.writeLspServer('resolve did not stop it ')
                     break
                 } else {
                     Log.writeLspServer('differnet match for id ')
-                    //Log.writeLspServer(message)
                 }
                 buffer = buffer.slice(messageStart + contentLength)
             }
@@ -116,15 +103,7 @@ async function listenToAnswer(id: number): Promise<object>
         Log.writeLspServer('waiting for answer')
         childProcess.stdout.on('data', onData);
     })
-
-
-
 }
-
-
-
-
-
 
 export const initializeTypescriptServer = async (receivedInitializedMessage : object) => {
     // @ts-ignore
@@ -154,7 +133,7 @@ export const initializeTypescriptServer = async (receivedInitializedMessage : ob
     Log.writeLspServer('initialized lsp server with params ' + JSON.stringify(receivedInitializedParams))
     await request(false, 'textDocument/didOpen', {
         textDocument: {
-            uri: '',
+            uri: filePathUri,
             languageId:"javascript",
             version:version,
             text: ''

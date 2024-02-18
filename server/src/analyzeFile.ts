@@ -1,8 +1,6 @@
 import {allFiles} from "./allFiles";
-import log from "./log";
 import {lastWordSuggestion, Position, Range, textDocumentType} from "./types/ClientTypes";
 import Log from "./log";
-import {end} from "cheerio/lib/api/traversing";
 
 
 export function getLastWord( textDocument: textDocumentType) : lastWordSuggestion {
@@ -39,23 +37,18 @@ export function isInsideParenthesis(line : number , char : number, uri: string):
     let foundAMatch = false
     while (!foundAMatch && goUp < 200 && line - goUp >= 0)
     {
-
         while ((startTag = startPattern.exec(arr[line - goUp])) !== null) {
             if (startTag.index < char)
             {
                 foundAMatch = true
-
                 lastMatchIndex = startTag.index;
             }
         }
-
         goUp++;
     }
     goUp--
     if (!foundAMatch) return false
-
     let endTag : any
-
     foundAMatch = false
     let lastMatchEndingIndex = 0
     let i = 0;
@@ -80,10 +73,6 @@ export function isInsideParenthesis(line : number , char : number, uri: string):
     }
     i--;
     if (!foundAMatch) return false
-    Log.writeLspServer('here to search')
-    Log.writeLspServer(lastMatchIndex.toString())
-    Log.writeLspServer(goUp.toString())
-    Log.writeLspServer((goUp - i).toString())
     return line - goUp + i >= line
         && line - goUp <= line
         && (lastMatchIndex + 2 < char || goUp != 0 )
@@ -98,7 +87,6 @@ export function getOpeningParenthesisPosition(uri: string, line:number, characte
     const content = allFiles.get(uri)!
     const regExpEndParenthesis = /(?<![\\=])"/
     const regExpStart= /="/g
-
     const wholeLineSubStr = content.split('\n')[line].substring(0, character)
     let res
     let lastIndex = 0
@@ -108,7 +96,6 @@ export function getOpeningParenthesisPosition(uri: string, line:number, characte
         hit = true
         lastIndex = res.index!
     }
-
     if (hit)
     {
         return {
@@ -116,7 +103,6 @@ export function getOpeningParenthesisPosition(uri: string, line:number, characte
             character: lastIndex + 2
         }
     }
-
     line--
     const position = getOpeningTagPosition(uri, line)
     if (position == null) return null
@@ -124,7 +110,6 @@ export function getOpeningParenthesisPosition(uri: string, line:number, characte
     const openingTagIndexCharacter = position.character
     while (line >= openingTagIndexLine)
     {
-
         const lineStr = content.split('\n')[line]
         const resStart = lineStr.match(regExpStart)
         //const resEnd = lineStr.match(regExpEndParenthesis)
@@ -135,7 +120,6 @@ export function getOpeningParenthesisPosition(uri: string, line:number, characte
             {
                 return null
             }
-
             if (line == openingTagIndexCharacter) {
                 if (resStart.index! < openingTagIndexCharacter)
                 {
@@ -190,17 +174,13 @@ export function getEndingParenthesisPosition(uri: string, line: number, characte
 
         const lineStr = content.split('\n')[line]
         const resEnd = lineStr.match(regExpEndParenthesis)
-
-
         const res = lineStr.match(regExpStart)
-
         if (res != null)
         {
             if (resEnd == null)
             {
                 return null
             }
-
             if (line == closingTagIndexLine) {
                 if (resEnd.index! > closingTagIndexCharacter)
                 {
@@ -215,7 +195,6 @@ export function getEndingParenthesisPosition(uri: string, line: number, characte
                 }
             }
             return null
-
         }
         if (resEnd != null)
         {
@@ -231,7 +210,6 @@ export function getEndingParenthesisPosition(uri: string, line: number, characte
 
 export function getEndTagPosition(uri: string, line : number) : Position | null
 {
-
     const endPattern = />[\r]*$/;
     let res = null
     do

@@ -1,9 +1,7 @@
-import {CompletionItem, InsertTextFormat, textEdit} from "./completionTypes";
+import {CompletionItem} from "./completionTypes";
 
 export interface InitializeParams {
     processId: number;
-
-
     clientInfo?: {
         name: string;
 
@@ -14,20 +12,15 @@ export interface InitializeParams {
             logVerbosity : string
         }
     }
-
     locale?: string;
     rootPath?: string | null;
     rootUri: string;
-
     capabilities: object;
-
     workspaceFolders?: unknown;
 }
 
 export interface Position {
-
     line: number;
-
     character: number;
 }
 
@@ -42,27 +35,20 @@ export interface customEvent  {
 }
 export type dispatchVariables = Record<string, unknown>
 
-
-
 export interface Range {
     start: Position,
     end: Position
 }
-
-
 
 export interface textDocumentType {
     textDocument: TextDocumentItem,
     position: Position
 }
 
-
-
 export interface CompletionList {
     isIncomplete: boolean;
     items: CompletionItem[];
 }
-
 
 export interface TextDocumentItem {
     uri: DocumentUri;
@@ -71,11 +57,7 @@ export interface TextDocumentItem {
     text: string;
 }
 
-
-
 export type DocumentUri = string;
-
-
 
 export type CompletionItemKind = 1 | 2 | 15
 

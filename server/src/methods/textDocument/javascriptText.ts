@@ -37,14 +37,11 @@ export function getAllJavaScriptText(uri: string )
             output += fullText
         }
     })
-
-
     for (let i = 0; i < 500;i++)
     {
         output += '\n'
     }
     output += (magicObjects.map(x => ' var ' + x +'; ').join(''))
-
     return output
 }
 

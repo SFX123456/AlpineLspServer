@@ -5,6 +5,7 @@ import Log from "../../log";
 import {infos} from "../../typescriptLsp/typescriptServer";
 import {textDocumentType} from "../../types/ClientTypes";
 import { atOptionsJustString} from "../../at-validOptions";
+import {CompletionRequest} from "vscode-languageserver";
 interface HoverResult {
     contents: string
 }
@@ -18,15 +19,21 @@ const lastWordAnswerMatches : Record<predefinedAnswersKeys, string> = {
 }
 export const hoverRequest = async (message: RequestMessage) : Promise<HoverResult>  => {
     const textDocumentt = message.params as textDocumentType
-    checkIfInsideDispatchMinimal()
-    let lastWord = getLastWord(textDocumentt).lastWord
+    let lastWordObj = getLastWord(textDocumentt)
+    const res = getListenersToDispatch(lastWordObj.wholeLineTillEndofWord)
+    if (res) {
+        return {
+            contents: res.join(' and ')
+        }
+    }
+
+    let lastWord = lastWordObj.lastWord
     Log.writeLspServer('hover')
     Log.writeLspServer(lastWord)
     if (lastWord == '')
         return {
             contents : ''
         }
-
     for (let key  of Object.keys(lastWordAnswerMatches)) {
        if (lastWord.indexOf(key) == 0)
        {
@@ -43,16 +50,6 @@ export const hoverRequest = async (message: RequestMessage) : Promise<HoverResul
                    contents : text
                }
            }
-           if (key === '$dispatch')
-           {
-                const res = getListenersToDispatch(lastWord)
-               if (!res) return {
-                   contents : 'dispatch not valid'
-               }
-               return {
-                   contents : res.join(' and ')
-               }
-           }
            return {
                contents : lastWordAnswerMatches[key as predefinedAnswersKeys]
            }
@@ -65,20 +62,13 @@ export const hoverRequest = async (message: RequestMessage) : Promise<HoverResul
 
 function getTextForEvent(event : string) : string
 {
-    Log.writeLspServer('triggered')
-    Log.writeLspServer(event)
     let output = 'dispatched in '
     let fileNames : string[] = []
     for (let key of allHtml.keys()) {
-        Log.writeLspServer(key)
-        Log.writeLspServer(allHtml.get(key)!.events.length.toString())
        allHtml.get(key)!.events.forEach(x => {
-           Log.writeLspServer(x)
            if (x.name === event)
            {
                let fileName =allHtml.get(key!)!.uri
-               Log.writeLspServer('saved uri name')
-               Log.writeLspServer(fileName)
                const relPath = getRelativePath(fileName)
                if (fileNames.indexOf(relPath) === -1)
                {
@@ -110,26 +100,26 @@ function checkIfStandardEvent(event : string) :Boolean
 
 function getListenersToDispatch(lastWord : string) : null | string[]
 {
-    const regexp = /\$dispatch\(\s*'([a-z]+)'/
-    const match = lastWord.match(regexp)
-    if (!match) return null
-    Log.writeLspServer('search here jonas')
-    Log.writeLspServer(match[1])
+    Log.writeLspServer('listeners tio dusoatch test')
+    const regexp = /\$dispatch\(\s*'([a-z]+)'/g
+    let tempMatch
+    let match : RegExpMatchArray | null = null
+    while ((tempMatch = regexp.exec(lastWord)) != null)
+    {
+        match = tempMatch
+    }
+    if (match === null) return null
     let output : string[] = []
     for (let key of allHtml.keys()) {
         let isIn = false
        allHtml.get(key)!.listenedToEventsPosition.forEach(item => {
-
-           Log.writeLspServer(item)
-           if (item.name === match[1])
+           if (item.name === match![1])
            {
                isIn = true
            }
        })
         if (isIn) output.push(getRelativePath(key))
-
     }
-
     return output
 }
 
@@ -139,7 +129,4 @@ function getRelativePath(path : string) :string
     return path.split(infos.rootUri!)[1]
 }
 
-function checkIfInsideDispatchMinimal()
-{
 
-}

@@ -5,12 +5,10 @@ import {allFiles, allHtml} from "../../../allFiles";
 import {findAccordingRow, getParentAndOwnVariables} from "../../../cheerioFn";
 import {requestingMethods} from "../../../typescriptLsp/typescriptServer";
 import {addNecessaryCompletionItemProperties, completionResponseType} from "../completion";
-import {getOpeningParenthesisPosition} from "../../../analyzeFile";
-import {getAllJavascriptCode} from "../javascriptText";
 import {CodeBlock} from "../../../CodeBlock";
 import {PageHtml} from "../../../HtmlParsing/PageHtml";
-import {chainableOnAt} from "../../chainableOnAt";
-
+import {getAllJavaScriptText} from "../javascriptText";
+//make x-for="post in posts" to for( let post of posts ) {
 export const completionJs  = async (line : number, character : number, uri : string | undefined, codeBlock : CodeBlock) : Promise<CompletionList | null> => {
     Log.write('completion requested')
     let optionsStr : string[] = []
@@ -34,6 +32,7 @@ export const completionJs  = async (line : number, character : number, uri : str
             items: []
         }
     }
+
 
     const htmpPage = allHtml.get(uri!)
 
@@ -62,8 +61,18 @@ export const completionJs  = async (line : number, character : number, uri : str
     }
 
     optionsStr.push(...getParentAndOwnVariables(node))
-    const javascriptText = codeBlock.generateFullTextJavascriptLsp(optionsStr)
-
+    Log.writeLspServer('before xfor')
+    let javascriptText = getAllJavaScriptText(uri!)
+    Log.writeLspServer(javascriptText)
+    javascriptText = changeXForForTypescriptServer(javascriptText)
+    Log.writeLspServer('after')
+    Log.writeLspServer(javascriptText)
+    let varAsTextStr = optionsStr.map(x => 'var ' + x + ';' ).join('')
+    varAsTextStr += (magicObjects.map(x => ' var ' + x +'; ').join(''))
+    javascriptText += varAsTextStr
+    //const javascriptText = codeBlock.generateFullTextJavascriptLsp(optionsStr)
+    Log.writeLspServer('typescript')
+    Log.writeLspServer(javascriptText)
     const res = await requestingMethods( 'completion', javascriptText, line, character)
     if (res)
     {
@@ -133,6 +142,34 @@ function buildMagiceventVar(item : customEvent )
     }).join(',')
 
     return  '$event = ' + '{ target: { ' +  tempStr   +  '  }, srcElement : { dispatchEvent: 5 } } '
+}
+
+
+function changeXForForTypescriptServer(content : string): string
+{
+    const regExp = /([a-z-]+)(\s+)in(\s+)([a-z-]+)/g
+    let test = content
+    let match
+    while ((match = regExp.exec(content)) != null)
+    {
+        Log.writeLspServer('found match at index ' + match.index)
+        Log.writeLspServer(match)
+        const arrName = match[4]
+        const keyName = match[1]
+        const firstWhite = match[2]
+        const secondWhite = match[3]
+        const newText = 'for(let ' + keyName + firstWhite + 'of' + secondWhite + arrName + "){"
+        Log.writeLspServer(newText)
+        let textToReplace = '       ' + match[0] + '  '
+        let counter  = 0
+        do {
+            textToReplace = textToReplace.substring(0, textToReplace.length - 2)
+            counter++
+        }while (content.indexOf(textToReplace) == -1 || counter > 2)
+        Log.writeLspServer(content.indexOf(textToReplace).toString())
+        test = test.replaceAll(textToReplace, newText)
+    }
+    return test
 }
 
 
