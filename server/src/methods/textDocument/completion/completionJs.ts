@@ -7,7 +7,7 @@ import {requestingMethods} from "../../../typescriptLsp/typescriptServer";
 import {addNecessaryCompletionItemProperties, completionResponseType} from "../completion";
 import {CodeBlock} from "../../../CodeBlock";
 import {PageHtml} from "../../../HtmlParsing/PageHtml";
-import {getAllJavaScriptText} from "../javascriptText";
+import {getAllJavaScriptText, getContentBetweenHtmlOpen} from "../javascriptText";
 //make x-for="post in posts" to for( let post of posts ) {
 export const completionJs  = async (line : number, character : number, uri : string | undefined, codeBlock : CodeBlock) : Promise<CompletionList | null> => {
     Log.write('completion requested')
@@ -62,7 +62,15 @@ export const completionJs  = async (line : number, character : number, uri : str
 
     optionsStr.push(...getParentAndOwnVariables(node))
     Log.writeLspServer('before xfor')
-    let javascriptText = getAllJavaScriptText(uri!)
+    const nodeOri = findAccordingRow(line, allHtml.get(uri!)!);
+    const z = nodeOri!.parent().toString();
+    const regex = /x-line=\"([0-9]+)\"/
+    const rest= z.match(regex)
+
+
+
+    //let javascriptText = getAllJavaScriptText(uri!)
+    let javascriptText = getContentBetweenHtmlOpen(nodeOri!,uri!)
     Log.writeLspServer(javascriptText)
     javascriptText = changeXForForTypescriptServer(javascriptText)
     Log.writeLspServer('after')
