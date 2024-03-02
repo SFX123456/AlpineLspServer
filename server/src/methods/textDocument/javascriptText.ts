@@ -158,5 +158,5 @@ export function getContentBetweenHtmlOpen(node : Cheerio<Element>, uri : string)
     Log.writeLspServer("check here is worked")
     Log.writeLspServer(output)
 
-    return addMagicObjects(output)
+    return output
 }

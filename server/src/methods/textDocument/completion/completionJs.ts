@@ -7,8 +7,7 @@ import {requestingMethods} from "../../../typescriptLsp/typescriptServer";
 import {addNecessaryCompletionItemProperties, completionResponseType} from "../completion";
 import {CodeBlock} from "../../../CodeBlock";
 import {PageHtml} from "../../../HtmlParsing/PageHtml";
-import {getAllJavaScriptText, getContentBetweenHtmlOpen} from "../javascriptText";
-//make x-for="post in posts" to for( let post of posts ) {
+import { getContentBetweenHtmlOpen} from "../javascriptText";
 export const completionJs  = async (line : number, character : number, uri : string | undefined, codeBlock : CodeBlock) : Promise<CompletionList | null> => {
     Log.write('completion requested')
     let optionsStr : string[] = []
@@ -63,23 +62,14 @@ export const completionJs  = async (line : number, character : number, uri : str
     optionsStr.push(...getParentAndOwnVariables(node))
     Log.writeLspServer('before xfor')
     const nodeOri = findAccordingRow(line, allHtml.get(uri!)!);
-    const z = nodeOri!.parent().toString();
-    const regex = /x-line=\"([0-9]+)\"/
-    const rest= z.match(regex)
-
-
-
-    //let javascriptText = getAllJavaScriptText(uri!)
     let javascriptText = getContentBetweenHtmlOpen(nodeOri!,uri!)
     Log.writeLspServer(javascriptText)
     javascriptText = changeXForForTypescriptServer(javascriptText)
-
+    javascriptText += '\n'
     Log.writeLspServer('after')
     Log.writeLspServer(javascriptText)
-    let varAsTextStr = optionsStr.map(x => 'var ' + x + ';' ).join('')
-    varAsTextStr += (magicObjects.map(x => ' var ' + x +'; ').join(''))
-    javascriptText += varAsTextStr
-    //const javascriptText = codeBlock.generateFullTextJavascriptLsp(optionsStr)
+    javascriptText += optionsStr.map(x => 'var ' + x + ';' ).join('')
+    javascriptText +=  (magicObjects.map(x => ' var ' + x +'; ').join(''))
     Log.writeLspServer('typescript')
     Log.writeLspServer(javascriptText)
     const res = await requestingMethods( 'completion', javascriptText, line, character)
