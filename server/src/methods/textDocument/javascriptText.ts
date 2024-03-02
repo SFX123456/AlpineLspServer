@@ -103,32 +103,60 @@ function addMagicObjects(output : string)
 export function getContentBetweenHtmlOpen(node : Cheerio<Element>, uri : string)
 {
     let output = ''
-    const textWithLines = []
-    while (node.attr()) {
-        if (!node.attr()) break
-        const xlineAttrStr = node.attr()!["x-line"]
-        const xEndAttrStr = node.attr()!["x-end"]
-        const lineStart = parseInt(xlineAttrStr!)
-        const lineEnd = parseInt(xEndAttrStr!)
-        if (!lineStart) break
-        const text = getAllJavaScriptText(uri, lineStart, lineEnd)
-        textWithLines.push({
-            line: lineStart,
-            length: text.split("\n").length,
-            text
-        })
-        node = node.parents()
-    }
-    let lastY = 0
-    textWithLines.reverse().forEach(item => {
+    let strToAttATTheEnd = ""
+    Log.writeLspServer("trying din")
+    Log.writeLspServer(node.attr())
+    const attr = JSON.parse(JSON.stringify(node.attr()))
+    Log.writeLspServer(attr)
 
-        while (item.line > lastY)
-        {
-            lastY++
-            output += "\n"
+    const xlineAttrStr = node.attr()!["x-line"]
+    const xEndAttrStr = node.attr()!["x-end"]
+    const lineActualElement = parseInt(xlineAttrStr!)
+    const lineEnd = parseInt(xEndAttrStr!)
+    strToAttATTheEnd =  getAllJavaScriptText(uri, lineActualElement, lineEnd)
+    let lastY = 0
+    node = node.parent()
+    let textToAdd = []
+
+    while (node.attr())
+    {
+        const xlineAttrStr = node.attr()!["x-line"]
+        const lineStart = parseInt(xlineAttrStr!)
+        if (!lineStart) break
+    Log.writeLspServer(node.attr())
+        let text = ''
+
+
+        for (let key in node.attr()!) {
+            if (key == "x-end") continue
+            if (key == "x-line") continue
+            text += node.attr()![key]
         }
+        if (Number.isNaN(lineStart)) break
+        textToAdd.push({
+            text,
+            lineStart
+        })
+        node = node.parent()
+    }
+
+
+    textToAdd.reverse().forEach(item => {
+        for(;  lastY < item.lineStart; lastY++) {
+            output += '\n'
+        }
+        Log.writeLspServer(item.text)
         output += item.text
     })
+
+    for (; lastY < lineActualElement; lastY++) {
+        output += '\n'
+    }
+    output += strToAttATTheEnd
+
+
+    Log.writeLspServer("check here is worked")
+    Log.writeLspServer(output)
 
     return addMagicObjects(output)
 }

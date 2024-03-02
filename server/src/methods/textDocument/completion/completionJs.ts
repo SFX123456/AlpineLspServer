@@ -73,6 +73,7 @@ export const completionJs  = async (line : number, character : number, uri : str
     let javascriptText = getContentBetweenHtmlOpen(nodeOri!,uri!)
     Log.writeLspServer(javascriptText)
     javascriptText = changeXForForTypescriptServer(javascriptText)
+
     Log.writeLspServer('after')
     Log.writeLspServer(javascriptText)
     let varAsTextStr = optionsStr.map(x => 'var ' + x + ';' ).join('')
@@ -173,7 +174,7 @@ function changeXForForTypescriptServer(content : string): string
         do {
             textToReplace = textToReplace.substring(0, textToReplace.length - 2)
             counter++
-        }while (content.indexOf(textToReplace) == -1 || counter > 2)
+        }while (content.indexOf(textToReplace) == -1 && counter < 2)
         Log.writeLspServer(content.indexOf(textToReplace).toString())
         test = test.replaceAll(textToReplace, newText)
     }

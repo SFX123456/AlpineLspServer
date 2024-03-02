@@ -3,7 +3,7 @@
   
   <ul x-data="{ colors: ['Red', 'Orange', 'Yellow'] }" x-init="koma " >
     <div x-for="color in colors " >
-        <li x-init=" " >
+        <li  >
         </li>
     </div>
   </ul>
