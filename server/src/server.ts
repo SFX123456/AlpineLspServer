@@ -8,6 +8,7 @@ import {didOpen} from "./methods/textDocument/didOpen";
 import {semantic} from "./methods/textDocument/semantic";
 import Log from "./log";
 import {definitionRequest} from "./methods/textDocument/definition";
+import { regexContentLength} from "./allRegex.js";
 
 export interface RequestMessage{
     id: number | string;
@@ -43,7 +44,7 @@ process.stdin.on('data', async (chunk) => {
     buffer += chunk;
     while (true)
     {
-        const match = buffer.match(/Content-Length: (\d+)\r\n/)
+        const match = buffer.match(regexContentLength)
         if (!match) break;
         const contentLength = parseInt(match[1], 10)
         const messageStart = buffer.indexOf('\r\n\r\n') + 4

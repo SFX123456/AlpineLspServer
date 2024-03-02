@@ -7,8 +7,8 @@ import {requestingMethods} from "../../../typescriptLsp/typescriptServer";
 import {addNecessaryCompletionItemProperties, completionResponseType} from "../completion";
 import {CodeBlock} from "../../../CodeBlock";
 import {PageHtml} from "../../../HtmlParsing/PageHtml";
-import {getAllJavaScriptText, getContentBetweenHtmlOpen} from "../javascriptText";
-//make x-for="post in posts" to for( let post of posts ) {
+import { getContentBetweenHtmlOpen} from "../javascriptText";
+import {regexDispatchInside, regexDispatchInsideEventName, regexXFor, regexXline} from "../../../allRegex.js";
 export const completionJs  = async (line : number, character : number, uri : string | undefined, codeBlock : CodeBlock) : Promise<CompletionList | null> => {
     Log.write('completion requested')
     let optionsStr : string[] = []
@@ -16,29 +16,30 @@ export const completionJs  = async (line : number, character : number, uri : str
     const wholeLine = allFiles.get(uri!)!.split('\n')[line]
     if (isWithInDispatch(codeBlock))
     {
-
         if (isInsideDispatchSetEvent(wholeLine, character))
         {
             const events = PageHtml.getAllListedToEvents()
             Log.writeLspServer('should return listed to events')
             Log.writeLspServer(events)
+
             return {
                 isIncomplete : false,
                 items: addNecessaryCompletionItemProperties(events, line, character)
             }
         }
+
         return {
             isIncomplete : false,
             items: []
         }
     }
 
-
     const htmpPage = allHtml.get(uri!)
 
     const node = findAccordingRow(line, htmpPage!)
     if (!node){
         Log.write("node did not found")
+
         return null
     }
 
@@ -63,24 +64,12 @@ export const completionJs  = async (line : number, character : number, uri : str
     optionsStr.push(...getParentAndOwnVariables(node))
     Log.writeLspServer('before xfor')
     const nodeOri = findAccordingRow(line, allHtml.get(uri!)!);
-    const z = nodeOri!.parent().toString();
-    const regex = /x-line=\"([0-9]+)\"/
-    const rest= z.match(regex)
 
-
-
-    //let javascriptText = getAllJavaScriptText(uri!)
     let javascriptText = getContentBetweenHtmlOpen(nodeOri!,uri!)
-    Log.writeLspServer(javascriptText)
     javascriptText = changeXForForTypescriptServer(javascriptText)
-    Log.writeLspServer('after')
-    Log.writeLspServer(javascriptText)
     let varAsTextStr = optionsStr.map(x => 'var ' + x + ';' ).join('')
     varAsTextStr += (magicObjects.map(x => ' var ' + x +'; ').join(''))
     javascriptText += varAsTextStr
-    //const javascriptText = codeBlock.generateFullTextJavascriptLsp(optionsStr)
-    Log.writeLspServer('typescript')
-    Log.writeLspServer(javascriptText)
     const res = await requestingMethods( 'completion', javascriptText, line, character)
     if (res)
     {
@@ -107,31 +96,29 @@ function isWithInDispatch(codeBlock : CodeBlock): Boolean
 {
     Log.writeLspServer('checks whether insode dispatch')
     const textWithinParenthesis = codeBlock.generateTextJavascript()
-    Log.writeLspServer(textWithinParenthesis)
-    const regExp = /\$dispatch\(['{}:a-zA-Z\s,\n\$]*\)/
+    const regExp =regexDispatchInside
     const match = textWithinParenthesis.match(regExp)
-    Log.writeLspServer(match)
+
     if (!match) return false
     //Log.writeLspServer((match.index! + match[0].length - textWithinParenthesis.substring(0,match.index!).lastIndexOf('\n') + 1).toString())
     let realIndexFactor =  textWithinParenthesis.substring(0,codeBlock.character).lastIndexOf('\n') + 1
 
-    Log.writeLspServer((codeBlock.character + realIndexFactor).toString())
-    Log.writeLspServer((match.index!).toString())
-    Log.writeLspServer((match[0].length + match.index!).toString())
     if ((match[0].length + match.index!) > (codeBlock.character + realIndexFactor)
         && match.index! < codeBlock.character + realIndexFactor
     ) return true
+
     return false
 }
 
 
 function isInsideDispatchSetEvent(wholeLine : string, character: number) : Boolean
 {
-    const regExpEnd = /\$dispatch\([\s]*'$/
-    if (wholeLine.substring(0, character).match(regExpEnd))
+    if (wholeLine.substring(0, character).match(regexDispatchInsideEventName))
     {
+
         return true
     }
+
     return false
 }
 
@@ -155,19 +142,16 @@ function buildMagiceventVar(item : customEvent )
 
 function changeXForForTypescriptServer(content : string): string
 {
-    const regExp = /([a-z-]+)(\s+)in(\s+)([a-z-]+)/g
+    const regExp = regexXFor
     let test = content
     let match
     while ((match = regExp.exec(content)) != null)
     {
-        Log.writeLspServer('found match at index ' + match.index)
-        Log.writeLspServer(match)
         const arrName = match[4]
         const keyName = match[1]
         const firstWhite = match[2]
         const secondWhite = match[3]
         const newText = 'for(let ' + keyName + firstWhite + 'of' + secondWhite + arrName + "){"
-        Log.writeLspServer(newText)
         let textToReplace = '       ' + match[0] + '  '
         let counter  = 0
         do {
@@ -177,6 +161,7 @@ function changeXForForTypescriptServer(content : string): string
         Log.writeLspServer(content.indexOf(textToReplace).toString())
         test = test.replaceAll(textToReplace, newText)
     }
+
     return test
 }
 

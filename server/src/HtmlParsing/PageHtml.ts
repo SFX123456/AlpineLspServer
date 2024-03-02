@@ -24,13 +24,6 @@ export class PageHtml
             this.processElement(element);
         })
     }
-    public get listenedToEvents()
-    {
-        return this.listenedToEventsPosition.map(item => {
-            return item.name
-        })
-    }
-
 
     public processElement(element : cheerio.Element) {
         element.children.forEach((child : cheerioType.ChildNode) => {
@@ -71,8 +64,6 @@ export class PageHtml
             }
         })
     }
-
-
 
     public getCustomNotWindowEventsWithVariables(nodeText : string): customEvent[]
     {
@@ -146,6 +137,7 @@ export class PageHtml
             })
         })
         Log.writeLspServer(customEvents)
+
         return customEvents
     }
 
@@ -162,6 +154,7 @@ export class PageHtml
            output.push(key)
         }
         Log.writeLspServer(set)
+
         return output
     }
 }

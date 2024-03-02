@@ -8,9 +8,6 @@ import Log from "../../log";
 
 
 export type DocumentUri = string;
-type contentChange = {
-    text: string
-}
 interface textDocument {
     textDocument : TextDocumentItem,
 
@@ -22,13 +19,12 @@ interface TextDocumentItem {
     text: string;
 }
 
-export const didOpen = async (message : RequestMessage): Promise<null> => {
+export const didOpen = async (message : RequestMessage) => {
     const params = message.params as textDocument
     log.write('saved '+ params.textDocument.text)
     saveCheerioFile(params.textDocument.text, params.textDocument.uri)
 
     allFiles.set(params.textDocument.uri, params.textDocument.text)
-    return null
 }
 
 

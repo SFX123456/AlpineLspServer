@@ -6,6 +6,7 @@ import Log from "../../log";
 import {requestingMethods} from "../../typescriptLsp/typescriptServer";
 import {textDocumentType} from "../../types/ClientTypes";
 import {getAllJavaScriptText} from "./javascriptText";
+import {regexAlpineCharactersSemantic} from "../../allRegex.js";
 
 interface semanticResponse  {
     data: number[]
@@ -39,7 +40,6 @@ export const semantic = async (message : RequestMessage ) : Promise<semanticResp
     return {
         data:
         decrpytedTokens
-
     }
 }
 
@@ -140,7 +140,7 @@ function decryptSemanticsFromJavascriptServer(numbers : number[]): semanticToken
 function detectAlpineCharacters(uri: string) : semanticToken[]
 {
     const lines = allFiles.get(uri)!.split('\n')
-    const regExpx = /x-[a-zA-Z]+="|(?<![\\=])"|@[a-z-]+(\.[a-z]+)*="|let|var|const/g;
+    const regExpx = regexAlpineCharactersSemantic
     let match : any;
     const output : semanticToken[] = []
     lines.forEach((line, currentLine) => {

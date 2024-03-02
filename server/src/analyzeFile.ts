@@ -1,9 +1,14 @@
 import {allFiles} from "./allFiles";
-import {lastWordSuggestion, Position, Range, textDocumentType} from "./types/ClientTypes";
-import Log from "./log";
+import {lastWordInfos, Position, Range, textDocumentType} from "./types/ClientTypes";
+import {
+    regexEndHtmlElement,
+    regexEndingQuotationMarks,
+    regexStartHtmlElement,
+    regexStartQuotationMarks, regexXAttrAndATMethods
+} from "./allRegex.js";
 
 
-export function getLastWord( textDocument: textDocumentType) : lastWordSuggestion {
+export function getLastWordInfos(textDocument: textDocumentType) : lastWordInfos {
     const text = allFiles.get(textDocument.textDocument.uri)!
     let character = textDocument.position.character
     const wholeLine = text!.split('\n')[(textDocument.position.line)]
@@ -13,13 +18,13 @@ export function getLastWord( textDocument: textDocumentType) : lastWordSuggestio
     let startOpenExpr = wholeLineSubStrTillChar.lastIndexOf('="') + 1
     let startIndex = Math.max(spaceCharIndex, startTagIndex, startOpenExpr)
 
-
     let wholeLineEndSubStr = wholeLine.substring(character)
     let spaceCharIndexEnd = wholeLineEndSubStr.indexOf(' ')
     let endTagIndex = wholeLineEndSubStr.indexOf('>');
     if (endTagIndex == -1) endTagIndex = 900
     if (spaceCharIndexEnd == -1) spaceCharIndexEnd = 900
     let endIndex = Math.min(spaceCharIndexEnd, endTagIndex, wholeLine.length - character)
+
     return {
         wholeLine,
         lastWord: wholeLine.substring(startIndex + 1, endIndex + character),
@@ -27,66 +32,11 @@ export function getLastWord( textDocument: textDocumentType) : lastWordSuggestio
     }
 }
 
-export function isInsideParenthesis(line : number , char : number, uri: string): boolean {
-    const startPattern =  /="/g
-    const endPattern = /(?<![\\=])"/g
-    const arr = allFiles.get(uri)!.split('\n')
-    let goUp = 0;
-    let startTag : any
-    let lastMatchIndex = 0
-    let foundAMatch = false
-    while (!foundAMatch && goUp < 200 && line - goUp >= 0)
-    {
-        while ((startTag = startPattern.exec(arr[line - goUp])) !== null) {
-            if (startTag.index < char)
-            {
-                foundAMatch = true
-                lastMatchIndex = startTag.index;
-            }
-        }
-        goUp++;
-    }
-    goUp--
-    if (!foundAMatch) return false
-    let endTag : any
-    foundAMatch = false
-    let lastMatchEndingIndex = 0
-    let i = 0;
-    const endPatternHtml = />[\r]*$/;
-    while (!foundAMatch && i < 200 && line - goUp + i < arr.length - 1)
-    {
-        while ((endTag = endPattern.exec(arr[line - goUp + i])) !== null) {
-            if (endTag.index > char)
-            {
-                foundAMatch = true
-                lastMatchEndingIndex = endTag.index;
-            }
-        }
-        if (!foundAMatch)
-        {
-            if (arr[line - goUp + i].match(endPatternHtml))
-            {
-                return false
-            }
-        }
-        i++
-    }
-    i--;
-    if (!foundAMatch) return false
-    return line - goUp + i >= line
-        && line - goUp <= line
-        && (lastMatchIndex + 2 < char || goUp != 0 )
-        && ( lastMatchEndingIndex  > char || goUp - i != 0 )
-}
-
-
-
-
 export function getOpeningParenthesisPosition(uri: string, line:number, character: number) : Position | null
 {
     const content = allFiles.get(uri)!
-    const regExpEndParenthesis = /(?<![\\=])"/
-    const regExpStart= /="/g
+    const regExpEndParenthesis = regexEndingQuotationMarks
+    const regExpStart= regexStartQuotationMarks
     const wholeLineSubStr = content.split('\n')[line].substring(0, character)
     let res
     let lastIndex = 0
@@ -144,9 +94,8 @@ export function getOpeningParenthesisPosition(uri: string, line:number, characte
         }
         line--
     }
+
     return null
-
-
 }
 
 
@@ -154,8 +103,8 @@ export function getEndingParenthesisPosition(uri: string, line: number, characte
 {
     const content = allFiles.get(uri)!
     const lineSubstr = content.split('\n')[line].substring(character)
-    const regExpEndParenthesis = /(?<!\\)"/
-    const regExpStart= /(x-[a-zA-Z]*="|@[a-zA-Z]*=")/
+    const regExpEndParenthesis = regexEndingQuotationMarks
+    const regExpStart= regexXAttrAndATMethods
     const res = lineSubstr.match(regExpEndParenthesis)
     if (res != null)
     {
@@ -205,12 +154,13 @@ export function getEndingParenthesisPosition(uri: string, line: number, characte
         }
         line++
     }
+
     return null
 }
 
 export function getEndTagPosition(uri: string, line : number) : Position | null
 {
-    const endPattern = />[\r]*$/;
+    const endPattern = regexEndHtmlElement
     let res = null
     do
     {
@@ -225,12 +175,13 @@ export function getEndTagPosition(uri: string, line : number) : Position | null
         }
         line++
     }while (res == null)
+
     return null
 }
 
 export function getOpeningTagPosition(uri: string, line: number) : Position | null
 {
-    const startPattern =  /<[a-z]+\s/;
+    const startPattern = regexStartHtmlElement
     let res = null
     do
     {
@@ -245,12 +196,13 @@ export function getOpeningTagPosition(uri: string, line: number) : Position | nu
         }
         line--
     }while (res == null)
+
     return null
 }
 
-export function isInsideElement2(line : number , char : number, uri: string): null | Range {
-    const startPattern =  /<[a-z]+\s/;
-    const endPattern = />[\r]*$/;
+export function isInsideElement(line : number , char : number, uri: string): null | Range {
+    const startPattern =  regexStartHtmlElement;
+    const endPattern = regexEndHtmlElement;
     const arr = allFiles.get(uri)!.split('\n')
     let goUp = 0;
     let startTag = null
@@ -269,7 +221,8 @@ export function isInsideElement2(line : number , char : number, uri: string): nu
         endTag = endPattern.exec(arr[line - goUp + i])
     }
     if (!endTag) return null
-    if ( line - goUp + i >= line
+    if (
+        line - goUp + i >= line
         && ( startTag!.index + 2 < char || goUp != 0 )
         && ( endTag!.index  > char || goUp - i != 0 )
     )
@@ -285,6 +238,7 @@ export function isInsideElement2(line : number , char : number, uri: string): nu
             }
         }
     }
+
     return null
 }
 

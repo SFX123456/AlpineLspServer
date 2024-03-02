@@ -3,6 +3,7 @@ import Log from "./log";
 import {allFiles} from "./allFiles";
 import {magicObjects} from "./magicobjects";
 import {end} from "cheerio/lib/api/traversing";
+import {regexEndHtmlElement, regexEndingQuotationMarks, regexStartQuotationMarks} from "./allRegex.js";
 
 export class CodeBlock
 {
@@ -24,8 +25,8 @@ export class CodeBlock
         const uri = textDocument.textDocument.uri
         let line = textDocument.position.line
         let character = textDocument.position.character
-        const startPattern =  /="/g
-        const endPattern = /(?<![\\=])"/g
+        const startPattern =  regexStartQuotationMarks
+        const endPattern = regexEndingQuotationMarks
         const arr = allFiles.get(uri)!.split('\n')
         let goUp = 0;
         let startTag : any
@@ -52,7 +53,7 @@ export class CodeBlock
         foundAMatch = false
         let lastMatchEndingIndex = 0
         let i = 0;
-        const endPatternHtml = />[\r\n\s]*$/;
+        const endPatternHtml = regexEndHtmlElement
         while (!foundAMatch && i < 200 && line - goUp + i < arr.length - 1 && line - goUp + i <= this.htmlTagRange.end.line)
         {
 
@@ -120,51 +121,6 @@ export class CodeBlock
                 output += '\n'
         }
         return output
-    }
-
-    public generateFullTextJavascriptLsp(variables : string[]) : string
-    {
-        const openingParenthesisPosition = this.parenthesisRange?.start!
-        const endingParenthesisPosition = this.parenthesisRange?.end!
-
-        let output = ''
-        const content = allFiles.get(this.textDocument.textDocument.uri)!.split('\n')
-        for (let i = openingParenthesisPosition.line; i <= endingParenthesisPosition.line; i++)
-        {
-            //  console.log(allFiles.get(uri)!.split('\n')[i])
-            let c = openingParenthesisPosition.line == i ? openingParenthesisPosition.character : 0
-            let cEnd = endingParenthesisPosition.line == i ? endingParenthesisPosition.character : content[i].length
-            for (let column = 0; column < cEnd; column++)
-            {
-                if (openingParenthesisPosition.line == i && column < openingParenthesisPosition.character)
-                {
-                    output += ' '
-                }
-                else
-                {
-                    output += content[i][column]
-                }
-            }
-            if (i != endingParenthesisPosition.line)
-                output += '\n'
-        }
-
-        const fullText = output
-        let fullTextWithVariables = fullText
-        for (let i = 0; i < 500; i++)
-        {
-            fullTextWithVariables+= '\n'
-        }
-        let varAsTextStr = variables.map(x => 'var ' + x + ';' ).join('')
-        varAsTextStr += (magicObjects.map(x => ' var ' + x +'; ').join(''))
-        const openingTagIndex = this.htmlTagRange.start
-        if (!openingTagIndex || fullText == '') return ''
-        let beforeText = ''
-        for (let i = 0; i < openingTagIndex.line; i++)
-        {
-            beforeText += '\n'
-        }
-        return beforeText + fullTextWithVariables + varAsTextStr
     }
 
     public isInsideParenthesis(): Boolean

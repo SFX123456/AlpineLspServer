@@ -36,8 +36,8 @@ export const request = async (id : Boolean,method: string, clientRequest : unkno
         if (id) {
             return (await listenToAnswer(requestId))
         }
-        return null
 
+        return null
 }
 type validMethods = 'completion' | 'hover' | 'semantic'
 let version = 2
@@ -56,6 +56,7 @@ export const requestingMethods = async (method : validMethods, content : string,
     })
     if (method == 'completion')
     {
+
         return request(true, 'textDocument/completion', {
             textDocument: {uri : filePathUri},
             position:{line,character: character},
@@ -65,12 +66,14 @@ export const requestingMethods = async (method : validMethods, content : string,
     }
     else if (method === 'semantic')
     {
+
         return request(true, 'textDocument/semanticTokens/full', {
             textDocument: {
                 uri:''
             }
         })
     }
+
     return null
 }
 
@@ -139,6 +142,5 @@ export const initializeTypescriptServer = async (receivedInitializedMessage : ob
             text: ''
         }
     })
-    Log.writeLspServer('opened document ')
 }
 

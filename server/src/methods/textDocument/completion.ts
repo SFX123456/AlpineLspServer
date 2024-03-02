@@ -1,10 +1,10 @@
 import {RequestMessage} from "../../server";
 import Log from "../../log";
-import {CompletionList, lastWordSuggestion, textDocumentType} from "../../types/ClientTypes";
+import {CompletionList, lastWordInfos, textDocumentType} from "../../types/ClientTypes";
 import {CompletionItem} from "../../types/completionTypes";
 import {completionJustAT} from "./completion/atCompletion";
 import {completionJs} from "./completion/completionJs";
-import {getLastWord, isInsideElement2} from "../../analyzeFile";
+import {getLastWordInfos, isInsideElement} from "../../analyzeFile";
 import {CodeBlock} from "../../CodeBlock";
 import {completionX} from "./completion/xCompletion";
 import {chainableOnAt, chainableOnAtKeyboard} from "../chainableOnAt";
@@ -29,6 +29,7 @@ export function addNecessaryCompletionItemProperties(options : CompletionItem[] 
     if (typeof options[0] == 'string')
     {
         const optionsStr = options as string[]
+
         return optionsStr.map(x=> {
             return {
                 label: x,
@@ -37,6 +38,7 @@ export function addNecessaryCompletionItemProperties(options : CompletionItem[] 
         })
     }
     const optionsComp = options as CompletionItem[]
+
     return optionsComp.map(x => {
 
         if (x.insertTextFormat === 2) {
@@ -54,6 +56,7 @@ export function addNecessaryCompletionItemProperties(options : CompletionItem[] 
                 newText: x.label
             }
         }
+
         return x
     })
 }
@@ -71,8 +74,10 @@ async function completionAtPoint(line : number, char : number, uri : string | un
     const arr = lastWordWithoutAt.split('.')
     if (arr[0] === 'keydown' || arr[0] === 'keyup')
     {
+
         return createReturnObject(addNecessaryCompletionItemProperties(chainableOnAtKeyboard, line, char))
     }
+
     return createReturnObject(addNecessaryCompletionItemProperties(chainableOnAt,line, char))
 }
 
@@ -80,45 +85,47 @@ async function completionAtPoint(line : number, char : number, uri : string | un
 export const completion = async (message : RequestMessage) : Promise<CompletionList | null> => {
 
     Log.writeLspServer('1. completion called')
-    const textDocumentt = message.params as textDocumentType
+    const textDocument = message.params as textDocumentType
 
-    const line = textDocumentt.position.line;
-    const character = textDocumentt.position.character;
-    const lastWord = getLastWord(textDocumentt)
-    Log.write('lastword ' + lastWord)
-    const rangeHtmlTag = isInsideElement2(line, character, textDocumentt.textDocument.uri)
+    const line = textDocument.position.line;
+    const character = textDocument.position.character;
+    const lastWordInfos = getLastWordInfos(textDocument)
+    Log.write('lastword ' + lastWordInfos)
+    const rangeHtmlTag = isInsideElement(line, character, textDocument.textDocument.uri)
     if (!rangeHtmlTag)
     {
         Log.writeLspServer('range idd nto work')
         Log.writeLspServer(rangeHtmlTag)
+
         return null
     }
 
     Log.writeLspServer(rangeHtmlTag)
-    const codeBlock = new CodeBlock(rangeHtmlTag!, textDocumentt)
-   if (codeBlock.isInsideParenthesis())
-   {
+    const codeBlock = new CodeBlock(rangeHtmlTag!, textDocument)
+    if (codeBlock.isInsideParenthesis())
+    {
        if (codeBlock.getKeyWord() === 'x-data')
        {
+
            return createReturnObject([])
        }
        Log.writeLspServer('works so far')
-       const output = await completionJs(line, character, textDocumentt.textDocument.uri, codeBlock)
+       const output = await completionJs(line, character, textDocument.textDocument.uri, codeBlock)
        if (!output) return createReturnObject([])
+
        return output
-   }
+    }
 
+    const key = getMatchingTableLookUp(lastWordInfos, character)
 
-    const key = getMatchingTableLookUp(lastWord, character)
     if (!key) return createReturnObject([])
 
-    let res = tableCompletion[key]( line, character, textDocumentt.textDocument.uri, lastWord.lastWord)
+    let res = tableCompletion[key]( line, character, textDocument.textDocument.uri, lastWordInfos.lastWord)
     const output = await res
+
     if (!output) return createReturnObject([])
+
     return output
-
-
-
 }
 
 
@@ -131,7 +138,7 @@ function createReturnObject(arr : CompletionItem[]) :CompletionList
     }
 }
 
-function getMatchingTableLookUp(lastWord : lastWordSuggestion, character : number): string | null
+function getMatchingTableLookUp(lastWord : lastWordInfos, character : number): string | null
 {
     Log.writeLspServer('deciding where to go')
     Log.writeLspServer(lastWord)

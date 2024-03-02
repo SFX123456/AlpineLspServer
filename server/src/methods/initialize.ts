@@ -17,9 +17,6 @@ interface InitializeResult
     }
 }
 
-
-
-
 export const initialize = async (message : RequestMessage) : Promise<InitializeResult> => {
     const initializeParams = message.params as unknown as InitializeParams
     Log.writeLspServer('search here 2')
@@ -70,34 +67,44 @@ function goThrewDirectorie(path : string)
     while ((allDirAndFiles = res.readSync()) != null)
     {
         if (!allDirAndFiles) return
-            if (allDirAndFiles.name == 'node_modules') continue
-            if (allDirAndFiles.isDirectory())
+        if (allDirAndFiles.isDirectory())
+        {
+            if (isOneOfTheDirectoriesToIgnore(allDirAndFiles.name )) continue
+            Log.writeLspServer('is a directorie')
+            goThrewDirectorie(allDirAndFiles.path)
+        }
+        else
+        {
+            const fileExtension = getFileExtension(allDirAndFiles.name)
+            Log.writeLspServer('found a file with extensui ' + fileExtension)
+            if (fileExtension === 'txt')
             {
-                Log.writeLspServer('is a directorie')
-                goThrewDirectorie(allDirAndFiles.path)
+                const content = fs.readFileSync(allDirAndFiles.path, {encoding: 'utf-8'})
+                let encodedUri = createUri(allDirAndFiles.path)
+                allFiles.set(encodedUri, content)
+                saveCheerioFile(content,encodedUri)
             }
-            else
-            {
-                const fileExtension = getFileExtension(allDirAndFiles.name)
-                Log.writeLspServer('found a file with extensui ' + fileExtension)
-                if (fileExtension === 'txt')
-                {
-                   const content = fs.readFileSync(allDirAndFiles.path, {encoding: 'utf-8'})
-                    let encodedUri = 'file:///' + encodeURIComponent(allDirAndFiles.path.replace(/\\/g, '/'))
-                    encodedUri = encodedUri.replace(/%2F/g, '/')
-                    allFiles.set(encodedUri, content)
-                    saveCheerioFile(content,encodedUri)
-                    let includedFiles = ''
-                    for (let key of allFiles.keys()) {
-                        includedFiles += key
-                    }
-                }
-            }
+        }
     }
+}
+
+function createUri(path : string) : string
+{
+    let encodedUri = 'file:///' + encodeURIComponent(path.replace(/\\/g, '/'))
+    return encodedUri.replace(/%2F/g, '/')
+}
+
+function isOneOfTheDirectoriesToIgnore(directorieName : string)
+{
+    let set = new Set<string>
+    set.add("node_modules")
+
+    return set.has(directorieName)
 }
 
 function getFileExtension(filePath : string)
 {
     const arr = filePath.split('.')
+
     return arr[arr.length - 1]
 }

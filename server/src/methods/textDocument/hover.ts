@@ -1,11 +1,10 @@
 import {RequestMessage} from "../../server";
-import {getLastWord} from "../../analyzeFile";
+import {getLastWordInfos} from "../../analyzeFile";
 import {allHtml} from "../../allFiles";
 import Log from "../../log";
 import {infos} from "../../typescriptLsp/typescriptServer";
 import {textDocumentType} from "../../types/ClientTypes";
 import { atOptionsJustString} from "../../at-validOptions";
-import {CompletionRequest} from "vscode-languageserver";
 interface HoverResult {
     contents: string
 }
@@ -19,7 +18,7 @@ const lastWordAnswerMatches : Record<predefinedAnswersKeys, string> = {
 }
 export const hoverRequest = async (message: RequestMessage) : Promise<HoverResult>  => {
     const textDocumentt = message.params as textDocumentType
-    let lastWordObj = getLastWord(textDocumentt)
+    let lastWordObj = getLastWordInfos(textDocumentt)
     const res = getListenersToDispatch(lastWordObj.wholeLineTillEndofWord)
     if (res) {
         return {
@@ -46,15 +45,18 @@ export const hoverRequest = async (message: RequestMessage) : Promise<HoverResul
                    indexEnd = indexPoint
                }
                const text = getTextForEvent(lastWord.substring(1, indexEnd))
+
                return {
                    contents : text
                }
            }
+
            return {
                contents : lastWordAnswerMatches[key as predefinedAnswersKeys]
            }
        }
     }
+
     return {
         contents : ''
     }
@@ -87,6 +89,7 @@ function getTextForEvent(event : string) : string
         }
         return `custom event ${event} not dispatched yet`
     }
+
     return output
 }
 
@@ -95,6 +98,7 @@ function checkIfStandardEvent(event : string) :Boolean
     atOptionsJustString.forEach(x => {
         if (x === event) return true
     })
+
     return false
 }
 
@@ -120,6 +124,7 @@ function getListenersToDispatch(lastWord : string) : null | string[]
        })
         if (isIn) output.push(getRelativePath(key))
     }
+
     return output
 }
 

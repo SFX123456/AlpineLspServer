@@ -1,16 +1,12 @@
 import {allFiles} from "../../allFiles";
 import {magicObjects} from "../../magicobjects";
-import Log from "../../log";
 import {getEndingParenthesisPosition, getOpeningParenthesisPosition} from "../../analyzeFile";
 import {Cheerio, Element} from "cheerio";
-import {PageHtml} from "../../HtmlParsing/PageHtml";
-import {InsertTextMode, LogTraceNotification} from "vscode-languageserver";
-import {it} from "node:test";
-import {last} from "cheerio/lib/api/traversing";
+import {regexXAttrAndATMethods} from "../../allRegex.js";
 
 export function getAllJavaScriptText(uri: string,startLine : number | null = null, tillLine : number| null = null )
 {
-    const regExpStart = /(?:x-([a-z]+)|@([a-z-]+)[\.a-z-]*)="/g
+    const regExpStart = regexXAttrAndATMethods
     const arrLines = allFiles.get(uri)!.split('\n')
     let output = ''
     let lastY = startLine ?? 0

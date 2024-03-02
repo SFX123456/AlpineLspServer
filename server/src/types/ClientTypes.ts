@@ -59,9 +59,7 @@ export interface TextDocumentItem {
 
 export type DocumentUri = string;
 
-export type CompletionItemKind = 1 | 2 | 15
-
-export type lastWordSuggestion = {
+export type lastWordInfos = {
     wholeLine : string,
     lastWord : string,
     wholeLineTillEndofWord : string
