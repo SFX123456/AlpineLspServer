@@ -5,24 +5,26 @@ import {customEvent, dispatchVariables, listenedToObjects} from "../types/Client
 import {allFiles, allHtml} from "../allFiles";
 import {ExecutionSummary, InsertTextMode} from "vscode-languageserver";
 import {subscribe} from "diagnostics_channel";
+import {IsEventToIgnore} from "../EventToIgnore";
+import {it} from "node:test";
 
 export class PageHtml
 {
     public events : customEvent[];
     public cheerioObj : cheerio.CheerioAPI
     public uri : string
-    private eventNames : string[]
     public listenedToEventsPosition : listenedToObjects[]
 
     public constructor(cheerioObj: cheerio.CheerioAPI, uri : string) {
         this.listenedToEventsPosition = []
         this.events = []
-        this.eventNames = []
         this.cheerioObj = cheerioObj
         this.uri = uri
-        cheerioObj('body').children().each((index : any, element : cheerio.Element) => {
+        cheerioObj('html').children().each((index : any, element : cheerio.Element) => {
             this.processElement(element);
         })
+        this.setIndexesOfDispatchedEevents()
+        this.abstractListenedEvents()
     }
     public get listenedToEvents()
     {
@@ -32,13 +34,19 @@ export class PageHtml
     }
 
 
+    public get eventNames()
+    {
+        return this.events.map((item :customEvent)=> item.name)
+    }
+
+
+
     public processElement(element : cheerio.Element) {
         element.children.forEach((child : cheerioType.ChildNode) => {
             if (child.type === 'tag') {
                 const z = child.attribs
                Log.writeLspServer(child.attribs)
                 const createdEvents = this.getCustomNotWindowEventsWithVariables(JSON.stringify(child.attribs))
-                this.abstractListenedEvents()
                 this.events.push(...createdEvents)
                 this.processElement(child);
         }
@@ -54,10 +62,9 @@ export class PageHtml
         indLines.forEach((item,index) => {
             while ((match = regExpEvents.exec(item)) != null)
             {
-                //do other checks
-                if (match[1] != 'click')
+                if (!IsEventToIgnore(match[1]))
                 {
-
+                    console.log("added " + match[1])
                     this.listenedToEventsPosition.push(
                         {
                             name: match[1],
@@ -74,21 +81,19 @@ export class PageHtml
 
 
 
+
+
+
     public getCustomNotWindowEventsWithVariables(nodeText : string): customEvent[]
     {
         const customEvents : customEvent[] = []
         const content = nodeText
+        console.log(content)
+        console.log('ananalyzed test '  +  content)
         const arr = content.split('$dispatch')
         if (!arr) return []
-        Log.writeLspServer('thats the array ')
-        Log.writeLspServer(arr)
-        let lineAmountFirstPart = arr[0].split('\n').length - 1
-
-        Log.writeLspServer(lineAmountFirstPart.toString())
         arr.shift()
-        Log.writeLspServer('get events with variables')
         arr.forEach((match : string, index) => {
-            Log.writeLspServer(match)
             match = match.replace('\n','')
             const regExp = /^\(\s*'([a-z-]+)'(?:\s*,+\s*{((?:[a-zA-Z\s-]+:[a-z,0-9\s\n']+)+)}\s*|\s*)\)/
             const res = match.match(regExp)
@@ -109,44 +114,69 @@ export class PageHtml
                 })
             }
 
-            if (this.eventNames.indexOf(res[1]) === -1)
-            {
-                let line = lineAmountFirstPart
-                for (let i = 0; i <= index; i++)
-                {
-                    line += arr[i].split('\n').length - 1
-                }
 
-                Log.writeLspServer('thats the oinm i get')
-                Log.writeLspServer(line.toString())
                 customEvents.push({
                     name : res[1],
                     details: keysVar,
                     position: {
-                       line,
+                       line : 1,
                        character : 1
                     }
                 })
-                this.eventNames.push(res[1])
-            }
+
 
         })
 
+        return customEvents
+    }
+
+    private setIndexesOfDispatchedEevents()
+    {
+        console.log('\n\n\n\n')
+        console.log('adding indexes')
         const arr2 = allFiles.get(this.uri)!.split('\n')
-        customEvents.forEach(item => {
-            const regex:RegExp = new RegExp(`\\$dispatch\\(\\s*'${item.name}`, 'g')
+        const alreadyFoundEvents : Record<string, number> = {}
+        this.events.forEach(item => {
+            let counterFoundEvent = 0
+            let found = false
             arr2.forEach((line,ind) => {
-                const match = regex.exec(line)
-                Log.writeLspServer(match)
-                if (match)
+                console.log(line)
+                const regex:RegExp = new RegExp(`\\$dispatch\\(\\s*'${item.name}`, 'gm')
+                if (!found)
                 {
-                    item.position.line = ind
-                    item.position.character = match.index + 11
+                    const match = regex.exec(line)
+
+                    if (match)
+                    {
+                        console.log(match)
+                        if (alreadyFoundEvents[item.name])
+                        {
+                            console.log('trying for  ' + item.name)
+                            if (counterFoundEvent == alreadyFoundEvents[item.name])
+                            {
+                                item.position.line = ind
+                                item.position.character = match.index + 11
+                                alreadyFoundEvents[item.name]++
+                                found = true
+                                console.log('counter fouhnd equal for ' + item.name + ' at linme ' + ind)
+                            }
+                            else {
+                                console.log('countefound event not equal for  ' + item.name + ' ' + alreadyFoundEvents[item.name])
+                            }
+                        }
+                        else {
+                            item.position.line = ind
+                            item.position.character = match.index + 11
+                            alreadyFoundEvents[item.name] = 1
+                            found = true
+                            console.log(' event ' + item.name + ' set')
+                        }
+                        counterFoundEvent++;
+                    }
                 }
             })
         })
-        Log.writeLspServer(customEvents)
-        return customEvents
+        console.log('\n\n\n\n')
     }
 
     public static getAllListedToEvents() :string[]

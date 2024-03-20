@@ -8,6 +8,7 @@ import {didOpen} from "./methods/textDocument/didOpen";
 import {semantic} from "./methods/textDocument/semantic";
 import Log from "./log";
 import {definitionRequest} from "./methods/textDocument/definition";
+import {test} from "./Testing/mainTest";
 
 export interface RequestMessage{
     id: number | string;
@@ -25,6 +26,7 @@ const methodLookUp : Record<string, RequestMethod> = {
     'textDocument/definition' : definitionRequest
 }
 
+test()
 const respond = async (id : number, fn : Function, params: unknown) => {
     const res = await fn(params)
     if (!res) return
