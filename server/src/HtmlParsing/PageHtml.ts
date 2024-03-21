@@ -14,9 +14,11 @@ export class PageHtml
     public cheerioObj : cheerio.CheerioAPI
     public uri : string
     public listenedToEventsPosition : listenedToObjects[]
+    public linesArr : string[]
 
     public constructor(cheerioObj: cheerio.CheerioAPI, uri : string) {
         this.listenedToEventsPosition = []
+        this.linesArr = allFiles.get(uri)!.split('\n')
         this.events = []
         this.cheerioObj = cheerioObj
         this.uri = uri
@@ -55,16 +57,13 @@ export class PageHtml
 
     private abstractListenedEvents()
     {
-        const nodeText = allFiles.get(this.uri)!
-        const indLines = nodeText.split('\n')
         const regExpEvents = /@([a-z-]*)[=\.]+/g
         let match
-        indLines.forEach((item,index) => {
+        this.linesArr.forEach((item,index) => {
             while ((match = regExpEvents.exec(item)) != null)
             {
                 if (!IsEventToIgnore(match[1]))
                 {
-                    console.log("added " + match[1])
                     this.listenedToEventsPosition.push(
                         {
                             name: match[1],
@@ -88,8 +87,6 @@ export class PageHtml
     {
         const customEvents : customEvent[] = []
         const content = nodeText
-        console.log(content)
-        console.log('ananalyzed test '  +  content)
         const arr = content.split('$dispatch')
         if (!arr) return []
         arr.shift()
@@ -132,15 +129,11 @@ export class PageHtml
 
     private setIndexesOfDispatchedEevents()
     {
-        console.log('\n\n\n\n')
-        console.log('adding indexes')
-        const arr2 = allFiles.get(this.uri)!.split('\n')
         const alreadyFoundEvents : Record<string, number> = {}
         this.events.forEach(item => {
             let counterFoundEvent = 0
             let found = false
-            arr2.forEach((line,ind) => {
-                console.log(line)
+            this.linesArr.forEach((line,ind) => {
                 const regex:RegExp = new RegExp(`\\$dispatch\\(\\s*'${item.name}`, 'gm')
                 if (!found)
                 {
@@ -148,20 +141,16 @@ export class PageHtml
 
                     if (match)
                     {
-                        console.log(match)
+                        //console.log(match)
                         if (alreadyFoundEvents[item.name])
                         {
-                            console.log('trying for  ' + item.name)
+                            //console.log('trying for  ' + item.name)
                             if (counterFoundEvent == alreadyFoundEvents[item.name])
                             {
                                 item.position.line = ind
                                 item.position.character = match.index + 11
                                 alreadyFoundEvents[item.name]++
                                 found = true
-                                console.log('counter fouhnd equal for ' + item.name + ' at linme ' + ind)
-                            }
-                            else {
-                                console.log('countefound event not equal for  ' + item.name + ' ' + alreadyFoundEvents[item.name])
                             }
                         }
                         else {
@@ -169,14 +158,12 @@ export class PageHtml
                             item.position.character = match.index + 11
                             alreadyFoundEvents[item.name] = 1
                             found = true
-                            console.log(' event ' + item.name + ' set')
                         }
                         counterFoundEvent++;
                     }
                 }
             })
         })
-        console.log('\n\n\n\n')
     }
 
     public static getAllListedToEvents() :string[]

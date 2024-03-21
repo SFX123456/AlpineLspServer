@@ -26,6 +26,12 @@ export const xoptions : CompletionItem[] = [
 
     },
     {
+        label: 'x-show=\"${1:foo} \"',
+        kind: 15,
+        insertTextFormat : 2,
+
+    },
+    {
         label: 'x-html=\"${1:foo} \"',
         kind: 15,
         insertTextFormat : 2,

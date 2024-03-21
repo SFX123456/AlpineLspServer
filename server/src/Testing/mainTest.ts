@@ -1,8 +1,8 @@
+/*
 import * as fs from 'fs'
 import {Range} from "../types/ClientTypes";
 import {saveCheerioFile} from "../cheerioFn";
 import {allFiles, allHtml} from "../allFiles";
-
 const fileName = '../../src/Testing/testFiles/counterTest.txt'
 const content = fs.readFileSync(fileName, {encoding: 'utf-8'})
 console.log(content)
@@ -37,6 +37,7 @@ console.log('listened to events')
 listenedToEvents.forEach(item => {
     console.log(item)
 })
+ */
 export function test(){
 
 }

@@ -4,7 +4,7 @@ import {CompletionList, lastWordSuggestion, textDocumentType} from "../../types/
 import {CompletionItem} from "../../types/completionTypes";
 import {completionJustAT} from "./completion/atCompletion";
 import {completionJs} from "./completion/completionJs";
-import {getLastWord, isInsideElement2} from "../../analyzeFile";
+import {getLastWord, isInsideElement} from "../../analyzeFile";
 import {CodeBlock} from "../../CodeBlock";
 import {completionX} from "./completion/xCompletion";
 import {chainableOnAt, chainableOnAtKeyboard} from "../chainableOnAt";
@@ -17,8 +17,6 @@ export interface completionResponseType {
     id: number,
     result: object
 }
-
-
 
 export function addNecessaryCompletionItemProperties(options : CompletionItem[] | string[], line: number, char : number) : CompletionItem[]
 {
@@ -79,30 +77,32 @@ async function completionAtPoint(line : number, char : number, uri : string | un
 
 export const completion = async (message : RequestMessage) : Promise<CompletionList | null> => {
 
-    Log.writeLspServer('1. completion called')
+    Log.writeLspServer('1. completion called',1)
     const textDocumentt = message.params as textDocumentType
 
     const line = textDocumentt.position.line;
     const character = textDocumentt.position.character;
     const lastWord = getLastWord(textDocumentt)
-    Log.write('lastword ' + lastWord)
-    const rangeHtmlTag = isInsideElement2(line, character, textDocumentt.textDocument.uri)
+    Log.writeLspServer(lastWord,1)
+    const rangeHtmlTag = isInsideElement(line, character, textDocumentt.textDocument.uri)
     if (!rangeHtmlTag)
     {
         Log.writeLspServer('range idd nto work')
         Log.writeLspServer(rangeHtmlTag)
         return null
     }
-
+Log.writeLspServer('test',1)
     Log.writeLspServer(rangeHtmlTag)
     const codeBlock = new CodeBlock(rangeHtmlTag!, textDocumentt)
    if (codeBlock.isInsideParenthesis())
    {
+       Log.writeLspServer('is inside parenthesis ',1)
        if (codeBlock.getKeyWord() === 'x-data')
        {
+           Log.writeLspServer('is x-data',1)
            return createReturnObject([])
        }
-       Log.writeLspServer('works so far')
+       Log.writeLspServer('works so far',1)
        const output = await completionJs(line, character, textDocumentt.textDocument.uri, codeBlock)
        if (!output) return createReturnObject([])
        return output
@@ -110,6 +110,7 @@ export const completion = async (message : RequestMessage) : Promise<CompletionL
 
 
     const key = getMatchingTableLookUp(lastWord, character)
+    Log.writeLspServer('key ' + key,1)
     if (!key) return createReturnObject([])
 
     let res = tableCompletion[key]( line, character, textDocumentt.textDocument.uri, lastWord.lastWord)
@@ -133,11 +134,6 @@ function createReturnObject(arr : CompletionItem[]) :CompletionList
 
 function getMatchingTableLookUp(lastWord : lastWordSuggestion, character : number): string | null
 {
-    Log.writeLspServer('deciding where to go')
-    Log.writeLspServer(lastWord)
-    Log.writeLspServer(lastWord.wholeLine[character])
-    Log.writeLspServer(lastWord.lastWord.indexOf('@').toString())
-
     if (lastWord.lastWord === '@' ) return '@'
     if (lastWord.lastWord.indexOf('x') != -1 && lastWord.lastWord.length < 2) return 'x-'
     if (lastWord.lastWord.indexOf('@') == 0 && lastWord.wholeLine[character-1] ==='.') return '@.'

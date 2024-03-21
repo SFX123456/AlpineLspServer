@@ -1,6 +1,5 @@
-<div @test="$dispatch('test', {lolo : true})'"  x-data="{ count: 0 }">
-    <button @morgen="$dispatch('test', {lolo : true})'" @click="count++">Increment</button>
+<div @test="$dispatch('test', {lolo : true})   "  x-data="{ count: 0 }" >
+    <button @morgen="$dispatch('test', {lolo : true})" @click="count++ c  " >Increment </button>
 
-    <span x-text="count"></span>
+    <span x-init=" c " ></span>
 </div>
-

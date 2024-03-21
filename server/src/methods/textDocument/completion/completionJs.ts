@@ -7,20 +7,25 @@ import {requestingMethods} from "../../../typescriptLsp/typescriptServer";
 import {addNecessaryCompletionItemProperties, completionResponseType} from "../completion";
 import {CodeBlock} from "../../../CodeBlock";
 import {PageHtml} from "../../../HtmlParsing/PageHtml";
-import { getContentBetweenHtmlOpen} from "../javascriptText";
+import {
+    getContentBetweenHtmlOpen,
+    getJSCodeBetweenQuotationMarks,
+    getJsCodeInQuotationMarksWithProperFormating
+} from "../javascriptText";
 export const completionJs  = async (line : number, character : number, uri : string | undefined, codeBlock : CodeBlock) : Promise<CompletionList | null> => {
-    Log.write('completion requested')
+    Log.writeLspServer('completion requested')
     let optionsStr : string[] = []
     optionsStr.push(...magicObjects)
     const wholeLine = allFiles.get(uri!)!.split('\n')[line]
+    Log.writeLspServer('completionJs ' + wholeLine,1)
     if (isWithInDispatch(codeBlock))
     {
-
+        Log.writeLspServer('is inside dispatch',1)
         if (isInsideDispatchSetEvent(wholeLine, character))
         {
             const events = PageHtml.getAllListedToEvents()
-            Log.writeLspServer('should return listed to events')
-            Log.writeLspServer(events)
+            Log.writeLspServer('should return listed to events',1)
+            Log.writeLspServer(events,1)
             return {
                 isIncomplete : false,
                 items: addNecessaryCompletionItemProperties(events, line, character)
@@ -32,7 +37,7 @@ export const completionJs  = async (line : number, character : number, uri : str
         }
     }
 
-
+    Log.writeLspServer('completionJS 2', 1)
     const htmpPage = allHtml.get(uri!)
 
     const node = findAccordingRow(line, htmpPage!)
@@ -42,6 +47,7 @@ export const completionJs  = async (line : number, character : number, uri : str
     }
 
     const keyWord = codeBlock.getKeyWord()
+    Log.writeLspServer('compeltionjs3 key ' + keyWord, 1)
     if (keyWord[0] === '@')
     {
         Log.writeLspServer('gets that it is an event ' + keyWord)
@@ -58,21 +64,25 @@ export const completionJs  = async (line : number, character : number, uri : str
             })
         }
     }
-
+    Log.writeLspServer('completionjs4 ' + optionsStr, 1)
     optionsStr.push(...getParentAndOwnVariables(node))
     Log.writeLspServer('before xfor')
     const nodeOri = findAccordingRow(line, allHtml.get(uri!)!);
-    let javascriptText = getContentBetweenHtmlOpen(nodeOri!,uri!)
-    Log.writeLspServer(javascriptText)
+    let javascriptText = getJsCodeInQuotationMarksWithProperFormating(uri!,line, character)
+    //let javascriptText = getJSCodeBetweenQuotationMarks(uri!,line,character)
+    //Log.writeLspServer(javascriptText,1)
     javascriptText = changeXForForTypescriptServer(javascriptText)
     javascriptText += '\n'
     Log.writeLspServer('after')
-    Log.writeLspServer(javascriptText)
+    //Log.writeLspServer(javascriptText)
     javascriptText += optionsStr.map(x => 'var ' + x + ';' ).join('')
     javascriptText +=  (magicObjects.map(x => ' var ' + x +'; ').join(''))
     Log.writeLspServer('typescript')
     Log.writeLspServer(javascriptText)
+    Log.writeLspServer('completionjs5', 1)
+    Log.writeLspServer('sending the following js code '+ javascriptText,1)
     const res = await requestingMethods( 'completion', javascriptText, line, character)
+    Log.writeLspServer('res is ' + JSON.stringify(res),1)
     if (res)
     {
         const message = res as completionResponseType
@@ -86,7 +96,7 @@ export const completionJs  = async (line : number, character : number, uri : str
         }
         catch (e)
         {
-            Log.writeLspServer('error here')
+            Log.writeLspServer('error here', 1)
             Log.writeLspServer(e)
         }
     }
@@ -140,7 +150,7 @@ function buildMagiceventVar(item : customEvent )
         return tempStr
     }).join(',')
 
-    return  '$event = ' + '{ target: { ' +  tempStr   +  '  }, srcElement : { dispatchEvent: 5 } } '
+    return  '$event = ' + '{ detail: { ' +  tempStr   +  '  }, srcElement : { dispatchEvent: 5 } } '
 }
 
 

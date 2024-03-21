@@ -56,6 +56,7 @@ export const requestingMethods = async (method : validMethods, content : string,
     })
     if (method == 'completion')
     {
+        Log.writeLspServer('compeltion called on ts server', 1)
         return request(true, 'textDocument/completion', {
             textDocument: {uri : filePathUri},
             position:{line,character: character},
@@ -91,6 +92,7 @@ async function listenToAnswer(id: number): Promise<object>
                 const rawMessage = buffer.slice(messageStart, messageStart + contentLength)
                 if (rawMessage.includes('id') ) {
                     const message = JSON.parse(rawMessage)
+                    Log.writeLspServer('ghot message ' + JSON.stringify(message),1)
                     resolve(message)
                     childProcess.stdout.off('data', onData)
                     break

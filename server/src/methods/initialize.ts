@@ -21,9 +21,10 @@ interface InitializeResult
 
 
 export const initialize = async (message : RequestMessage) : Promise<InitializeResult> => {
-    const initializeParams = message.params as unknown as InitializeParams
     Log.writeLspServer('search here 2')
-    Log.writeLspServer(initializeParams)
+    Log.writeLspServer(message)
+    Log.writeLspServer('end of search')
+    const initializeParams = message.params as unknown as InitializeParams
     infos.rootUri = initializeParams.rootUri
     infos.rootPath = initializeParams.rootPath!
     scanAllDocuments(infos.rootPath)

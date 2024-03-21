@@ -57,7 +57,21 @@ function isKeyJavascriptSymbol(key : string)
     return true
 }
 
-
+export function getJsCodeInQuotationMarksWithProperFormating(uri: string, line: number, character : number) : string
+{
+    let output = ''
+    const openingParenthesisPosition = getOpeningParenthesisPosition(uri, line, character)
+    for (let i = 0; i < openingParenthesisPosition!.line; i++)
+    {
+        output+= '\n'
+    }
+    output += getJSCodeBetweenQuotationMarks(uri, line, character)
+    for (let i = 0; i < 500; i++)
+    {
+        output += '\n'
+    }
+    return output
+}
 
 export function getJSCodeBetweenQuotationMarks(uri: string, line: number, character : number ) : string
 {
@@ -155,8 +169,8 @@ export function getContentBetweenHtmlOpen(node : Cheerio<Element>, uri : string)
     output += strToAttATTheEnd
 
 
-    Log.writeLspServer("check here is worked")
-    Log.writeLspServer(output)
+    Log.writeLspServer("check here is worked",1)
+    Log.writeLspServer(output,1)
 
     return output
 }

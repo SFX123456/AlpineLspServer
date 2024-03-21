@@ -21,7 +21,10 @@ export default {
         log.write('\n')
     },
     writeLspServer: (message : object | unknown, logLev : number = 0) => {
-        if (logLev === 1) return;
+        if (logLev === 1)
+        {
+        // console.log(message)
+        }
 
         if (message == undefined)
         {

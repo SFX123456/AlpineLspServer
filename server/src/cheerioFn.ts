@@ -7,6 +7,7 @@ import {Cheerio, Element} from "cheerio";
 import {it} from "node:test";
 import {end} from "cheerio/lib/api/traversing";
 import {isDataView} from "util/types";
+import {regexEndingOpeningTag, regexOpeningTagHtml} from "./allRegex";
 
 export function saveCheerioFile(text: string, uri : string)
 {
@@ -25,8 +26,8 @@ function addLineAttributes(contentLines : string[]) : string[]
     let endLines : Record<number, number> = {}
     let lastOpenRow = 0;
     const addedStartLine =  contentLines.map((line, i) : string => {
-        const regExp = /<[a-z]+\s/;
-        const regExpEnd = /\s>[\r\n]*$/
+        const regExp = regexOpeningTagHtml
+        const regExpEnd = regexEndingOpeningTag
         const regexMatch = line.match(regExp)
         const regExEndMatch = line.match(regExpEnd)
 
