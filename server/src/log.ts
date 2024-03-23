@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+import {number} from "vscode-languageserver/lib/common/utils/is";
 
 const log = fs.createWriteStream("E:\\fsd\\lsp.log")
 const logLspClient = fs.createWriteStream("E:\\fsd\\lspClient.log")
@@ -21,9 +22,11 @@ export default {
         log.write('\n')
     },
     writeLspServer: (message : object | unknown, logLev : number = 0) => {
+        if (typeof message == typeof 1) return;
         if (logLev === 1)
         {
-        // console.log(message)
+         console.log(message)
+         return;
         }
 
         if (message == undefined)

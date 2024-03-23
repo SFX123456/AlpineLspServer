@@ -10,6 +10,7 @@ import Log from "./log";
 import {definitionRequest} from "./methods/textDocument/definition";
 import {test} from "./Testing/mainTest";
 import {ok} from "./Testing/codeCompletionTest";
+import {hoverTest} from "./Testing/hoverTest";
 
 export interface RequestMessage{
     id: number | string;
@@ -29,6 +30,7 @@ const methodLookUp : Record<string, RequestMethod> = {
 
 test()
 ok()
+hoverTest()
 const respond = async (id : number, fn : Function, params: unknown) => {
     const res = await fn(params)
     if (!res) return

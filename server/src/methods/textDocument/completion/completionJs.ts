@@ -8,15 +8,13 @@ import {addNecessaryCompletionItemProperties, completionResponseType} from "../c
 import {CodeBlock} from "../../../CodeBlock";
 import {PageHtml} from "../../../HtmlParsing/PageHtml";
 import {
-    getContentBetweenHtmlOpen,
-    getJSCodeBetweenQuotationMarks,
     getJsCodeInQuotationMarksWithProperFormating
 } from "../javascriptText";
 export const completionJs  = async (line : number, character : number, uri : string | undefined, codeBlock : CodeBlock) : Promise<CompletionList | null> => {
     Log.writeLspServer('completion requested')
     let optionsStr : string[] = []
     optionsStr.push(...magicObjects)
-    const wholeLine = allFiles.get(uri!)!.split('\n')[line]
+    const wholeLine = allHtml.get(uri!)!.linesArr[line]
     Log.writeLspServer('completionJs ' + wholeLine,1)
     if (isWithInDispatch(codeBlock))
     {

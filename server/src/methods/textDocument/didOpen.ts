@@ -25,9 +25,9 @@ interface TextDocumentItem {
 export const didOpen = async (message : RequestMessage): Promise<null> => {
     const params = message.params as textDocument
     log.write('saved '+ params.textDocument.text)
+    allFiles.set(params.textDocument.uri, params.textDocument.text)
     saveCheerioFile(params.textDocument.text, params.textDocument.uri)
 
-    allFiles.set(params.textDocument.uri, params.textDocument.text)
     return null
 }
 

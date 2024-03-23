@@ -16,15 +16,14 @@ interface InitializeResult
         version? : string;
     }
 }
-
-
-
-
 export const initialize = async (message : RequestMessage) : Promise<InitializeResult> => {
     Log.writeLspServer('search here 2')
     Log.writeLspServer(message)
     Log.writeLspServer('end of search')
     const initializeParams = message.params as unknown as InitializeParams
+    Log.writeLspServer('uuuuuuuuuuuuuuu')
+    Log.writeLspServer(initializeParams)
+    Log.writeLspServer('uuuuuuuuuuuuuuuuuuuu')
     infos.rootUri = initializeParams.rootUri
     infos.rootPath = initializeParams.rootPath!
     scanAllDocuments(infos.rootPath)
@@ -48,8 +47,6 @@ export const initialize = async (message : RequestMessage) : Promise<InitializeR
                 full: true,
                 documentSelector: null
             }
-
-
         },
         serverInfo: {
             name: "alpinelspServer",
@@ -59,7 +56,7 @@ export const initialize = async (message : RequestMessage) : Promise<InitializeR
 }
 
 
-function scanAllDocuments(rootPath : string)
+export function scanAllDocuments(rootPath : string)
 {
     goThrewDirectorie(rootPath)
 }
@@ -68,20 +65,22 @@ function goThrewDirectorie(path : string)
 {
     const res = fs.opendirSync(path)
     let allDirAndFiles
+    Log.writeLspServer(process.version.toString(),1)
     while ((allDirAndFiles = res.readSync()) != null)
     {
+        Log.writeLspServer(allDirAndFiles,1)
         if (!allDirAndFiles) return
-            if (allDirAndFiles.name == 'node_modules') continue
             if (allDirAndFiles.isDirectory())
             {
-                Log.writeLspServer('is a directorie')
+                if (!isDirectorieToScan(allDirAndFiles.name)) continue
+                Log.writeLspServer('is a directorie',1)
                 goThrewDirectorie(allDirAndFiles.path)
             }
             else
             {
                 const fileExtension = getFileExtension(allDirAndFiles.name)
                 Log.writeLspServer('found a file with extensui ' + fileExtension)
-                if (fileExtension === 'txt')
+                if (isFileSomeThingToScan(fileExtension))
                 {
                    const content = fs.readFileSync(allDirAndFiles.path, {encoding: 'utf-8'})
                     let encodedUri = 'file:///' + encodeURIComponent(allDirAndFiles.path.replace(/\\/g, '/'))
@@ -101,4 +100,17 @@ function getFileExtension(filePath : string)
 {
     const arr = filePath.split('.')
     return arr[arr.length - 1]
+}
+
+
+function isFileSomeThingToScan(fileEnding : string) : boolean
+{
+    if (fileEnding === 'blade' || fileEnding === 'html') return true
+    return false
+}
+
+function isDirectorieToScan(directorieName : string) : boolean
+{
+    if (directorieName === 'node_modules') return false
+    return true
 }

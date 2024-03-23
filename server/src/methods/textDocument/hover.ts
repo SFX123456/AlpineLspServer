@@ -1,9 +1,9 @@
 import {RequestMessage} from "../../server";
-import {getLastWord} from "../../analyzeFile";
+import {getIndexStartLastWord, getLastWord} from "../../analyzeFile";
 import {allHtml} from "../../allFiles";
 import Log from "../../log";
 import {infos} from "../../typescriptLsp/typescriptServer";
-import {textDocumentType} from "../../types/ClientTypes";
+import {lastWordSuggestion, textDocumentType} from "../../types/ClientTypes";
 import { atOptionsJustString} from "../../at-validOptions";
 import {CompletionRequest} from "vscode-languageserver";
 interface HoverResult {
@@ -18,12 +18,19 @@ const lastWordAnswerMatches : Record<predefinedAnswersKeys, string> = {
     '@' : 'event'
 }
 export const hoverRequest = async (message: RequestMessage) : Promise<HoverResult>  => {
+    Log.writeLspServer('zzzzzzzzzzzzzz')
+    Log.writeLspServer(message)
+    Log.writeLspServer('zzzzzzzzzzzzzzzzzzzz')
     const textDocumentt = message.params as textDocumentType
     let lastWordObj = getLastWord(textDocumentt)
-    const res = getListenersToDispatch(lastWordObj.wholeLineTillEndofWord)
-    if (res) {
-        return {
-            contents: res.join(' and ')
+    if (checkIfCursorIsInsideQuotationMarks(lastWordObj,textDocumentt.position.character))
+    {
+        Log.writeLspServer('is inside quotation marks',1)
+        const res = getListenersToDispatch(lastWordObj.wholeLineTillEndofWord)
+        if (res) {
+            return {
+                contents: res.join(' and ')
+            }
         }
     }
 
@@ -98,28 +105,43 @@ function checkIfStandardEvent(event : string) :Boolean
     return false
 }
 
+function checkIfCursorIsInsideQuotationMarks(lastWordObj : lastWordSuggestion, character : number)
+{
+    let index =  lastWordObj.wholeLineTillEndofWord.lastIndexOf('="') + 2
+    Log.writeLspServer(index.toString(),1)
+    Log.writeLspServer(character.toString(),1)
+    Log.writeLspServer( getIndexStartLastWord(lastWordObj.wholeLineTillEndofWord.substring(0,character)),1)
+    return index < character && index >= getIndexStartLastWord(lastWordObj.wholeLineTillEndofWord.substring(0,character))
+}
+
 function getListenersToDispatch(lastWord : string) : null | string[]
 {
     Log.writeLspServer('listeners tio dusoatch test')
-    const regexp = /\$dispatch\(\s*'([a-z]+)'/g
+    const regexp = /\$dispatch\(\s*'([a-z-]+)'/g
     let tempMatch
     let match : RegExpMatchArray | null = null
     while ((tempMatch = regexp.exec(lastWord)) != null)
     {
+        Log.writeLspServer(tempMatch,1)
         match = tempMatch
     }
     if (match === null) return null
     let output : string[] = []
     for (let key of allHtml.keys()) {
+        Log.writeLspServer(key,1)
         let isIn = false
        allHtml.get(key)!.listenedToEventsPosition.forEach(item => {
+           Log.writeLspServer(item,1)
            if (item.name === match![1])
            {
+               Log.writeLspServer('gets ot ', 1)
                isIn = true
            }
        })
         if (isIn) output.push(getRelativePath(key))
+        Log.writeLspServer(output,1)
     }
+    Log.writeLspServer('output : ' + output,1)
     return output
 }
 

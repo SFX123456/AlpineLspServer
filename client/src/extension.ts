@@ -1,5 +1,5 @@
 import * as path from "path";
-import { workspace, ExtensionContext } from "vscode";
+import {workspace, ExtensionContext, env} from "vscode";
 
 import {
   LanguageClient,
@@ -29,7 +29,7 @@ export function activate(context: ExtensionContext) {
   // Options to control the language client
   const clientOptions: LanguageClientOptions = {
     // Register the server for all documents by default
-    documentSelector: [{ scheme: "file" }],
+    documentSelector: [{ scheme: "file" , language: 'html'},{ scheme: "file" , language: 'blade'}],
     synchronize: {
       // Notify the server about file changes to '.clientrc files contained in the workspace
       fileEvents: workspace.createFileSystemWatcher("**/.clientrc"),

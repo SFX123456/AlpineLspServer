@@ -13,11 +13,7 @@ export function getLastWord( textDocument: textDocumentType) : lastWordSuggestio
     let character = textDocument.position.character
     const wholeLine = allHtml.get(textDocument.textDocument.uri)!.linesArr[(textDocument.position.line)]
     let wholeLineSubStrTillChar = wholeLine.substring(0, character)
-    let spaceCharIndex = wholeLineSubStrTillChar.lastIndexOf(' ')
-    let startTagIndex = wholeLineSubStrTillChar.lastIndexOf('<')
-    let startOpenExpr = wholeLineSubStrTillChar.lastIndexOf('="') + 1
-    let startIndex = Math.max(spaceCharIndex, startTagIndex, startOpenExpr)
-
+    let startIndex = getIndexStartLastWord(wholeLineSubStrTillChar)
 
     let wholeLineEndSubStr = wholeLine.substring(character)
     let spaceCharIndexEnd = wholeLineEndSubStr.indexOf(' ')
@@ -30,6 +26,13 @@ export function getLastWord( textDocument: textDocumentType) : lastWordSuggestio
         lastWord: wholeLine.substring(startIndex + 1, endIndex + character),
         wholeLineTillEndofWord : wholeLine.substring(0, endIndex + character)
     }
+}
+export function getIndexStartLastWord(wholeLineSubStrTillChar : string) : number
+{
+    let spaceCharIndex = wholeLineSubStrTillChar.lastIndexOf(' ')
+    let startTagIndex = wholeLineSubStrTillChar.lastIndexOf('<')
+    let startOpenExpr = wholeLineSubStrTillChar.lastIndexOf('="') + 1
+    return  Math.max(spaceCharIndex, startTagIndex, startOpenExpr)
 }
 export function getOpeningParenthesisPosition(uri: string, line:number, character: number) : Position | null
 {
