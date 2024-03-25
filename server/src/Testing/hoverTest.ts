@@ -18,7 +18,7 @@ function testing()
     let content = ''
     try {
 
-        //content = fs.readFileSync(fileName, {encoding: 'utf-8'})
+        content = fs.readFileSync(fileName, {encoding: 'utf-8'})
     }catch (e)
     {
         return
@@ -28,10 +28,10 @@ function testing()
     infos.rootUri = parsedInitMessage.rootUri
     infos.rootPath = parsedInitMessage.rootPath
     scanAllDocuments(infos.rootPath!)
-    /*
     Log.writeLspServer(content,1)
     allFiles.set(uri, content)
     saveCheerioFile(content, uri)
+    Log.writeLspServer('saved cheerio',1)
     const message = '{"jsonrpc":"2.0","id":2,"method":"textDocument/hover","params":{"textDocument":{"uri":"file:///e%3A/fsd/index.html"},"position":{"line":0,"character":35}}}'
     async function test()
     {
@@ -40,7 +40,6 @@ function testing()
         Log.writeLspServer(res,1)
     }
     test()
-*/
 }
 
 

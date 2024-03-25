@@ -23,6 +23,7 @@ export const hoverRequest = async (message: RequestMessage) : Promise<HoverResul
     Log.writeLspServer('zzzzzzzzzzzzzzzzzzzz')
     const textDocumentt = message.params as textDocumentType
     let lastWordObj = getLastWord(textDocumentt)
+    Log.writeLspServer(lastWordObj,1)
     if (checkIfCursorIsInsideQuotationMarks(lastWordObj,textDocumentt.position.character))
     {
         Log.writeLspServer('is inside quotation marks',1)
@@ -88,7 +89,7 @@ function getTextForEvent(event : string) : string
     }
     if (output === 'dispatched in ')
     {
-        if (checkIfStandardEvent(event))
+        if (isStandardEvent(event))
         {
             return `regular event : ${event} not dispatched yet`
         }
@@ -97,11 +98,11 @@ function getTextForEvent(event : string) : string
     return output
 }
 
-function checkIfStandardEvent(event : string) :Boolean
+function isStandardEvent(event : string) :Boolean
 {
-    atOptionsJustString.forEach(x => {
+    for (let x of atOptionsJustString) {
         if (x === event) return true
-    })
+    }
     return false
 }
 

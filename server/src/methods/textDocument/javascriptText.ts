@@ -8,12 +8,14 @@ import {InsertTextMode, LogTraceNotification} from "vscode-languageserver";
 import {it} from "node:test";
 import {last} from "cheerio/lib/api/traversing";
 import {regexHighlightingSemantics} from "../../allRegex";
+import {findAccordingRow, getParentAndOwnVariables} from "../../cheerioFn";
+import {func} from "vscode-languageserver/lib/common/utils/is";
 
-export function getAllJavaScriptText(uri: string,startLine : number | null = null, tillLine : number| null = null )
+export function getAllJavaScriptText(uri: string,startLine : number | null = null, tillLine : number| null = null ) : string[]
 {
     const regExpStart = regexHighlightingSemantics
     const arrLines = allHtml.get(uri)!.linesArr
-    let output = ''
+    let output : string[] = []
     let lastY = startLine ?? 0
     arrLines.forEach((lineStr , line) => {
         if (startLine && startLine > line) return;
@@ -21,39 +23,49 @@ export function getAllJavaScriptText(uri: string,startLine : number | null = nul
         let match :any
         while((match = regExpStart.exec(lineStr)) != null)
         {
-            if (!isKeyJavascriptSymbol(match[1])){
+            Log.writeLspServer(match,1)
+            let fullText = ''
+            if (isXData(match[1])){
 
-                continue
+                fullText+= 'let m = \n'
             }
-            const fullText = getJSCodeBetweenQuotationMarks(uri, line, match.index + match[0].length)
+            fullText += getJsCodeInQuotationMarksWithProperFormating(uri, line, match.index + match[0].length)
+            const node = findAccordingRow(line,allHtml.get(uri)!)
+            const variables = getParentAndOwnVariables(node!)
+            fullText = addMagicObjects(fullText)
+            fullText += 'var '
+            fullText += variables.join('; var')
+            output.push(fullText)
+            Log.writeLspServer('got text : ' + fullText,1)
             if (lastY == line)
             {
-                const input = output.split('\n')
-                const laenge = input[line - (startLine ?? 0)].length
-                input[line - (startLine ?? 0)] += fullText.substring(laenge)
-                output = input.join('\n')
                 continue
             }
             while (lastY < line )
             {
                 lastY++
-                output += '\n'
             }
             const lineBreakCount = fullText.split('\n').length
             lastY += lineBreakCount
             lastY--
-            output += fullText
         }
     })
-    if (startLine) return output
-
-    return addMagicObjects(output)
+    return output
 }
 
 
+export function getAllJava(uri : string)
+{
+
+}
+
+function isXData(key : string)
+{
+   if (key === 'data') return true
+   return false
+}
 function isKeyJavascriptSymbol(key : string)
 {
-    if (key === 'data') return false
     return true
 }
 

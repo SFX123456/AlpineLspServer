@@ -1,6 +1,5 @@
 import {RequestMessage} from "../../server";
-import {allFiles} from "../../allFiles";
-import log from "../../log";
+import {allFiles, allHtml} from "../../allFiles";
 import Log from "../../log";
 
 import {requestingMethods} from "../../typescriptLsp/typescriptServer";
@@ -11,36 +10,60 @@ interface semanticResponse  {
     data: number[]
 }
 export const semantic = async (message : RequestMessage ) : Promise<semanticResponse> => {
-    log.writeLspServer('should give semantic', 3)
     const textDocument = message.params as textDocumentType
-    const javaScrText = getAllJavaScriptText(textDocument.textDocument.uri)
-    const resJavaScr = await requestingMethods('semantic', javaScrText, 0, 0)
-    let javascSem : semanticToken[] = []
-    if (resJavaScr)
-    {
-        try {
-            //@ts-ignore
-            const temp = resJavaScr.result.data
-            const z = decryptSemanticsFromJavascriptServer(temp)
-            javascSem = z
-        }
-        catch (e)
-        {
-            Log.writeLspServer('erroo in smeantic')
-        }
 
-    }
+
     const res = detectAlpineCharacters(textDocument.textDocument.uri)
     const allTokens = [...res]
-    allTokens.push(...javascSem)
+    let javaScrText = getAllJavaScriptText(textDocument.textDocument.uri,0,15)
+    for (const item of javaScrText) {
+        Log.writeLspServer('item: ',1)
+        Log.writeLspServer(item,1)
+        const resJavaScr = await requestingMethods('semantic', item, 0, 0)
+        //@ts-ignore
+        let temp = resJavaScr.result.data
+        if (isXDataSuggestion(item))
+        {
+            Log.writeLspServer('does include let m=',1)
+            Log.writeLspServer(temp,1)
+            temp = deleteFirstRowSuggestionsAndChangeOtherAccordingly(temp)
+            Log.writeLspServer('chnaged accordingly',1)
+            Log.writeLspServer(temp,1)
+        }
+        const z = decryptSemanticsFromJavascriptServer(temp)
+        allTokens.push(...z)
+        Log.writeLspServer('ts server response ', 1)
+        Log.writeLspServer(z,1)
+    }
     const sortedSemTokens = sortSemanticTokens(allTokens)
     const decrpytedTokens = decryptSemanticTokens(sortedSemTokens)
-
+    Log.writeLspServer('hopefully rigfht',1)
+    Log.writeLspServer(decrpytedTokens,1)
     return {
         data:
         decrpytedTokens
 
     }
+}
+
+
+function isXDataSuggestion(text : string)
+{
+    return text.includes('let m =')
+}
+
+function deleteFirstRowSuggestionsAndChangeOtherAccordingly(suggestions : number[])
+{
+    let indexToCut = 0;
+    for (let i = 0; i < suggestions.length; i+=5) {
+        if (suggestions[i] != 0)
+        {
+            suggestions[i]--
+            indexToCut = i;
+            return suggestions.slice(indexToCut)
+        }
+    }
+    return suggestions.slice(indexToCut-1)
 }
 
 interface semanticToken {

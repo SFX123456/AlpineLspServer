@@ -89,8 +89,27 @@ export function getParentAndOwnVariables(node : Cheerio<Element>): string[]
 
         if (data)
         {
+            const func = new Function(`return ${data}`)
+            const obj = func()
+            /*
+            Object.keys(obj).forEach(item => {
+                variables.push(item)
+            })
+             */
+             JSON.stringify(obj, function(key, value) {
+                // Check if the value is a function
+                if (typeof value === 'function') {
+                    // Convert the function to a string
+                    variables.push(' function ' + value.toString());
+                    return 'sdf'
+                }
+                variables.push(' ' + key)
+                return value;
+            });
+
+            /*
             data.split(",").forEach((keyVal : string) => {
-                Log.write(keyVal)
+                Log.write(keyVal,1)
                 const key = keyVal.split(":")[0]
                     .split(' {')[0]
                     .replaceAll("{", "")
@@ -98,6 +117,8 @@ export function getParentAndOwnVariables(node : Cheerio<Element>): string[]
                     .trim()
                 variables.push(key)
             })
+
+             */
         }
 
         const parentNodeArr= node.parent()

@@ -25,8 +25,8 @@ export default {
         if (typeof message == typeof 1) return;
         if (logLev === 1)
         {
-         console.log(message)
-         return;
+        //console.log(message)
+        //return;
         }
 
         if (message == undefined)
