@@ -42,11 +42,41 @@ export const xoptions : CompletionItem[] = [
         insertTextFormat : 2,
 
     },
+{
+    label: 'x-transition',
+    kind: 15,
+    insertTextFormat : 2,
+
+},
     {
-        label: 'x-transition',
+        label: "x-transition:enter=\"${1:transition}\"",
         kind: 15,
         insertTextFormat : 2,
-
+    },
+    {
+        label: "x-transition:enter-start=\"${1:opacity}\"",
+        kind: 15,
+        insertTextFormat : 2,
+    },
+    {
+        label: "x-transition:enter-end=\"${1:opacity}\"",
+        kind: 15,
+        insertTextFormat : 2,
+    },
+    {
+        label: "x-transition:leave=\"${1:transition}\"",
+        kind: 15,
+        insertTextFormat : 2,
+    },
+    {
+        label: "x-transition:leave-start=\"${1:transition}\"",
+        kind: 15,
+        insertTextFormat : 2,
+    },
+    {
+        label: "x-transition:leave-end=\"${1:transition}\"",
+        kind: 15,
+        insertTextFormat : 2,
     },
     //add
     {

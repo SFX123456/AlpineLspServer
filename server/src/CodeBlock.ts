@@ -25,13 +25,14 @@ export class CodeBlock
         const uri = textDocument.textDocument.uri
         let line = textDocument.position.line
         let character = textDocument.position.character
-        const startPattern =  /="/g
+        const startPattern =  /(?:x-[a-z-\.:]+|@[a-z-\.:]+)="/g
         const endPattern = /(?<![\\=])"/g
         let goUp = 0;
         let startTag : any
         let lastMatchIndex = 0
         let foundAMatch = false
         let characterTemp = character
+        let lengthRegexMatchStart = 0
         Log.writeLspServer('checking if inside quotation marks',1)
         while (!foundAMatch && goUp < 200 && line - goUp >= 0 && line - goUp >= this.htmlTagRange.start.line)
         {
@@ -40,6 +41,7 @@ export class CodeBlock
                 {
                     foundAMatch = true
                     lastMatchIndex = startTag.index;
+                    lengthRegexMatchStart = startTag[0].length
                 }
             }
             characterTemp = 1000
@@ -84,7 +86,7 @@ export class CodeBlock
         if (!foundAMatch) return null
         Log.writeLspServer('step 3',1)
         if ( line - goUp + i >= line
-            && (lastMatchIndex + 2 < character || goUp != 0 )
+            && (lastMatchIndex + lengthRegexMatchStart < character || goUp != 0 )
             && ( lastMatchEndingIndex  >= character || goUp - i != 0 )
         )
         {
