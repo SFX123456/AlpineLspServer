@@ -46,6 +46,7 @@ export class PageHtml
     public processElement(element : cheerio.Element) {
         element.children.forEach((child : cheerioType.ChildNode) => {
             if (child.type === 'tag') {
+
                 const z = child.attribs
                Log.writeLspServer(child.attribs)
                 const createdEvents = this.getCustomNotWindowEventsWithVariables(JSON.stringify(child.attribs))

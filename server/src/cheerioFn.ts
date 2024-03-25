@@ -1,13 +1,9 @@
-import * as cheerio from "cheerio";
 import {allHtml} from "./allFiles";
 import {PageHtml} from "./HtmlParsing/PageHtml";
 import log from "./log";
 import Log from "./log";
-import {Cheerio, Element} from "cheerio";
-import {it} from "node:test";
-import {end} from "cheerio/lib/api/traversing";
-import {isDataView} from "util/types";
 import {regexEndingOpeningTag, regexOpeningTagHtml} from "./allRegex";
+import cheerio, { Cheerio, Element } from 'cheerio';
 
 export function saveCheerioFile(text: string, uri : string)
 {
@@ -18,7 +14,7 @@ export function saveCheerioFile(text: string, uri : string)
     const finalStr = contentLines.join('\n')
     const cheer = cheerio.load(finalStr)
     const htmlPage = new PageHtml(cheer, uri.trim())
-    Log.writeLspServer('savef  ile with uri ' + uri)
+  //  Log.writeLspServer('savef  ile with uri ' + uri)
     allHtml.set(uri, htmlPage)
 }
 function addLineAttributes(contentLines : string[]) : string[]
@@ -77,6 +73,52 @@ export function findAccordingRow(row : number, htmlPage : PageHtml)
     }
     return null;
 }
+
+export function getAccordingRefs(node: Cheerio<Element>): any[] {
+    const refs: any[] = [];
+    const parentNode = node.parent();
+
+    // Make sure to pass a Cheerio object to the helper function
+    getRefsFromNodeAndChildren2(parentNode, refs);
+    return refs;
+}
+
+function getRefsFromNodeAndChildren2(element: Cheerio<Element>, refs: any[]): void {
+    element.each((_, childElement) => {
+//        Log.writeLspServer(childElement,1)
+        const child = cheerio(childElement);
+
+        if (childElement.type === 'tag' && childElement.attribs) {
+            const ref = childElement.attribs['x-ref'];
+            if (ref) {
+                refs.push({
+                    tag: childElement.tagName,
+                    name: ref
+                });
+            }
+            getRefsFromNodeAndChildren2(child.children(), refs);
+        }
+    });
+}
+
+
+export function createRefsStr(arr : any[])
+{
+    let output = 'var $refs = { '
+    arr.forEach(item => {
+        output += item.name
+        output += ' : '
+        output+= 'document.createElement("' + item.tag + '"),'
+    })
+
+    output += ' }'
+    return output
+}
+
+
+
+
+
 
 export function getParentAndOwnVariables(node : Cheerio<Element>): string[]
 {

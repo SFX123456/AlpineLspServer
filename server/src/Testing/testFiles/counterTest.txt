@@ -6,5 +6,5 @@
 }" >
     <button @morgen="$dispatch('test', {lolo : true})" @click="count++ c  " >Increment </button>
 
-    <span x-init="console " ></span>
+    <span x-init="console " x-ref="testing" ></span>
 </div

@@ -2,7 +2,7 @@ import {CompletionList, customEvent, Range} from "../../../types/ClientTypes";
 import Log from "../../../log";
 import {magicObjects} from "../../../magicobjects";
 import {allFiles, allHtml} from "../../../allFiles";
-import {findAccordingRow, getParentAndOwnVariables} from "../../../cheerioFn";
+import {createRefsStr, findAccordingRow, getAccordingRefs, getParentAndOwnVariables} from "../../../cheerioFn";
 import {requestingMethods} from "../../../typescriptLsp/typescriptServer";
 import {addNecessaryCompletionItemProperties, completionResponseType} from "../completion";
 import {CodeBlock} from "../../../CodeBlock";
@@ -65,7 +65,6 @@ export const completionJs  = async (line : number, character : number, uri : str
     Log.writeLspServer('completionjs4 ' + optionsStr, 1)
     optionsStr.push(...getParentAndOwnVariables(node))
     Log.writeLspServer('before xfor')
-    const nodeOri = findAccordingRow(line, allHtml.get(uri!)!);
     let javascriptText = getJsCodeInQuotationMarksWithProperFormating(uri!,line, character)
     //let javascriptText = getJSCodeBetweenQuotationMarks(uri!,line,character)
     //Log.writeLspServer(javascriptText,1)
@@ -75,6 +74,9 @@ export const completionJs  = async (line : number, character : number, uri : str
     //Log.writeLspServer(javascriptText)
     javascriptText += optionsStr.map(x => 'var ' + x + ';' ).join('')
     javascriptText +=  (magicObjects.map(x => ' var ' + x +'; ').join(''))
+
+    const refs = getAccordingRefs(node!)
+    javascriptText += createRefsStr(refs)
     Log.writeLspServer('typescript')
     Log.writeLspServer(javascriptText)
     Log.writeLspServer('completionjs5', 1)
