@@ -78,14 +78,12 @@ export const xoptions : CompletionItem[] = [
         kind: 15,
         insertTextFormat : 2,
     },
-    //add
     {
         label: 'x-for=\"${1:foo} \"',
         kind: 15,
         insertTextFormat : 2,
 
     },
-
     {
         label: 'x-if=\"${1:foo} \"',
         kind: 15,
