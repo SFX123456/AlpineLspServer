@@ -131,24 +131,31 @@ export function getParentAndOwnVariables(node : Cheerio<Element>): string[]
 
         if (data)
         {
-            const func = new Function(`return ${data}`)
-            const obj = func()
-            /*
-            Object.keys(obj).forEach(item => {
-                variables.push(item)
-            })
-             */
-             JSON.stringify(obj, function(key, value) {
-                // Check if the value is a function
-                if (typeof value === 'function') {
-                    // Convert the function to a string
-                    variables.push(' function ' + value.toString());
-                    return 'sdf'
-                }
-                variables.push(' ' + key)
-                return value;
-            });
+            try {
 
+
+                const func = new Function(`return ${data}`)
+                const obj = func()
+                /*
+                Object.keys(obj).forEach(item => {
+                    variables.push(item)
+                })
+                 */
+                JSON.stringify(obj, function (key, value) {
+                    // Check if the value is a function
+                    if (typeof value === 'function') {
+                        // Convert the function to a string
+                        variables.push(' function ' + value.toString());
+                        return 'sdf'
+                    }
+                    variables.push(' ' + key)
+                    return value;
+                });
+            }
+            catch (e)
+            {
+                Log.writeLspServer('error parsing x-data',1)
+            }
             /*
             data.split(",").forEach((keyVal : string) => {
                 Log.write(keyVal,1)
