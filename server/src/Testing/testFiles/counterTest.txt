@@ -1,10 +1,19 @@
-<div @test="countdsf   "  x-data="{
+<div x-data="{
     open: false,
     get isOpen() { return this.open },
     toggle() { this.open = ! this.open },
-
+    let arr = [ {idea: 'test'},  ]
 }" >
-    <button @morgen="$dispatch('test', {lolo : true})" @click="count++ c  " >Increment </button>
+    <button @click="" >
+        Toggle Content
+    </button>
+    <div x-for="testing in arr " >
+        <li x-text="testing. "  >
 
-    <span x-on:test=" $  " x-init="console " x-ref="testing" ></span>
-</div
+        </li>
+    </div>
+
+    <div x-show="toggle()" >
+        Content...
+    </div>
+</div>

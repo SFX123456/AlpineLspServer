@@ -4,6 +4,7 @@ import log from "./log";
 import Log from "./log";
 import {regexEndingOpeningTag, regexOpeningTagHtml} from "./allRegex";
 import cheerio, { Cheerio, Element } from 'cheerio';
+import {InsertTextMode} from "vscode-languageserver";
 
 export function saveCheerioFile(text: string, uri : string)
 {
@@ -127,35 +128,72 @@ export function getParentAndOwnVariables(node : Cheerio<Element>): string[]
     while (true)
     {
         const data = node[0].attribs["x-data"]
-        Log.write("checking if line has data" + data)
+        Log.writeLspServer('for data ' + data,1)
+        const xFor = node[0].attribs["x-for"]
+        Log.writeLspServer('for xfor ' +xFor ,1)
+        Log.write("checking if line has data" + data,1)
+        if (xFor)
+        {
+                const regExp = /([a-z]+)\s*,\s*([a-z]+)\s*\)(\s+)in(\s+)([a-z-]+)/g
+                Log.writeLspServer('checking if it is object' + regExp , 1)
+                const res = regExp.exec(xFor)
+                if (res)
+                {
+                    Log.writeLspServer(res[1],1)
+                    variables.push(res[1])
+                    variables.push(res[2])
+                }
 
+            else
+            {
+                const regExp = /([a-z-]+)(\s+)in(\s+)([a-z-]+)/g
+                const res = regExp.exec(xFor)
+                if (res)
+                {
+                    variables.push(res[1] + ' = ' + res[4] + '[0]' )
+                }
+
+            }
+        }
         if (data)
         {
             try {
 
-
+                Log.writeLspServer('mx1',1)
                 const func = new Function(`return ${data}`)
                 const obj = func()
-                /*
-                Object.keys(obj).forEach(item => {
-                    variables.push(item)
-                })
-                 */
+                Log.writeLspServer('mx2',1)
+                let keys = Object.keys(obj)
+
+/*
                 JSON.stringify(obj, function (key, value) {
                     // Check if the value is a function
                     if (typeof value === 'function') {
                         // Convert the function to a string
+                        Log.writeLspServer('pusing fn ' + value.toString(),1)
+                        const indexKey = keys.indexOf(key)
+                        if (indexKey == -1)
+                        {
+                            Log.writeLspServer('indexkey return -1',1)
+                            return
+                        }
+                        keys.splice(indexKey,1)
                         variables.push(' function ' + value.toString());
                         return 'sdf'
                     }
-                    variables.push(' ' + key)
-                    return value;
+                    Log.writeLspServer('mx4',1)
+                    return ' ';
                 });
+*/
+                const strToPush = '{ ' + keys.join(', ') + '} = ' + data
+                Log.writeLspServer('here5 ' + strToPush,1)
+                variables.push(strToPush)
             }
             catch (e)
             {
                 Log.writeLspServer('error parsing x-data',1)
             }
+
             /*
             data.split(",").forEach((keyVal : string) => {
                 Log.write(keyVal,1)

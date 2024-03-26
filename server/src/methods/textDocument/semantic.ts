@@ -55,6 +55,7 @@ function isXDataSuggestion(text : string)
 function deleteFirstRowSuggestionsAndChangeOtherAccordingly(suggestions : number[])
 {
     let indexToCut = 0;
+    if (!suggestions) return []
     if (suggestions.length < 4) return suggestions
     for (let i = 0; i < suggestions.length; i+=5) {
         if (suggestions[i] != 0)
