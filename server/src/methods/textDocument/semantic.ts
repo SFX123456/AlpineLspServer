@@ -182,6 +182,7 @@ function detectAlpineCharacters(uri: string) : semanticToken[]
             })
         }
     })
+
     return output
 }
 
