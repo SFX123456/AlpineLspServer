@@ -9,8 +9,10 @@ import {initializeTypescriptServer} from "../typescriptLsp/typescriptServer";
 import Log from "../log";
 import {Element} from "cheerio";
 import {semantic} from "../methods/textDocument/semantic";
+import {setUpEnvironmentForTesting} from "./codeCompletionTest";
 function testing()
 {
+    setUpEnvironmentForTesting()
     const uri = "file:///e%3A/fsd/index2.html"
 
     const fileName = '../../src/Testing/testFiles/counterTest.txt'
@@ -44,7 +46,7 @@ function testing()
 }
 
 
-testing()
+//testing()
 
 
 export function ok()

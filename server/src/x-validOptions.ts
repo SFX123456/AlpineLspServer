@@ -107,6 +107,11 @@ export const xoptions : CompletionItem[] = [
         kind: 15,
         insertTextFormat : 2,
     },
+    {
+        label: 'x-on',
+        kind: 15,
+        insertTextFormat : 2,
+    },
 
 ]
 

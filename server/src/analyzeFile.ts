@@ -1,5 +1,5 @@
 import {allFiles, allHtml} from "./allFiles";
-import {lastWordSuggestion, Position, Range, textDocumentType} from "./types/ClientTypes";
+import {DocumentUri, lastWordSuggestion, Position, Range, textDocumentType} from "./types/ClientTypes";
 import Log from "./log";
 import {
     regexEndingOpeningTag,
@@ -8,7 +8,18 @@ import {
     regexStartingAlpineExpression
 } from "./allRegex";
 
-
+export function getLastWordWithUriAndRange(uri : string, position : Position)
+{
+    return getLastWord({
+        position : position,
+        textDocument : {
+            uri: uri,
+            languageId: 'egal',
+            version: 2,
+            text : 'egal'
+        }
+    })
+}
 export function getLastWord( textDocument: textDocumentType) : lastWordSuggestion {
     let character = textDocument.position.character
     const wholeLine = allHtml.get(textDocument.textDocument.uri)!.linesArr[(textDocument.position.line)]
@@ -156,6 +167,19 @@ export function getEndingParenthesisPosition(uri: string, line: number, characte
         line++
     }
     return null
+}
+export function getKeyword(uri : string,line: number, character : number)
+{
+
+    const wholeLine = allHtml.get(uri)!.linesArr[line]
+    const indexEqualQuotationMark = wholeLine.substring(0,character).lastIndexOf('="') + 2
+
+    const subStr = wholeLine.substring(0, indexEqualQuotationMark)
+    Log.writeLspServer('substr : ' + subStr,1)
+    const beginningIndex = subStr.lastIndexOf(' ')
+
+    Log.writeLspServer('beginningindex : ' + beginningIndex,1)
+    return subStr.substring(beginningIndex + 1, indexEqualQuotationMark - 2)
 }
 
 export function getEndTagPosition(uri: string, line : number) : Position | null

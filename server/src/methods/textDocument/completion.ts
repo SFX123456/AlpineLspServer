@@ -136,7 +136,7 @@ function createReturnObject(arr : CompletionItem[]) :CompletionList
 
 function getMatchingTableLookUp(lastWord : lastWordSuggestion, character : number): string | null
 {
-    if (lastWord.lastWord === '@' ) return '@'
+    if (lastWord.lastWord === '@' || lastWord.lastWord === 'x-on:' ) return '@'
     if (lastWord.lastWord.indexOf('x') != -1 && lastWord.lastWord.length < 2) return 'x-'
     if ((lastWord.lastWord.indexOf('@') == 0 || lastWord.lastWord.indexOf('x-show') == 0) && lastWord.wholeLine[character-1] ==='.') return '@.'
 

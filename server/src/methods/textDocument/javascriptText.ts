@@ -10,6 +10,8 @@ import {last} from "cheerio/lib/api/traversing";
 import {regexHighlightingSemantics} from "../../allRegex";
 import {createRefsStr, findAccordingRow, getAccordingRefs, getParentAndOwnVariables} from "../../cheerioFn";
 import {func} from "vscode-languageserver/lib/common/utils/is";
+import {addMagicEventVariableIfEvent} from "./completion/completionJs";
+import {chainableOnXShow} from "../../x-validOptions";
 
 export function getAllJavaScriptText(uri: string,startLine : number | null = null, tillLine : number| null = null ) : string[]
 {
@@ -40,6 +42,8 @@ export function getAllJavaScriptText(uri: string,startLine : number | null = nul
             {
                 fullText += createRefsStr(refs)
             }
+            const magicEventStr = addMagicEventVariableIfEvent(uri, line,match.index + match[0].length)
+            if (magicEventStr != '') fullText += ('var '  + magicEventStr)
             output.push(fullText)
             Log.writeLspServer('got text : ' + fullText,1)
             if (lastY == line)

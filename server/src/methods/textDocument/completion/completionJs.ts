@@ -10,6 +10,7 @@ import {PageHtml} from "../../../HtmlParsing/PageHtml";
 import {
     getJsCodeInQuotationMarksWithProperFormating
 } from "../javascriptText";
+import {getKeyword} from "../../../analyzeFile";
 export const completionJs  = async (line : number, character : number, uri : string | undefined, codeBlock : CodeBlock) : Promise<CompletionList | null> => {
     Log.writeLspServer('completion requested')
     let optionsStr : string[] = []
@@ -44,24 +45,9 @@ export const completionJs  = async (line : number, character : number, uri : str
         return null
     }
 
-    const keyWord = codeBlock.getKeyWord()
-    Log.writeLspServer('compeltionjs3 key ' + keyWord, 1)
-    if (keyWord[0] === '@')
-    {
-        Log.writeLspServer('gets that it is an event ' + keyWord)
-        let indexFirstPoint = keyWord.indexOf('.')
-        if (indexFirstPoint == -1) indexFirstPoint = keyWord.length - 1
-        const eventName = keyWord.substring(1, indexFirstPoint)
-        for (let key of allHtml.keys()) {
-            allHtml.get(key)!.events.forEach(item => {
-                if (item.name == eventName)
-                {
-                    let full = buildMagiceventVar(item)
-                    optionsStr.push(full)
-                }
-            })
-        }
-    }
+    const magicEventStr = addMagicEventVariableIfEvent(uri!,line,character)
+    if (magicEventStr != '') optionsStr.push(magicEventStr)
+
     Log.writeLspServer('completionjs4 ' + optionsStr, 1)
     optionsStr.push(...getParentAndOwnVariables(node))
     Log.writeLspServer('before xfor')
@@ -105,6 +91,38 @@ export const completionJs  = async (line : number, character : number, uri : str
     }
 
     return null
+}
+export function addMagicEventVariableIfEvent(uri: string, line: number, character : number) : string
+{
+
+    const keyWord = getKeyword(uri,line,character)
+    Log.writeLspServer('compeltionjs3 key ' + keyWord, 1)
+    let eventText = ''
+    if (keyWord[0] === '@' || keyWord.indexOf('x-on:') === 0)
+    {
+        Log.writeLspServer('gets that it is an event ' + keyWord,1)
+        let indexFirstPoint = keyWord.indexOf('.')
+        if (indexFirstPoint == -1) {
+            indexFirstPoint = keyWord.length
+
+        }
+        let indexEventNameStarts = 1
+        if (keyWord.indexOf('x-on:') === 0)
+        {
+            indexEventNameStarts = 5
+        }
+        const eventName = keyWord.substring(indexEventNameStarts, indexFirstPoint)
+        Log.writeLspServer('the detected eventNa,e ' + eventName ,1)
+        for (let key of allHtml.keys()) {
+            allHtml.get(key)!.events.forEach(item => {
+                if (item.name == eventName)
+                {
+                    eventText+= buildMagiceventVar(item)
+                }
+            })
+        }
+    }
+    return eventText
 }
 
 function isWithInDispatch(codeBlock : CodeBlock): Boolean

@@ -84,7 +84,8 @@ export class CodeBlock
         }
         i--;
         if (!foundAMatch) return null
-        Log.writeLspServer('step 3',1)
+        Log.writeLspServer('step 3 ' + lastMatchIndex,1)
+        Log.writeLspServer('step 3 ' + (lastMatchIndex + lengthRegexMatchStart),1)
         if ( line - goUp + i >= line
             && (lastMatchIndex + lengthRegexMatchStart < character || goUp != 0 )
             && ( lastMatchEndingIndex  >= character || goUp - i != 0 )
@@ -93,7 +94,7 @@ export class CodeBlock
             return {
                 start : {
                     line : line - goUp ,
-                    character : lastMatchIndex + 2
+                    character : lastMatchIndex + lengthRegexMatchStart
                 },
                 end: {
                     line : line - goUp + i,
@@ -138,10 +139,14 @@ export class CodeBlock
     public getKeyWord(): string
     {
         const wholeLine = allHtml.get(this.textDocument.textDocument.uri)!.linesArr[this.parenthesisRange!.start.line]
-        const subStr = wholeLine.substring(0, this.parenthesisRange!.start.character)
+        const indexEqualQuotationMark = wholeLine.substring(0,this.character).lastIndexOf('="') + 2
+
+        const subStr = wholeLine.substring(0, indexEqualQuotationMark)
+        Log.writeLspServer('substr : ' + subStr,1)
         const beginningIndex = subStr.lastIndexOf(' ')
 
-        return subStr.substring(beginningIndex + 1, this.parenthesisRange!.start.character - 2)
+        Log.writeLspServer('beginningindex : ' + beginningIndex,1)
+        return subStr.substring(beginningIndex + 1, indexEqualQuotationMark - 2)
     }
 
 }
