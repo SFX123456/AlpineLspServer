@@ -31,7 +31,7 @@ export const xoptions : CompletionItem[] = [
 
     },
     {
-        label: 'x-show=\"${1:foo} \"',
+        label: 'x-show${1:.important}=\"${2:foo}\"',
         kind: 15,
         insertTextFormat : 2,
 
@@ -109,3 +109,9 @@ export const xoptions : CompletionItem[] = [
     },
 
 ]
+
+
+
+
+
+export const chainableOnXShow :string[] = ['important']

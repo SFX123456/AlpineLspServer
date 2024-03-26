@@ -8,6 +8,7 @@ import {getLastWord, isInsideElement} from "../../analyzeFile";
 import {CodeBlock} from "../../CodeBlock";
 import {completionX} from "./completion/xCompletion";
 import {chainableOnAt, chainableOnAtKeyboard} from "../chainableOnAt";
+import {chainableOnXShow} from "../../x-validOptions";
 
 
 
@@ -67,6 +68,7 @@ async function completionAtPoint(line : number, char : number, uri : string | un
     Log.writeLspServer('completion at point called')
     const lastWordWithoutAt = lastWord!.substring(1)
     const arr = lastWordWithoutAt.split('.')
+    if (arr[0] == '-show') return createReturnObject(addNecessaryCompletionItemProperties(chainableOnXShow,line, char))
     if (arr[0] === 'keydown' || arr[0] === 'keyup')
     {
         return createReturnObject(addNecessaryCompletionItemProperties(chainableOnAtKeyboard, line, char))
@@ -136,7 +138,7 @@ function getMatchingTableLookUp(lastWord : lastWordSuggestion, character : numbe
 {
     if (lastWord.lastWord === '@' ) return '@'
     if (lastWord.lastWord.indexOf('x') != -1 && lastWord.lastWord.length < 2) return 'x-'
-    if (lastWord.lastWord.indexOf('@') == 0 && lastWord.wholeLine[character-1] ==='.') return '@.'
+    if ((lastWord.lastWord.indexOf('@') == 0 || lastWord.lastWord.indexOf('x-show') == 0) && lastWord.wholeLine[character-1] ==='.') return '@.'
 
     return null;
 }
