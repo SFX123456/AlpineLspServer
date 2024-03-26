@@ -54,8 +54,6 @@ export const completionJs  = async (line : number, character : number, uri : str
     let javascriptText = getJsCodeInQuotationMarksWithProperFormating(uri!,line, character)
     //let javascriptText = getJSCodeBetweenQuotationMarks(uri!,line,character)
     //Log.writeLspServer(javascriptText,1)
-    javascriptText = changeXForForTypescriptServer(javascriptText)
-    javascriptText += '\n'
     Log.writeLspServer('after')
     //Log.writeLspServer(javascriptText)
     javascriptText += optionsStr.map(x => 'var ' + x + ';' ).join('')

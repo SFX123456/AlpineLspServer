@@ -165,7 +165,7 @@ function decryptSemanticsFromJavascriptServer(numbers : number[]): semanticToken
 function detectAlpineCharacters(uri: string) : semanticToken[]
 {
     const lines = allFiles.get(uri)!.split('\n')
-    const regExpx = /x-[a-zA-Z-:\.]+="|(?<![\\=])"|@[a-z-:]+(\.[a-z:]+)*="|let|var|const/g;
+    const regExpx = /x-[a-zA-Z-:\.]+="|:[a-z]+="|(?<![\\=])"|@[a-z-:]+(\.[a-z:]+)*="|let|var|const/g;
     let match : any;
     const output : semanticToken[] = []
     lines.forEach((line, currentLine) => {

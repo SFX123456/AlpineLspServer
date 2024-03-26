@@ -25,7 +25,7 @@ export class CodeBlock
         const uri = textDocument.textDocument.uri
         let line = textDocument.position.line
         let character = textDocument.position.character
-        const startPattern =  /(?:x-[a-z-\.:]+|@[a-z-\.:]+)="/g
+        const startPattern =  /(?:x-[a-z-\.:]+|@[a-z-\.:]+|:[a-z]+)="/g
         const endPattern = /(?<![\\=])"/g
         let goUp = 0;
         let startTag : any

@@ -9,6 +9,7 @@ import {CodeBlock} from "../../CodeBlock";
 import {completionX} from "./completion/xCompletion";
 import {chainableOnAt, chainableOnAtKeyboard} from "../chainableOnAt";
 import {chainableOnXShow} from "../../x-validOptions";
+import {doublePointCompletions} from "../../doublePoint-validOptions";
 
 
 
@@ -60,7 +61,8 @@ export function addNecessaryCompletionItemProperties(options : CompletionItem[] 
 const tableCompletion : Record<string, completionResponse> = {
     '@' : completionJustAT,
     'x-' :  completionX,
-    '@.' : completionAtPoint
+    '@.' : completionAtPoint,
+    ':' : completionDoublePoint
 }
 
 async function completionAtPoint(line : number, char : number, uri : string | undefined, lastWord : string | undefined) : Promise<CompletionList | null>
@@ -76,6 +78,11 @@ async function completionAtPoint(line : number, char : number, uri : string | un
     return createReturnObject(addNecessaryCompletionItemProperties(chainableOnAt,line, char))
 }
 
+async function completionDoublePoint(line : number, char : number, uri : string | undefined, lastWord : string | undefined) : Promise<CompletionList | null>
+{
+    Log.writeLspServer('completion at doublepoint called',1)
+    return createReturnObject(addNecessaryCompletionItemProperties(doublePointCompletions,line,char))
+}
 
 export const completion = async (message : RequestMessage) : Promise<CompletionList | null> => {
 
@@ -99,11 +106,6 @@ Log.writeLspServer('test',1)
    if (codeBlock.isInsideParenthesis())
    {
        Log.writeLspServer('is inside parenthesis ',1)
-       if (codeBlock.getKeyWord() === 'x-data')
-       {
-           Log.writeLspServer('is x-data',1)
-           return createReturnObject([])
-       }
        Log.writeLspServer('works so far',1)
        const output = await completionJs(line, character, textDocumentt.textDocument.uri, codeBlock)
        if (!output) return createReturnObject([])
@@ -139,6 +141,7 @@ function getMatchingTableLookUp(lastWord : lastWordSuggestion, character : numbe
     if (lastWord.lastWord === '@' || lastWord.lastWord === 'x-on:' ) return '@'
     if (lastWord.lastWord.indexOf('x') != -1 && lastWord.lastWord.length < 2) return 'x-'
     if ((lastWord.lastWord.indexOf('@') == 0 || lastWord.lastWord.indexOf('x-show') == 0) && lastWord.wholeLine[character-1] ==='.') return '@.'
+    if (lastWord.lastWord == ':' ) return ':'
 
     return null;
 }
