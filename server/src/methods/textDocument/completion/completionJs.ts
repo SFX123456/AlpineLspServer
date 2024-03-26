@@ -76,7 +76,10 @@ export const completionJs  = async (line : number, character : number, uri : str
     javascriptText +=  (magicObjects.map(x => ' var ' + x +'; ').join(''))
 
     const refs = getAccordingRefs(node!)
-    javascriptText += createRefsStr(refs)
+    if (refs.length != 0)
+    {
+        javascriptText += createRefsStr(refs)
+    }
     Log.writeLspServer('typescript')
     Log.writeLspServer(javascriptText)
     Log.writeLspServer('completionjs5', 1)

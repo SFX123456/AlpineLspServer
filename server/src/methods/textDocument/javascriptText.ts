@@ -8,7 +8,7 @@ import {InsertTextMode, LogTraceNotification} from "vscode-languageserver";
 import {it} from "node:test";
 import {last} from "cheerio/lib/api/traversing";
 import {regexHighlightingSemantics} from "../../allRegex";
-import {findAccordingRow, getParentAndOwnVariables} from "../../cheerioFn";
+import {createRefsStr, findAccordingRow, getAccordingRefs, getParentAndOwnVariables} from "../../cheerioFn";
 import {func} from "vscode-languageserver/lib/common/utils/is";
 
 export function getAllJavaScriptText(uri: string,startLine : number | null = null, tillLine : number| null = null ) : string[]
@@ -35,6 +35,11 @@ export function getAllJavaScriptText(uri: string,startLine : number | null = nul
             fullText = addMagicObjects(fullText)
             fullText += 'var '
             fullText += variables.join('; var')
+            const refs = getAccordingRefs(node!)
+            if (refs.length != 0)
+            {
+                fullText += createRefsStr(refs)
+            }
             output.push(fullText)
             Log.writeLspServer('got text : ' + fullText,1)
             if (lastY == line)

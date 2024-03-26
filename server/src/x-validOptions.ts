@@ -42,12 +42,11 @@ export const xoptions : CompletionItem[] = [
         insertTextFormat : 2,
 
     },
-{
-    label: 'x-transition',
-    kind: 15,
-    insertTextFormat : 2,
-
-},
+    {
+        label: 'x-transition',
+        kind: 15,
+        insertTextFormat : 2,
+    },
     {
         label: "x-transition:enter=\"${1:transition}\"",
         kind: 15,
@@ -82,37 +81,31 @@ export const xoptions : CompletionItem[] = [
         label: 'x-for=\"${1:foo} \"',
         kind: 15,
         insertTextFormat : 2,
-
     },
     {
         label: 'x-if=\"${1:foo} \"',
         kind: 15,
         insertTextFormat : 2,
-
     },
     {
         label: 'x-effect=\"${1:foo} \"',
         kind: 15,
         insertTextFormat : 2,
-
     },
     {
         label: 'x-ref=\"${1:foo} \"',
         kind: 15,
         insertTextFormat : 2,
-
     },
     {
         label: 'x-cloak',
         kind: 15,
         insertTextFormat : 2,
-
     },
     {
         label: 'x-ignore',
         kind: 15,
         insertTextFormat : 2,
-
     },
 
 ]
