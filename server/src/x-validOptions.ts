@@ -19,7 +19,7 @@ export const xoptions : CompletionItem[] = [
 
     },
     {
-        label: 'x-bind:${1:class}=\"${2:foo} \"',
+        label: 'x-bind',
         kind: 15,
         insertTextFormat : 2,
 
