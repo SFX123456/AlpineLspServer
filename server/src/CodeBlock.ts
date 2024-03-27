@@ -65,9 +65,8 @@ export class CodeBlock
                 Log.writeLspServer(endTag.index.toString())
                 Log.writeLspServer(character.toString())
                 if (endTag.index > lastMatchIndex && endTag.index < character ) return null
-                if (endTag.index + 1 >= character || goUp - i != 0)
+                if ((endTag.index + 1 >= character || goUp - i != 0) && (i > 0 || goUp == 0 || endTag.index + 1 > lastMatchIndex))
                 {
-
                     foundAMatch = true
                     lastMatchEndingIndex = endTag.index + 1;
                 }

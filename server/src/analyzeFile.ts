@@ -131,8 +131,9 @@ export function getEndingParenthesisPosition(uri: string, line: number, characte
 export function getKeyword(uri : string,line: number, character : number)
 {
 
-    const wholeLine = allHtml.get(uri)!.linesArr[line]
-    const indexEqualQuotationMark = wholeLine.substring(0,character).lastIndexOf('="') + 2
+    const position = getOpeningParenthesisPosition(uri,line,character)
+    const wholeLine = allHtml.get(uri)!.linesArr[position!.line]
+    const indexEqualQuotationMark = position!.character
 
     const subStr = wholeLine.substring(0, indexEqualQuotationMark)
     Log.writeLspServer('substr : ' + subStr,1)
