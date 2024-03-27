@@ -10,7 +10,12 @@ import {last} from "cheerio/lib/api/traversing";
 import {regexHighlightingSemantics} from "../../allRegex";
 import {createRefsStr, findAccordingRow, getAccordingRefs, getParentAndOwnVariables} from "../../cheerioFn";
 import {func} from "vscode-languageserver/lib/common/utils/is";
-import {addMagicEventVariableIfEvent, createDataMagicElement, createMagicElVariable} from "./completion/completionJs";
+import {
+    addMagicEventVariableIfEvent,
+    createDataMagicElement,
+    createMagicElVariable,
+    createMagicRootVariable
+} from "./completion/completionJs";
 import {chainableOnXShow} from "../../x-validOptions";
 
 export function getAllJavaScriptText(uri: string,startLine : number | null = null, tillLine : number| null = null ) : string[]
@@ -35,6 +40,8 @@ export function getAllJavaScriptText(uri: string,startLine : number | null = nul
             fullText += getJsCodeInQuotationMarksWithProperFormating(uri, line, match.index + match[0].length, false)
             const node = findAccordingRow(line,allHtml.get(uri)!)
             const variables = getParentAndOwnVariables(node!)
+            const rootElement = createMagicRootVariable(node!)
+            if (rootElement) variables.push(rootElement)
             variables.push(createMagicElVariable(node!))
             fullText = addMagicObjects(fullText)
             fullText += 'var '

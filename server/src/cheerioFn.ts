@@ -197,6 +197,30 @@ export function getParentAndOwnVariablesXData(node: Cheerio<Element>, variablesT
     return variables;
 }
 
+
+export function getFirstXDataTagName(node : Cheerio<Element>) : string | null
+{
+    while (true)
+    {
+        const data = node[0].attribs["x-data"]
+        if (data)
+        {
+            return node[0].tagName
+        }
+
+        const parentNodeArr= node.parent()
+        if (parentNodeArr.length)
+        {
+            node = node.parent()
+        }
+        else
+        {
+            break
+        }
+    }
+    return null;
+}
+
 export function getParentAndOwnVariablesJustNamesNoFunctions(node: Cheerio<Element>, variablesToBuldXData : string[]) : string[]
 {
 

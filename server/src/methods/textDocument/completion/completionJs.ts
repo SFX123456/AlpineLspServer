@@ -5,7 +5,7 @@ import {allFiles, allHtml} from "../../../allFiles";
 import {
     createRefsStr,
     findAccordingRow,
-    getAccordingRefs,
+    getAccordingRefs, getFirstXDataTagName,
     getParentAndOwnIdScopes,
     getParentAndOwnVariables, getParentAndOwnVariablesJustNamesNoFunctions, getParentAndOwnVariablesXData
 } from "../../../cheerioFn";
@@ -121,6 +121,9 @@ export const completionJs  = async (line : number, character : number, uri : str
     Log.writeLspServer('after')
     //Log.writeLspServer(javascriptText)
     optionsStr.push(createDataMagicElement(node))
+    const rootElement = createMagicRootVariable(node)
+    if (rootElement) optionsStr.push(rootElement)
+
     javascriptText += optionsStr.map(x => 'var ' + x + ';' ).join('')
     javascriptText +=  (magicObjects.map(x => ' var ' + x +'; ').join(''))
 
@@ -129,8 +132,6 @@ export const completionJs  = async (line : number, character : number, uri : str
     {
         javascriptText += createRefsStr(refs)
     }
-
-
     Log.writeLspServer('typescript')
     Log.writeLspServer(javascriptText)
     Log.writeLspServer('completionjs5', 1)
@@ -158,7 +159,13 @@ export const completionJs  = async (line : number, character : number, uri : str
     return null
 }
 
+export function createMagicRootVariable(node : Cheerio<Element>)
+{
+    const res = getFirstXDataTagName(node)
+    if (!res) return null
+    return '$root = document.createElement("' + res + '")'
 
+}
 
 function createBlankJavascriptWithBBB(line : number, character : number)
 {
@@ -182,13 +189,7 @@ function isInsideWatch(lastWordSuggestion : lastWordSuggestion, character : numb
 }
 export function createMagicElVariable(node : Cheerio<Element> )
 {
-    const indexFirstWhitespace = node.toString().indexOf(' ')
-    Log.writeLspServer('heyhey')
-    Log.writeLspServer(node.toString())
-
-    const tagName = node.toString().substring(1,indexFirstWhitespace)
-    Log.writeLspServer(tagName)
-    return '$el = document.createElement("' + tagName + '") '
+    return '$el = document.createElement("' + node[0].tagName + '") '
 }
 
 export function createDataMagicElement(node : Cheerio<Element>)
