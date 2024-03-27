@@ -17,7 +17,7 @@ import {
     getJsCodeInQuotationMarksWithProperFormating
 } from "../javascriptText";
 import {getKeyword, getLastWordWithUriAndRange} from "../../../analyzeFile";
-import {Cheerio, Element} from "cheerio";
+import cheerio, {Cheerio, Element} from "cheerio";
 export const completionJs  = async (line : number, character : number, uri : string | undefined, codeBlock : CodeBlock) : Promise<CompletionList | null> => {
     Log.writeLspServer('completion requested')
     let optionsStr : string[] = []
@@ -63,7 +63,7 @@ export const completionJs  = async (line : number, character : number, uri : str
 
     Log.writeLspServer('completionJS 2', 1)
 
-
+    optionsStr.push(createMagicElVariable(node!))
     const magicEventStr = addMagicEventVariableIfEvent(uri!,line,character)
     if (magicEventStr != '') optionsStr.push(magicEventStr)
 
@@ -72,7 +72,7 @@ export const completionJs  = async (line : number, character : number, uri : str
     optionsStr.push(...parentAndOwnVariables)
 
     Log.writeLspServer('before xfor')
-    let javascriptText = getJsCodeInQuotationMarksWithProperFormating(uri!,line, character)
+    let javascriptText = getJsCodeInQuotationMarksWithProperFormating(uri!,line, character,true)
     //let javascriptText = getJSCodeBetweenQuotationMarks(uri!,line,character)
     //Log.writeLspServer(javascriptText,1)
     Log.writeLspServer('after')
@@ -114,8 +114,18 @@ export const completionJs  = async (line : number, character : number, uri : str
 
     return null
 }
+export function createMagicElVariable(node : Cheerio<Element> )
+{
+    const indexFirstWhitespace = node.toString().indexOf(' ')
+    Log.writeLspServer('heyhey')
+    Log.writeLspServer(node.toString())
 
-function createDataMagicElement(node : Cheerio<Element>)
+    const tagName = node.toString().substring(1,indexFirstWhitespace)
+    Log.writeLspServer(tagName)
+    return '$el = document.createElement("' + tagName + '") '
+}
+
+export function createDataMagicElement(node : Cheerio<Element>)
 {
     let output = '$data = { '
     const variables : string[] = []

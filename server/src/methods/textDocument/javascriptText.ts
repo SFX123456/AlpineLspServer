@@ -10,7 +10,7 @@ import {last} from "cheerio/lib/api/traversing";
 import {regexHighlightingSemantics} from "../../allRegex";
 import {createRefsStr, findAccordingRow, getAccordingRefs, getParentAndOwnVariables} from "../../cheerioFn";
 import {func} from "vscode-languageserver/lib/common/utils/is";
-import {addMagicEventVariableIfEvent} from "./completion/completionJs";
+import {addMagicEventVariableIfEvent, createDataMagicElement, createMagicElVariable} from "./completion/completionJs";
 import {chainableOnXShow} from "../../x-validOptions";
 
 export function getAllJavaScriptText(uri: string,startLine : number | null = null, tillLine : number| null = null ) : string[]
@@ -31,9 +31,11 @@ export function getAllJavaScriptText(uri: string,startLine : number | null = nul
 
                 fullText+= 'let m = \n'
             }
-            fullText += getJsCodeInQuotationMarksWithProperFormating(uri, line, match.index + match[0].length)
+
+            fullText += getJsCodeInQuotationMarksWithProperFormating(uri, line, match.index + match[0].length, false)
             const node = findAccordingRow(line,allHtml.get(uri)!)
             const variables = getParentAndOwnVariables(node!)
+            variables.push(createMagicElVariable(node!))
             fullText = addMagicObjects(fullText)
             fullText += 'var '
             fullText += variables.join('; var')
@@ -45,6 +47,7 @@ export function getAllJavaScriptText(uri: string,startLine : number | null = nul
             const magicEventStr = addMagicEventVariableIfEvent(uri, line,match.index + match[0].length)
             if (magicEventStr != '') fullText += ('var '  + magicEventStr)
             output.push(fullText)
+            Log.writeLspServer('looking at index ' + (match.index + match[0].length))
             Log.writeLspServer('got text : ' + fullText,1)
             if (lastY == line)
             {
@@ -78,11 +81,17 @@ function isKeyJavascriptSymbol(key : string)
     return true
 }
 
-export function getJsCodeInQuotationMarksWithProperFormating(uri: string, line: number, character : number) : string
+export function getJsCodeInQuotationMarksWithProperFormating(uri: string, line: number, character : number, shouldWatchForQuotationmarksOpening : boolean) : string
 {
     let output = ''
-    const openingParenthesisPosition = getOpeningParenthesisPosition(uri, line, character)
-    for (let i = 0; i < openingParenthesisPosition!.line; i++)
+    if (shouldWatchForQuotationmarksOpening)
+    {
+        const pos = getOpeningParenthesisPosition(uri,line,character)
+        if (!pos) return ''
+        line = pos.line
+        character = pos.character
+    }
+    for (let i = 0; i < line; i++)
     {
         output+= '\n'
     }
@@ -96,22 +105,27 @@ export function getJsCodeInQuotationMarksWithProperFormating(uri: string, line: 
 
 export function getJSCodeBetweenQuotationMarks(uri: string, line: number, character : number ) : string
 {
-    const openingParenthesisPosition = getOpeningParenthesisPosition(uri, line, character)
-    const endingParenthesisPosition = getEndingParenthesisPosition(uri, line, character)
-    if (!openingParenthesisPosition || !endingParenthesisPosition)
+    const openingQuotationPosition = {
+        line ,
+        character
+    }
+    const endingQuotationPosition = getEndingParenthesisPosition(uri, line, character)
+    Log.writeLspServer('ending position')
+    Log.writeLspServer(endingQuotationPosition)
+    if (!openingQuotationPosition || !endingQuotationPosition)
     {
         return ''
     }
     let output = ''
     const content = allHtml.get(uri)!.linesArr
-    for (let i = openingParenthesisPosition.line; i <= endingParenthesisPosition.line; i++)
+    for (let i = openingQuotationPosition.line; i <= endingQuotationPosition.line; i++)
     {
         //  console.log(allFiles.get(uri)!.split('\n')[i])
-        let c = openingParenthesisPosition.line == i ? openingParenthesisPosition.character : 0
-        let cEnd = endingParenthesisPosition.line == i ? endingParenthesisPosition.character : content[i].length
+        let c = openingQuotationPosition.line == i ? openingQuotationPosition.character : 0
+        let cEnd = endingQuotationPosition.line == i ? endingQuotationPosition.character : content[i].length
         for (let column = 0; column < cEnd; column++)
         {
-            if (openingParenthesisPosition.line == i && column < openingParenthesisPosition.character)
+            if (openingQuotationPosition.line == i && column < openingQuotationPosition.character)
             {
                 output += ' '
             }
@@ -120,7 +134,7 @@ export function getJSCodeBetweenQuotationMarks(uri: string, line: number, charac
                 output += content[i][column]
             }
         }
-        if (i != endingParenthesisPosition.line)
+        if (i != endingQuotationPosition.line)
             output += '\n'
     }
     return output

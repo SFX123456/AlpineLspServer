@@ -95,8 +95,8 @@ export function getOpeningParenthesisPosition(uri: string, line:number, characte
 export function getEndingParenthesisPosition(uri: string, line: number, character: number) :Position | null
 {
     const lineSubstr = allHtml.get(uri)!.linesArr[line].substring(character)
-    const regExpEndParenthesis = regexEndQuotationMarks
-    const regExpStart= regexStartingAlpineExpression
+    Log.writeLspServer(lineSubstr)
+    const regExpEndParenthesis = new RegExp(regexEndQuotationMarks)
     const res = regExpEndParenthesis.exec(lineSubstr)
     if (res != null)
     {
@@ -107,8 +107,8 @@ export function getEndingParenthesisPosition(uri: string, line: number, characte
             character : res.index! + character
         }
     }
-    line++
     const position = getEndTagPosition(uri, line)
+    line++
     if (position == null) return null
     const closingTagIndexLine = position.line
     const closingTagIndexCharacter = position.character
@@ -119,6 +119,8 @@ export function getEndingParenthesisPosition(uri: string, line: number, characte
        const res = regExpEndParenthesis.exec(lineStr)
         if (res)
         {
+            Log.writeLspServer('found match later')
+            Log.writeLspServer(res)
             return {
                 line,
                 character : res.index
