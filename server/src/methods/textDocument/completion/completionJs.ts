@@ -7,7 +7,7 @@ import {
     findAccordingRow,
     getAccordingRefs,
     getParentAndOwnIdScopes,
-    getParentAndOwnVariables, getParentAndOwnVariablesXData
+    getParentAndOwnVariables, getParentAndOwnVariablesJustNamesNoFunctions, getParentAndOwnVariablesXData
 } from "../../../cheerioFn";
 import {requestingMethods} from "../../../typescriptLsp/typescriptServer";
 import {addNecessaryCompletionItemProperties, completionResponseType} from "../completion";
@@ -18,10 +18,9 @@ import {
 } from "../javascriptText";
 import {getKeyword, getLastWordWithUriAndRange} from "../../../analyzeFile";
 import cheerio, {Cheerio, Element} from "cheerio";
+import {CompletionItem} from "../../../types/completionTypes";
 export const completionJs  = async (line : number, character : number, uri : string | undefined, codeBlock : CodeBlock) : Promise<CompletionList | null> => {
     Log.writeLspServer('completion requested')
-    let optionsStr : string[] = []
-    optionsStr.push(...magicObjects)
     const wholeLine = allHtml.get(uri!)!.linesArr[line]
     Log.writeLspServer('completionJs ' + wholeLine,1)
     let lastWordSuggestion = getLastWordWithUriAndRange(uri!, {
@@ -63,16 +62,60 @@ export const completionJs  = async (line : number, character : number, uri : str
 
     Log.writeLspServer('completionJS 2', 1)
 
-    optionsStr.push(createMagicElVariable(node!))
-    const magicEventStr = addMagicEventVariableIfEvent(uri!,line,character)
-    if (magicEventStr != '') optionsStr.push(magicEventStr)
+    let optionsStr : string[] = []
 
     Log.writeLspServer('completionjs4 ' + optionsStr, 1)
     const parentAndOwnVariables = getParentAndOwnVariables(node)
     optionsStr.push(...parentAndOwnVariables)
 
     Log.writeLspServer('before xfor')
+    if (isInsideWatch(lastWordSuggestion,character))
+    {
+        let text = createBlankJavascriptWithBBB(line,character)
+        text += optionsStr.map(x => 'var ' + x + ';' ).join('')
+        Log.writeLspServer('created text ')
+        const allKeys : string[] = []
+        getParentAndOwnVariablesJustNamesNoFunctions(node,allKeys)
+        text += 'var bbb = {'
+        text += allKeys.map(item => item.replace('"','')).join(', ')
+        text += ' }'
+        const linefulll = text.split('\n')[line]
+        Log.writeLspServer(linefulll)
+        const ch = linefulll[character-1]
+
+        Log.writeLspServer(ch)
+        Log.writeLspServer(text)
+        const res = await requestingMethods( 'completion', text, line, character)
+        Log.writeLspServer('vvvvvvvv')
+        Log.writeLspServer(res || 'no results')
+        const message = res as completionResponseType
+        try {
+            //@ts-ignore
+            const items = message.result.items as unknown as CompletionItem[]
+            const output : CompletionItem[] =  items.map(x => {
+                return {
+                    label:x.label,
+                    kind : x.kind,
+                }
+            })
+            return {
+                isIncomplete : true,
+                items: output
+            }
+        }
+        catch (e)
+        {
+            Log.writeLspServer('error here', 1)
+            Log.writeLspServer(e)
+        }
+    }
+
+    optionsStr.push(...magicObjects)
+    optionsStr.push(createMagicElVariable(node!))
+    const magicEventStr = addMagicEventVariableIfEvent(uri!,line,character)
+    if (magicEventStr != '') optionsStr.push(magicEventStr)
     let javascriptText = getJsCodeInQuotationMarksWithProperFormating(uri!,line, character,true)
+
     //let javascriptText = getJSCodeBetweenQuotationMarks(uri!,line,character)
     //Log.writeLspServer(javascriptText,1)
     Log.writeLspServer('after')
@@ -113,6 +156,29 @@ export const completionJs  = async (line : number, character : number, uri : str
     }
 
     return null
+}
+
+
+
+function createBlankJavascriptWithBBB(line : number, character : number)
+{
+    let output = ''
+    for (let i = 0; i < line; i++) {
+        output += '\n'
+    }
+    for (let i = 0; i < character-4; i++) {
+        output+= ' '
+    }
+    output+= 'bbb.'
+    for (let i = 0; i < 500; i++) {
+        output+= '\n'
+    }
+    return output
+}
+
+function isInsideWatch(lastWordSuggestion : lastWordSuggestion, character : number)
+{
+    return  lastWordSuggestion.wholeLineTillEndofWord.substring(0,character).match(/\$watch\(\s*'$/) != null
 }
 export function createMagicElVariable(node : Cheerio<Element> )
 {
