@@ -155,7 +155,60 @@ export function getParentAndOwnIdScopes(node : Cheerio<Element>): string[]
     return idNameSpaces;
 }
 
+export function getParentAndOwnVariablesXData(node: Cheerio<Element>, variablesToBuldXData : string[]) : string[]
+{
 
+    const variables : string[] = []
+
+    while (true)
+    {
+        const data = node[0].attribs["x-data"]
+        Log.writeLspServer('for data ' + data,1)
+        if (data)
+        {
+            try {
+
+                Log.writeLspServer('mx1',1)
+                const func = new Function(`return ${data}`)
+                const obj = func()
+                Log.writeLspServer('mx2',1)
+                let keys = Object.keys(obj)
+                variablesToBuldXData.push(...keys)
+                const strToPush = '{ ' + keys.join(', ') + '} = ' + data
+                Log.writeLspServer('here5 ' + strToPush,1)
+                variables.push(strToPush)
+            }
+            catch (e)
+            {
+                Log.writeLspServer('error parsing x-data',1)
+            }
+
+            /*
+            data.split(",").forEach((keyVal : string) => {
+                Log.write(keyVal,1)
+                const key = keyVal.split(":")[0]
+                    .split(' {')[0]
+                    .replaceAll("{", "")
+                    .replaceAll('}', '')
+                    .trim()
+                variables.push(key)
+            })
+
+             */
+        }
+
+        const parentNodeArr= node.parent()
+        if (parentNodeArr.length)
+        {
+            node = node.parent()
+        }
+        else
+        {
+            break
+        }
+    }
+    return variables;
+}
 
 export function getParentAndOwnVariables(node : Cheerio<Element>): string[]
 {
@@ -179,7 +232,6 @@ export function getParentAndOwnVariables(node : Cheerio<Element>): string[]
                     variables.push(res[1])
                     variables.push(res[2])
                 }
-
             else
             {
                 const regExp = /([a-z-]+)(\s+)in(\s+)([a-z-]+)/g
@@ -256,6 +308,9 @@ export function getParentAndOwnVariables(node : Cheerio<Element>): string[]
     }
     return variables;
 }
+
+
+
 
 
 

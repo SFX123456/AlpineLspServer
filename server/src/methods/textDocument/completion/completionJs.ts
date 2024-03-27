@@ -7,7 +7,7 @@ import {
     findAccordingRow,
     getAccordingRefs,
     getParentAndOwnIdScopes,
-    getParentAndOwnVariables
+    getParentAndOwnVariables, getParentAndOwnVariablesXData
 } from "../../../cheerioFn";
 import {requestingMethods} from "../../../typescriptLsp/typescriptServer";
 import {addNecessaryCompletionItemProperties, completionResponseType} from "../completion";
@@ -17,6 +17,7 @@ import {
     getJsCodeInQuotationMarksWithProperFormating
 } from "../javascriptText";
 import {getKeyword, getLastWordWithUriAndRange} from "../../../analyzeFile";
+import {Cheerio, Element} from "cheerio";
 export const completionJs  = async (line : number, character : number, uri : string | undefined, codeBlock : CodeBlock) : Promise<CompletionList | null> => {
     Log.writeLspServer('completion requested')
     let optionsStr : string[] = []
@@ -67,13 +68,16 @@ export const completionJs  = async (line : number, character : number, uri : str
     if (magicEventStr != '') optionsStr.push(magicEventStr)
 
     Log.writeLspServer('completionjs4 ' + optionsStr, 1)
-    optionsStr.push(...getParentAndOwnVariables(node))
+    const parentAndOwnVariables = getParentAndOwnVariables(node)
+    optionsStr.push(...parentAndOwnVariables)
+
     Log.writeLspServer('before xfor')
     let javascriptText = getJsCodeInQuotationMarksWithProperFormating(uri!,line, character)
     //let javascriptText = getJSCodeBetweenQuotationMarks(uri!,line,character)
     //Log.writeLspServer(javascriptText,1)
     Log.writeLspServer('after')
     //Log.writeLspServer(javascriptText)
+    optionsStr.push(createDataMagicElement(node))
     javascriptText += optionsStr.map(x => 'var ' + x + ';' ).join('')
     javascriptText +=  (magicObjects.map(x => ' var ' + x +'; ').join(''))
 
@@ -82,6 +86,8 @@ export const completionJs  = async (line : number, character : number, uri : str
     {
         javascriptText += createRefsStr(refs)
     }
+
+
     Log.writeLspServer('typescript')
     Log.writeLspServer(javascriptText)
     Log.writeLspServer('completionjs5', 1)
@@ -107,6 +113,20 @@ export const completionJs  = async (line : number, character : number, uri : str
     }
 
     return null
+}
+
+function createDataMagicElement(node : Cheerio<Element>)
+{
+    let output = '$data = { '
+    const variables : string[] = []
+    Log.writeLspServer('yoyoyo',1)
+    getParentAndOwnVariablesXData(node,variables)
+    Log.writeLspServer(variables)
+
+    output += variables.map(item => item.replace('"','')).join(', ')
+    output += ' }'
+    Log.writeLspServer('the output : ' + output)
+    return output
 }
 export function addMagicEventVariableIfEvent(uri: string, line: number, character : number) : string
 {
