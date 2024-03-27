@@ -1,8 +1,14 @@
-import {CompletionList, customEvent, Range} from "../../../types/ClientTypes";
+import {CompletionList, customEvent, lastWordSuggestion, Range} from "../../../types/ClientTypes";
 import Log from "../../../log";
 import {magicObjects} from "../../../magicobjects";
 import {allFiles, allHtml} from "../../../allFiles";
-import {createRefsStr, findAccordingRow, getAccordingRefs, getParentAndOwnVariables} from "../../../cheerioFn";
+import {
+    createRefsStr,
+    findAccordingRow,
+    getAccordingRefs,
+    getParentAndOwnIdScopes,
+    getParentAndOwnVariables
+} from "../../../cheerioFn";
 import {requestingMethods} from "../../../typescriptLsp/typescriptServer";
 import {addNecessaryCompletionItemProperties, completionResponseType} from "../completion";
 import {CodeBlock} from "../../../CodeBlock";
@@ -10,13 +16,31 @@ import {PageHtml} from "../../../HtmlParsing/PageHtml";
 import {
     getJsCodeInQuotationMarksWithProperFormating
 } from "../javascriptText";
-import {getKeyword} from "../../../analyzeFile";
+import {getKeyword, getLastWordWithUriAndRange} from "../../../analyzeFile";
 export const completionJs  = async (line : number, character : number, uri : string | undefined, codeBlock : CodeBlock) : Promise<CompletionList | null> => {
     Log.writeLspServer('completion requested')
     let optionsStr : string[] = []
     optionsStr.push(...magicObjects)
     const wholeLine = allHtml.get(uri!)!.linesArr[line]
     Log.writeLspServer('completionJs ' + wholeLine,1)
+    let lastWordSuggestion = getLastWordWithUriAndRange(uri!, {
+        character,
+        line
+    })
+    const htmpPage = allHtml.get(uri!)
+    const node = findAccordingRow(line, htmpPage!)
+    if (!node){
+        Log.write("node did not found")
+        return null
+    }
+    if (isWithinId(lastWordSuggestion,character))
+    {
+        const res = getParentAndOwnIdScopes(node!)
+        return {
+            isIncomplete: false,
+            items: addNecessaryCompletionItemProperties(res, line,character)
+        }
+    }
     if (isWithInDispatch(codeBlock))
     {
         Log.writeLspServer('is inside dispatch',1)
@@ -37,13 +61,7 @@ export const completionJs  = async (line : number, character : number, uri : str
     }
 
     Log.writeLspServer('completionJS 2', 1)
-    const htmpPage = allHtml.get(uri!)
 
-    const node = findAccordingRow(line, htmpPage!)
-    if (!node){
-        Log.write("node did not found")
-        return null
-    }
 
     const magicEventStr = addMagicEventVariableIfEvent(uri!,line,character)
     if (magicEventStr != '') optionsStr.push(magicEventStr)
@@ -123,6 +141,15 @@ export function addMagicEventVariableIfEvent(uri: string, line: number, characte
     return eventText
 }
 
+function isWithinId(lastword : lastWordSuggestion, character : number): Boolean
+{
+    Log.writeLspServer('checks whether insode id')
+    const regExp = /\$id\(\s*'*$/
+    const match = lastword.wholeLineTillEndofWord.substring(0,character).match(regExp)
+    Log.writeLspServer(match)
+    if (!match) return false
+    return true
+}
 function isWithInDispatch(codeBlock : CodeBlock): Boolean
 {
     Log.writeLspServer('checks whether insode dispatch')

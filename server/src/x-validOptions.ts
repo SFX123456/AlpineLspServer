@@ -129,6 +129,15 @@ export const xoptions : CompletionItem[] = [
         insertTextFormat : 2,
     },
     {
+        label: 'x-id=\"[\'\${1:foo}\']\"',
+        kind: 15,
+        insertTextFormat : 2,
+        labelDetails: {
+            detail : '',
+            description: 'declare an id scope'
+        }
+    },
+    {
         label: 'x-effect=\"${1:foo} \"',
         kind: 15,
         insertTextFormat : 2,

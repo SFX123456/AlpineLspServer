@@ -1,6 +1,6 @@
 import {CompletionItem} from "./types/completionTypes";
 
-export const doublePointJustString = ['placeholder','class']
+export const doublePointJustString = ['placeholder','class', 'id']
 
 export const doublePointCompletions : CompletionItem[] = doublePointJustString.map((item) => {
     return {

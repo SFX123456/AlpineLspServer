@@ -118,6 +118,42 @@ export function createRefsStr(arr : any[])
 
 
 
+export function getParentAndOwnIdScopes(node : Cheerio<Element>): string[]
+{
+    const idNameSpaces : string[] = []
+
+    while (true)
+    {
+        const data = node[0].attribs["x-id"]
+        Log.writeLspServer('for data ' + data,1)
+        if (data)
+        {
+            try {
+                const regExp = /\[\s*(['a-zA-Z-,]+)\s*\]/
+                const res = regExp.exec(data)
+                if (!res) continue
+                res[1].split(',').map(item => {
+                    idNameSpaces.push(item.replaceAll('\'','').trim())
+                })
+            }
+            catch (e)
+            {
+                Log.writeLspServer('error parsing x-id',1)
+            }
+        }
+
+        const parentNodeArr= node.parent()
+        if (parentNodeArr.length)
+        {
+            node = node.parent()
+        }
+        else
+        {
+            break
+        }
+    }
+    return idNameSpaces;
+}
 
 
 
