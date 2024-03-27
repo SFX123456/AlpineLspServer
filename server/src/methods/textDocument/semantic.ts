@@ -15,7 +15,7 @@ export const semantic = async (message : RequestMessage ) : Promise<semanticResp
 
     const res = detectAlpineCharacters(textDocument.textDocument.uri)
     const allTokens = [...res]
-    let javaScrText = getAllJavaScriptText(textDocument.textDocument.uri,0,15)
+    let javaScrText = getAllJavaScriptText(textDocument.textDocument.uri,0,1000)
     for (const item of javaScrText) {
         Log.writeLspServer('item: ',1)
         Log.writeLspServer(item,1)
