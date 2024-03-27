@@ -103,7 +103,7 @@ export const completion = async (message : RequestMessage) : Promise<CompletionL
 Log.writeLspServer('test',1)
     Log.writeLspServer(rangeHtmlTag)
     const codeBlock = new CodeBlock(rangeHtmlTag!, textDocumentt)
-   if (codeBlock.isInsideParenthesis())
+   if (codeBlock.isInsideQuotationMarks())
    {
        Log.writeLspServer('is inside parenthesis ',1)
        Log.writeLspServer('works so far',1)

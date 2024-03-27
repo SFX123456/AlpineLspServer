@@ -18,10 +18,10 @@ export class CodeBlock
         this.line = textDocument.position.line
         this.character = textDocument.position.character
         this.textDocument = textDocument
-        this.parenthesisRange = this.getPosParenthesis(textDocument)
+        this.parenthesisRange = this.getPosQuotationMarks(textDocument)
     }
 
-    private getPosParenthesis(textDocument : textDocumentType): null | Range {
+    private getPosQuotationMarks(textDocument : textDocumentType): null | Range {
         const uri = textDocument.textDocument.uri
         let line = textDocument.position.line
         let character = textDocument.position.character
@@ -130,22 +130,9 @@ export class CodeBlock
         return output
     }
 
-    public isInsideParenthesis(): Boolean
+    public isInsideQuotationMarks(): Boolean
     {
         return this.parenthesisRange != null
-    }
-
-    public getKeyWord(): string
-    {
-        const wholeLine = allHtml.get(this.textDocument.textDocument.uri)!.linesArr[this.parenthesisRange!.start.line]
-        const indexEqualQuotationMark = wholeLine.substring(0,this.character).lastIndexOf('="') + 2
-
-        const subStr = wholeLine.substring(0, indexEqualQuotationMark)
-        Log.writeLspServer('substr : ' + subStr,1)
-        const beginningIndex = subStr.lastIndexOf(' ')
-
-        Log.writeLspServer('beginningindex : ' + beginningIndex,1)
-        return subStr.substring(beginningIndex + 1, indexEqualQuotationMark - 2)
     }
 
 }
