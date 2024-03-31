@@ -1,19 +1,10 @@
-<div x-data="{
-    open: false,
-    get isOpen() { return this.open },
-    toggle() { this.open = ! this.open },
-    let arr = [ {idea: 'test'},  ]
-}" >
-    <button @click="" >
-        Toggle Content
-    </button>
-    <div x-for="testing in arr " >
-        <li x-text="testing. "  >
+<script src="//unpkg.com/alpinejs" defer></script>
 
-        </li>
-    </div>
+<div x-data="{ open: false }" :placeholder="testing" >
+    <button @click="open = true">Expand</button>
 
-    <div x-show="toggle()" >
+    <span        x-show="open">
         Content...
-    </div>
+    </span>
 </div>
+

@@ -84,6 +84,7 @@ export function getOpeningParenthesisPosition(uri: string, line:number, characte
                 character : matchFinal.index + 2
             }
         }
+        Log.writeLspServer('test')
         line--
     }
     return null

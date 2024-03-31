@@ -34,7 +34,7 @@ function testing()
 }
 
 
-testing()
+//testing()
 
 
 export function testRef()

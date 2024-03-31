@@ -41,7 +41,7 @@ export const initialize = async (message : RequestMessage) : Promise<InitializeR
             definitionProvider: true,
             semanticTokensProvider: {
                 legend: {
-                    tokenTypes:["class","enum","interface","namespace","typeParameter","type","parameter","variable","enumMember","property","function","member"],
+                    tokenTypes:["class","enum","interface","namespace","typeParameter","type","parameter","variable","enumMember","property","function","member", "struct","event","method","macro","keyword","modifier","comment","string","number","regexp","operator","decorator"],
                     tokenModifiers:["declaration","static","async","readonly","defaultLibrary","local"]
                 },
                 full: true,

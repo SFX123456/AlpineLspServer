@@ -12,6 +12,8 @@ import {test} from "./Testing/mainTest";
 import {ok} from "./Testing/codeCompletionTest";
 import {hoverTest} from "./Testing/hoverTest";
 import {testRef} from "./Testing/refTest";
+import {treesitterTest} from "./Testing/treesitterTest";
+import {treeSitterHtmlTest2} from "./Testing/treeSitterHtml";
 
 export interface RequestMessage{
     id: number | string;
@@ -33,6 +35,8 @@ test()
 ok()
 hoverTest()
 testRef()
+treesitterTest()
+treeSitterHtmlTest2()
 const respond = async (id : number, fn : Function, params: unknown) => {
     const res = await fn(params)
     if (!res) return

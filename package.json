@@ -7,7 +7,8 @@
   "publisher": "REPLACE_ME",
   "categories": [],
   "engines": {
-    "vscode": "^1.75.0"
+    "vscode": "^1.75.0",
+    "node": ">=18.17.0 <19"
   },
   "activationEvents": [
     "onLanguage"
@@ -18,12 +19,14 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "tsc -b",
+    "compile": "tsc -b --force",
     "watch": "tsc -b -w",
-    "postinstall": "cd client && npm install && cd ../server && npm install && cd .."
+    "postinstall": "cd client && npm install && cd ../server && npm i  && .\\node_modules\\.bin\\electron-rebuild.cmd -v 27.3.2 && npm run reb && cd .. && npm run compile"
   },
   "devDependencies": {
+    "@electron/rebuild": "^3.6.0",
     "@types/node": "^20.5.7",
+    "electron-rebuild": "^3.2.9",
     "typescript": "^5.2.2"
   }
 }

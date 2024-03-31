@@ -18,7 +18,7 @@ import {
 } from "./completion/completionJs";
 import {chainableOnXShow} from "../../x-validOptions";
 
-export function getAllJavaScriptText(uri: string,startLine : number | null = null, tillLine : number| null = null ) : string[]
+export function getAllJavaScriptText(uri: string,startLine : number | null = null, tillLine : number| null = null ,textJavascript : string) : string[]
 {
     const regExpStart = regexHighlightingSemantics
     const arrLines = allHtml.get(uri)!.linesArr

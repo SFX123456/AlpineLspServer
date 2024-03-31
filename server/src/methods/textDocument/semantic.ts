@@ -5,6 +5,8 @@ import Log from "../../log";
 import {requestingMethods} from "../../typescriptLsp/typescriptServer";
 import {textDocumentType} from "../../types/ClientTypes";
 import {getAllJavaScriptText} from "./javascriptText";
+import {getSemanticTokens} from "../../treeSitterSemantic";
+import {getAllJavascriptText} from "../../treeSitterHmtl";
 
 interface semanticResponse  {
     data: number[]
@@ -14,8 +16,10 @@ export const semantic = async (message : RequestMessage ) : Promise<semanticResp
 
 
     const res = detectAlpineCharacters(textDocument.textDocument.uri)
+
     const allTokens = [...res]
-    let javaScrText = getAllJavaScriptText(textDocument.textDocument.uri,0,1000)
+    /*
+    let javaScrText = getAllJavaScriptText(textDocument.textDocument.uri,0,1000, '')
     for (const item of javaScrText) {
         Log.writeLspServer('item: ',1)
         Log.writeLspServer(item,1)
@@ -35,6 +39,14 @@ export const semantic = async (message : RequestMessage ) : Promise<semanticResp
         Log.writeLspServer('ts server response ', 1)
         Log.writeLspServer(z,1)
     }
+
+     */
+    const allJSCode = getAllJavascriptText(textDocument.textDocument.uri)
+    Log.writeLspServer('the js code i parsed')
+    Log.writeLspServer(allJSCode)
+    const toke = getSemanticTokens(allJSCode)
+    Log.writeLspServer(toke)
+    allTokens.push(...toke)
     const sortedSemTokens = sortSemanticTokens(allTokens)
     const decrpytedTokens = decryptSemanticTokens(sortedSemTokens)
     Log.writeLspServer('hopefully rigfht',1)
@@ -68,7 +80,7 @@ function deleteFirstRowSuggestionsAndChangeOtherAccordingly(suggestions : number
     return suggestions.slice(indexToCut-1)
 }
 
-interface semanticToken {
+export interface semanticToken {
     line: number,
     startChar: number,
     length : number,
@@ -162,10 +174,13 @@ function decryptSemanticsFromJavascriptServer(numbers : number[]): semanticToken
     return output
 }
 
+
+
+
 function detectAlpineCharacters(uri: string) : semanticToken[]
 {
     const lines = allFiles.get(uri)!.split('\n')
-    const regExpx = /x-[a-zA-Z-:\.]+="|:[a-z]+="|(?<![\\=])"|@[a-z-:]+(\.[a-z:]+)*="|let|var|const/g;
+    const regExpx = /x-[a-zA-Z-:\.]+="|:[a-z]+="|(?<![\\=])"|@[a-z-:]+(\.[a-z:]+)*="/g;
     let match : any;
     const output : semanticToken[] = []
     lines.forEach((line, currentLine) => {
