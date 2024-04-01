@@ -1,3 +1,2 @@
-<div x-init="console.log
-alert" >
+<div x-data x-init="$dispatch(' " >
 </div>

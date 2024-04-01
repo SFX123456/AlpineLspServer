@@ -4,7 +4,7 @@ import {CompletionList, lastWordSuggestion, textDocumentType} from "../../types/
 import {CompletionItem} from "../../types/completionTypes";
 import {completionJustAT} from "./completion/atCompletion";
 import {completionJs} from "./completion/completionJs";
-import {getLastWord, isInsideElement} from "../../analyzeFile";
+import {getLastWord, getLastWordWithUriAndRange, isInsideElement} from "../../analyzeFile";
 import {CodeBlock} from "../../CodeBlock";
 import {completionX} from "./completion/xCompletion";
 import {chainableOnAt, chainableOnAtKeyboard} from "../chainableOnAt";
@@ -99,7 +99,10 @@ export const completion = async (message : RequestMessage) : Promise<CompletionL
 
     const line = textDocumentt.position.line;
     const character = textDocumentt.position.character;
-    const lastWord = getLastWord(textDocumentt)
+    const lastWord = getLastWordWithUriAndRange(textDocumentt.textDocument.uri,{
+        line,
+        character
+    })
     Log.writeLspServer(lastWord,1)
     const position : positionTreeSitter = {
         row : line,

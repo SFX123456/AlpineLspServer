@@ -11,7 +11,6 @@ import {
 } from "../../../cheerioFn";
 import {requestingMethods} from "../../../typescriptLsp/typescriptServer";
 import {addNecessaryCompletionItemProperties, completionResponseType} from "../completion";
-import {CodeBlock} from "../../../CodeBlock";
 import {PageHtml} from "../../../HtmlParsing/PageHtml";
 import {
     getJsCodeInQuotationMarksWithProperFormating
@@ -20,7 +19,6 @@ import {getKeyword, getLastWordWithUriAndRange} from "../../../analyzeFile";
 import cheerio, {Cheerio, Element} from "cheerio";
 import {CompletionItem} from "../../../types/completionTypes";
 import {positionTreeSitter, rangeIndexTreesitter} from "../../../treeSitterHmtl";
-import {RAL} from "vscode-languageserver";
 export const completionJs  = async (line : number, character : number, uri : string | undefined, javascriptPos : rangeIndexTreesitter) : Promise<CompletionList | null> => {
    const javascriptText = allFiles.get(uri!)!.substring(javascriptPos.startIndex,javascriptPos.endIndex)
     Log.writeLspServer('bbbbbbbbbbbbbbbbbbb',1)
@@ -46,10 +44,7 @@ export const completionJs  = async (line : number, character : number, uri : str
             items: addNecessaryCompletionItemProperties(res, line,character)
         }
     }
-    /*
-    if (isWithInDispatch(codeBlock))
-    {
-        Log.writeLspServer('is inside dispatch',1)
+    Log.writeLspServer('yyyyyyyyyyyyyyyyyyyyyy',1)
         if (isInsideDispatchSetEvent(wholeLine, character))
         {
             const events = PageHtml.getAllListedToEvents()
@@ -60,12 +55,6 @@ export const completionJs  = async (line : number, character : number, uri : str
                 items: addNecessaryCompletionItemProperties(events, line, character)
             }
         }
-        return {
-            isIncomplete : false,
-            items: []
-        }
-    }
-*/
     Log.writeLspServer('completionJS 2', 1)
 
     let optionsStr : string[] = []
@@ -253,37 +242,67 @@ function isWithinId(lastword : lastWordSuggestion, character : number): Boolean
     if (!match) return false
     return true
 }
-function isWithInDispatch(javascriptText : string, line : number, character : number): Boolean
+function isWithInDispatch(javascriptText : string, line : number, character : number, position : rangeIndexTreesitter): Boolean
 {
     Log.writeLspServer('checks whether insode dispatch')
     const textWithinParenthesis = javascriptText
     Log.writeLspServer(textWithinParenthesis)
-    const regExp = /\$dispatch\(['{}:a-zA-Z\s,\n\$]*\)/
+    const regExp = /\$dispatch\([\s\S]*\)/
     const match = textWithinParenthesis.match(regExp)
-    Log.writeLspServer(match)
+Log.writeLspServer('jjjjjjjjjjjjjjjj ' + match,1)
     if (!match) return false
-    //Log.writeLspServer((match.index! + match[0].length - textWithinParenthesis.substring(0,match.index!).lastIndexOf('\n') + 1).toString())
-    return false
-/*
-    Log.writeLspServer((codeBlock.character + realIndexFactor).toString())
-    Log.writeLspServer((match.index!).toString())
-    Log.writeLspServer((match[0].length + match.index!).toString())
-    if ((match[0].length + match.index!) > (codeBlock.character + realIndexFactor)
-        && match.index! < codeBlock.character + realIndexFactor
-    ) return true
+    const h = javascriptText.substring(0,match.index).split('\n')
+    const newLineCountBefore = h.length - 1
+    let characterRelativeStart = h[h.length-1].length
+    if (h.length == 1)
+    {
+        characterRelativeStart += character
+    }
+    const splitLines = match[0].split('\n')
+    const countNewLines = splitLines.length - 1
+    let characterEnd = splitLines[splitLines.length -1].length
+    if (countNewLines == 0 && newLineCountBefore == 0 )
+    {
+        characterEnd += character
+    }
+    const endPosition : positionTreeSitter= {
+        row : position.positionStart.row + newLineCountBefore + countNewLines ,
+        column : characterEnd
+    }
+    Log.writeLspServer('endposition : ' + JSON.stringify(endPosition),1)
+    const startPosition : positionTreeSitter = {
+        row : position.positionStart.row + newLineCountBefore,
+        column : characterRelativeStart
+    }
+    Log.writeLspServer('startPosition : ' + JSON.stringify(startPosition),1)
+    if (line <= endPosition.row && line >= startPosition.row && (
+        (
+            startPosition.row != line || startPosition.column <= character
+        )
+        &&
+        (
+            endPosition.row != line || endPosition.column >= character
+        )
+    ))
+    {
+        return true
+    }
     return false
 
- */
 }
 
 
 function isInsideDispatchSetEvent(wholeLine : string, character: number) : Boolean
 {
     const regExpEnd = /\$dispatch\([\s]*'$/
+    Log.writeLspServer('is dispatch set event ?',1)
+    Log.writeLspServer(wholeLine.substring(0,character),1)
     if (wholeLine.substring(0, character).match(regExpEnd))
     {
+        Log.writeLspServer('it is ',1)
         return true
     }
+    Log.writeLspServer('it i s notz ',1)
     return false
 }
 

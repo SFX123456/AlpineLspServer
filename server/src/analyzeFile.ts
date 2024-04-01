@@ -22,7 +22,10 @@ export function getLastWordWithUriAndRange(uri : string, position : Position)
 }
 export function getLastWord( textDocument: textDocumentType) : lastWordSuggestion {
     let character = textDocument.position.character
-    const wholeLine = allHtml.get(textDocument.textDocument.uri)!.linesArr[(textDocument.position.line)]
+    const wholeLine = allHtml.get(textDocument.textDocument.uri)!.linesArr[textDocument.position.line]
+    Log.writeLspServer(wholeLine,1)
+    Log.writeLspServer(textDocument.textDocument.uri,1)
+    Log.writeLspServer(textDocument.position.line.toString(),1)
     let wholeLineSubStrTillChar = wholeLine.substring(0, character)
     let startIndex = getIndexStartLastWord(wholeLineSubStrTillChar)
 
