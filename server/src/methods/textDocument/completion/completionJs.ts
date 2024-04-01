@@ -20,12 +20,9 @@ import cheerio, {Cheerio, Element} from "cheerio";
 import {CompletionItem} from "../../../types/completionTypes";
 import {positionTreeSitter, rangeIndexTreesitter} from "../../../treeSitterHmtl";
 export const completionJs  = async (line : number, character : number, uri : string | undefined, javascriptPos : rangeIndexTreesitter) : Promise<CompletionList | null> => {
-   const javascriptText = allFiles.get(uri!)!.substring(javascriptPos.startIndex,javascriptPos.endIndex)
-    Log.writeLspServer('bbbbbbbbbbbbbbbbbbb',1)
-    Log.writeLspServer(javascriptText,1)
-    Log.writeLspServer('completion requested')
+    const javascriptText = allFiles.get(uri!)!.substring(javascriptPos.startIndex,javascriptPos.endIndex)
+    Log.writeLspServer('completionJS requested')
     const wholeLine = allHtml.get(uri!)!.linesArr[line]
-    Log.writeLspServer('completionJs ' + wholeLine,1)
     let lastWordSuggestion = getLastWordWithUriAndRange(uri!, {
         character,
         line
@@ -33,75 +30,61 @@ export const completionJs  = async (line : number, character : number, uri : str
     const htmpPage = allHtml.get(uri!)
     const node = findAccordingRow(line, htmpPage!)
     if (!node){
-        Log.write("node did not found")
+        Log.writeLspServer(' matching node could not be found aborting')
+
         return null
     }
+    Log.writeLspServer('check if inside id function')
     if (isWithinId(lastWordSuggestion,character))
     {
+        Log.writeLspServer('is inside id function')
         const res = getParentAndOwnIdScopes(node!)
+
         return {
             isIncomplete: false,
             items: addNecessaryCompletionItemProperties(res, line,character)
         }
     }
-    Log.writeLspServer('yyyyyyyyyyyyyyyyyyyyyy',1)
-        if (isInsideDispatchSetEvent(wholeLine, character))
-        {
-            const events = PageHtml.getAllListedToEvents()
-            Log.writeLspServer('should return listed to events',1)
-            Log.writeLspServer(events,1)
-            return {
-                isIncomplete : false,
-                items: addNecessaryCompletionItemProperties(events, line, character)
-            }
-        }
-    Log.writeLspServer('completionJS 2', 1)
+    if (isInsideDispatchSetEvent(wholeLine, character))
+    {
+        const events = PageHtml.getAllListedToEvents()
+        Log.writeLspServer('should return listed to events',1)
+        Log.writeLspServer(events,1)
 
+        return {
+            isIncomplete : false,
+            items: addNecessaryCompletionItemProperties(events, line, character)
+        }
+    }
     let optionsStr : string[] = []
 
-    Log.writeLspServer('completionjs4 ' + optionsStr, 1)
     const parentAndOwnVariables = getParentAndOwnVariables(node)
     optionsStr.push(...parentAndOwnVariables)
 
-    Log.writeLspServer('before xfor')
+    Log.writeLspServer('check if inside watch')
     if (isInsideWatch(lastWordSuggestion,character))
     {
+        Log.writeLspServer('is inside watch')
         let text = createBlankJavascriptWithBBB(line,character)
         text += optionsStr.map(x => 'var ' + x + ';' ).join('')
-        Log.writeLspServer('created text ')
         const allKeys : string[] = []
         getParentAndOwnVariablesJustNamesNoFunctions(node,allKeys)
         text += 'var bbb = {'
         text += allKeys.map(item => item.replace('"','')).join(', ')
         text += ' }'
-        const linefulll = text.split('\n')[line]
-        Log.writeLspServer(linefulll)
-        const ch = linefulll[character-1]
-
-        Log.writeLspServer(ch)
-        Log.writeLspServer(text)
         const res = await requestingMethods( 'completion', text, line, character)
-        Log.writeLspServer('vvvvvvvv')
-        Log.writeLspServer(res || 'no results')
         const message = res as completionResponseType
-        try {
             //@ts-ignore
-            const items = message.result.items as unknown as CompletionItem[]
-            const output : CompletionItem[] =  items.map(x => {
-                return {
-                    label:x.label,
-                    kind : x.kind,
-                }
-            })
+        const items = message.result.items as unknown as CompletionItem[]
+        const output: CompletionItem[] = items.map(x => {
             return {
-                isIncomplete : true,
-                items: output
+                label: x.label,
+                kind: x.kind,
             }
-        }
-        catch (e)
-        {
-            Log.writeLspServer('error here', 1)
-            Log.writeLspServer(e)
+        })
+        return {
+            isIncomplete: true,
+            items: output
         }
     }
 
@@ -111,11 +94,6 @@ export const completionJs  = async (line : number, character : number, uri : str
     if (magicEventStr != '') optionsStr.push(magicEventStr)
     let javascriptTextProperFormating = getJsCodeInQuotationMarksWithProperFormating(javascriptText,javascriptPos.positionStart.row, javascriptPos.positionStart.column)
 
-
-    //let javascriptText = getJSCodeBetweenQuotationMarks(uri!,line,character)
-    //Log.writeLspServer(javascriptText,1)
-    Log.writeLspServer('after')
-    //Log.writeLspServer(javascriptText)
     optionsStr.push(createDataMagicElement(node))
     const rootElement = createMagicRootVariable(node)
     if (rootElement) optionsStr.push(rootElement)
@@ -128,26 +106,16 @@ export const completionJs  = async (line : number, character : number, uri : str
     {
         javascriptTextProperFormating += createRefsStr(refs)
     }
-    Log.writeLspServer('typescript')
-    Log.writeLspServer(javascriptTextProperFormating)
-    Log.writeLspServer('completionjs5', 1)
     const res = await requestingMethods( 'completion', javascriptTextProperFormating, line, character)
-    Log.writeLspServer('res is ' + JSON.stringify(res),1)
     if (res)
     {
         const message = res as completionResponseType
-        try {
-            //@ts-ignore
-            const items = message.result.items
-            return {
-                isIncomplete : true,
-                items: items
-            }
-        }
-        catch (e)
-        {
-            Log.writeLspServer('error here', 1)
-            Log.writeLspServer(e)
+        //@ts-ignore
+        const items = message.result.items
+
+        return {
+            isIncomplete: true,
+            items: items
         }
     }
 
@@ -158,8 +126,8 @@ export function createMagicRootVariable(node : Cheerio<Element>)
 {
     const res = getFirstXDataTagName(node)
     if (!res) return null
-    return '$root = document.createElement("' + res + '")'
 
+    return '$root = document.createElement("' + res + '")'
 }
 
 function createBlankJavascriptWithBBB(line : number, character : number)
@@ -295,14 +263,12 @@ Log.writeLspServer('jjjjjjjjjjjjjjjj ' + match,1)
 function isInsideDispatchSetEvent(wholeLine : string, character: number) : Boolean
 {
     const regExpEnd = /\$dispatch\([\s]*'$/
-    Log.writeLspServer('is dispatch set event ?',1)
-    Log.writeLspServer(wholeLine.substring(0,character),1)
     if (wholeLine.substring(0, character).match(regExpEnd))
     {
-        Log.writeLspServer('it is ',1)
+
         return true
     }
-    Log.writeLspServer('it i s notz ',1)
+
     return false
 }
 
