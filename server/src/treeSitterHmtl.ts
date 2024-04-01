@@ -204,7 +204,7 @@ export function getJavascriptBetweenQuotationMarksPosition(uri : string, pos : p
     return null
 }
 
-function getKeyWord(uri : string, position : positionTreeSitter)
+export function getKeyWord(uri : string, position : positionTreeSitter)
 {
     const tree = getTree(uri)
     let m = tree.rootNode.descendantForPosition(position)

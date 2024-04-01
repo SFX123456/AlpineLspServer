@@ -18,7 +18,8 @@ import {
 import {getKeyword, getLastWordWithUriAndRange} from "../../../analyzeFile";
 import cheerio, {Cheerio, Element} from "cheerio";
 import {CompletionItem} from "../../../types/completionTypes";
-import {positionTreeSitter, rangeIndexTreesitter} from "../../../treeSitterHmtl";
+import {getKeyWord, positionTreeSitter, rangeIndexTreesitter} from "../../../treeSitterHmtl";
+import {it} from "node:test";
 export const completionJs  = async (line : number, character : number, uri : string | undefined, javascriptPos : rangeIndexTreesitter) : Promise<CompletionList | null> => {
     const javascriptText = allFiles.get(uri!)!.substring(javascriptPos.startIndex,javascriptPos.endIndex)
     Log.writeLspServer('completionJS requested')
@@ -106,6 +107,8 @@ export const completionJs  = async (line : number, character : number, uri : str
     {
         javascriptTextProperFormating += createRefsStr(refs)
     }
+    const storemagicVariable = allHtml.get(uri!)!.buildStoreMagicVariable()
+    if (storemagicVariable != '') javascriptTextProperFormating += storemagicVariable
     const res = await requestingMethods( 'completion', javascriptTextProperFormating, line, character)
     if (res)
     {
@@ -171,7 +174,11 @@ export function createDataMagicElement(node : Cheerio<Element>)
 export function addMagicEventVariableIfEvent(uri: string, line: number, character : number) : string
 {
 
-    const keyWord = getKeyword(uri,line,character)
+    const keyWord = getKeyWord(uri , {
+        row: line,
+        column: character
+    })
+    if (!keyWord) return ''
     Log.writeLspServer('compeltionjs3 key ' + keyWord, 1)
     let eventText = ''
     if (keyWord[0] === '@' || keyWord.indexOf('x-on:') === 0)
@@ -191,8 +198,10 @@ export function addMagicEventVariableIfEvent(uri: string, line: number, characte
         Log.writeLspServer('the detected eventNa,e ' + eventName ,1)
         for (let key of allHtml.keys()) {
             allHtml.get(key)!.events.forEach(item => {
+                Log.writeLspServer(item,1)
                 if (item.name == eventName)
                 {
+
                     eventText+= buildMagiceventVar(item)
                 }
             })
@@ -277,16 +286,32 @@ function isInsideDispatchSetEvent(wholeLine : string, character: number) : Boole
 
 function buildMagiceventVar(item : customEvent )
 {
+Log.writeLspServer('qqqqqqqqqqqqqqqqqq',1)
+    Log.writeLspServer(JSON.stringify(item))
+    if (typeof item.details === 'string' || typeof item.details === 'number')
+    {
+        Log.writeLspServer('string or num,ber',1)
+        return  '$event = ' + '{ detail= ' + item.details +  ', srcElement : { dispatchEvent: 5 } } '
+    }
     const keys = Object.keys(item.details)
-    let tempStr = keys.map(key => {
-        let tempStr = ' '
-        tempStr += key
-        tempStr += ' : '
-        tempStr += item.details[key]
-        return tempStr
-    }).join(',')
+    Log.writeLspServer(keys,1)
+    try {
+        let tempStr = keys.map(key => {
+            let tempStr = ' '
+            tempStr += key
+            tempStr += ' : '
+            //@ts-ignore
+            tempStr += item.details[key]
+            return tempStr
+        }).join(',')
 
-    return  '$event = ' + '{ detail: { ' +  tempStr   +  '  }, srcElement : { dispatchEvent: 5 } } '
+        Log.writeLspServer('$event = ' + '{ detail: { ' +  tempStr   +  '  }, srcElement : { dispatchEvent: 5 } } ',1)
+        return  '$event = ' + '{ detail: { ' +  tempStr   +  '  }, srcElement : { dispatchEvent: 5 } } '
+    }
+    catch (e) {
+        Log.writeLspServer('not working')
+        return ''
+    }
 }
 
 

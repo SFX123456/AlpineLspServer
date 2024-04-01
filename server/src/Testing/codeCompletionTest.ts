@@ -19,6 +19,9 @@ function testing()
     Log.writeLspServer(content,1)
     allFiles.set(uri, content)
     saveCheerioFile(content, uri)
+    const magicVariable = allHtml.get(uri)!.buildStoreMagicVariable()
+    Log.writeLspServer(magicVariable,1)
+    /*
     Log.writeLspServer(allHtml.get(uri)!.linesArr,1)
     const message  = '{"jsonrpc":"2.0","id":2,"method":"textDocument/completion","params":{"textDocument":{"uri":"file:///e%3A/fsd/test.txt"},"position":{"line":0,"character":31},"context":{"triggerKind":1}}}'
     const messageParsed = JSON.parse(message)
@@ -34,10 +37,12 @@ function testing()
         Log.writeLspServer(res,1)
     }
     test()
+
+     */
 }
 
 
-testing()
+//testing()
 
 
 export function ok()

@@ -305,33 +305,7 @@ export function getParentAndOwnVariables(node : Cheerio<Element>): string[]
             try {
 
                 Log.writeLspServer('mx1',1)
-                const func = new Function(`return ${data}`)
-                const obj = func()
-                Log.writeLspServer('mx2',1)
-                let keys = Object.keys(obj)
-
-/*
-                JSON.stringify(obj, function (key, value) {
-                    // Check if the value is a function
-                    if (typeof value === 'function') {
-                        // Convert the function to a string
-                        Log.writeLspServer('pusing fn ' + value.toString(),1)
-                        const indexKey = keys.indexOf(key)
-                        if (indexKey == -1)
-                        {
-                            Log.writeLspServer('indexkey return -1',1)
-                            return
-                        }
-                        keys.splice(indexKey,1)
-                        variables.push(' function ' + value.toString());
-                        return 'sdf'
-                    }
-                    Log.writeLspServer('mx4',1)
-                    return ' ';
-                });
-*/
-                const strToPush = '{ ' + keys.join(', ') + '} = ' + data
-                Log.writeLspServer('here5 ' + strToPush,1)
+                const strToPush = extractKeysAndGenerateStr(data,[])
                 variables.push(strToPush)
             }
             catch (e)
@@ -364,6 +338,16 @@ export function getParentAndOwnVariables(node : Cheerio<Element>): string[]
         }
     }
     return variables;
+}
+
+
+export function extractKeysAndGenerateStr(data : string, keys : string[])
+{
+    const func = new Function(`return ${data}`)
+    const obj = func()
+    Log.writeLspServer('mx2',1)
+    keys.push(...Object.keys(obj))
+    return  '{ ' + keys.join(', ') + '} = ' + data
 }
 
 

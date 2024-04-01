@@ -1,2 +1,16 @@
-<div x-data x-init="$dispatch(' " >
-</div>
+<button @click="$dispatch('notify', { message: 'Hello World!' })">
+  <div @notify.window=" $event.detail " >
+
+  </div>
+</button>
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.store('darkMode', {
+            on: false,
+
+            toggle() {
+                this.on = ! this.on
+            }
+        })
+    })
+</script>
