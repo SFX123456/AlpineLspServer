@@ -12,7 +12,8 @@ export function saveCheerioFile(text: string, uri : string)
     let contentLines = addLineAttributes(contentLinesOr)
     Log.writeLspServer("look here")
     Log.writeLspServer(contentLines)
-    const finalStr = contentLines.join('\n')
+    let finalStr = contentLines.join('\n')
+    finalStr = finalStr.replaceAll('template','section')
     const cheer = cheerio.load(finalStr)
     const htmlPage = new PageHtml(cheer, uri.trim())
   //  Log.writeLspServer('savef  ile with uri ' + uri)
@@ -312,22 +313,11 @@ export function getParentAndOwnVariables(node : Cheerio<Element>): string[]
             {
                 Log.writeLspServer('error parsing x-data',1)
             }
-
-            /*
-            data.split(",").forEach((keyVal : string) => {
-                Log.write(keyVal,1)
-                const key = keyVal.split(":")[0]
-                    .split(' {')[0]
-                    .replaceAll("{", "")
-                    .replaceAll('}', '')
-                    .trim()
-                variables.push(key)
-            })
-
-             */
         }
 
         const parentNodeArr= node.parent()
+        Log.writeLspServer('next node ', 1)
+        Log.writeLspServer(parentNodeArr,1)
         if (parentNodeArr.length)
         {
             node = node.parent()

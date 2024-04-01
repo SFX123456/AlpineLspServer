@@ -1,5 +1,5 @@
 import {allFiles, allHtml} from "../allFiles";
-import {saveCheerioFile} from "../cheerioFn";
+import {findAccordingRow, getParentAndOwnVariables, saveCheerioFile} from "../cheerioFn";
 import {completion} from "../methods/textDocument/completion";
 import * as fs from "fs";
 import {initializeTypescriptServer} from "../typescriptLsp/typescriptServer";
@@ -21,6 +21,11 @@ function testing()
     saveCheerioFile(content, uri)
     const magicVariable = allHtml.get(uri)!.buildStoreMagicVariable()
     Log.writeLspServer(magicVariable,1)
+    const node = findAccordingRow(4,allHtml.get(uri)!)
+    Log.writeLspServer('initial node ',1)
+    Log.writeLspServer(node,1)
+    const res = getParentAndOwnVariables(node!)
+    Log.writeLspServer(res,1)
     /*
     Log.writeLspServer(allHtml.get(uri)!.linesArr,1)
     const message  = '{"jsonrpc":"2.0","id":2,"method":"textDocument/completion","params":{"textDocument":{"uri":"file:///e%3A/fsd/test.txt"},"position":{"line":0,"character":31},"context":{"triggerKind":1}}}'
