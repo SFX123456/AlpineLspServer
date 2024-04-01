@@ -63,17 +63,31 @@ export class PageHtml
     public getAlpineStore(javascriptText : string)
     {
         Log.writeLspServer('get alpine store',1)
-        const regExp = /Alpine\.store\(\s*'([a-zA-Z-]*)'\s*,(\s*\{[\s\S]*?\})\s*\)/g
+        const regExp = /Alpine\.store\(\s*'([a-zA-Z-]*)'\s*,(?:(\s*\{[\s\S]*?\}\s*)|\s*(['a-zA-Z-0-9]*)\s*)\)/g
 
         let match : any;
         while((match = regExp.exec(javascriptText)) != null)
         {
-            const storeName = match[1]
-            Log.writeLspServer(storeName,1)
-            Log.writeLspServer(match[2],1)
-            const keys : string[] =[]
-            const strToPush = extractKeysAndGenerateStr(match[2], keys)
-            this.allStores[storeName] = 'var ' + storeName +  '= (() => { let ' + strToPush + '; return  { ' + keys.join(',') + ' } })()\n'
+            try {
+                const storeName = match[1]
+                if (match[2] != undefined)
+                {
+                    const keys : string[] =[]
+                    const strToPush = extractKeysAndGenerateStr(match[2], keys)
+                    this.allStores[storeName] = 'var ' + storeName +  '= (() => { let ' + strToPush + '; return  { ' + keys.join(',') + ' } })()\n'
+                }
+                else if (match[3].indexOf('\'') != -1) {
+                    const parameter = match[3].trim().replaceAll('\'','')
+                    this.allStores[storeName] = 'var ' + storeName +  '= "' + parameter + '" ;'
+                }
+                else {
+                    const parameter = parseFloat(match[3])
+                    this.allStores[storeName] = 'var ' + storeName +  '= ' + parameter + ' ;'
+                }
+            }
+            catch (e) {
+               Log.writeLspServer('error extracting data on alpine stiore', 1)
+            }
         }
     }
 

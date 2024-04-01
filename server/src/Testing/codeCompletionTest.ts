@@ -42,7 +42,7 @@ function testing()
 }
 
 
-//testing()
+testing()
 
 
 export function ok()
