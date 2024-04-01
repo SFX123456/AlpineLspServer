@@ -14,6 +14,7 @@ import {hoverTest} from "./Testing/hoverTest";
 import {testRef} from "./Testing/refTest";
 import {treesitterTest} from "./Testing/treesitterTest";
 import {treeSitterHtmlTest2} from "./Testing/treeSitterHtml";
+import {loadParser} from "./treeSitterHmtl";
 
 export interface RequestMessage{
     id: number | string;
@@ -30,7 +31,7 @@ const methodLookUp : Record<string, RequestMethod> = {
     'textDocument/semanticTokens/full' : semantic,
     'textDocument/definition' : definitionRequest
 }
-
+loadParser()
 test()
 ok()
 hoverTest()

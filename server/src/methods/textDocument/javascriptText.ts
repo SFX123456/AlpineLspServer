@@ -37,7 +37,7 @@ export function getAllJavaScriptText(uri: string,startLine : number | null = nul
                 fullText+= 'let m = \n'
             }
 
-            fullText += getJsCodeInQuotationMarksWithProperFormating(uri, line, match.index + match[0].length, false)
+            //fullText += getJsCodeInQuotationMarksWithProperFormating(uri, line, match.index + match[0].length)
             const node = findAccordingRow(line,allHtml.get(uri)!)
             const variables = getParentAndOwnVariables(node!)
             const rootElement = createMagicRootVariable(node!)
@@ -88,21 +88,17 @@ function isKeyJavascriptSymbol(key : string)
     return true
 }
 
-export function getJsCodeInQuotationMarksWithProperFormating(uri: string, line: number, character : number, shouldWatchForQuotationmarksOpening : boolean) : string
+export function getJsCodeInQuotationMarksWithProperFormating(javascriptText: string, line: number, character : number) : string
 {
     let output = ''
-    if (shouldWatchForQuotationmarksOpening)
-    {
-        const pos = getOpeningParenthesisPosition(uri,line,character)
-        if (!pos) return ''
-        line = pos.line
-        character = pos.character
-    }
     for (let i = 0; i < line; i++)
     {
         output+= '\n'
     }
-    output += getJSCodeBetweenQuotationMarks(uri, line, character)
+    for (let i = 0; i < character; i++) {
+        output+= ' '
+    }
+    output += javascriptText
     for (let i = 0; i < 500; i++)
     {
         output += '\n'

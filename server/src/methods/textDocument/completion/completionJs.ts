@@ -19,7 +19,12 @@ import {
 import {getKeyword, getLastWordWithUriAndRange} from "../../../analyzeFile";
 import cheerio, {Cheerio, Element} from "cheerio";
 import {CompletionItem} from "../../../types/completionTypes";
-export const completionJs  = async (line : number, character : number, uri : string | undefined, codeBlock : CodeBlock) : Promise<CompletionList | null> => {
+import {positionTreeSitter, rangeIndexTreesitter} from "../../../treeSitterHmtl";
+import {RAL} from "vscode-languageserver";
+export const completionJs  = async (line : number, character : number, uri : string | undefined, javascriptPos : rangeIndexTreesitter) : Promise<CompletionList | null> => {
+   const javascriptText = allFiles.get(uri!)!.substring(javascriptPos.startIndex,javascriptPos.endIndex)
+    Log.writeLspServer('bbbbbbbbbbbbbbbbbbb',1)
+    Log.writeLspServer(javascriptText,1)
     Log.writeLspServer('completion requested')
     const wholeLine = allHtml.get(uri!)!.linesArr[line]
     Log.writeLspServer('completionJs ' + wholeLine,1)
@@ -41,6 +46,7 @@ export const completionJs  = async (line : number, character : number, uri : str
             items: addNecessaryCompletionItemProperties(res, line,character)
         }
     }
+    /*
     if (isWithInDispatch(codeBlock))
     {
         Log.writeLspServer('is inside dispatch',1)
@@ -59,7 +65,7 @@ export const completionJs  = async (line : number, character : number, uri : str
             items: []
         }
     }
-
+*/
     Log.writeLspServer('completionJS 2', 1)
 
     let optionsStr : string[] = []
@@ -114,7 +120,8 @@ export const completionJs  = async (line : number, character : number, uri : str
     optionsStr.push(createMagicElVariable(node!))
     const magicEventStr = addMagicEventVariableIfEvent(uri!,line,character)
     if (magicEventStr != '') optionsStr.push(magicEventStr)
-    let javascriptText = getJsCodeInQuotationMarksWithProperFormating(uri!,line, character,true)
+    let javascriptTextProperFormating = getJsCodeInQuotationMarksWithProperFormating(javascriptText,javascriptPos.positionStart.row, javascriptPos.positionStart.column)
+
 
     //let javascriptText = getJSCodeBetweenQuotationMarks(uri!,line,character)
     //Log.writeLspServer(javascriptText,1)
@@ -124,19 +131,18 @@ export const completionJs  = async (line : number, character : number, uri : str
     const rootElement = createMagicRootVariable(node)
     if (rootElement) optionsStr.push(rootElement)
 
-    javascriptText += optionsStr.map(x => 'var ' + x + ';' ).join('')
-    javascriptText +=  (magicObjects.map(x => ' var ' + x +'; ').join(''))
+    javascriptTextProperFormating += optionsStr.map(x => 'var ' + x + ';' ).join('')
+    javascriptTextProperFormating +=  (magicObjects.map(x => ' var ' + x +'; ').join(''))
 
     const refs = getAccordingRefs(node!)
     if (refs.length != 0)
     {
-        javascriptText += createRefsStr(refs)
+        javascriptTextProperFormating += createRefsStr(refs)
     }
     Log.writeLspServer('typescript')
-    Log.writeLspServer(javascriptText)
+    Log.writeLspServer(javascriptTextProperFormating)
     Log.writeLspServer('completionjs5', 1)
-    Log.writeLspServer('sending the following js code '+ javascriptText,1)
-    const res = await requestingMethods( 'completion', javascriptText, line, character)
+    const res = await requestingMethods( 'completion', javascriptTextProperFormating, line, character)
     Log.writeLspServer('res is ' + JSON.stringify(res),1)
     if (res)
     {
@@ -247,18 +253,18 @@ function isWithinId(lastword : lastWordSuggestion, character : number): Boolean
     if (!match) return false
     return true
 }
-function isWithInDispatch(codeBlock : CodeBlock): Boolean
+function isWithInDispatch(javascriptText : string, line : number, character : number): Boolean
 {
     Log.writeLspServer('checks whether insode dispatch')
-    const textWithinParenthesis = codeBlock.generateTextJavascript()
+    const textWithinParenthesis = javascriptText
     Log.writeLspServer(textWithinParenthesis)
     const regExp = /\$dispatch\(['{}:a-zA-Z\s,\n\$]*\)/
     const match = textWithinParenthesis.match(regExp)
     Log.writeLspServer(match)
     if (!match) return false
     //Log.writeLspServer((match.index! + match[0].length - textWithinParenthesis.substring(0,match.index!).lastIndexOf('\n') + 1).toString())
-    let realIndexFactor =  textWithinParenthesis.substring(0,codeBlock.character).lastIndexOf('\n') + 1
-
+    return false
+/*
     Log.writeLspServer((codeBlock.character + realIndexFactor).toString())
     Log.writeLspServer((match.index!).toString())
     Log.writeLspServer((match[0].length + match.index!).toString())
@@ -266,6 +272,8 @@ function isWithInDispatch(codeBlock : CodeBlock): Boolean
         && match.index! < codeBlock.character + realIndexFactor
     ) return true
     return false
+
+ */
 }
 
 

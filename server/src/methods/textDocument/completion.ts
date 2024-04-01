@@ -10,6 +10,14 @@ import {completionX} from "./completion/xCompletion";
 import {chainableOnAt, chainableOnAtKeyboard} from "../chainableOnAt";
 import {chainableOnXShow} from "../../x-validOptions";
 import {doublePointCompletions} from "../../doublePoint-validOptions";
+import {
+    getJavascriptBetweenQuotationMarksPosition,
+    isInsideTag,
+    positionTreeSitter
+} from "../../treeSitterHmtl";
+import {ProposedFeatures} from "vscode-languageserver";
+import all = ProposedFeatures.all;
+import {allFiles} from "../../allFiles";
 
 
 
@@ -93,23 +101,28 @@ export const completion = async (message : RequestMessage) : Promise<CompletionL
     const character = textDocumentt.position.character;
     const lastWord = getLastWord(textDocumentt)
     Log.writeLspServer(lastWord,1)
-    const rangeHtmlTag = isInsideElement(line, character, textDocumentt.textDocument.uri)
-    if (!rangeHtmlTag)
+    const position : positionTreeSitter = {
+        row : line,
+        column : character
+    }
+    const isInside = isInsideTag(position,textDocumentt.textDocument.uri)
+    if (!isInside)
     {
         Log.writeLspServer('range idd nto work')
-        Log.writeLspServer(rangeHtmlTag)
         return null
     }
-Log.writeLspServer('test',1)
-    Log.writeLspServer(rangeHtmlTag)
-    const codeBlock = new CodeBlock(rangeHtmlTag!, textDocumentt)
-   if (codeBlock.isInsideQuotationMarks())
+    const javaScriptbetweemQuotationMarks = getJavascriptBetweenQuotationMarksPosition(textDocumentt.textDocument.uri,position )
+   if (javaScriptbetweemQuotationMarks)
    {
        Log.writeLspServer('is inside parenthesis ',1)
        Log.writeLspServer('works so far',1)
-       const output = await completionJs(line, character, textDocumentt.textDocument.uri, codeBlock)
+       Log.writeLspServer(javaScriptbetweemQuotationMarks,1)
+       const output = await completionJs(line, character, textDocumentt.textDocument.uri,javaScriptbetweemQuotationMarks )
        if (!output) return createReturnObject([])
        return output
+   }
+   else {
+       Log.writeLspServer('not working ',1)
    }
 
 
