@@ -17,11 +17,14 @@ export class PageHtml
     public listenedToEventsPosition : listenedToObjects[]
     public linesArr : string[]
     public allStores : Record<string, string> = {}
+    public allDataComp : Record<string, string> = {}
+    public allBindings : string[] = []
 
     public constructor(cheerioObj: cheerio.CheerioAPI, uri : string) {
         this.listenedToEventsPosition = []
         this.linesArr = allFiles.get(uri)!.split('\n')
         this.events = []
+        this.allBindings = []
         this.cheerioObj = cheerioObj
         this.uri = uri
         cheerioObj('html').children().each((index : any, element : cheerio.Element) => {
@@ -56,10 +59,49 @@ export class PageHtml
             const javascriptText = match[1]
             Log.writeLspServer(javascriptText,1)
             this.getAlpineStore(javascriptText)
+            this.getAlpineBind(javascriptText)
+            this.getAlpineData(javascriptText)
         }
 
     }
 
+
+    public getAlpineBind(javascriptText : string)
+    {
+        Log.writeLspServer('get alpine store',1)
+        const regExp = /Alpine\.bind\(\s*'([a-zA-Z-]*)'/g
+
+        let match : any;
+        while((match = regExp.exec(javascriptText)) != null)
+        {
+            this.allBindings.push(match[1])
+        }
+    }
+    public getAlpineData(javascriptText : string)
+    {
+        Log.writeLspServer('get alpine data',1)
+        Log.writeLspServer(javascriptText,1)
+        const regExp = /Alpine\.data\(\s*'([a-zA-Z-]*)'\s*,\s*\(\)\s*=>\s*\(\s*({[\s\S]*?})\s*\)/g
+
+        let match : any;
+        while((match = regExp.exec(javascriptText)) != null)
+        {
+            Log.writeLspServer(match,1)
+            try {
+                const dataName = match[1]
+                Log.writeLspServer(dataName,1)
+                Log.writeLspServer(match[2],1)
+                const keys: string[] = []
+                const strToPush = extractKeysAndGenerateStr(match[2], keys)
+                this.allDataComp[dataName] = strToPush
+                Log.writeLspServer(this.allDataComp[dataName],1)
+
+            }
+            catch (e) {
+                Log.writeLspServer('error extracting data on alpine stiore', 1)
+            }
+        }
+    }
     public getAlpineStore(javascriptText : string)
     {
         Log.writeLspServer('get alpine store',1)

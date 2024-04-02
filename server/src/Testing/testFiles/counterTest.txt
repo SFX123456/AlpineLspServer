@@ -1,4 +1,4 @@
-    <ul x-data="{ open: false }">
+    <ul x-data="   " >
         <button @click="open = ! open">Toggle Modal</button>
 
         <template x-teleport="body">
@@ -7,3 +7,14 @@
             </div>
         </template>
     </ul>
+<script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('dropdown', () => ({
+                open: false,
+
+                toggle() {
+                    this.open = ! this.open
+                }
+            }))
+        })
+</script>

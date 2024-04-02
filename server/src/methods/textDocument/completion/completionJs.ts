@@ -23,6 +23,33 @@ import {it} from "node:test";
 export const completionJs  = async (line : number, character : number, uri : string | undefined, javascriptPos : rangeIndexTreesitter) : Promise<CompletionList | null> => {
     const javascriptText = allFiles.get(uri!)!.substring(javascriptPos.startIndex,javascriptPos.endIndex)
     Log.writeLspServer('completionJS requested')
+    const keyWord = getKeyWord(uri! , {
+        row: line,
+        column: character
+    })
+    if (keyWord)
+    {
+        if (keyWord === 'x-bind')
+        {
+            const res = allHtml.get(uri!)!.allBindings
+            return {
+                isIncomplete: false,
+                items: addNecessaryCompletionItemProperties(res, line,character)
+            }
+        }
+        else if (keyWord === 'x-data')
+        {
+            Log.writeLspServer('gets theat x-data',1)
+            if (javascriptText.trim().length === 0)
+            {
+                const res = Object.keys(allHtml.get(uri!)!.allDataComp)
+                return {
+                    isIncomplete: false,
+                    items: addNecessaryCompletionItemProperties(res, line,character)
+                }
+            }
+        }
+    }
     const wholeLine = allHtml.get(uri!)!.linesArr[line]
     let lastWordSuggestion = getLastWordWithUriAndRange(uri!, {
         character,
@@ -59,7 +86,9 @@ export const completionJs  = async (line : number, character : number, uri : str
     }
     let optionsStr : string[] = []
 
-    const parentAndOwnVariables = getParentAndOwnVariables(node)
+    const parentAndOwnVariables = getParentAndOwnVariables(node,uri!)
+    Log.writeLspServer('here are variables',1)
+    Log.writeLspServer(parentAndOwnVariables,1)
     optionsStr.push(...parentAndOwnVariables)
 
     Log.writeLspServer('check if inside watch')
@@ -91,7 +120,7 @@ export const completionJs  = async (line : number, character : number, uri : str
 
     optionsStr.push(...magicObjects)
     optionsStr.push(createMagicElVariable(node!))
-    const magicEventStr = addMagicEventVariableIfEvent(uri!,line,character)
+    const magicEventStr = addMagicEventVariableIfEvent(uri!,line,character, keyWord!)
     if (magicEventStr != '') optionsStr.push(magicEventStr)
     let javascriptTextProperFormating = getJsCodeInQuotationMarksWithProperFormating(javascriptText,javascriptPos.positionStart.row, javascriptPos.positionStart.column)
 
@@ -149,6 +178,8 @@ function createBlankJavascriptWithBBB(line : number, character : number)
     return output
 }
 
+
+
 function isInsideWatch(lastWordSuggestion : lastWordSuggestion, character : number)
 {
     return  lastWordSuggestion.wholeLineTillEndofWord.substring(0,character).match(/\$watch\(\s*'$/) != null
@@ -171,13 +202,8 @@ export function createDataMagicElement(node : Cheerio<Element>)
     Log.writeLspServer('the output : ' + output)
     return output
 }
-export function addMagicEventVariableIfEvent(uri: string, line: number, character : number) : string
+export function addMagicEventVariableIfEvent(uri: string, line: number, character : number, keyWord : string) : string
 {
-
-    const keyWord = getKeyWord(uri , {
-        row: line,
-        column: character
-    })
     if (!keyWord) return ''
     Log.writeLspServer('compeltionjs3 key ' + keyWord, 1)
     let eventText = ''

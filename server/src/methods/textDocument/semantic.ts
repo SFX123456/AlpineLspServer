@@ -4,7 +4,6 @@ import Log from "../../log";
 
 import {requestingMethods} from "../../typescriptLsp/typescriptServer";
 import {textDocumentType} from "../../types/ClientTypes";
-import {getAllJavaScriptText} from "./javascriptText";
 import {getSemanticTokens} from "../../treeSitterSemantic";
 import {getAllJavascriptText} from "../../treeSitterHmtl";
 

@@ -13,11 +13,15 @@ export function saveCheerioFile(text: string, uri : string)
     Log.writeLspServer("look here")
     Log.writeLspServer(contentLines)
     let finalStr = contentLines.join('\n')
-    finalStr = finalStr.replaceAll('template','section')
+    finalStr = replaceUnknownTags(finalStr)
     const cheer = cheerio.load(finalStr)
     const htmlPage = new PageHtml(cheer, uri.trim())
   //  Log.writeLspServer('savef  ile with uri ' + uri)
     allHtml.set(uri, htmlPage)
+}
+function replaceUnknownTags(text : string) : string
+{
+    return text.replaceAll('template','section')
 }
 function addLineAttributes(contentLines : string[]) : string[]
 {
@@ -268,21 +272,17 @@ export function getParentAndOwnVariablesJustNamesNoFunctions(node: Cheerio<Eleme
     }
     return variables;
 }
-export function getParentAndOwnVariables(node : Cheerio<Element>): string[]
+export function getParentAndOwnVariables(node : Cheerio<Element>, uri : string): string[]
 {
     const variables : string[] = []
 
     while (true)
     {
         const data = node[0].attribs["x-data"]
-        Log.writeLspServer('for data ' + data,1)
         const xFor = node[0].attribs["x-for"]
-        Log.writeLspServer('for xfor ' +xFor ,1)
-        Log.write("checking if line has data" + data,1)
         if (xFor)
         {
                 const regExp = /([a-z]+)\s*,\s*([a-z]+)\s*\)(\s+)in(\s+)([a-z-]+)/g
-                Log.writeLspServer('checking if it is object' + regExp , 1)
                 const res = regExp.exec(xFor)
                 if (res)
                 {
@@ -303,21 +303,27 @@ export function getParentAndOwnVariables(node : Cheerio<Element>): string[]
         }
         if (data)
         {
-            try {
-
-                Log.writeLspServer('mx1',1)
-                const strToPush = extractKeysAndGenerateStr(data,[])
-                variables.push(strToPush)
-            }
-            catch (e)
+            if (data.indexOf('{') != -1 && data.indexOf('}') != -1)
             {
-                Log.writeLspServer('error parsing x-data',1)
+                try {
+                    const strToPush = extractKeysAndGenerateStr(data,[])
+                    variables.push(strToPush)
+                }
+                catch (e)
+                {
+                    Log.writeLspServer('error parsing x-data',1)
+                }
+            }
+            else {
+                const maybeDataName = data.trim()
+                if (allHtml.get(uri)!.allDataComp[maybeDataName])
+                {
+                    variables.push(allHtml.get(uri)!.allDataComp[maybeDataName])
+                }
             }
         }
 
         const parentNodeArr= node.parent()
-        Log.writeLspServer('next node ', 1)
-        Log.writeLspServer(parentNodeArr,1)
         if (parentNodeArr.length)
         {
             node = node.parent()

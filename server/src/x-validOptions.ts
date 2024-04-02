@@ -11,6 +11,15 @@ export const xoptions : CompletionItem[] = [
         }
     },
     {
+        label: 'x-data=\"${1:}\"',
+        kind: 15,
+        insertTextFormat: 2,
+        labelDetails: {
+            detail : '',
+            description: 'define variables'
+        }
+    },
+    {
         label: 'x-data',
         kind: 15,
         insertTextFormat : 2,
@@ -18,7 +27,6 @@ export const xoptions : CompletionItem[] = [
             detail : '',
             description: 'define variables'
         }
-
     },
     {
         label: 'x-init=\"${1:foo} \"',
@@ -30,7 +38,7 @@ export const xoptions : CompletionItem[] = [
         }
     },
     {
-        label: 'x-bind',
+        label: 'x-bind=',
         kind: 15,
         insertTextFormat : 2,
     },
