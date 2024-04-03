@@ -1,10 +1,12 @@
 import {RequestMessage} from "../../server";
 import Log from "../../log";
-import {CompletionList, lastWordSuggestion, textDocumentType} from "../../types/ClientTypes";
+import {CompletionList, lastWordInfos, textDocumentType} from "../../types/ClientTypes";
 import {CompletionItem} from "../../types/completionTypes";
 import {completionJustAT} from "./completion/atCompletion";
 import {completionJs} from "./completion/completionJs";
+
 import {getLastWord, getLastWordWithUriAndRange, isInsideElement} from "../../analyzeFile";
+
 import {CodeBlock} from "../../CodeBlock";
 import {completionX} from "./completion/xCompletion";
 import {chainableOnAt, chainableOnAtKeyboard} from "../chainableOnAt";
@@ -94,7 +96,6 @@ async function completionDoublePoint(line : number, char : number, uri : string 
 }
 
 export const completion = async (message : RequestMessage) : Promise<CompletionList | null> => {
-
     Log.writeLspServer('completion called',1)
     const textDocumentt = message.params as textDocumentType
 
@@ -115,6 +116,7 @@ export const completion = async (message : RequestMessage) : Promise<CompletionL
     {
         Log.writeLspServer('is not inside tag ',1)
 
+
         return null
     }
     Log.writeLspServer('get delimiting quotation marks')
@@ -123,7 +125,7 @@ export const completion = async (message : RequestMessage) : Promise<CompletionL
     {
        Log.writeLspServer('is inside quptation marks awaiting completionJS ',1)
        const output = await completionJs(line, character, textDocumentt.textDocument.uri,javaScriptbetweemQuotationMarks )
-
+       
        if (!output) return createReturnObject([])
 
        return output
@@ -134,7 +136,7 @@ export const completion = async (message : RequestMessage) : Promise<CompletionL
 
     if (!key) return createReturnObject([])
 
-    let res = tableCompletion[key]( line, character, textDocumentt.textDocument.uri, lastWord.lastWord)
+    let res = tableCompletion[key]( line, character, textDocument.textDocument.uri, lastWordInfos.lastWord)
     const output = await res
 
     if (!output) return createReturnObject([])
@@ -153,7 +155,7 @@ function createReturnObject(arr : CompletionItem[]) :CompletionList
     }
 }
 
-function getMatchingTableLookUp(lastWord : lastWordSuggestion, character : number): string | null
+function getMatchingTableLookUp(lastWord : lastWordInfos, character : number): string | null
 {
     if (lastWord.lastWord === '@' || lastWord.lastWord === 'x-on:' ) return '@'
     if (lastWord.lastWord.indexOf('x') == 0 && lastWord.lastWord.length <= 2) return 'x-'

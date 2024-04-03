@@ -6,17 +6,19 @@ import {regexEndingOpeningTag, regexOpeningTagHtml} from "./allRegex";
 import cheerio, { Cheerio, Element } from 'cheerio';
 import {InsertTextMode} from "vscode-languageserver";
 
+
 export function saveCheerioFile(text: string, uri : string)
 {
     let contentLinesOr = text.split("\n")
     let contentLines = addLineAttributes(contentLinesOr)
+
     Log.writeLspServer("look here")
     Log.writeLspServer(contentLines)
     let finalStr = contentLines.join('\n')
     finalStr = replaceUnknownTags(finalStr)
     const cheer = cheerio.load(finalStr)
     const htmlPage = new PageHtml(cheer, uri.trim())
-  //  Log.writeLspServer('savef  ile with uri ' + uri)
+
     allHtml.set(uri, htmlPage)
 }
 function replaceUnknownTags(text : string) : string
@@ -28,8 +30,10 @@ function addLineAttributes(contentLines : string[]) : string[]
     let endLines : Record<number, number> = {}
     let lastOpenRow = 0;
     const addedStartLine =  contentLines.map((line, i) : string => {
+
         const regExp = regexOpeningTagHtml
         const regExpEnd = regexEndingOpeningTag
+
         const regexMatch = line.match(regExp)
         const regExEndMatch = line.match(regExpEnd)
 
@@ -54,11 +58,12 @@ function addLineAttributes(contentLines : string[]) : string[]
        if (endLines[line])
        {
            const startIndex = item.indexOf("x-line")
-
-          const firstPart = item.substring(0,startIndex)
+           const firstPart = item.substring(0,startIndex)
            const secondPart = item.substring(startIndex)
+
            return firstPart + "x-end=\"" + endLines[line] + "\"" + secondPart
        }
+
        return item
    })
 }
@@ -77,6 +82,7 @@ export function findAccordingRow(row : number, htmlPage : PageHtml)
         }
         row--;
     }
+
     return null;
 }
 
@@ -279,6 +285,7 @@ export function getParentAndOwnVariables(node : Cheerio<Element>, uri : string):
     while (true)
     {
         const data = node[0].attribs["x-data"]
+
         const xFor = node[0].attribs["x-for"]
         if (xFor)
         {
@@ -301,6 +308,7 @@ export function getParentAndOwnVariables(node : Cheerio<Element>, uri : string):
 
             }
         }
+
         if (data)
         {
             if (data.indexOf('{') != -1 && data.indexOf('}') != -1)
@@ -322,7 +330,6 @@ export function getParentAndOwnVariables(node : Cheerio<Element>, uri : string):
                 }
             }
         }
-
         const parentNodeArr= node.parent()
         if (parentNodeArr.length)
         {
@@ -333,6 +340,7 @@ export function getParentAndOwnVariables(node : Cheerio<Element>, uri : string):
             break
         }
     }
+
     return variables;
 }
 

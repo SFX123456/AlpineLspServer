@@ -17,29 +17,6 @@ export const semantic = async (message : RequestMessage ) : Promise<semanticResp
     const res = detectAlpineCharacters(textDocument.textDocument.uri)
 
     const allTokens = [...res]
-    /*
-    let javaScrText = getAllJavaScriptText(textDocument.textDocument.uri,0,1000, '')
-    for (const item of javaScrText) {
-        Log.writeLspServer('item: ',1)
-        Log.writeLspServer(item,1)
-        const resJavaScr = await requestingMethods('semantic', item, 0, 0)
-        //@ts-ignore
-        let temp = resJavaScr.result.data
-        if (isXDataSuggestion(item))
-        {
-            Log.writeLspServer('does include let m=',1)
-            Log.writeLspServer(temp,1)
-            temp = deleteFirstRowSuggestionsAndChangeOtherAccordingly(temp)
-            Log.writeLspServer('chnaged accordingly',1)
-            Log.writeLspServer(temp,1)
-        }
-        const z = decryptSemanticsFromJavascriptServer(temp)
-        allTokens.push(...z)
-        Log.writeLspServer('ts server response ', 1)
-        Log.writeLspServer(z,1)
-    }
-
-     */
     const allJSCode = getAllJavascriptText(textDocument.textDocument.uri)
     Log.writeLspServer('the js code i parsed')
     Log.writeLspServer(allJSCode)
@@ -53,7 +30,6 @@ export const semantic = async (message : RequestMessage ) : Promise<semanticResp
     return {
         data:
         decrpytedTokens
-
     }
 }
 

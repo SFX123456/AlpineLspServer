@@ -3,7 +3,11 @@ import Log from "./log";
 import {allFiles, allHtml} from "./allFiles";
 import {magicObjects} from "./magicobjects";
 import {end} from "cheerio/lib/api/traversing";
+
 import {regexEndingOpeningTag} from "./allRegex";
+
+import {regexEndHtmlElement, regexEndingQuotationMarks, regexStartQuotationMarks} from "./allRegex.js";
+
 
 export class CodeBlock
 {
@@ -27,6 +31,7 @@ export class CodeBlock
         let character = textDocument.position.character
         const startPattern =  /(?:x-[a-z-\.:]+|@[a-z-\.:]+|:[a-z]+)="/g
         const endPattern = /(?<![\\=])"/g
+
         let goUp = 0;
         let startTag : any
         let lastMatchIndex = 0
@@ -55,6 +60,7 @@ export class CodeBlock
         foundAMatch = false
         let lastMatchEndingIndex = 0
         let i = 0;
+
         const endPatternHtml = regexEndingOpeningTag
         while (!foundAMatch && i < 200 && line - goUp + i < allHtml.get(uri)!.linesArr.length - 1 && line - goUp + i <= this.htmlTagRange.end.line)
         {
@@ -129,7 +135,6 @@ export class CodeBlock
         }
         return output
     }
-
     public isInsideQuotationMarks(): Boolean
     {
         return this.parenthesisRange != null

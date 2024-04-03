@@ -34,13 +34,6 @@ export class PageHtml
         this.abstractListenedEvents()
         this.getJavaScriptBetweenScriptTags()
     }
-    public get listenedToEvents()
-    {
-        return this.listenedToEventsPosition.map(item => {
-            return item.name
-        })
-    }
-
 
     public get eventNames()
     {
@@ -185,12 +178,7 @@ export class PageHtml
             }
         })
     }
-
-
-
-
-
-
+  
     public getCustomNotWindowEventsWithVariables(nodeText : string): customEvent[]
     {
         const customEvents : customEvent[] = []
@@ -327,6 +315,7 @@ export class PageHtml
            output.push(key)
         }
         Log.writeLspServer(set)
+
         return output
     }
 }

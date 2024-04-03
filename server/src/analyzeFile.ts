@@ -27,6 +27,7 @@ export function getLastWord( textDocument: textDocumentType) : lastWordSuggestio
     Log.writeLspServer(textDocument.textDocument.uri,1)
     Log.writeLspServer(textDocument.position.line.toString(),1)
     let wholeLineSubStrTillChar = wholeLine.substring(0, character)
+
     let startIndex = getIndexStartLastWord(wholeLineSubStrTillChar)
 
     let wholeLineEndSubStr = wholeLine.substring(character)
@@ -35,12 +36,14 @@ export function getLastWord( textDocument: textDocumentType) : lastWordSuggestio
     if (endTagIndex == -1) endTagIndex = 900
     if (spaceCharIndexEnd == -1) spaceCharIndexEnd = 900
     let endIndex = Math.min(spaceCharIndexEnd, endTagIndex, wholeLine.length - character)
+
     return {
         wholeLine,
         lastWord: wholeLine.substring(startIndex + 1, endIndex + character),
         wholeLineTillEndofWord : wholeLine.substring(0, endIndex + character)
     }
 }
+
 export function getIndexStartLastWord(wholeLineSubStrTillChar : string) : number
 {
     let spaceCharIndex = wholeLineSubStrTillChar.lastIndexOf(' ')
@@ -90,18 +93,19 @@ export function getOpeningParenthesisPosition(uri: string, line:number, characte
         Log.writeLspServer('test')
         line--
     }
+
     return null
-
-
 }
 
 
 export function getEndingParenthesisPosition(uri: string, line: number, character: number) :Position | null
 {
+
     const lineSubstr = allHtml.get(uri)!.linesArr[line].substring(character)
     Log.writeLspServer(lineSubstr)
     const regExpEndParenthesis = new RegExp(regexEndQuotationMarks)
     const res = regExpEndParenthesis.exec(lineSubstr)
+
     if (res != null)
     {
         Log.writeLspServer('founded first line')
@@ -132,6 +136,7 @@ export function getEndingParenthesisPosition(uri: string, line: number, characte
         }
         line++
     }
+
     return null
 }
 export function getKeyword(uri : string,line: number, character : number)
@@ -151,7 +156,9 @@ export function getKeyword(uri : string,line: number, character : number)
 
 export function getEndTagPosition(uri: string, line : number) : Position | null
 {
+
     const endPattern = regexEndingOpeningTag
+
     let res = null
     do
     {
@@ -166,6 +173,7 @@ export function getEndTagPosition(uri: string, line : number) : Position | null
         }
         line++
     }while (res == null)
+
     return null
 }
 
@@ -186,12 +194,15 @@ export function getOpeningTagPosition(uri: string, line: number) : Position | nu
         }
         line--
     }while (res == null)
+
     return null
 }
 
 export function isInsideElement(line : number , char : number, uri: string): null | Range {
+
     const startPattern = regexOpeningTagHtml
     const endPattern = regexEndingOpeningTag
+
     let goUp = 0;
     let startTag = null
     while (!startTag && goUp < 200 && line - goUp >= 0)
@@ -209,7 +220,8 @@ export function isInsideElement(line : number , char : number, uri: string): nul
         endTag = endPattern.exec(allHtml.get(uri)!.linesArr[line - goUp + i])
     }
     if (!endTag) return null
-    if ( line - goUp + i >= line
+    if (
+        line - goUp + i >= line
         && ( startTag!.index + 2 < char || goUp != 0 )
         && ( endTag!.index  > char || goUp - i != 0 )
     )
@@ -225,6 +237,7 @@ export function isInsideElement(line : number , char : number, uri: string): nul
             }
         }
     }
+
     return null
 }
 

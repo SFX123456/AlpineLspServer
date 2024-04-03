@@ -12,6 +12,7 @@ import {
 import {requestingMethods} from "../../../typescriptLsp/typescriptServer";
 import {addNecessaryCompletionItemProperties, completionResponseType} from "../completion";
 import {PageHtml} from "../../../HtmlParsing/PageHtml";
+
 import {
     getJsCodeInQuotationMarksWithProperFormating
 } from "../javascriptText";
@@ -37,6 +38,7 @@ export const completionJs  = async (line : number, character : number, uri : str
                 items: addNecessaryCompletionItemProperties(res, line,character)
             }
         }
+
         else if (keyWord === 'x-data')
         {
             Log.writeLspServer('gets theat x-data',1)
@@ -55,11 +57,10 @@ export const completionJs  = async (line : number, character : number, uri : str
         character,
         line
     })
+
     const htmpPage = allHtml.get(uri!)
     const node = findAccordingRow(line, htmpPage!)
     if (!node){
-        Log.writeLspServer(' matching node could not be found aborting')
-
         return null
     }
     Log.writeLspServer('check if inside id function')
@@ -247,12 +248,10 @@ function isWithinId(lastword : lastWordSuggestion, character : number): Boolean
 }
 function isWithInDispatch(javascriptText : string, line : number, character : number, position : rangeIndexTreesitter): Boolean
 {
-    Log.writeLspServer('checks whether insode dispatch')
     const textWithinParenthesis = javascriptText
     Log.writeLspServer(textWithinParenthesis)
     const regExp = /\$dispatch\([\s\S]*\)/
     const match = textWithinParenthesis.match(regExp)
-Log.writeLspServer('jjjjjjjjjjjjjjjj ' + match,1)
     if (!match) return false
     const h = javascriptText.substring(0,match.index).split('\n')
     const newLineCountBefore = h.length - 1
@@ -290,15 +289,14 @@ Log.writeLspServer('jjjjjjjjjjjjjjjj ' + match,1)
     {
         return true
     }
+  
     return false
-
 }
 
 
 function isInsideDispatchSetEvent(wholeLine : string, character: number) : Boolean
 {
-    const regExpEnd = /\$dispatch\([\s]*'$/
-    if (wholeLine.substring(0, character).match(regExpEnd))
+    if (wholeLine.substring(0, character).match(regexDispatchInsideEventName))
     {
 
         return true
@@ -312,7 +310,6 @@ function isInsideDispatchSetEvent(wholeLine : string, character: number) : Boole
 
 function buildMagiceventVar(item : customEvent )
 {
-Log.writeLspServer('qqqqqqqqqqqqqqqqqq',1)
     Log.writeLspServer(JSON.stringify(item))
     if (typeof item.details === 'string' || typeof item.details === 'number')
     {
@@ -343,19 +340,16 @@ Log.writeLspServer('qqqqqqqqqqqqqqqqqq',1)
 
 function changeXForForTypescriptServer(content : string): string
 {
-    const regExp = /([a-z-]+)(\s+)in(\s+)([a-z-]+)/g
+    const regExp = regexXFor
     let test = content
     let match
     while ((match = regExp.exec(content)) != null)
     {
-        Log.writeLspServer('found match at index ' + match.index)
-        Log.writeLspServer(match)
         const arrName = match[4]
         const keyName = match[1]
         const firstWhite = match[2]
         const secondWhite = match[3]
         const newText = 'for(let ' + keyName + firstWhite + 'of' + secondWhite + arrName + "){"
-        Log.writeLspServer(newText)
         let textToReplace = '       ' + match[0] + '  '
         let counter  = 0
         do {
@@ -365,6 +359,7 @@ function changeXForForTypescriptServer(content : string): string
         Log.writeLspServer(content.indexOf(textToReplace).toString())
         test = test.replaceAll(textToReplace, newText)
     }
+
     return test
 }
 

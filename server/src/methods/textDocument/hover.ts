@@ -1,11 +1,12 @@
 import {RequestMessage} from "../../server";
+
 import {getIndexStartLastWord, getLastWord} from "../../analyzeFile";
+
 import {allHtml} from "../../allFiles";
 import Log from "../../log";
 import {infos} from "../../typescriptLsp/typescriptServer";
 import {lastWordSuggestion, textDocumentType} from "../../types/ClientTypes";
 import { atOptionsJustString} from "../../at-validOptions";
-import {CompletionRequest} from "vscode-languageserver";
 interface HoverResult {
     contents: string
 }
@@ -54,15 +55,18 @@ export const hoverRequest = async (message: RequestMessage) : Promise<HoverResul
                    indexEnd = indexPoint
                }
                const text = getTextForEvent(lastWord.substring(1, indexEnd))
+
                return {
                    contents : text
                }
            }
+
            return {
                contents : lastWordAnswerMatches[key as predefinedAnswersKeys]
            }
        }
     }
+
     return {
         contents : ''
     }
@@ -95,6 +99,7 @@ function getTextForEvent(event : string) : string
         }
         return `custom event ${event} not dispatched yet`
     }
+
     return output
 }
 
@@ -143,6 +148,7 @@ function getListenersToDispatch(lastWord : string) : null | string[]
         Log.writeLspServer(output,1)
     }
     Log.writeLspServer('output : ' + output,1)
+
     return output
 }
 

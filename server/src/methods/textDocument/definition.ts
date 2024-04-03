@@ -1,9 +1,9 @@
 import {RequestMessage} from "../../server";
-import {customEvent, listenedToObjects, Range, textDocumentType} from "../../types/ClientTypes";
-import {getLastWord} from "../../analyzeFile";
+import { listenedToObjects, Range, textDocumentType} from "../../types/ClientTypes";
+import {getLastWordInfos} from "../../analyzeFile";
 import Log from "../../log";
 import {allHtml} from "../../allFiles";
-import {InsertTextMode} from "vscode-languageserver";
+import {regexAtEvent, regexDispatchGetEventName} from "../../allRegex.js";
 
 interface location {
     uri : string,
@@ -16,12 +16,9 @@ interface dispatchedEvents extends listenedToObjects
 }
 export const definitionRequest = async (message: RequestMessage) : Promise<location[] | location | null>  => {
     const textDocumentt = message.params as textDocumentType
-    const line = textDocumentt.position.line
-    const character = textDocumentt.position.character
-    const lastWord = getLastWord(textDocumentt)
+    const lastWord = getLastWordInfos(textDocumentt)
 
     Log.writeLspServer('definitonrequest')
-    Log.writeLspServer(lastWord)
     const listenedEvents = isDispatchEvent(lastWord.wholeLineTillEndofWord)
     if (listenedEvents)
     {
@@ -41,16 +38,12 @@ export const definitionRequest = async (message: RequestMessage) : Promise<locat
         }
 
         })
-        Log.writeLspServer('answer')
-        Log.writeLspServer(answer)
         return answer
     }
    // if (!isDispatchEvent(lastWord.wholeLineTillEndofWord)) return  null
     const dispatcher = isEventListener(lastWord.lastWord)
     if (dispatcher)
     {
-        Log.writeLspServer('line ')
-        Log.writeLspServer(dispatcher)
         return dispatcher.map(item => {
             return {
                 uri : item.uri,
@@ -73,15 +66,10 @@ export const definitionRequest = async (message: RequestMessage) : Promise<locat
     return null
 }
 
-function buildResponseMessage()
-{
-
-}
-
 function isEventListener(lastWord : string) :null | dispatchedEvents[]
 {
     Log.writeLspServer('is event listener')
-    const regExp = /@([a-z-]*)/
+    const regExp = regexAtEvent
     const match = lastWord.match(regExp)
     if (!match) return null
 
@@ -111,46 +99,32 @@ function isEventListener(lastWord : string) :null | dispatchedEvents[]
 
 function isDispatchEvent(lastWord : string) :null | dispatchedEvents[]
 {
-    const regexp = /\$dispatch\(\s*'([a-z]+)'/
+    const regexp = regexDispatchGetEventName
     const match = lastWord.match(regexp)
     if (!match) return null
 
-    Log.writeLspServer('search here jonas')
-    Log.writeLspServer(match[1])
-
-
-
     let output : dispatchedEvents[] = []
 
-
     for (let key of allHtml.keys()) {
-    const kober : Record<string, number> = {}
-    let isIn = false
-    allHtml.get(key)!.listenedToEventsPosition.forEach(item => {
+        const kober : Record<string, number> = {}
+        allHtml.get(key)!.listenedToEventsPosition.forEach(item => {
 
-        Log.writeLspServer(match[1])
-        Log.writeLspServer(item.name)
-        if (item.name === match[1])
-        {
-            const str = JSON.stringify(item)
-            if (!kober[str])
+            if (item.name === match[1])
             {
-                Log.writeLspServer('added to kober')
-                kober[str] = 1
-                output.push({
-                    uri: key,
-                    name: item.name,
-                    positon : item.positon
-                })
+                const str = JSON.stringify(item)
+                if (!kober[str])
+                {
+                    Log.writeLspServer('added to kober')
+                    kober[str] = 1
+                    output.push({
+                        uri: key,
+                        name: item.name,
+                        positon : item.positon
+                    })
+                }
             }
-        }
-    })
-
-
-}
-
-    Log.writeLspServer('all keys')
-    Log.writeLspServer(output)
+        })
+    }
 
     return output
 }

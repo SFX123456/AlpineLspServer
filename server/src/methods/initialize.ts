@@ -16,6 +16,7 @@ interface InitializeResult
         version? : string;
     }
 }
+
 export const initialize = async (message : RequestMessage) : Promise<InitializeResult> => {
     Log.writeLspServer('search here 2')
     Log.writeLspServer(message)
@@ -92,13 +93,30 @@ function goThrewDirectorie(path : string)
                         includedFiles += key
                     }
                 }
+
             }
+        }
     }
+}
+
+function createUri(path : string) : string
+{
+    let encodedUri = 'file:///' + encodeURIComponent(path.replace(/\\/g, '/'))
+    return encodedUri.replace(/%2F/g, '/')
+}
+
+function isOneOfTheDirectoriesToIgnore(directorieName : string)
+{
+    let set = new Set<string>
+    set.add("node_modules")
+
+    return set.has(directorieName)
 }
 
 function getFileExtension(filePath : string)
 {
     const arr = filePath.split('.')
+
     return arr[arr.length - 1]
 }
 

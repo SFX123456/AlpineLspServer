@@ -14,7 +14,7 @@ interface textDocument {
 }
 
 
-export const didChange = async (message : RequestMessage): Promise<null> => {
+export const didChange = async (message : RequestMessage): Promise<void> => {
     const params = message.params as textDocument
     allFiles.set(params.textDocument.uri, params.contentChanges[0].text)
     saveCheerioFile(params.contentChanges[0].text, params.textDocument.uri)
@@ -22,6 +22,7 @@ export const didChange = async (message : RequestMessage): Promise<null> => {
     params.contentChanges.forEach(x => {
        log.write(x.text)
     })
+
     return null
 }
 

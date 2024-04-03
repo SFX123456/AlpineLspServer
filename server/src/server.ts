@@ -56,7 +56,7 @@ process.stdin.on('data', async (chunk) => {
     buffer += chunk;
     while (true)
     {
-        const match = buffer.match(/Content-Length: (\d+)\r\n/)
+        const match = buffer.match(regexContentLength)
         if (!match) break;
         const contentLength = parseInt(match[1], 10)
         const messageStart = buffer.indexOf('\r\n\r\n') + 4
