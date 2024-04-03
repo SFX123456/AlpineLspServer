@@ -9,7 +9,7 @@
 
 <h2 style="color:red;">⚠️ IMPORTANT: Not Ready for Use</h2>
 
-<p>Please be aware that this plugin is currently under development. The build steps are not finalized, and the plugin will not perform as expected. We strongly advise against using it in production environments at this stage.</p>
+<p>Please be aware that this plugin is currently under development. The build steps are not finalized, and the plugin will not perform as expected. I strongly advise against using it in production environments at this stage.</p>
 
 ### We Welcome Your Contributions!
 - **Feedback**: Don't hesitate to share your thoughts on features and improvements.
