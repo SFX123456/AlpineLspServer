@@ -6,5 +6,5 @@
 - [Current supported features](#SupportedFeature)
 ## Demo
 
-[![Demo1](https://dvschulen-my.sharepoint.com/:i:/g/personal/woelflenico_dv-schulen_de/EZ091NAFF8ZImaaYUZtDml4BX88e2zWhdZ6pDRQ_bk_Gwg?e=e8bACr)](https://youtu.be/wDNe-oYaTcw)
-[![Demo1](https://dvschulen-my.sharepoint.com/:i:/g/personal/woelflenico_dv-schulen_de/EZ091NAFF8ZImaaYUZtDml4BX88e2zWhdZ6pDRQ_bk_Gwg?e=e8bACr)](https://youtu.be/wDNe-oYaTcw)
+[![Demo1](https://img.youtube.com/vi/wDNe-oYaTcw/0.jpg)](https://www.youtube.com/watch?v=wDNe-oYaTcw)
+[![Demo2](https://img.youtube.com/vi/Q4JhTMb-q2A/0.jpg)](https://www.youtube.com/watch?v=Q4JhTMb-q2A)
