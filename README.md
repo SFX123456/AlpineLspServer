@@ -5,7 +5,7 @@
 - [Demo](#demo)
 - [Currently supported features](#current-supported-features)
 
-## Disclaimer
+<h2 id="disclaimer">Disclaimer</h2>
 
 <h2 style="color:red;">⚠️ IMPORTANT: Not Ready for Use</h2>
 
