@@ -8,7 +8,13 @@ import {didOpen} from "./methods/textDocument/didOpen";
 import {semantic} from "./methods/textDocument/semantic";
 import Log from "./log";
 import {definitionRequest} from "./methods/textDocument/definition";
-import { regexContentLength} from "./allRegex.js";
+import {test} from "./Testing/mainTest";
+import {ok} from "./Testing/codeCompletionTest";
+import {hoverTest} from "./Testing/hoverTest";
+import {testRef} from "./Testing/refTest";
+import {treesitterTest} from "./Testing/treesitterTest";
+import {treeSitterHtmlTest2} from "./Testing/treeSitterHtml";
+import {loadParser} from "./treeSitterHmtl";
 
 export interface RequestMessage{
     id: number | string;
@@ -25,7 +31,13 @@ const methodLookUp : Record<string, RequestMethod> = {
     'textDocument/semanticTokens/full' : semantic,
     'textDocument/definition' : definitionRequest
 }
-
+loadParser()
+test()
+ok()
+hoverTest()
+testRef()
+treesitterTest()
+treeSitterHtmlTest2()
 const respond = async (id : number, fn : Function, params: unknown) => {
     const res = await fn(params)
     if (!res) return

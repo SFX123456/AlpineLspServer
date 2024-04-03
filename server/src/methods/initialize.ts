@@ -18,9 +18,13 @@ interface InitializeResult
 }
 
 export const initialize = async (message : RequestMessage) : Promise<InitializeResult> => {
-    const initializeParams = message.params as unknown as InitializeParams
     Log.writeLspServer('search here 2')
+    Log.writeLspServer(message)
+    Log.writeLspServer('end of search')
+    const initializeParams = message.params as unknown as InitializeParams
+    Log.writeLspServer('uuuuuuuuuuuuuuu')
     Log.writeLspServer(initializeParams)
+    Log.writeLspServer('uuuuuuuuuuuuuuuuuuuu')
     infos.rootUri = initializeParams.rootUri
     infos.rootPath = initializeParams.rootPath!
     scanAllDocuments(infos.rootPath)
@@ -28,7 +32,7 @@ export const initialize = async (message : RequestMessage) : Promise<InitializeR
     return {
         capabilities : {
             completionProvider: {
-                triggerCharacters: ['@', 'x', '\"', 'c', '$', '.', '\'']
+                triggerCharacters: ['@', 'x', '\"', 'c', '$', '.', '\'', ':', '']
             },
             resolveProvider: true,
             textDocumentSync: 1,
@@ -38,14 +42,12 @@ export const initialize = async (message : RequestMessage) : Promise<InitializeR
             definitionProvider: true,
             semanticTokensProvider: {
                 legend: {
-                    tokenTypes:["class","enum","interface","namespace","typeParameter","type","parameter","variable","enumMember","property","function","member"],
+                    tokenTypes:["class","enum","interface","namespace","typeParameter","type","parameter","variable","enumMember","property","function","member", "struct","event","method","macro","keyword","modifier","comment","string","number","regexp","operator","decorator"],
                     tokenModifiers:["declaration","static","async","readonly","defaultLibrary","local"]
                 },
                 full: true,
                 documentSelector: null
             }
-
-
         },
         serverInfo: {
             name: "alpinelspServer",
@@ -55,7 +57,7 @@ export const initialize = async (message : RequestMessage) : Promise<InitializeR
 }
 
 
-function scanAllDocuments(rootPath : string)
+export function scanAllDocuments(rootPath : string)
 {
     goThrewDirectorie(rootPath)
 }
@@ -64,25 +66,34 @@ function goThrewDirectorie(path : string)
 {
     const res = fs.opendirSync(path)
     let allDirAndFiles
+    Log.writeLspServer(process.version.toString(),1)
     while ((allDirAndFiles = res.readSync()) != null)
     {
+        Log.writeLspServer(allDirAndFiles,1)
         if (!allDirAndFiles) return
-        if (allDirAndFiles.isDirectory())
-        {
-            if (isOneOfTheDirectoriesToIgnore(allDirAndFiles.name )) continue
-            Log.writeLspServer('is a directorie')
-            goThrewDirectorie(allDirAndFiles.path)
-        }
-        else
-        {
-            const fileExtension = getFileExtension(allDirAndFiles.name)
-            Log.writeLspServer('found a file with extensui ' + fileExtension)
-            if (fileExtension === 'txt')
+            if (allDirAndFiles.isDirectory())
             {
-                const content = fs.readFileSync(allDirAndFiles.path, {encoding: 'utf-8'})
-                let encodedUri = createUri(allDirAndFiles.path)
-                allFiles.set(encodedUri, content)
-                saveCheerioFile(content,encodedUri)
+                if (!isDirectorieToScan(allDirAndFiles.name)) continue
+                Log.writeLspServer('is a directorie',1)
+                goThrewDirectorie(allDirAndFiles.path)
+            }
+            else
+            {
+                const fileExtension = getFileExtension(allDirAndFiles.name)
+                Log.writeLspServer('found a file with extensui ' + fileExtension)
+                if (isFileSomeThingToScan(fileExtension))
+                {
+                   const content = fs.readFileSync(allDirAndFiles.path, {encoding: 'utf-8'})
+                    let encodedUri = 'file:///' + encodeURIComponent(allDirAndFiles.path.replace(/\\/g, '/'))
+                    encodedUri = encodedUri.replace(/%2F/g, '/')
+                    allFiles.set(encodedUri, content)
+                    saveCheerioFile(content,encodedUri)
+                    let includedFiles = ''
+                    for (let key of allFiles.keys()) {
+                        includedFiles += key
+                    }
+                }
+
             }
         }
     }
@@ -107,4 +118,17 @@ function getFileExtension(filePath : string)
     const arr = filePath.split('.')
 
     return arr[arr.length - 1]
+}
+
+
+function isFileSomeThingToScan(fileEnding : string) : boolean
+{
+    if (fileEnding === 'blade' || fileEnding === 'html') return true
+    return false
+}
+
+function isDirectorieToScan(directorieName : string) : boolean
+{
+    if (directorieName === 'node_modules') return false
+    return true
 }

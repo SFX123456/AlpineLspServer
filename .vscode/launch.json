@@ -6,12 +6,12 @@
       "type": "extensionHost",
       "request": "launch",
       "name": "Launch Client",
-      "runtimeExecutable": "${execPath}",
-      "args": ["--extensionDevelopmentPath=${workspaceRoot}"],
+      "runtimeExecutable": "C:\\Users\\Nico\\AppData\\Roaming\\nvm\\v18.17.1\\node.exe",
       "outFiles": ["${workspaceRoot}/client/out/**/*.js"],
       "preLaunchTask": {
         "type": "npm",
-        "script": "watch"
+        "script": "postinstall"
+        
       }
     }
   ]

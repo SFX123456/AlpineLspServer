@@ -1,1 +1,1 @@
-export const magicObjects = ['$el', '$refs', '$store', '$watch', 'function $dispatch(eventName, obj = null) { }', '$nextTick', '$root', '$data', '$id']
+export const magicObjects = [ 'function $watch("name",cb){}', 'function $dispatch(eventName, obj = null) { }', 'function $nextTick(){}', `function $id(namespace, uniqueId){} `,` function $id(nameSpace){}`]

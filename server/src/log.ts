@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-
+let shouldConsoleLog = false
 const log = fs.createWriteStream("E:\\fsd\\lsp.log")
 const logLspClient = fs.createWriteStream("E:\\fsd\\lspClient.log")
 
@@ -21,7 +21,12 @@ export default {
         log.write('\n')
     },
     writeLspServer: (message : object | unknown, logLev : number = 0) => {
-        if (logLev === 1) return;
+        if (typeof message == typeof 1) return;
+        if (logLev === 1 && shouldConsoleLog)
+        {
+        console.log(message)
+        return;
+        }
 
         if (message == undefined)
         {
@@ -38,4 +43,7 @@ export default {
         }
         logLspClient.write('\n')
     },
+    activateConsoleLog : () => {
+        shouldConsoleLog = true
+    }
 }

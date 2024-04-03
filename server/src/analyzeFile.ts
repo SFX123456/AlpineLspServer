@@ -1,22 +1,34 @@
-import {allFiles} from "./allFiles";
-import {lastWordInfos, Position, Range, textDocumentType} from "./types/ClientTypes";
+import {allFiles, allHtml} from "./allFiles";
+import {DocumentUri, lastWordSuggestion, Position, Range, textDocumentType} from "./types/ClientTypes";
+import Log from "./log";
 import {
-    regexEndHtmlElement,
-    regexEndingQuotationMarks,
-    regexStartHtmlElement,
-    regexStartQuotationMarks, regexXAttrAndATMethods
-} from "./allRegex.js";
+    regexEndingOpeningTag,
+    regexEndQuotationMarks,
+    regexOpeningTagHtml,
+    regexStartingAlpineExpression
+} from "./allRegex";
 
-
-export function getLastWordInfos(textDocument: textDocumentType) : lastWordInfos {
-    const text = allFiles.get(textDocument.textDocument.uri)!
+export function getLastWordWithUriAndRange(uri : string, position : Position)
+{
+    return getLastWord({
+        position : position,
+        textDocument : {
+            uri: uri,
+            languageId: 'egal',
+            version: 2,
+            text : 'egal'
+        }
+    })
+}
+export function getLastWord( textDocument: textDocumentType) : lastWordSuggestion {
     let character = textDocument.position.character
-    const wholeLine = text!.split('\n')[(textDocument.position.line)]
+    const wholeLine = allHtml.get(textDocument.textDocument.uri)!.linesArr[textDocument.position.line]
+    Log.writeLspServer(wholeLine,1)
+    Log.writeLspServer(textDocument.textDocument.uri,1)
+    Log.writeLspServer(textDocument.position.line.toString(),1)
     let wholeLineSubStrTillChar = wholeLine.substring(0, character)
-    let spaceCharIndex = wholeLineSubStrTillChar.lastIndexOf(' ')
-    let startTagIndex = wholeLineSubStrTillChar.lastIndexOf('<')
-    let startOpenExpr = wholeLineSubStrTillChar.lastIndexOf('="') + 1
-    let startIndex = Math.max(spaceCharIndex, startTagIndex, startOpenExpr)
+
+    let startIndex = getIndexStartLastWord(wholeLineSubStrTillChar)
 
     let wholeLineEndSubStr = wholeLine.substring(character)
     let spaceCharIndexEnd = wholeLineEndSubStr.indexOf(' ')
@@ -32,12 +44,17 @@ export function getLastWordInfos(textDocument: textDocumentType) : lastWordInfos
     }
 }
 
+export function getIndexStartLastWord(wholeLineSubStrTillChar : string) : number
+{
+    let spaceCharIndex = wholeLineSubStrTillChar.lastIndexOf(' ')
+    let startTagIndex = wholeLineSubStrTillChar.lastIndexOf('<')
+    let startOpenExpr = wholeLineSubStrTillChar.lastIndexOf('="') + 1
+    return  Math.max(spaceCharIndex, startTagIndex, startOpenExpr)
+}
 export function getOpeningParenthesisPosition(uri: string, line:number, character: number) : Position | null
 {
-    const content = allFiles.get(uri)!
-    const regExpEndParenthesis = regexEndingQuotationMarks
-    const regExpStart= regexStartQuotationMarks
-    const wholeLineSubStr = content.split('\n')[line].substring(0, character)
+    const regExpStart= /="/g
+    const wholeLineSubStr = allHtml.get(uri)!.linesArr[line].substring(0, character)
     let res
     let lastIndex = 0
     let hit = false
@@ -57,41 +74,23 @@ export function getOpeningParenthesisPosition(uri: string, line:number, characte
     const position = getOpeningTagPosition(uri, line)
     if (position == null) return null
     const openingTagIndexLine = position.line
-    const openingTagIndexCharacter = position.character
     while (line >= openingTagIndexLine)
     {
-        const lineStr = content.split('\n')[line]
-        const resStart = lineStr.match(regExpStart)
-        //const resEnd = lineStr.match(regExpEndParenthesis)
-        const res = lineStr.match(regExpEndParenthesis)
-        if (res != null)
+        const lineStr = allHtml.get(uri)!.linesArr[line]
+        let matchFinal = null
+        let match = null
+        while ((match = regExpStart.exec(lineStr)) != null)
         {
-            if (resStart == null)
-            {
-                return null
-            }
-            if (line == openingTagIndexCharacter) {
-                if (resStart.index! < openingTagIndexCharacter)
-                {
-                    return null
-                }
-            }
-            if (resStart.index! > res.index!)
-            {
-                return {
-                    line: line,
-                    character: resStart.index! + 2
-                }
-            }
-            return null
+            matchFinal = match
         }
-        if (resStart != null)
+        if (matchFinal)
         {
             return {
-                line: line,
-                character : resStart.index! + 2
+                line,
+                character : matchFinal.index + 2
             }
         }
+        Log.writeLspServer('test')
         line--
     }
 
@@ -101,55 +100,38 @@ export function getOpeningParenthesisPosition(uri: string, line:number, characte
 
 export function getEndingParenthesisPosition(uri: string, line: number, character: number) :Position | null
 {
-    const content = allFiles.get(uri)!
-    const lineSubstr = content.split('\n')[line].substring(character)
-    const regExpEndParenthesis = regexEndingQuotationMarks
-    const regExpStart= regexXAttrAndATMethods
-    const res = lineSubstr.match(regExpEndParenthesis)
+
+    const lineSubstr = allHtml.get(uri)!.linesArr[line].substring(character)
+    Log.writeLspServer(lineSubstr)
+    const regExpEndParenthesis = new RegExp(regexEndQuotationMarks)
+    const res = regExpEndParenthesis.exec(lineSubstr)
+
     if (res != null)
     {
+        Log.writeLspServer('founded first line')
+        Log.writeLspServer(res)
         return {
             line : line,
             character : res.index! + character
         }
     }
-    line++
     const position = getEndTagPosition(uri, line)
+    line++
     if (position == null) return null
     const closingTagIndexLine = position.line
     const closingTagIndexCharacter = position.character
     while (line <= closingTagIndexLine)
     {
 
-        const lineStr = content.split('\n')[line]
-        const resEnd = lineStr.match(regExpEndParenthesis)
-        const res = lineStr.match(regExpStart)
-        if (res != null)
+        const lineStr = allHtml.get(uri)!.linesArr[line]
+       const res = regExpEndParenthesis.exec(lineStr)
+        if (res)
         {
-            if (resEnd == null)
-            {
-                return null
-            }
-            if (line == closingTagIndexLine) {
-                if (resEnd.index! > closingTagIndexCharacter)
-                {
-                    return null
-                }
-            }
-            if (resEnd.index! < res.index!)
-            {
-                return {
-                    line: line,
-                    character: resEnd.index!
-                }
-            }
-            return null
-        }
-        if (resEnd != null)
-        {
+            Log.writeLspServer('found match later')
+            Log.writeLspServer(res)
             return {
-                line: line,
-                character : resEnd.index!
+                line,
+                character : res.index
             }
         }
         line++
@@ -157,14 +139,30 @@ export function getEndingParenthesisPosition(uri: string, line: number, characte
 
     return null
 }
+export function getKeyword(uri : string,line: number, character : number)
+{
+
+    const position = getOpeningParenthesisPosition(uri,line,character)
+    const wholeLine = allHtml.get(uri)!.linesArr[position!.line]
+    const indexEqualQuotationMark = position!.character
+
+    const subStr = wholeLine.substring(0, indexEqualQuotationMark)
+    Log.writeLspServer('substr : ' + subStr,1)
+    const beginningIndex = subStr.lastIndexOf(' ')
+
+    Log.writeLspServer('beginningindex : ' + beginningIndex,1)
+    return subStr.substring(beginningIndex + 1, indexEqualQuotationMark - 2)
+}
 
 export function getEndTagPosition(uri: string, line : number) : Position | null
 {
-    const endPattern = regexEndHtmlElement
+
+    const endPattern = regexEndingOpeningTag
+
     let res = null
     do
     {
-        const wholeLine = allFiles.get(uri)!.split('\n')[line]
+        const wholeLine = allHtml.get(uri)!.linesArr[line]
         res = wholeLine.match(endPattern)
         if (res != null)
         {
@@ -181,11 +179,11 @@ export function getEndTagPosition(uri: string, line : number) : Position | null
 
 export function getOpeningTagPosition(uri: string, line: number) : Position | null
 {
-    const startPattern = regexStartHtmlElement
+    const startPattern = regexOpeningTagHtml
     let res = null
     do
     {
-        const wholeLine = allFiles.get(uri)!.split('\n')[line]
+        const wholeLine = allHtml.get(uri)!.linesArr[line]
         res = wholeLine.match(startPattern)
         if (res != null)
         {
@@ -201,24 +199,25 @@ export function getOpeningTagPosition(uri: string, line: number) : Position | nu
 }
 
 export function isInsideElement(line : number , char : number, uri: string): null | Range {
-    const startPattern =  regexStartHtmlElement;
-    const endPattern = regexEndHtmlElement;
-    const arr = allFiles.get(uri)!.split('\n')
+
+    const startPattern = regexOpeningTagHtml
+    const endPattern = regexEndingOpeningTag
+
     let goUp = 0;
     let startTag = null
     while (!startTag && goUp < 200 && line - goUp >= 0)
     {
-        startTag = startPattern.exec(arr[line - goUp])
+        startTag = startPattern.exec(allHtml.get(uri)!.linesArr[line - goUp])
         goUp++
     }
     goUp--
     if (!startTag) return null
-    let endTag = endPattern.exec(arr[line - goUp])
+    let endTag = endPattern.exec(allHtml.get(uri)!.linesArr[line - goUp])
     let i = 0;
-    while (!endTag && i < 200 && line - goUp + i < arr.length - 1)
+    while (!endTag && i < 200 && line - goUp + i < allHtml.get(uri)!.linesArr.length - 1)
     {
         i++;
-        endTag = endPattern.exec(arr[line - goUp + i])
+        endTag = endPattern.exec(allHtml.get(uri)!.linesArr[line - goUp + i])
     }
     if (!endTag) return null
     if (

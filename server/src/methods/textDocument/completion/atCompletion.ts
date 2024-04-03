@@ -4,8 +4,9 @@ import {findAccordingRow} from "../../../cheerioFn";
 import Log from "../../../log";
 import {CompletionList, customEvent} from "../../../types/ClientTypes";
 import {CompletionItem} from "../../../types/completionTypes";
-import {atoptions} from "../../../at-validOptions";
+import {atoptionsForAt, atoptionsForXon} from "../../../at-validOptions";
 import {Cheerio, Element} from "cheerio";
+import {getLastWord, getLastWordWithUriAndRange} from "../../../analyzeFile";
 
 export const completionJustAT : completionResponse = async (line: number, character : number, uri: string | undefined) : Promise<CompletionList | null> =>
 {
@@ -35,30 +36,57 @@ export const completionJustAT : completionResponse = async (line: number, charac
     for (let customEventsKey in hashMap) {
         allCustomEvents.push(hashMap[customEventsKey])
     }
-
-
-
     const eventsWithoutWindow = getCustomNotWindowEventsWithVariables(node!)
-    //z.map(item => item.name)
-    const completionItemsEvents : CompletionItem[] =  allCustomEvents.map(item => {
-        if (eventsWithoutWindow.indexOf(item.name) != -1)
-        {
+    let completionItemsEvents : CompletionItem[] = []
+    if (getLastWordWithUriAndRange(uri!, {
+        character : character,
+        line: line
+    }).lastWord.includes('x-on'))
+    {
+        completionItemsEvents =  allCustomEvents.map(item => {
+            if (eventsWithoutWindow.indexOf(item.name) != -1)
+            {
+                return {
+                    label: `:${item.name}\${1:.stop}=" \${2:foo} "`,
+                    kind: 15,
+                    insertTextFormat : 2,
+                    detail : 'details : ' + JSON.stringify(item.details)
+                }
+            }
             return {
-                label: `@${item.name}\${1:.stop}=" \${2:foo} "`,
+                label: `:${item.name}\${1:.window}=" \${2:foo} "`,
                 kind: 15,
                 insertTextFormat : 2,
                 detail : 'details : ' + JSON.stringify(item.details)
             }
-        }
-        return {
-            label: `@${item.name}\${1:.window}=" \${2:foo} "`,
-            kind: 15,
-            insertTextFormat : 2,
-            detail : 'details : ' + JSON.stringify(item.details)
-        }
-    })
+        })
 
-    completionItemsEvents.push(...atoptions)
+        completionItemsEvents.push(...atoptionsForXon)
+    }
+    else
+    {
+         completionItemsEvents =  allCustomEvents.map(item => {
+            if (eventsWithoutWindow.indexOf(item.name) != -1)
+            {
+                return {
+                    label: `@${item.name}\${1:.stop}=" \${2:foo} "`,
+                    kind: 15,
+                    insertTextFormat : 2,
+                    detail : 'details : ' + JSON.stringify(item.details)
+                }
+            }
+            return {
+                label: `@${item.name}\${1:.window}=" \${2:foo} "`,
+                kind: 15,
+                insertTextFormat : 2,
+                detail : 'details : ' + JSON.stringify(item.details)
+            }
+        })
+
+        completionItemsEvents.push(...atoptionsForAt)
+    }
+    //z.map(item => item.name)
+
 
 
     const readyAtoptions = addNecessaryCompletionItemProperties(completionItemsEvents, line, character)

@@ -33,7 +33,7 @@ export interface customEvent  {
     details: dispatchVariables,
     position : Position
 }
-export type dispatchVariables = Record<string, unknown>
+export type dispatchVariables = Record<string, unknown> | string | number
 
 export interface Range {
     start: Position,

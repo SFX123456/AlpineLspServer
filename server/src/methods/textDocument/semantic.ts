@@ -1,49 +1,61 @@
 import {RequestMessage} from "../../server";
-import {allFiles} from "../../allFiles";
-import log from "../../log";
+import {allFiles, allHtml} from "../../allFiles";
 import Log from "../../log";
 
 import {requestingMethods} from "../../typescriptLsp/typescriptServer";
 import {textDocumentType} from "../../types/ClientTypes";
-import {getAllJavaScriptText} from "./javascriptText";
-import {regexAlpineCharactersSemantic} from "../../allRegex.js";
+import {getSemanticTokens} from "../../treeSitterSemantic";
+import {getAllJavascriptText} from "../../treeSitterHmtl";
 
 interface semanticResponse  {
     data: number[]
 }
 export const semantic = async (message : RequestMessage ) : Promise<semanticResponse> => {
-    log.writeLspServer('should give semantic', 3)
     const textDocument = message.params as textDocumentType
-    const javaScrText = getAllJavaScriptText(textDocument.textDocument.uri)
-    const resJavaScr = await requestingMethods('semantic', javaScrText, 0, 0)
-    let javascSem : semanticToken[] = []
-    if (resJavaScr)
-    {
-        try {
-            //@ts-ignore
-            const temp = resJavaScr.result.data
-            const z = decryptSemanticsFromJavascriptServer(temp)
-            javascSem = z
-        }
-        catch (e)
-        {
-            Log.writeLspServer('erroo in smeantic')
-        }
 
-    }
+
     const res = detectAlpineCharacters(textDocument.textDocument.uri)
+
     const allTokens = [...res]
-    allTokens.push(...javascSem)
+    const allJSCode = getAllJavascriptText(textDocument.textDocument.uri)
+    Log.writeLspServer('the js code i parsed')
+    Log.writeLspServer(allJSCode)
+    const toke = getSemanticTokens(allJSCode)
+    Log.writeLspServer(toke)
+    allTokens.push(...toke)
     const sortedSemTokens = sortSemanticTokens(allTokens)
     const decrpytedTokens = decryptSemanticTokens(sortedSemTokens)
-
+    Log.writeLspServer('hopefully rigfht',1)
+    Log.writeLspServer(decrpytedTokens,1)
     return {
         data:
         decrpytedTokens
     }
 }
 
-interface semanticToken {
+
+function isXDataSuggestion(text : string)
+{
+    return text.includes('let m =')
+}
+
+function deleteFirstRowSuggestionsAndChangeOtherAccordingly(suggestions : number[])
+{
+    let indexToCut = 0;
+    if (!suggestions) return []
+    if (suggestions.length < 4) return suggestions
+    for (let i = 0; i < suggestions.length; i+=5) {
+        if (suggestions[i] != 0)
+        {
+            suggestions[i]--
+            indexToCut = i;
+            return suggestions.slice(indexToCut)
+        }
+    }
+    return suggestions.slice(indexToCut-1)
+}
+
+export interface semanticToken {
     line: number,
     startChar: number,
     length : number,
@@ -137,10 +149,13 @@ function decryptSemanticsFromJavascriptServer(numbers : number[]): semanticToken
     return output
 }
 
+
+
+
 function detectAlpineCharacters(uri: string) : semanticToken[]
 {
     const lines = allFiles.get(uri)!.split('\n')
-    const regExpx = regexAlpineCharactersSemantic
+    const regExpx = /x-[a-zA-Z-:\.]+="|:[a-z]+="|(?<![\\=])"|@[a-z-:]+(\.[a-z:]+)*="/g;
     let match : any;
     const output : semanticToken[] = []
     lines.forEach((line, currentLine) => {
@@ -157,6 +172,7 @@ function detectAlpineCharacters(uri: string) : semanticToken[]
             })
         }
     })
+
     return output
 }
 

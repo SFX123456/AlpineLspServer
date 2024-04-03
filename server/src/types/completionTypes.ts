@@ -13,5 +13,18 @@ export interface CompletionItem {
     label: string
     kind: CompletionItemKind,
     insertTextFormat?: InsertTextFormat,
-    textEdit?: textEdit
+    textEdit?: textEdit,
+    labelDetails? : CompletionItemLabelDetails
+}
+
+interface CompletionItemLabelDetails
+{
+    detail?: string;
+
+    /**
+     * An optional string which is rendered less prominently after
+     * {@link CompletionItemLabelDetails.detail}. Should be used for fully qualified
+     * names or file path.
+     */
+    description?: string;
 }
