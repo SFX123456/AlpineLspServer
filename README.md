@@ -2,8 +2,9 @@
 
 ## Table of Contents
 
-- [Demo](#Demo)
+- [Demo](#demo)
 - [Current supported features](#current-supported-features)
+
 ## Demo
 
 [![Demo1](https://img.youtube.com/vi/wDNe-oYaTcw/0.jpg)](https://www.youtube.com/watch?v=wDNe-oYaTcw)
@@ -13,71 +14,70 @@
 ## Current supported features
 
 ### Events
-*[x] goTo working with events between different files
-*[x] $event object gets provided with proper context
+* [x] goTo working with events between different files
+* [x] $event object gets provided with proper context
 
 ### Directives
-*[x] javascript lsp support with matching context within quotation marks
 
-##### x-data
-*[x] works with globals data
-*[x] just works within context
-*[x] gives javascript lsp access to the object not just keys
+* [x] javascript lsp support with matching context within quotation marks
 
-##### x-show
-*[x] important gets suggested
- 
-##### x-bind
-*[x] shortform works
-*[x] works with alpine.bind
+#### x-data
+* [x] works with globals data
+* [x] just works within context
+* [x] gives javascript lsp access to the object not just keys
 
-##### x-html
-*[ ] html suggestions missing
+#### x-show
+* [x] important gets suggested
 
-##### x-on
-*[x] works with custom events
-*[ ] not all usual browser events added
+#### x-bind
+* [x] shortform works
+* [x] works with alpine.bind
 
-##### x-for
-*[ ] custom suggestion 
-*[x] javascript Lsp gets access to value
+#### x-html
+* [ ] html suggestions missing
 
+#### x-on
+* [x] works with custom events
+* [ ] not all usual browser events added
 
-##### x-transition
-*[x] add some suggestions 
-*[ ] add all possibilities to suggestions
+#### x-for
+* [ ] custom suggestion 
+* [x] javascript Lsp gets access to value
 
-##### x-id
-*[ ] disable javascript lsp
+#### x-transition
+* [x] add some suggestions 
+* [ ] add all possibilities to suggestions
 
+#### x-id
+* [ ] disable javascript lsp
 
-##### $el
-*[x] javascript lsp thinks its an html element with the right tag
+#### $el
+* [x] javascript lsp thinks its an html element with the right tag
 
-##### $refs
-*[x] javascript lsp gets an object with keys that match x-ref
+#### $refs
+* [x] javascript lsp gets an object with keys that match x-ref
 
-##### $store 
-*[x] works with globals ALpine.store. objects and single values
+#### $store 
+* [x] works with globals ALpine.store. objects and single values
 
-##### $watch
-*[x] matching data objects get suggested
+#### $watch
+* [x] matching data objects get suggested
 
-##### $dispatch
-*[x] listened to events get suggested abroad all files
+#### $dispatch
+* [x] listened to events get suggested abroad all files
 
-##### $root
-*[x]  javascript lsp thinks its an html element with the right tag
+#### $root
+* [x]  javascript lsp thinks its an html element with the right tag
 
-##### $data
-*[x] fully working
+#### $data
+* [x] fully working
 
 ##### $id
-*[x]  id namespaces defined with x-id get suggested
+* [x]  id namespaces defined with x-id get suggested
 
 
 ### Globals
-*[x] Alpine.data
-*[x] Alpine.bind
-*[x] Alpine.store
-*[ ] abroad files
+* [x] Alpine.data
+* [x] Alpine.bind
+* [x] Alpine.store
+* [ ] abroad files
