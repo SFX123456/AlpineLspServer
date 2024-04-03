@@ -2,8 +2,8 @@
 
 ## Table of Contents
 
-- [Installation](#installation)
+- [Demo](#Demo)
+- [Current supported features](#SupportedFeature)
+## Demo
 
-## Installation
-
-open the folder in visual studio code. click on run and debug on the left side bar and then on launch client on the top. A new winodw will open. Pull the test folder in this window to open the folder in visual studio code. Restart the lsp server again by clicking on launch client again. Make sure to run npm install on all node projects.
+[![Demo1](https://dvschulen-my.sharepoint.com/:i:/g/personal/woelflenico_dv-schulen_de/EZ091NAFF8ZImaaYUZtDml4BX88e2zWhdZ6pDRQ_bk_Gwg?e=e8bACr)](https://youtu.be/wDNe-oYaTcw
