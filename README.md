@@ -1,10 +1,22 @@
 # Alpine Lsp Server
 
 ## Table of Contents
-
+- [Disclaimer](#disclaimer)
 - [Demo](#demo)
-- [Current supported features](#current-supported-features)
+- [Currently supported features](#current-supported-features)
 
+## Disclaimer
+
+<h2 style="color:red;">⚠️ IMPORTANT: Not Ready for Use</h2>
+
+<p>Please be aware that this plugin is currently under development. The build steps are not finalized, and the plugin will not perform as expected. We strongly advise against using it in production environments at this stage.</p>
+
+### We Welcome Your Contributions!
+- **Feedback**: Don't hesitate to share your thoughts on features and improvements.
+- **Acknowledgments**: A heartfelt thank you to:
+    - The authors of the packages we rely on.
+    - especially the treesitter team.
+      
 ## Demo
 
 [![Demo1](https://img.youtube.com/vi/wDNe-oYaTcw/0.jpg)](https://www.youtube.com/watch?v=wDNe-oYaTcw)
