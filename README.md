@@ -3,7 +3,7 @@
 ## Table of Contents
 
 - [Demo](#Demo)
-- [Current supported features](#SupportedFeature)
+- [Current supported features](#current-supported-features)
 ## Demo
 
 [![Demo1](https://img.youtube.com/vi/wDNe-oYaTcw/0.jpg)](https://www.youtube.com/watch?v=wDNe-oYaTcw)
