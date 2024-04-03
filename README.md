@@ -17,13 +17,13 @@
     - The authors of the packages we rely on.
     - especially the treesitter team.
       
-## Demo
+<h2 id="demo">Demo</h2>
 
 [![Demo1](https://img.youtube.com/vi/wDNe-oYaTcw/0.jpg)](https://www.youtube.com/watch?v=wDNe-oYaTcw)
 
 [![Demo2](https://img.youtube.com/vi/Q4JhTMb-q2A/0.jpg)](https://www.youtube.com/watch?v=Q4JhTMb-q2A)
 
-## Current supported features
+<h2 id="current-supported-features">Currently supported features</h2>
 
 ### Events
 * [x] goTo working with events between different files
