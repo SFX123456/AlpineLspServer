@@ -5,7 +5,6 @@ import {saveCheerioFile} from "../cheerioFn";
 import {allFiles, allHtml} from "../allFiles";
 const fileName = '../../src/Testing/testFiles/counterTest.txt'
 const content = fs.readFileSync(fileName, {encoding: 'utf-8'})
-console.log(content)
 const range :Range = {
     start: {
         character: 1,

@@ -12,7 +12,7 @@
     "url": "REPLACE_ME"
   },
   "scripts": {
-    "reb" : "electron-rebuild -v 27.3.2 --projectRoot ./tree-sitter-hmtl2"
+    "reb": "electron-rebuild -v 27.3.2 --projectRoot ./tree-sitter-hmtl2"
   },
   "dependencies": {
     "@electron/rebuild": "^3.6.0",
@@ -25,5 +25,14 @@
     "tree-sitter-html": "^0.20.2",
     "vscode-languageserver": "^8.1.0",
     "vscode-languageserver-textdocument": "^1.0.8"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.24.4",
+    "@babel/preset-typescript": "^7.24.1",
+    "@types/jest": "^29.5.12",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2"
   }
 }

@@ -1,0 +1,12 @@
+<html>
+<head>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+    <button @submit="console.log('404')'"  onclick="jsbdfsdbfhdsbfhjsdbfhsdjbfjhsdfbhdsjfbdshfjbsdhfbsdhjfbdfhsdb" x-data="{ message: 'I ️ Alpine' }" x-text="message"></button>
+    <span @testt="$dispatch('event-number', 404 ) " @testtt="$dispatch('event-string', 'test' )' "
+    @testttr="$dispatch('event-empty' )' " @testttre="$dispatch('event-object', {test:123} )' "
+    >
+     </span>
+</body>
+</html>

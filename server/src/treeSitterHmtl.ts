@@ -168,6 +168,7 @@ export function getJavascriptBetweenQuotationMarksPosition(uri : string, pos : p
         Log.writeLspServer(m.type,1)
         m = m.parent
     }
+    console.log(m.type)
     Log.writeLspServer('javaq',1)
     Log.writeLspServer(m.type,1)
     Log.writeLspServer(m.startPosition,1)

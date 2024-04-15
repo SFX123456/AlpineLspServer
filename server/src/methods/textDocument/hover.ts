@@ -6,6 +6,7 @@ import {infos} from "../../typescriptLsp/typescriptServer";
 import {lastWordSuggestion, textDocumentType} from "../../types/ClientTypes";
 import { atOptionsJustString} from "../../at-validOptions";
 import {CompletionRequest} from "vscode-languageserver";
+import {getJavascriptBetweenQuotationMarksPosition, positionTreeSitter} from "../../treeSitterHmtl";
 interface HoverResult {
     contents: string
 }
@@ -18,15 +19,14 @@ const lastWordAnswerMatches : Record<predefinedAnswersKeys, string> = {
     '@' : 'event'
 }
 export const hoverRequest = async (message: RequestMessage) : Promise<HoverResult>  => {
-    Log.writeLspServer('zzzzzzzzzzzzzz')
-    Log.writeLspServer(message)
-    Log.writeLspServer('zzzzzzzzzzzzzzzzzzzz')
     const textDocumentt = message.params as textDocumentType
     let lastWordObj = getLastWord(textDocumentt)
-    Log.writeLspServer(lastWordObj,1)
-    if (checkIfCursorIsInsideQuotationMarks(lastWordObj,textDocumentt.position.character))
+    const position : positionTreeSitter = {
+       row: textDocumentt.position.line,
+       column: textDocumentt.position.character
+    }
+    if (getJavascriptBetweenQuotationMarksPosition(textDocumentt.textDocument.uri,position))
     {
-        Log.writeLspServer('is inside quotation marks',1)
         const res = getListenersToDispatch(lastWordObj.wholeLineTillEndofWord)
         if (res) {
             return {
@@ -36,8 +36,6 @@ export const hoverRequest = async (message: RequestMessage) : Promise<HoverResul
     }
 
     let lastWord = lastWordObj.lastWord
-    Log.writeLspServer('hover')
-    Log.writeLspServer(lastWord)
     if (lastWord == '')
         return {
             contents : ''
@@ -68,7 +66,7 @@ export const hoverRequest = async (message: RequestMessage) : Promise<HoverResul
     }
 }
 
-function getTextForEvent(event : string) : string
+export function getTextForEvent(event : string) : string
 {
     let output = 'dispatched in '
     let fileNames : string[] = []
@@ -104,15 +102,6 @@ function isStandardEvent(event : string) :Boolean
         if (x === event) return true
     }
     return false
-}
-
-function checkIfCursorIsInsideQuotationMarks(lastWordObj : lastWordSuggestion, character : number)
-{
-    let index =  lastWordObj.wholeLineTillEndofWord.lastIndexOf('="') + 2
-    Log.writeLspServer(index.toString(),1)
-    Log.writeLspServer(character.toString(),1)
-    Log.writeLspServer( getIndexStartLastWord(lastWordObj.wholeLineTillEndofWord.substring(0,character)),1)
-    return index < character && index >= getIndexStartLastWord(lastWordObj.wholeLineTillEndofWord.substring(0,character))
 }
 
 function getListenersToDispatch(lastWord : string) : null | string[]

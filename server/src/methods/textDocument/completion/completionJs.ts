@@ -15,7 +15,7 @@ import {PageHtml} from "../../../HtmlParsing/PageHtml";
 import {
     getJsCodeInQuotationMarksWithProperFormating
 } from "../javascriptText";
-import {getKeyword, getLastWordWithUriAndRange} from "../../../analyzeFile";
+import { getLastWordWithUriAndRange} from "../../../analyzeFile";
 import cheerio, {Cheerio, Element} from "cheerio";
 import {CompletionItem} from "../../../types/completionTypes";
 import {getKeyWord, positionTreeSitter, rangeIndexTreesitter} from "../../../treeSitterHmtl";
@@ -225,7 +225,7 @@ export function addMagicEventVariableIfEvent(uri: string, line: number, characte
         for (let key of allHtml.keys()) {
             allHtml.get(key)!.events.forEach(item => {
                 Log.writeLspServer(item,1)
-                if (item.name == eventName)
+                if (item.name == eventName && item.details != null)
                 {
 
                     eventText+= buildMagiceventVar(item)
@@ -319,7 +319,7 @@ Log.writeLspServer('qqqqqqqqqqqqqqqqqq',1)
         Log.writeLspServer('string or num,ber',1)
         return  '$event = ' + '{ detail= ' + item.details +  ', srcElement : { dispatchEvent: 5 } } '
     }
-    const keys = Object.keys(item.details)
+    const keys = Object.keys(item.details!)
     Log.writeLspServer(keys,1)
     try {
         let tempStr = keys.map(key => {

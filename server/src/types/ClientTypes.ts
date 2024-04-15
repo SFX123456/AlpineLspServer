@@ -30,7 +30,7 @@ export interface listenedToObjects {
 }
 export interface customEvent  {
     name: string,
-    details: dispatchVariables,
+    details: dispatchVariables | null,
     position : Position
 }
 export type dispatchVariables = Record<string, unknown> | string | number

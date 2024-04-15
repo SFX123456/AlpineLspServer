@@ -134,19 +134,9 @@ export function getEndingParenthesisPosition(uri: string, line: number, characte
     }
     return null
 }
-export function getKeyword(uri : string,line: number, character : number)
+export function isAlpineComponent(tag : string) : boolean
 {
-
-    const position = getOpeningParenthesisPosition(uri,line,character)
-    const wholeLine = allHtml.get(uri)!.linesArr[position!.line]
-    const indexEqualQuotationMark = position!.character
-
-    const subStr = wholeLine.substring(0, indexEqualQuotationMark)
-    Log.writeLspServer('substr : ' + subStr,1)
-    const beginningIndex = subStr.lastIndexOf(' ')
-
-    Log.writeLspServer('beginningindex : ' + beginningIndex,1)
-    return subStr.substring(beginningIndex + 1, indexEqualQuotationMark - 2)
+    return tag.match(/^(?:x-[a-z]|@)/) != null
 }
 
 export function getEndTagPosition(uri: string, line : number) : Position | null

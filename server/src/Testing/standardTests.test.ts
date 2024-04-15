@@ -1,23 +1,88 @@
-
-import {allFiles} from "../allFiles";
+import {allFiles, allHtml} from "../allFiles";
 import {saveCheerioFile} from "../cheerioFn";
-import {completion} from "../methods/textDocument/completion";
-import {RequestMessage} from "../server";
-import {Range} from "../types/ClientTypes";
 import * as fs from "fs";
 import {infos, initializeTypescriptServer} from "../typescriptLsp/typescriptServer";
 import Log from "../log";
-import {Element} from "cheerio";
 import {scanAllDocuments} from "../methods/initialize";
-import {hoverRequest} from "../methods/textDocument/hover";
-function testing()
+import exp = require("constants");
+import {getJavascriptBetweenQuotationMarksPosition, getKeyWord, positionTreeSitter} from "../treeSitterHmtl";
+import {isAlpineComponent} from "../analyzeFile";
+/*
+describe('standardTests',() => {
+
+    test(' check if it parsed right dispatched event with number', () => {
+        const uri = "file:///e%3A/fsd/index.html";
+        setUpFiles();
+        console.log('heyhehx')
+        console.log(allHtml.get(uri)!.events.length)
+        //@ts-ignore
+        allHtml.get(uri).events.forEach((event) => {
+            if (event.name === 'event-number')
+            {
+                expect(event.details).toBe(404);
+                expect(JSON.stringify(event.position)).toBe('{"line":6,"character":29}');
+            }
+            else if (event.name === 'event-string')
+            {
+                expect(event.details === 'test');
+                expect(JSON.stringify(event.position)).toBe('{"line":6,"character":72}');
+            }
+            else if (event.name === 'event-object')
+            {
+                //@ts-ignore
+                expect(Object.keys(event.details).length).toBe(1)
+                expect(JSON.stringify(event.position)).toBe('{"line":7,"character":65}');
+            }
+            else if (event.name === 'event-empty')
+            {
+                expect(event.details).toBeNull()
+                expect(JSON.stringify(event.position)).toBe('{"line":7,"character":25}');
+            }
+            else {
+                console.log('aaaaaaaaaaaaaa')
+                console.log(event.name)
+                fail('unrecognized event')
+            }
+
+
+        })
+    })
+
+
+})
+
+
+ */
+describe('standardTests',() => {
+
+    test(' check if inside quotation marks and alpine component', () => {
+        const uri = "file:///e%3A/fsd/index.html";
+        setUpFiles();
+        console.log(allHtml.get(uri)!.events.length)
+        const position : positionTreeSitter = {
+            row: 5,
+            column: 22
+        }
+        const positionNotAlpine : positionTreeSitter = {
+            row: 5,
+            column: 50
+        }
+        const g = getKeyWord(uri,  position)
+        expect(isAlpineComponent(g!)).toBeTruthy()
+        const a = getKeyWord(uri,  positionNotAlpine)
+        console.log(a)
+        expect(isAlpineComponent(a!)).toBeFalsy()
+    })
+
+
+})
+
+function setUpFiles()
 {
     const uri = "file:///e%3A/fsd/index.html"
-
-    const fileName = 'E:\\fsd\\index.html'
+    const fileName = 'E:\\Coding\\LSP\\Final\\AlpineLsp\\server\\src\\Testing\\testFiles\\startFile.txt'
     let content = ''
     try {
-
         content = fs.readFileSync(fileName, {encoding: 'utf-8'})
     }catch (e)
     {
@@ -27,27 +92,9 @@ function testing()
     const parsedInitMessage = JSON.parse(instMes)
     infos.rootUri = parsedInitMessage.rootUri
     infos.rootPath = parsedInitMessage.rootPath
-    scanAllDocuments(infos.rootPath!)
-    Log.writeLspServer(content,1)
+    //@ts-ignore
+    scanAllDocuments(infos.rootPath)
     allFiles.set(uri, content)
     saveCheerioFile(content, uri)
-    Log.writeLspServer('saved cheerio',1)
-    const message = '{"jsonrpc":"2.0","id":2,"method":"textDocument/hover","params":{"textDocument":{"uri":"file:///e%3A/fsd/index.html"},"position":{"line":0,"character":35}}}'
-    async function test()
-    {
-
-        const res = await hoverRequest(JSON.parse(message))
-        Log.writeLspServer(res,1)
-    }
-    test()
-}
-
-
-//testing()
-
-
-export function hoverTest()
-{
-
 }
 

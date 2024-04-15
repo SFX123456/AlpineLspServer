@@ -200,13 +200,24 @@ export class PageHtml
         arr.shift()
         Log.writeLspServer(arr,1)
         arr.forEach((match : string, index) => {
-            match = match.replace('\n','')
+            match = match.replaceAll('\n','')
             const regExp = /^\(\s*'([a-z-]+)'(?:\s*,([\s\S]*)|\s*)\)/
             const res = match.match(regExp)
-            Log.writeLspServer('what',1)
-            Log.writeLspServer(res,1)
+            console.log('ddddddddd')
             if (!res) return
-            if (res.length >= 2)
+            console.log(JSON.stringify(res))
+            if (res[2] == undefined)
+            {
+                customEvents.push({
+                    name: res[1],
+                    details: null,
+                    position:{
+                        line: 1,
+                        character: 1
+                    }
+                })
+            }
+            else if (res.length > 2)
             {
                 if (res[2].indexOf('{') != -1 && res[2].indexOf('}') != -1)
                 {

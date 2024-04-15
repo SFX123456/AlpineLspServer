@@ -25,7 +25,7 @@ export default {
         if (logLev === 1 && shouldConsoleLog)
         {
         console.log(message)
-        return;
+            return;
         }
 
         if (message == undefined)
