@@ -95,8 +95,3 @@
 * [ ] abroad files
 
 
-### Globals
-* [x] Alpine.data
-* [x] Alpine.bind
-* [x] Alpine.store
-* [ ] abroad files
