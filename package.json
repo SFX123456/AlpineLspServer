@@ -1,11 +1,21 @@
 {
-  "name": "REPLACE_ME",
-  "description": "REPLACE_ME",
-  "author": "REPLACE_ME",
+  "name": "alpine-language-server",
+  "displayName": "Alpine Language Server",
+  "description": "A language server for the Alpine.js framework.",
+  "author": "Nico Woelfle",
   "license": "MIT",
   "version": "1.0.0",
-  "publisher": "REPLACE_ME",
+  "publisher": "Okaml",
   "categories": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SFX123456/AlpineLspServer"
+  },
+  "keywords": [
+    "Alpine",
+    "language server",
+    "VSCode"
+  ],
   "engines": {
     "vscode": "^1.75.0",
     "node": ">=18.17.0 <19"
@@ -21,7 +31,7 @@
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -b --force",
     "watch": "tsc -b -w",
-    "postinstall": "cd client && npm install && cd ../server && npm i  && .\\node_modules\\.bin\\electron-rebuild.cmd -v 27.3.2 && npm run reb && cd .. && npm run compile"
+    "postinstall": "cd client && npm install && cd ../server && npm i &&  npm run reb && cd .. && npm run compile"
   },
   "devDependencies": {
     "@electron/rebuild": "^3.6.0",

@@ -66,7 +66,7 @@ function addLineAttributes(contentLines : string[]) : string[]
 
 
 
-export function findAccordingRow(row : number, htmlPage : PageHtml)
+export function getAccordingRow(row : number, htmlPage : PageHtml)
 {
     while (row >= 0)
     {

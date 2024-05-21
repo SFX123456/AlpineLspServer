@@ -4,7 +4,7 @@ import {magicObjects} from "../../../magicobjects";
 import {allFiles, allHtml} from "../../../allFiles";
 import {
     createRefsStr,
-    findAccordingRow,
+    getAccordingRow,
     getAccordingRefs, getFirstXDataTagName,
     getParentAndOwnIdScopes,
     getParentAndOwnVariables, getParentAndOwnVariablesJustNamesNoFunctions, getParentAndOwnVariablesXData
@@ -19,10 +19,9 @@ import { getLastWordWithUriAndRange} from "../../../analyzeFile";
 import cheerio, {Cheerio, Element} from "cheerio";
 import {CompletionItem} from "../../../types/completionTypes";
 import {getKeyWord, positionTreeSitter, rangeIndexTreesitter} from "../../../treeSitterHmtl";
-import {it} from "node:test";
 export const completionJs  = async (line : number, character : number, uri : string | undefined, javascriptPos : rangeIndexTreesitter) : Promise<CompletionList | null> => {
     const javascriptText = allFiles.get(uri!)!.substring(javascriptPos.startIndex,javascriptPos.endIndex)
-    Log.writeLspServer('completionJS requested')
+    Log.writeLspServer('completionJS requested',1)
     const keyWord = getKeyWord(uri! , {
         row: line,
         column: character
@@ -56,7 +55,7 @@ export const completionJs  = async (line : number, character : number, uri : str
         line
     })
     const htmpPage = allHtml.get(uri!)
-    const node = findAccordingRow(line, htmpPage!)
+    const node = getAccordingRow(line, htmpPage!)
     if (!node){
         Log.writeLspServer(' matching node could not be found aborting')
 
@@ -73,8 +72,10 @@ export const completionJs  = async (line : number, character : number, uri : str
             items: addNecessaryCompletionItemProperties(res, line,character)
         }
     }
+    /*
     if (isInsideDispatchSetEvent(wholeLine, character))
     {
+        Log.writeLspServer('isinside sipatch',1)
         const events = PageHtml.getAllListedToEvents()
         Log.writeLspServer('should return listed to events',1)
         Log.writeLspServer(events,1)
@@ -84,6 +85,8 @@ export const completionJs  = async (line : number, character : number, uri : str
             items: addNecessaryCompletionItemProperties(events, line, character)
         }
     }
+
+     */
     let optionsStr : string[] = []
 
     const parentAndOwnVariables = getParentAndOwnVariables(node,uri!)
@@ -295,12 +298,12 @@ Log.writeLspServer('jjjjjjjjjjjjjjjj ' + match,1)
 }
 
 
-function isInsideDispatchSetEvent(wholeLine : string, character: number) : Boolean
+export function isInsideDispatchSetEvent(wholeLine : string, character: number) : Boolean
 {
-    const regExpEnd = /\$dispatch\([\s]*'$/
+    Log.writeLspServer('isinsidedispatchsetvent',1)
+    const regExpEnd= /\$dispatch\([\s]*'$/
     if (wholeLine.substring(0, character).match(regExpEnd))
     {
-
         return true
     }
 
@@ -312,8 +315,6 @@ function isInsideDispatchSetEvent(wholeLine : string, character: number) : Boole
 
 function buildMagiceventVar(item : customEvent )
 {
-Log.writeLspServer('qqqqqqqqqqqqqqqqqq',1)
-    Log.writeLspServer(JSON.stringify(item))
     if (typeof item.details === 'string' || typeof item.details === 'number')
     {
         Log.writeLspServer('string or num,ber',1)
@@ -340,33 +341,6 @@ Log.writeLspServer('qqqqqqqqqqqqqqqqqq',1)
     }
 }
 
-
-function changeXForForTypescriptServer(content : string): string
-{
-    const regExp = /([a-z-]+)(\s+)in(\s+)([a-z-]+)/g
-    let test = content
-    let match
-    while ((match = regExp.exec(content)) != null)
-    {
-        Log.writeLspServer('found match at index ' + match.index)
-        Log.writeLspServer(match)
-        const arrName = match[4]
-        const keyName = match[1]
-        const firstWhite = match[2]
-        const secondWhite = match[3]
-        const newText = 'for(let ' + keyName + firstWhite + 'of' + secondWhite + arrName + "){"
-        Log.writeLspServer(newText)
-        let textToReplace = '       ' + match[0] + '  '
-        let counter  = 0
-        do {
-            textToReplace = textToReplace.substring(0, textToReplace.length - 2)
-            counter++
-        }while (content.indexOf(textToReplace) == -1 && counter < 2)
-        Log.writeLspServer(content.indexOf(textToReplace).toString())
-        test = test.replaceAll(textToReplace, newText)
-    }
-    return test
-}
 
 
 

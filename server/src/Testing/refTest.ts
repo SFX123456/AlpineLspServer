@@ -1,6 +1,6 @@
 
 import {allFiles, allHtml} from "../allFiles";
-import {createRefsStr, findAccordingRow, getAccordingRefs, saveCheerioFile} from "../cheerioFn";
+import {createRefsStr, getAccordingRow, getAccordingRefs, saveCheerioFile} from "../cheerioFn";
 import {completion} from "../methods/textDocument/completion";
 import {RequestMessage} from "../server";
 import {Range} from "../types/ClientTypes";
@@ -26,7 +26,7 @@ function testing()
     Log.writeLspServer(content,1)
     allFiles.set(uri, content)
     saveCheerioFile(content, uri)
-    const node = findAccordingRow(0,allHtml.get(uri)!)
+    const node = getAccordingRow(0,allHtml.get(uri)!)
     const res = getAccordingRefs(node!)
     Log.writeLspServer(res,1)
     const str = createRefsStr(res)

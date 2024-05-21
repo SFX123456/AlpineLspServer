@@ -1,9 +1,8 @@
-import { Location } from "vscode-languageserver";
 import log from "./log";
 import {semanticToken} from "./methods/textDocument/semantic";
 
 const Parser = require('tree-sitter');
-const JavaScript = require('tree-sitter-bash');
+const JavaScript = require('tree-sitter-javascript');
 
 enum validTypesEnum {
     class,
@@ -78,9 +77,6 @@ catch(e)
 
 
 export function getSemanticTokens(javascriptCode : string) : semanticToken[] {
-    log.writeLspServer('javascript codei got')
-    log.writeLspServer(javascriptCode)
-
     const tree = parser.parse(javascriptCode);
     const semanticTokens: semanticToken[] = []
     function traverse(node : any) {
@@ -89,10 +85,6 @@ export function getSemanticTokens(javascriptCode : string) : semanticToken[] {
             log.writeLspServer(node.startPosition)
         //@ts-ignore
         if (validTypes[node.type]) {
-            log.writeLspServer('nnnnnnn')
-            log.writeLspServer(node.type)
-            log.writeLspServer(node.startPosition)
-            log.writeLspServer(node.endPosition)
             const pos = {
                 line: node.startPosition.row,
                 character: node.startPosition.column
@@ -108,8 +100,6 @@ export function getSemanticTokens(javascriptCode : string) : semanticToken[] {
 
     // Start traversing from the root node
     traverse(tree.rootNode);
-    log.writeLspServer('the semantic tokens of treesitter')
-    log.writeLspServer(semanticTokens)
     return semanticTokens
 
 }

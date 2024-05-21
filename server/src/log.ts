@@ -5,7 +5,6 @@ const logLspClient = fs.createWriteStream("E:\\fsd\\lspClient.log")
 
 export default {
     write: (message : object | unknown, logLev : number = 0) => {
-        if (logLev === 1) return;
         if (message == undefined)
         {
             return

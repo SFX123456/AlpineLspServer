@@ -1,0 +1,1 @@
+<span @test="$dispatch('event-number', { test : 123} ) "  > </span>

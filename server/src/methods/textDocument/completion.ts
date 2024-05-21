@@ -4,8 +4,7 @@ import {CompletionList, lastWordSuggestion, textDocumentType} from "../../types/
 import {CompletionItem} from "../../types/completionTypes";
 import {completionJustAT} from "./completion/atCompletion";
 import {completionJs} from "./completion/completionJs";
-import {getLastWord, getLastWordWithUriAndRange, isInsideElement} from "../../analyzeFile";
-import {CodeBlock} from "../../CodeBlock";
+import { getLastWordWithUriAndRange} from "../../analyzeFile";
 import {completionX} from "./completion/xCompletion";
 import {chainableOnAt, chainableOnAtKeyboard} from "../chainableOnAt";
 import {chainableOnXShow} from "../../x-validOptions";

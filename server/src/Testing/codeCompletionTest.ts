@@ -1,5 +1,5 @@
 import {allFiles, allHtml} from "../allFiles";
-import {findAccordingRow, getParentAndOwnVariables, saveCheerioFile} from "../cheerioFn";
+import {getAccordingRow, getParentAndOwnVariables, saveCheerioFile} from "../cheerioFn";
 import {completion} from "../methods/textDocument/completion";
 import * as fs from "fs";
 import {initializeTypescriptServer} from "../typescriptLsp/typescriptServer";
@@ -21,7 +21,7 @@ function testing()
     saveCheerioFile(content, uri)
     const magicVariable = allHtml.get(uri)!.buildStoreMagicVariable()
     Log.writeLspServer(magicVariable,1)
-    const node = findAccordingRow(4,allHtml.get(uri)!)
+    const node = getAccordingRow(4,allHtml.get(uri)!)
     Log.writeLspServer('initial node ',1)
     Log.writeLspServer(node,1)
     const res = getParentAndOwnVariables(node!,uri)

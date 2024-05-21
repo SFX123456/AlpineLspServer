@@ -5,9 +5,17 @@ import {infos, initializeTypescriptServer} from "../typescriptLsp/typescriptServ
 import Log from "../log";
 import {scanAllDocuments} from "../methods/initialize";
 import exp = require("constants");
-import {getJavascriptBetweenQuotationMarksPosition, getKeyWord, positionTreeSitter} from "../treeSitterHmtl";
-import {isAlpineComponent} from "../analyzeFile";
-/*
+import {
+    getAllJavascriptText,
+    getJavascriptBetweenQuotationMarksPosition,
+    getKeyWord,
+    isInsideTag,
+    positionTreeSitter, rangeIndexTreesitter
+} from "../treeSitterHmtl";
+import {getLastWordWithUriAndRange, isAlpineComponent} from "../analyzeFile";
+import {not} from "cheerio/lib/api/traversing";
+import {Position} from "../types/ClientTypes";
+
 describe('standardTests',() => {
 
     test(' check if it parsed right dispatched event with number', () => {
@@ -15,6 +23,7 @@ describe('standardTests',() => {
         setUpFiles();
         console.log('heyhehx')
         console.log(allHtml.get(uri)!.events.length)
+        expect(allHtml.get(uri)!.events.length).toBe(4)
         //@ts-ignore
         allHtml.get(uri).events.forEach((event) => {
             if (event.name === 'event-number')
@@ -47,18 +56,9 @@ describe('standardTests',() => {
 
         })
     })
-
-
-})
-
-
- */
-describe('standardTests',() => {
-
     test(' check if inside quotation marks and alpine component', () => {
         const uri = "file:///e%3A/fsd/index.html";
         setUpFiles();
-        console.log(allHtml.get(uri)!.events.length)
         const position : positionTreeSitter = {
             row: 5,
             column: 22
@@ -75,12 +75,75 @@ describe('standardTests',() => {
     })
 
 
+    test('functionality is inside html element', () => {
+        const uri = "file:///e%3A/fsd/index.html";
+        setUpFiles();
+        const postion : positionTreeSitter = {
+            row: 2,
+            column: 15
+        }
+        const postion2 : positionTreeSitter = {
+            row: 2,
+            column: 0
+        }
+        const isInside = isInsideTag(postion,uri)
+        expect(isInside).toBeTruthy()
+        const NotisInside = isInsideTag(postion2,uri)
+        expect(NotisInside).toBeFalsy()
+    })
+
+    test('functionality get javascript between quotation marks', () => {
+        const uri = "file:///e%3A/fsd/index.html";
+        setUpFiles();
+        const postion : positionTreeSitter = {
+            row: 5,
+            column: 25
+        }
+        const position = getJavascriptBetweenQuotationMarksPosition(uri, postion)
+        const text = allFiles.get(uri)!.substring(position!.startIndex,position!.endIndex)
+        expect(text).toBe('console.log(\'404\')')
+    })
+
+    test('functionailty get javascript text', () => {
+        const uri = "file:///e%3A/fsd/index.html";
+        setUpFiles();
+        const text = getAllJavascriptText(uri)
+        if (!text.includes('$dispatch')
+            || !text.includes('event-object')
+            || !text.includes('console.log')
+        )
+        {
+            fail('parsed javascript is not complete')
+        }
+        expect(true).toBeTruthy()
+    })
+
+    test('functionality get lastwordinfo', () => {
+        const uri = "file:///e%3A/fsd/index.html";
+        setUpFiles();
+        const position : Position = {
+            line:2,
+            character: 5
+        }
+        const position2 : Position = {
+            line:5,
+            character: 25
+        }
+        const lastwordInfo = getLastWordWithUriAndRange(uri, position)
+        const lastWordSuggestion = getLastWordWithUriAndRange(uri, position2)
+        expect(lastWordSuggestion.lastWord).toBe('console.log(\'404\')')
+        expect(lastwordInfo.lastWord).toBe('script')
+        expect(lastwordInfo.wholeLineTillEndofWord.trim()).toBe('<script')
+    })
+
 })
 
-function setUpFiles()
+
+
+export function setUpFiles()
 {
     const uri = "file:///e%3A/fsd/index.html"
-    const fileName = 'E:\\Coding\\LSP\\Final\\AlpineLsp\\server\\src\\Testing\\testFiles\\startFile.txt'
+    const fileName = 'E:\\Coding\\LSP\\Final\\AlpineLsp\\server\\src\\Testing\\testFiles\\JavaScriptTreeSitter.txt'
     let content = ''
     try {
         content = fs.readFileSync(fileName, {encoding: 'utf-8'})

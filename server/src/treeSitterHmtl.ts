@@ -1,9 +1,9 @@
 import {allFiles} from "./allFiles";
 import Log from "./log";
-import {Element} from "cheerio";
+import {isAlpineComponent} from "./analyzeFile";
 
 const Parser = require('tree-sitter');
-const Html = require("../tree-sitter-hmtl2");
+const Html = require("tree-sitter-html");
 
 const validTypes = {
     'property_identifier' : 4,
@@ -56,7 +56,6 @@ export function loadParser()
 function getTree(uri : string)
 {
     const parser = new Parser();
-    Log.writeLspServer('worked ', 1)
     parser.setLanguage(Html);
     return parser.parse(allFiles.get(uri))
 }
@@ -81,45 +80,26 @@ export function getAllJavascriptText(uri : string)
     {
         Log.writeLspServer('tree is undefined',1)
     }
-    Log.writeLspServer(tree, 1)
-    Log.writeLspServer('content : ' + content,1)
+
 
     // Start traversing from the root node
     traverse(uri, tree.rootNode, allJSArray);
     return allJSArray.join('')
 }
-export function setUpForTestingTreesitter(content : string)
-{
 
-}
-export function getLastWord(uri : string, point : positionTreeSitter)
-{
-    const tree = getTree(uri)
-    const node = tree.rootNode.descendantForPosition(point)
-    Log.writeLspServer(node,1)
-    if (node.type !== nodeTypes.storesxname)
-    {
-        return null
-    }
-    return allFiles.get(uri)!.substring(node.startIndex,node.endIndex)
-}
 function traverse(uri : string, node: any, allJSArray : string[]) {
     const content = allFiles.get(uri)!
     if (node.type === nodeTypes.storesJavaScriptText)
     {
         const keyWord = getKeyWord(uri, node.startPosition)
-        const regex = /(?:x-([a-z:\.]+)|@([a-z-]+)[\.a-z-]*|\:[a-z]+)/g
-        const match = regex.exec(keyWord!)
-        Log.writeLspServer(match,1)
-        if (match)
+        if (isAlpineComponent(keyWord!))
         {
-            Log.writeLspServer('keyword : ' + keyWord,1)
-
             const javascriptPos = getJavascriptBetweenQuotationMarksPosition(uri,node.startPosition)
-            if (!javascriptPos) return
-            //+1 and -1 because of quotation marks
-            for (let i = javascriptPos.startIndex ; i < javascriptPos.endIndex; i++) {
-                allJSArray[i] = content[i]
+            if (javascriptPos)
+            {
+                for (let i = javascriptPos.startIndex ; i < javascriptPos.endIndex; i++) {
+                    allJSArray[i] = content[i]
+                }
             }
         }
     }
@@ -130,12 +110,10 @@ export function isInsideTag(pos : positionTreeSitter,uri : string)
 {
     const tree = getTree(uri)
     const z = tree.rootNode.descendantForPosition(pos)
-    Log.writeLspServer(z, 1)
     if (z.type === nodeTypes.documentNode)
     {
         return false
     }
-    Log.writeLspServer('here',1)
     let foundNodeStartPos = z.startIndex
     let foundNodeEndPos = z.endIndex
     let j = z
@@ -143,13 +121,11 @@ export function isInsideTag(pos : positionTreeSitter,uri : string)
     {
         j = j.parent
     }
-    Log.writeLspServer('here2',1)
-    Log.writeLspServer(j,1)
+
     if (j.type === nodeTypes.documentNode)
     {
         return false
     }
-    Log.writeLspServer(foundNodeStartPos,1)
     if (j.startIndex <= foundNodeStartPos  && j.endIndex >= foundNodeEndPos)
     {
         return true
@@ -165,35 +141,22 @@ export function getJavascriptBetweenQuotationMarksPosition(uri : string, pos : p
     let m = tree.rootNode.descendantForPosition(pos)
     while (m.type != 'quoted_attribute_value' && m.type !== nodeTypes.documentNode )
     {
-        Log.writeLspServer(m.type,1)
         m = m.parent
     }
-    console.log(m.type)
-    Log.writeLspServer('javaq',1)
-    Log.writeLspServer(m.type,1)
-    Log.writeLspServer(m.startPosition,1)
-    Log.writeLspServer(m.endPosition,1)
     if (m.type === nodeTypes.documentNode) return null
     const mStartPos = m.startPosition
-    const mEndpos = m.endPosition
     const indexQuotStart = m.startIndex
     const indexQuotEnd = m.endIndex
     while (m.type !== nodeTypes.storesXExpression && m.type !== nodeTypes.documentNode )
     {
         m = m.parent
     }
-    Log.writeLspServer(m.startPosition,1)
-    Log.writeLspServer('go fuither ', 1)
     if (m.type === nodeTypes.documentNode) return null
     const posStrStart = m.startIndex
     const posStrEnd = m.endIndex
-    Log.writeLspServer('dihfg',1)
     while ((m = m.parent).type !== nodeTypes.element && m.type !== nodeTypes.documentNode );
-    Log.writeLspServer(m, 1)
     if (m.type === nodeTypes.documentNode) return null
     if (m.startIndex <= posStrStart && m.endIndex >= posStrEnd)
-        Log.writeLspServer('returning ',1)
-    Log.writeLspServer(mEndpos,1)
         return {
             positionStart : {
                 column : mStartPos.column + 1,

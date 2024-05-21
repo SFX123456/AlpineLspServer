@@ -1,19 +1,16 @@
 import {addNecessaryCompletionItemProperties, completionResponse} from "../completion";
 import {allHtml} from "../../../allFiles";
-import {findAccordingRow} from "../../../cheerioFn";
-import Log from "../../../log";
+import {getAccordingRow} from "../../../cheerioFn";
 import {CompletionList, customEvent} from "../../../types/ClientTypes";
 import {CompletionItem} from "../../../types/completionTypes";
 import {atoptionsForAt, atoptionsForXon} from "../../../at-validOptions";
 import {Cheerio, Element} from "cheerio";
-import {getLastWord, getLastWordWithUriAndRange} from "../../../analyzeFile";
+import {getLastWordWithUriAndRange} from "../../../analyzeFile";
 
 export const completionJustAT : completionResponse = async (line: number, character : number, uri: string | undefined) : Promise<CompletionList | null> =>
 {
     const htmpPage = allHtml.get(uri!)!
-    const node = findAccordingRow(line, htmpPage)
-    Log.writeLspServer('@reaction')
-    Log.writeLspServer(node!.toString())
+    const node = getAccordingRow(line, htmpPage)
     let allCustomEvents :customEvent[] = []
     for (let key of allHtml.keys()) {
         const allEventsHtmlPage = allHtml.get(key)
@@ -21,8 +18,6 @@ export const completionJustAT : completionResponse = async (line: number, charac
         allCustomEvents.push(...allEventsHtmlPage!.events)
     }
 
-    Log.writeLspServer('before')
-    Log.writeLspServer(allCustomEvents)
     let hashMap : Record<string, customEvent> = {}
     allCustomEvents.forEach(item => {
         const str = JSON.stringify(item)
@@ -31,7 +26,6 @@ export const completionJustAT : completionResponse = async (line: number, charac
             hashMap[str] = item
         }
     })
-    Log.writeLspServer(hashMap)
     allCustomEvents = []
     for (let customEventsKey in hashMap) {
         allCustomEvents.push(hashMap[customEventsKey])
@@ -85,9 +79,6 @@ export const completionJustAT : completionResponse = async (line: number, charac
 
         completionItemsEvents.push(...atoptionsForAt)
     }
-    //z.map(item => item.name)
-
-
 
     const readyAtoptions = addNecessaryCompletionItemProperties(completionItemsEvents, line, character)
 
@@ -101,18 +92,16 @@ export function getCustomNotWindowEventsWithVariables(node : Cheerio<Element>): 
 {
     const customEvents :  string[] = []
     const content = node.toString()
-        const arr = content.split('$dispatch')
-        arr.shift()
-        Log.writeLspServer('dispatch')
-        Log.writeLspServer(content)
-        arr.forEach((match : string) => {
-            match = match.replace('\n','')
-            const regExp = /^\(['\s]+([a-z-]+)(?:[\s',]+{([a-zA-Z\s,':0-9]+)}|[\s'])\)/
-            const res = match.match(regExp)
-            if (!res) return
-            customEvents.push(res[1])
+    const arr = content.split('$dispatch')
+    arr.shift()
+    arr.forEach((match: string) => {
+        match = match.replace('\n', '')
+        const regExp = /^\(['\s]+([a-z-]+)(?:[\s',]+{([a-zA-Z\s,':0-9]+)}|[\s'])\)/
+        const res = match.match(regExp)
+        if (!res) return
+        customEvents.push(res[1])
 
-        })
+    })
 
-        return customEvents
+    return customEvents
 }

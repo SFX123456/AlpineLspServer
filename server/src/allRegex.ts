@@ -5,4 +5,3 @@ export const regexEndQuotationMarks = /(?<![\\=])"/g
 
 export const regexStartingAlpineExpression =  /(x-[a-zA-Z]*="|@[a-zA-Z]*=")/
 
-export const regexHighlightingSemantics =  /(?:x-([a-z:\.]+)|@([a-z-]+)[\.a-z-]*)="/g

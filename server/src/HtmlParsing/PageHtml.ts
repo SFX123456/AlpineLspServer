@@ -5,10 +5,9 @@ import {customEvent, dispatchVariables, listenedToObjects} from "../types/Client
 import {allFiles, allHtml} from "../allFiles";
 import {IsEventToIgnore} from "../EventToIgnore";
 import {extractKeysAndGenerateStr} from "../cheerioFn";
+import {getDispatchKeywords} from "../treeSitterJavascript";
+import {getAllJavascriptText} from "../treeSitterHmtl";
 
-interface store {
-    keys : string[]
-}
 export class PageHtml
 {
     public events : customEvent[];
@@ -27,12 +26,14 @@ export class PageHtml
         this.allBindings = []
         this.cheerioObj = cheerioObj
         this.uri = uri
-        cheerioObj('html').children().each((index : any, element : cheerio.Element) => {
-            this.processElement(element);
-        })
-        this.setIndexesOfDispatchedEevents()
+
+        const javascriptText = getAllJavascriptText(uri)
+        this.events = getDispatchKeywords(uri, javascriptText)
+
         this.abstractListenedEvents()
-        this.getJavaScriptBetweenScriptTags()
+
+
+        this.registerJavaScriptBetweenScriptTags()
     }
     public get listenedToEvents()
     {
@@ -47,7 +48,7 @@ export class PageHtml
         return this.events.map((item :customEvent)=> item.name)
     }
 
-    public getJavaScriptBetweenScriptTags()
+    public registerJavaScriptBetweenScriptTags()
     {
         Log.writeLspServer('get javascript between script tags',1)
         const content = allFiles.get(this.uri)!
@@ -148,20 +149,6 @@ export class PageHtml
         return text
     }
 
-    public processElement(element : cheerio.Element) {
-        element.children.forEach((child : cheerioType.ChildNode) => {
-            if (child.type === 'tag') {
-
-                const z = child.attribs
-               Log.writeLspServer(child.attribs,1)
-                const createdEvents = this.getCustomNotWindowEventsWithVariables(JSON.stringify(child.attribs))
-                Log.writeLspServer('got following events',1)
-                Log.writeLspServer(createdEvents,1)
-                this.events.push(...createdEvents)
-                this.processElement(child);
-        }
-     });
-    }
 
     private abstractListenedEvents()
     {
@@ -186,158 +173,4 @@ export class PageHtml
         })
     }
 
-
-
-
-
-
-    public getCustomNotWindowEventsWithVariables(nodeText : string): customEvent[]
-    {
-        const customEvents : customEvent[] = []
-        const content = nodeText
-        const arr = content.split('$dispatch')
-        if (!arr) return []
-        arr.shift()
-        Log.writeLspServer(arr,1)
-        arr.forEach((match : string, index) => {
-            match = match.replaceAll('\n','')
-            const regExp = /^\(\s*'([a-z-]+)'(?:\s*,([\s\S]*)|\s*)\)/
-            const res = match.match(regExp)
-            console.log('ddddddddd')
-            if (!res) return
-            console.log(JSON.stringify(res))
-            if (res[2] == undefined)
-            {
-                customEvents.push({
-                    name: res[1],
-                    details: null,
-                    position:{
-                        line: 1,
-                        character: 1
-                    }
-                })
-            }
-            else if (res.length > 2)
-            {
-                if (res[2].indexOf('{') != -1 && res[2].indexOf('}') != -1)
-                {
-                    try {
-                        const obj: dispatchVariables = {}
-                        const arr = res[2].substring(res[2].indexOf('{')+1,res[2].indexOf('}')-1).split(',')
-                        for (let i = 0; i < arr.length; i++)
-                        {
-                            Log.writeLspServer('here',1)
-                            try {
-                                const lineStr = arr[i]
-                                Log.writeLspServer(lineStr,1)
-                                const key2 = lineStr.split(':')[0]
-                                Log.writeLspServer(key2,1)
-                                 const m =   key2.match(/([a-zA-Z][a-zA-Z-]*)/)![1].trim()
-                                Log.writeLspServer(m,1)
-                                obj[m] = 1
-                            }
-                            catch (e) {
-                                Log.writeLspServer('errors here',1)
-                            }
-                        }
-                        Log.writeLspServer(obj,1)
-                        customEvents.push({
-                            name : res[1],
-                            details: obj,
-                            position: {
-                                line : 1,
-                                character : 1
-                            }
-                        })
-                    }
-                    catch (e) {
-                        Log.writeLspServer('another error happened',1)
-                    }
-                }
-                else {
-                    if (res[2].indexOf('\'') != -1 && res[2].lastIndexOf('\'') != res[2].indexOf('\''))
-                    {
-                        customEvents.push({
-                            name : res[1],
-                            details: res[2].trim().replaceAll('\'',''),
-                            position: {
-                                line : 1,
-                                character : 1
-                            }
-                        })
-                    }
-                    else
-                    {
-                        const floatVal = parseFloat(res[2])
-                        customEvents.push({
-                            name : res[1],
-                            details: floatVal,
-                            position: {
-                                line : 1,
-                                character : 1
-                            }
-                        })
-                    }
-                }
-            }
-        })
-        Log.writeLspServer('return ing',1)
-        Log.writeLspServer(customEvents,1)
-        return customEvents
-    }
-
-    private setIndexesOfDispatchedEevents()
-    {
-        const alreadyFoundEvents : Record<string, number> = {}
-        this.events.forEach(item => {
-            let counterFoundEvent = 0
-            let found = false
-            this.linesArr.forEach((line,ind) => {
-                const regex:RegExp = new RegExp(`\\$dispatch\\(\\s*'${item.name}`, 'gm')
-                if (!found)
-                {
-                    const match = regex.exec(line)
-
-                    if (match)
-                    {
-                        //console.log(match)
-                        if (alreadyFoundEvents[item.name])
-                        {
-                            //console.log('trying for  ' + item.name)
-                            if (counterFoundEvent == alreadyFoundEvents[item.name])
-                            {
-                                item.position.line = ind
-                                item.position.character = match.index + 11
-                                alreadyFoundEvents[item.name]++
-                                found = true
-                            }
-                        }
-                        else {
-                            item.position.line = ind
-                            item.position.character = match.index + 11
-                            alreadyFoundEvents[item.name] = 1
-                            found = true
-                        }
-                        counterFoundEvent++;
-                    }
-                }
-            })
-        })
-    }
-
-    public static getAllListedToEvents() :string[]
-    {
-        const output : string[] = []
-        const set : Set<string> = new Set()
-        for (let key of allHtml.keys()) {
-            allHtml.get(key)!.listenedToEventsPosition.forEach(x => {
-                set.add(x.name)
-            })
-        }
-        for (let key of set.keys()) {
-           output.push(key)
-        }
-        Log.writeLspServer(set)
-        return output
-    }
 }

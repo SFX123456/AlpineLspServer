@@ -20,7 +20,7 @@ export const definitionRequest = async (message: RequestMessage) : Promise<locat
     const character = textDocumentt.position.character
     const lastWord = getLastWord(textDocumentt)
 
-    Log.writeLspServer('definitonrequest')
+    Log.writeLspServer('definitonrequest',1)
     Log.writeLspServer(lastWord)
     const listenedEvents = isDispatchEvent(lastWord.wholeLineTillEndofWord)
     if (listenedEvents)
@@ -111,6 +111,7 @@ function isEventListener(lastWord : string) :null | dispatchedEvents[]
 
 function isDispatchEvent(lastWord : string) :null | dispatchedEvents[]
 {
+    Log.writeLspServer('search here jonas',1)
     const regexp = /\$dispatch\(\s*'([a-z]+)'/
     const match = lastWord.match(regexp)
     if (!match) return null
@@ -155,8 +156,3 @@ function isDispatchEvent(lastWord : string) :null | dispatchedEvents[]
     return output
 }
 
-function isItADispatchFn(line : string): boolean
-{
-    const regExp = /\$dispatch\(\s*'([a-z-]+)'(?:\s*,+\s*{((?:[a-zA-Z\s-]+:[a-z,0-9\s\n']+)+)}\s*|\s*)\)/
-    return line.match(regExp) != null
-}
